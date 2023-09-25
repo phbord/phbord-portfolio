@@ -12,6 +12,9 @@
 - Tailwind UI
   - Composants basés sur Tailwind CSS
   - [https://tailwindui.com/](https://tailwindui.com/)
+- Recoil
+  - Gestionnaire d'états pour React
+  - [https://recoiljs.org/fr](https://recoiljs.org/fr)
 - Supabase
   - API basée sur Postgres
   - [https://supabase.com/](https://supabase.com/)

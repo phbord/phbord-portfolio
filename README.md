@@ -1,6 +1,23 @@
-# Welcome to Remix!
+# Portfolio de Pierre-Henri Bord
 
-- [Remix Docs](https://remix.run/docs)
+## Documentation et technologies utilisées
+
+- Remix 2.0.0
+  - Framework fullstack basé sur la librairie Javascript React
+  - [Remix Docs](https://remix.run/docs)
+- Typescript
+- Tailwind CSS
+  - Framework front-end CSS
+  - [https://tailwindcss.com/](https://tailwindcss.com/)
+- Tailwind UI
+  - Composants basés sur Tailwind CSS
+  - [https://tailwindui.com/](https://tailwindui.com/)
+- Supabase
+  - API basée sur Postgres
+  - [https://supabase.com/](https://supabase.com/)
+- Prisma
+  - ORM en Typescript
+  - [https://www.prisma.io/](https://www.prisma.io/)
 
 ## Development
 

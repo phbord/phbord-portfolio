@@ -1,4 +1,4 @@
-import { json, type LinksFunction } from "@remix-run/node";
+import { type LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,29 +6,18 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
 
 import stylesheet from "~/assets/styles/tailwind.css";
 import Layout from "~/components/Layout/Layout";
+import Transitions from "~/components/Layout/Transitions";
 
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-export async function loader() {
-  return json({
-    ENV: {
-      DATABASE_URL: process.env.DATABASE_URL,
-    },
-  });
-}
-
 export default function App() {
-  const data = useLoaderData<typeof loader>();
-  console.log(data.ENV.DATABASE_URL)
-  
   return (
     <html lang="fr">
       <head>
@@ -39,12 +28,10 @@ export default function App() {
       </head>
       <body>
         <Layout>
-          {data.ENV.DATABASE_URL}
-          <Outlet />
+          <Transitions>
+            <Outlet />
+          </Transitions>
           <ScrollRestoration />
-          <script dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
-          }} />
           <Scripts />
           <LiveReload />
         </Layout>

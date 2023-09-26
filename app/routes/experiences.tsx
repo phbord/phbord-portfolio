@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 
-import metaGlobal from "~/utils/functions/MetaFunctionGlobal";
+import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 
 export const meta: MetaFunction = () => {
   return [

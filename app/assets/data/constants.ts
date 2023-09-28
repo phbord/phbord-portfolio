@@ -1,2 +1,2 @@
-export const REACT_APP_SUPABASE_URL: string  = process.env.REACT_APP_SUPABASE_URL;
-export const REACT_APP_SUPABASE_KEY: string = process.env.REACT_APP_SUPABASE_KEY;
+export const SUPABASE_URL: string  = process.env.SUPABASE_URL;
+export const SUPABASE_KEY: string = process.env.SUPABASE_KEY;

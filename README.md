@@ -18,9 +18,12 @@
 - Supabase
   - API basée sur Postgres
   - [https://supabase.com/](https://supabase.com/)
-- Prisma
-  - ORM en Typescript
-  - [https://www.prisma.io/](https://www.prisma.io/)
+- Jest
+  - Tests unitaires
+  - [https://jestjs.io/](https://jestjs.io/)
+- Cypress
+  - Tests E2E
+  - [https://www.cypress.io/](https://www.cypress.io/)
 
 ## Development
 

@@ -1,6 +1,7 @@
+@import './commons/fonts.css';
+@import './commons/utility-classes.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@tailwind './commons/fonts.css';
 

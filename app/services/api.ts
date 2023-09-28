@@ -1,13 +1,13 @@
 import { createClient } from "@supabase/supabase-js";
 
-import { REACT_APP_SUPABASE_URL, REACT_APP_SUPABASE_KEY } from "~/assets/data/constants";
+import { SUPABASE_URL, SUPABASE_KEY } from "~/assets/data/constants";
 
 
 async function initializeSupabase() {
   try {
     return createClient(
-      REACT_APP_SUPABASE_URL,
-      REACT_APP_SUPABASE_KEY
+      SUPABASE_URL,
+      SUPABASE_KEY
     );
   }
   catch (err) {

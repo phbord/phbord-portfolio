@@ -1,11 +1,12 @@
 const mainData = {
   fr: {
     translation: {
-      firstName: 'Pierre_henri',
+      firstName: 'Pierre-henri',
       lastName: 'Bord',
       position: 'Intégrateur / Développeur front-end',
       email: 'phbord@gmail.com',
       linkedin: 'https://www.linkedin.com/in/phbord/',
+      logoHeaderText: 'Logo de Pierre-Henri Bord',
       header: [
         { name: 'Compétences', href: '/' },
         { name: 'Expériences', href: '/experiences' },
@@ -24,11 +25,12 @@ const mainData = {
   },
   en: {
     translation: {
-      firstName: 'Pierre_henri',
+      firstName: 'Pierre-henri',
       lastName: 'Bord',
       position: 'Integrator / Front-end developer',
       email: 'phbord@gmail.com',
       linkedin: 'https://www.linkedin.com/in/phbord/',
+      logoHeaderText: 'Logo of Pierre-Henri Bord',
       header: [
         { name: 'Knowledges', href: '/' },
         { name: 'Experiences', href: '/experiences' },

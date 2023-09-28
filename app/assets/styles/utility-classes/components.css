@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Regroupement de classes au sein d'une classe */
+@layer components {
+  .body {
+    @apply min-h-screen flex flex-col bg-neutral-300 font-roboto text-white text-sm;
+  }
+
+  /* HEADER */
+  .header {
+    @apply fixed top-0 left-0 right-0 z-10 py-2 opacity-100 bg-neutral-50 text-orange-500;
+  }
+  .header-nav {
+    @apply flex items-center justify-between;
+  }
+  .header-logo {
+    @apply h-8 sm:h-11 w-auto me-3;
+  }
+  .header-title-name {
+    @apply text-xl leading-tight;
+  }
+  .header-title-position {
+    @apply text-lg leading-tight hidden sm:flex;
+  }
+  .btn-burger-menu {
+    @apply p-1 flex items-center border-2 border-orange-500 rounded-full font-semibold text-sm leading-6 !important;
+  }
+  .icon-burger-menu {
+    @apply h-5 sm:h-8 text-orange-500;
+  }
+
+  /* FOOTER */
+  .footer {
+    @apply hidden sm:flex flex-col mt-auto p-2 bg-neutral-400 text-white;
+  }
+
+  /* TITRES */
+
+
+  /* TITRES */
+  .space-container {
+    @apply px-3 sm:px-8;
+  }
+}

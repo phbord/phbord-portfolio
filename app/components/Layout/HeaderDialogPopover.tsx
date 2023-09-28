@@ -12,11 +12,11 @@ export default function HeaderDialogPopover({data}) {
 
   return (
     <>
-      <Popover.Group className="hidden lg:flex lg:gap-x-12">
+      <Popover.Group className="flex">
         <Popover className="relative">
-          <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+          <Popover.Button className="btn-burger-menu">
             <span className="sr-only">Logo burger menu</span>
-            <Bars3Icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+            <Bars3Icon className="icon-burger-menu" aria-hidden="true" />
           </Popover.Button>
           <Transition
             as={Fragment}
@@ -26,12 +26,12 @@ export default function HeaderDialogPopover({data}) {
             leave="transition ease-in duration-150"
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1">
-            <Popover.Panel className="absolute right-1 top-full z-10 mt-3 w-screen max-w-[15rem] overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+            <Popover.Panel className="absolute right-1 top-full z-20 mt-3 w-screen max-w-[15rem] overflow-hidden rounded-3xl bg-white-50 shadow-lg ring-1 ring-gray-900/5">
               <div className="p-4">
                 {data.map((item) => (
                   <div
                     key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-white-200">
                     <div className="flex-auto">
                       <a href={item.href} className="block font-semibold text-gray-900">
                         {item.name}
@@ -47,8 +47,8 @@ export default function HeaderDialogPopover({data}) {
       </Popover.Group>
 
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-        <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div className="fixed inset-0 z-20" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <img

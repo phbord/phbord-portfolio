@@ -44,6 +44,12 @@
   - links
   - downloads
   - oblique-strategies
+### Améliorations
+- validation W3C
+- performances
+- SEO
+- rich snippets
+- accessibilité
 
 ## Déploiement sur Vercel
 
@@ -54,8 +60,8 @@
 
 ## Routes
 - /
-- /create-account
-- /connection
+- /signup
+- /signin
 - /deconnection
 - /knomledges/:id/creation
 - /knomledges/:id/edition

@@ -45,7 +45,7 @@ export default function App() {
           <Meta />
           <Links />
         </head>
-        <body className="font-roboto">
+        <body className="body">
           <Layout>
             <Transitions>
               <Outlet />

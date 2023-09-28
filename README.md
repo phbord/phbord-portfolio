@@ -2,29 +2,25 @@
 
 ## Documentation et technologies utilisées
 
-- TODO LIST
+- Liste de tâches à faire
   - [Todolist](./TODOLIST.md)
 - Remix 2.0.0
   - Framework fullstack basé sur la librairie Javascript React
   - [Remix Docs](https://remix.run/docs)
 - Typescript
-- Tailwind CSS
+- Framework front-end CSS
   - Framework front-end CSS
   - [Tailwind CSS](https://tailwindcss.com/)
-- Tailwind UI
-  - Composants basés sur Tailwind CSS
+- Composants basés sur Tailwind CSS
   - [Tailwind UI](https://tailwindui.com/)
-- Recoil
-  - Gestionnaire d'états pour React
+- Gestionnaire d'états pour React
   - [Recoil](https://recoiljs.org/fr)
-- Supabase
+- Base de données
   - API basée sur Postgres
   - [Supabase](https://supabase.com/)
-- Jest
-  - Tests unitaires
+- Tests unitaires
   - [Jest](https://jestjs.io/)
-- Cypress
-  - Tests E2E
+- Tests E2E
   - [Cypress](https://www.cypress.io/)
 
 ## Development

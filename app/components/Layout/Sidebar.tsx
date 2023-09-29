@@ -19,11 +19,11 @@ export default function Sidebar({data}: any) {
   return (
     <>
       <nav className={`sidebar ${toggleClass}`}>
-        <ul>
+        <ul className='flex flex-col'>
           {
             data?.map((item: { href: To; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined; }) => (
               <li key={uuidv4()}>
-                <Link to={item.href}>{item.name}</Link>
+                <Link to={item.href} className='sidebar-link'>{item.name}</Link>
               </li>
             ))
           }

@@ -7,6 +7,7 @@ const mainData = {
       email: 'phbord@gmail.com',
       linkedin: 'https://www.linkedin.com/in/phbord/',
       logoHeaderText: 'Logo de Pierre-Henri Bord',
+      logoBurgerText: 'Logo burger menu',
       header: [
         { name: 'Compétences', href: '/' },
         { name: 'Expériences', href: '/experiences' },
@@ -31,6 +32,7 @@ const mainData = {
       email: 'phbord@gmail.com',
       linkedin: 'https://www.linkedin.com/in/phbord/',
       logoHeaderText: 'Logo of Pierre-Henri Bord',
+      logoBurgerText: 'Burger menu logo',
       header: [
         { name: 'Knowledges', href: '/' },
         { name: 'Experiences', href: '/experiences' },

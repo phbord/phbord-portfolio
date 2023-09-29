@@ -33,12 +33,15 @@
     @apply p-1 flex items-center border-2 border-orange-500 rounded-full font-semibold text-sm leading-6 !important;
   }
   .icon-burger-menu {
-    @apply h-5 sm:h-8 text-orange-500;
+    @apply h-4 sm:h-7 text-orange-500;
   }
 
   /* SIDEBAR */
   .sidebar {
-    @apply absolute top-0 bottom-0 right-[-13rem] z-10 w-52 bg-neutral-300 transition-all;
+    @apply absolute top-0 bottom-0 right-[-13rem] z-10 w-52 pt-[5.5rem] pb-6 bg-neutral-300 transition-all;
+  }
+  .sidebar-link {
+    @apply px-5 py-1 hover:py-3 block text-base hover:bg-neutral-200 text-neutral-500 hover:text-orange-500 transition-all;
   }
 
   /* FOOTER */

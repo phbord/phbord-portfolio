@@ -5,13 +5,17 @@
 
 /* Regroupement de classes au sein d'une classe */
 @layer components {
+  /* LAYOUT */
   .body {
-    @apply min-h-screen flex flex-col bg-neutral-300 font-roboto text-white text-sm;
+    @apply min-h-screen flex flex-col bg-neutral-200 font-roboto text-white text-sm;
+  }
+  .main {
+    @apply relative grow overflow-x-hidden;
   }
 
   /* HEADER */
   .header {
-    @apply fixed top-0 left-0 right-0 z-10 py-2 opacity-100 bg-neutral-50 text-orange-500;
+    @apply fixed top-0 left-0 right-0 z-20 py-2 opacity-100 bg-neutral-100 text-orange-500 transition-all;
   }
   .header-nav {
     @apply flex items-center justify-between;
@@ -32,9 +36,14 @@
     @apply h-5 sm:h-8 text-orange-500;
   }
 
+  /* SIDEBAR */
+  .sidebar {
+    @apply absolute top-0 bottom-0 right-[-13rem] z-10 w-52 bg-neutral-300 transition-all;
+  }
+
   /* FOOTER */
   .footer {
-    @apply hidden sm:flex flex-col mt-auto p-2 bg-neutral-400 text-white;
+    @apply hidden sm:flex flex-col mt-auto pt-5 pb-10 bg-neutral-700 text-white;
   }
 
   /* TITRES */

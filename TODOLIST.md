@@ -3,9 +3,9 @@
 ## Fonctionnalités
 
 ### Supabase
-- créer une base + tables '''x'''
+- créer une base + tables
 - remplir partiellement les tables
-- rendre les tables "public"
+- rendre les tables `public`
 ### fonctions CRUD
 - authentification
   - création de compte
@@ -20,13 +20,13 @@
 - connexion
 - déconnexion
 ### i18n
-- langues
-  - fr
-  - en
+- langues (`fr`, `en`)
+  - stockage : localstorage
 - intervention sur
-  - fichiers dans assets/data
+  - fichiers dans `assets/data`
   - supabase
-    - doulage et renommage des tables (ex: Knowledges_fr)
+    - doublage et renommage des champs des tables
+      - ex: `Knowledges_fr`
 ### recoil
 - connexion
 - langue sélectionnée

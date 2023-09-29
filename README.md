@@ -14,7 +14,7 @@
 - Composants basés sur Tailwind CSS
   - [Tailwind UI](https://tailwindui.com/)
 - Gestionnaire d'états pour React
-  - [Recoil](https://recoiljs.org/fr)
+  - [Zustand](https://github.com/pmndrs/zustand)
 - Base de données
   - API basée sur Postgres
   - [Supabase](https://supabase.com/)

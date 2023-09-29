@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { type LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -36,26 +37,60 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
+  const [lang, setLang] = useState('');
+  const [sidebar, setSidebar] = useState('');
+
+  const setLangToStorage = () => {
+    const langStored = localStorage.getItem('lang');
+    
+    if (!langStored) {
+      localStorage.setItem('lang', 'fr');
+      return;
+    }
+    setLang(langStored);
+  };
+
+  const setSidebarToStorage = () => {
+    const sidebarStored = localStorage.getItem('sidebar_opened');
+
+    if (!sidebarStored) {
+      localStorage.setItem('sidebar_opened', 'false');
+      return;
+    }
+    setSidebar(sidebarStored);
+  };
+
+  useEffect(() => {
+    setLangToStorage();
+    setSidebarToStorage();
+  }, []);
+
+  useEffect(() => {
+    setSidebarToStorage();
+  }, [sidebar]);
+
   return (
-    <I18nextProvider i18n={i18n} defaultNS={'translation'}>
-      <html lang="fr">
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <Meta />
-          <Links />
-        </head>
-        <body className="body">
-          <Layout>
-            <Transitions>
-              <Outlet />
-            </Transitions>
-            <ScrollRestoration />
-            <Scripts />
-            <LiveReload />
-          </Layout>
-        </body>
-      </html>
-    </I18nextProvider>
+    <>
+      <I18nextProvider i18n={i18n} defaultNS={'translation'}>
+        <html lang={lang}>
+          <head>
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <Meta />
+            <Links />
+          </head>
+          <body className="body">
+            <Layout>
+              <Transitions>
+                <Outlet />
+              </Transitions>
+              <ScrollRestoration />
+              <Scripts />
+              <LiveReload />
+            </Layout>
+          </body>
+        </html>
+      </I18nextProvider>
+    </>
   );
 }

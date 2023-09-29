@@ -9,7 +9,6 @@ import logo from '~/assets/images/picto-phb.png';
 
 export default function Header() {
   const { t } = useTranslation();
-  const headerData = t('header', { returnObjects: true });
   const { isSideBarOpened } = useSidebarStore();
 
   const onClick = () => useSidebarStore.getState().setSideBarOpened();

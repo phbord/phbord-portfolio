@@ -20,6 +20,7 @@
 - connexion
 - déconnexion
 ### i18n
+- configuration
 - langues (`fr`, `en`)
   - stockage : localstorage
 - intervention sur
@@ -27,13 +28,20 @@
   - supabase
     - doublage et renommage des champs des tables
       - ex: `Knowledges_fr`
-### recoil
+### Zustand
+- gestion de l'affichage de la "sidebar"
+### LocalStorage
 - connexion
 - langue sélectionnée
 ### Tailwind
-- créer des classes globales
-- header
-- footer
+- configuration
+- création de classes globales (utilities classes)
+### Développement
+- composants
+  - layout
+  - header
+  - sidebar
+  - footer
 - pages
   - création de compte
   - connexion

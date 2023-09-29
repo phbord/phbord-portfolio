@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import Header from "~/components/Layout/Header";
 import Footer from "~/components/Layout/Footer";
-import Sidebar from "./Sidebar";
+import Sidebar from "~/components/Layout/Sidebar";
 
 
 export default function Layout({children}: {children: ReactNode}) {

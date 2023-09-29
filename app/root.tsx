@@ -15,7 +15,6 @@ import stylesheet from "~/assets/styles/tailwind.css";
 import Layout from "~/components/Layout/Layout";
 import Transitions from "~/components/Layout/Transitions";
 import mainData from "~/assets/data/mainData";
-//changeLanguage("en") dans un useEffect
 
 
 const i18n = createInstance({

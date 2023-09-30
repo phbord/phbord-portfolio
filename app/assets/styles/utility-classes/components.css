@@ -12,28 +12,37 @@
   .main {
     @apply relative grow overflow-x-hidden;
   }
+  .container-custom {
+    @apply w-full max-w-[50rem] mx-auto px-5;
+  }
 
   /* HEADER */
   .header {
-    @apply fixed top-0 left-0 right-0 z-20 py-2 opacity-100 bg-neutral-100 text-orange-500 transition-all;
+    @apply fixed top-0 left-0 right-0 z-20 pt-2 pb-3 opacity-100 bg-neutral-100 text-orange-500 transition-all;
   }
   .header-nav {
     @apply flex items-center justify-between;
   }
+  .header-link {
+    @apply hover:text-orange-400 transition-all;
+  }
   .header-logo {
-    @apply h-8 sm:h-11 w-auto me-3;
+    @apply h-7 sm:h-10 w-auto me-3;
+  }
+  .header-figcaption {
+    @apply flex flex-col justify-center skew-x-[10deg] skew-y-[2.5deg];
   }
   .header-title-name {
-    @apply text-xl leading-tight;
+    @apply text-xl leading-5;
   }
   .header-title-position {
-    @apply text-lg leading-tight hidden sm:flex;
+    @apply text-base leading-5 hidden sm:flex;
   }
   .btn-burger-menu {
-    @apply p-1 flex items-center border-2 border-orange-500 rounded-full font-semibold text-sm leading-6 !important;
+    @apply flex items-center hover:text-orange-400 transition-all !important;
   }
   .icon-burger-menu {
-    @apply h-4 sm:h-7 text-orange-500;
+    @apply h-8 sm:h-11 font-semibold leading-6;
   }
 
   /* SIDEBAR */
@@ -47,6 +56,21 @@
   /* FOOTER */
   .footer {
     @apply hidden sm:flex flex-col mt-auto pt-5 pb-10 bg-neutral-700 text-white;
+  }
+  .footer-social-network-list {
+    @apply flex;
+  }
+  .footer-social-network-img {
+    @apply w-5 mr-2;
+  }
+  .footer-technologies-used-text {
+    @apply mt-3 mb-2 text-xs;
+  }
+  .footer-technologies-used-list {
+    @apply flex;
+  }
+  .footer-technologies-used-img {
+    @apply w-5 mr-1.5;
   }
 
   /* TITRES */

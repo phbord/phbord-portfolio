@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from '@remix-run/react';
-import { Bars3Icon } from '@heroicons/react/20/solid';
+import {EllipsisHorizontalCircleIcon} from '@heroicons/react/20/solid';
 
 
 import useSidebarStore from '~/services/store/useSidebarStore';
-import logo from '~/assets/images/picto-phb.png';
+import logo from '../../../public/images/picto-phb.png';
 import Button from '~/components/ui/Button';
 
 
@@ -16,17 +16,19 @@ export default function Header() {
 
   const logoBlock = (
     <h1 className="flex">
-      <Link to={'/'}>
+      <Link to={'/'} className='header-link'>
         <figure className='flex items-center justify-between'>
           <span className="sr-only">
             {t('logoHeaderText')}
           </span>
           <img className="header-logo" src={logo} alt="" />
-          <figcaption className='flex flex-col justify-center'>
+          <figcaption className='header-figcaption'>
             <div className='header-title-name'>
               {t('firstName')} {t('lastName')}
             </div>
-            <div className='header-title-position'>{t('position')}</div>
+            <div className='header-title-position'>
+              {t('position')}
+            </div>
           </figcaption>
         </figure>
       </Link>
@@ -47,7 +49,7 @@ export default function Header() {
               className='btn-burger-menu' 
               srOnlyText={t('logoBurgerText')}
               onClick={onClick}>
-              <Bars3Icon className="icon-burger-menu" aria-hidden="true" />
+              <EllipsisHorizontalCircleIcon className="icon-burger-menu" aria-hidden="true" />
             </Button>
           </div>
         </nav>

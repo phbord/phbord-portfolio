@@ -28,28 +28,29 @@ export default function Index() {
   //console.log('data --->', data);
 
   return (
-    <div className="font-roboto">
-      <h1>Welcome to Remix</h1>
-      <hr />
-      <ul>
-        {
-          t('header', { returnObjects: true })?.map((item: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined) => (
-            <li key={uuidv4()}>
-              <div>{item.name}</div>
-            </li>
-          ))
-        }
-      </ul>
-      <hr />
-      <ul>
-        {
-          data?.map((knowledge: any) => (
-            <li key={uuidv4()}>
-              <div>{knowledge.title}</div>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <>
+      <section className="container-custom mt-[5rem]">
+        <h2></h2>
+        <ul>
+          {
+            t('header', { returnObjects: true })?.map((item: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined) => (
+              <li key={uuidv4()}>
+                <div>{item.name}</div>
+              </li>
+            ))
+          }
+        </ul>
+        <hr />
+        <ul>
+          {
+            data?.map((knowledge: any) => (
+              <li key={uuidv4()}>
+                <div>{knowledge.title}</div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </>
   );
 }

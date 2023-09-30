@@ -8,7 +8,7 @@ import Sidebar from "~/components/Layout/Sidebar";
 
 export default function Layout({children}: {children: ReactNode}) {
   const { t } = useTranslation();
-  const headerData = t('header', { returnObjects: true })
+  const headerData = t('header', { returnObjects: true });
 
   return (
     <>

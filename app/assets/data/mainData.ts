@@ -22,6 +22,31 @@ const mainData = {
         },
       ],
       footer: [],
+      socialNetwork: [
+        { name: 'linkdin', href: 'https://www.linkedin.com/in/', picto: 'linkedin.svg' },
+        { name: 'github', href: 'https://github.com/phbord' , picto: 'github.svg'},
+        { name: 'gitlab', href: 'https://gitlab.com/phbord', picto: 'gitlab.svg' },
+        { name: 'codepen', href: 'https://codepen.io/phbord', picto: 'codepen.svg' },
+      ],
+      mainKeywords: [
+        "Responsive",
+        "Mobile first",
+        "BEM",
+        "Ergonomie",
+        "Tests E2E",
+        "Scrum",
+        "Javascript",
+        "Typescript",
+        "React",
+      ],
+      technologiesUsed: [
+        { name: 'Remix', href: 'https://remix.run/', picto: 'remix.svg' },
+        { name: 'React', href: 'https://remix.run/', picto: 'react.svg' },
+        { name: 'Tailwind', href: 'https://tailwindcss.com/', picto: 'tailwind.svg' },
+        { name: 'Supabase', href: 'https://supabase.com/', picto: 'supabase.svg' },
+        { name: 'Zustand', href: 'https://zustand-demo.pmnd.rs/', picto: 'zustand.png' },
+        { name: 'Cypress', href: 'https://www.cypress.io/', picto: 'cypress.svg' },
+      ],
     }
   },
   en: {
@@ -47,6 +72,24 @@ const mainData = {
         },
       ],
       footer: [],
+      socialNetwork: [
+        { name: 'email', href: 'mailto:phbord@gmail.com"' },
+        { name: 'linkdin', href: 'https://www.linkedin.com/in/' },
+        { name: 'github', href: 'https://github.com/phbord' },
+        { name: 'gitlab', href: 'https://gitlab.com/phbord' },
+        { name: 'codepen', href: 'https://codepen.io/phbord' },
+      ],
+      mainKeywords: [
+        "Responsive",
+        "Mobile first",
+        "BEM",
+        "Ergonomics",
+        "E2E testing",
+        "Scrum",
+        "Javascript",
+        "Typescript",
+        "React",
+      ],
     }
   }
 };

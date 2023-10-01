@@ -70,7 +70,7 @@
 - /
 - /signup
 - /signin
-- /deconnection
+- /disconnection
 - /knomledges/:id/creation
 - /knomledges/:id/edition
 - /knomledges/:id/suppression

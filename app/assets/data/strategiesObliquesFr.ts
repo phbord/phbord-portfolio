@@ -1,4 +1,4 @@
-const stratégiesObliques: Array<String> = [
+const strategiesObliquesFr: Array<String> = [
   "A quoi penses-tu vraiment en ce moment?",
   "A-t-on besoin de trous?",
   "Abandonne les instruments normaux",
@@ -129,4 +129,4 @@ const stratégiesObliques: Array<String> = [
   "Vers l'insignifiant"
 ];
 
-export default stratégiesObliques;
+export default strategiesObliquesFr;

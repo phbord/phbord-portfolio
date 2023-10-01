@@ -1,4 +1,8 @@
+import strategiesObliquesEn from "./strategiesObliquesEn";
+import strategiesObliquesFr from "./strategiesObliquesFr";
+
 const mainData = {
+  // FRANCAIS
   fr: {
     translation: {
       firstName: 'Pierre-henri',
@@ -21,7 +25,11 @@ const mainData = {
           isDownload: true
         },
       ],
-      footer: [],
+      authentification: [
+        { name: 'Inscription', href: '/signup' },
+        { name: 'Connexion', href: '/signin' },
+        { name: 'Déconnexion', href: '/disconnection' },
+      ],
       socialNetwork: [
         { name: 'email', href: 'mailto:phbord@gmail.com', picto: 'plane-light.svg' },
         { name: 'linkdin', href: 'https://www.linkedin.com/in/', picto: 'linkedin.svg' },
@@ -48,8 +56,11 @@ const mainData = {
         { name: 'Zustand', href: 'https://zustand-demo.pmnd.rs/', picto: 'zustand.png' },
         { name: 'Cypress', href: 'https://www.cypress.io/', picto: 'cypress.svg' },
       ],
+      strategiesObliques: strategiesObliquesFr,
     }
   },
+
+  // ANGLAIS
   en: {
     translation: {
       firstName: 'Pierre-henri',
@@ -72,7 +83,11 @@ const mainData = {
           isDownload: true
         },
       ],
-      footer: [],
+      authentification: [
+        { name: 'Sign up', href: '/signup' },
+        { name: 'Sign in', href: '/signin' },
+        { name: 'Disconnection', href: '/disconnection' },
+      ],
       socialNetwork: [
         { name: 'email', href: 'mailto:phbord@gmail.com', picto: 'plane.svg' },
         { name: 'React', href: 'https://fr.legacy.reactjs.org/', picto: 'react.svg' },
@@ -100,6 +115,7 @@ const mainData = {
         { name: 'Zustand', href: 'https://zustand-demo.pmnd.rs/', picto: 'zustand.png' },
         { name: 'Cypress', href: 'https://www.cypress.io/', picto: 'cypress.svg' },
       ],
+      strategiesObliques: strategiesObliquesEn,
     }
   }
 };

@@ -26,8 +26,11 @@
   .header-link {
     @apply hover:text-orange-400 transition-all;
   }
+  .header-figure {
+    @apply flex items-center justify-between;
+  }
   .header-logo {
-    @apply h-7 sm:h-10 w-auto me-3;
+    @apply h-7 sm:h-10 w-auto me-1;
   }
   .header-figcaption {
     @apply flex flex-col justify-center skew-x-[10deg] skew-y-[2.5deg];

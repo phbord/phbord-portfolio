@@ -4,7 +4,7 @@ import {EllipsisHorizontalCircleIcon} from '@heroicons/react/20/solid';
 
 
 import useSidebarStore from '~/services/store/useSidebarStore';
-import logo from '../../../public/images/picto-phb.png';
+import logo from 'public/images/svg/svg-logo-gold.svg';
 import Button from '~/components/ui/Button';
 
 
@@ -17,7 +17,7 @@ export default function Header() {
   const logoBlock = (
     <h1 className="flex">
       <Link to={'/'} className='header-link'>
-        <figure className='flex items-center justify-between'>
+        <figure className='header-figure'>
           <span className="sr-only">
             {t('logoHeaderText')}
           </span>

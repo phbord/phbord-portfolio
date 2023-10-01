@@ -18,7 +18,7 @@ export default function Footer() {
       <div className='container-custom'>
         <nav className='grid grid-cols-3 gap-5'>
           {/* COLONNE 01 : Menu */}
-          <ul className=''>
+          <ul>
             {
               menuData?.map((item) => (
                 <ItemListLayout key={uuidv4()} 
@@ -29,7 +29,7 @@ export default function Footer() {
             }
           </ul>
           {/* COLONNE 02 : Mots-clés */}
-          <ul className=''>
+          <ul>
             {
               keywordsData?.map((item) =>(
                 <li key={uuidv4()} className=''>
@@ -39,15 +39,9 @@ export default function Footer() {
             }
           </ul>
           {/* COLONNE 03 : Infos */}
-          <div className=''>
+          <div>
             {/* Réseaux sociaux */}
             <ul className='footer-social-network-list'>
-              <li className=''>
-                <Link to='mailto:phbord@gmail.com'>
-                  <span className='sr-only'>email</span>
-                  <EnvelopeIcon className='footer-social-network-img' />
-                </Link>
-              </li>
               {
                 socialNetworkData?.map((item) =>(
                   <ItemListLayout key={uuidv4()}

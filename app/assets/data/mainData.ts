@@ -23,6 +23,7 @@ const mainData = {
       ],
       footer: [],
       socialNetwork: [
+        { name: 'email', href: 'mailto:phbord@gmail.com', picto: 'plane-light.svg' },
         { name: 'linkdin', href: 'https://www.linkedin.com/in/', picto: 'linkedin.svg' },
         { name: 'github', href: 'https://github.com/phbord' , picto: 'github.svg'},
         { name: 'gitlab', href: 'https://gitlab.com/phbord', picto: 'gitlab.svg' },
@@ -73,11 +74,12 @@ const mainData = {
       ],
       footer: [],
       socialNetwork: [
-        { name: 'email', href: 'mailto:phbord@gmail.com"' },
-        { name: 'linkdin', href: 'https://www.linkedin.com/in/' },
-        { name: 'github', href: 'https://github.com/phbord' },
-        { name: 'gitlab', href: 'https://gitlab.com/phbord' },
-        { name: 'codepen', href: 'https://codepen.io/phbord' },
+        { name: 'email', href: 'mailto:phbord@gmail.com', picto: 'plane.svg' },
+        { name: 'React', href: 'https://fr.legacy.reactjs.org/', picto: 'react.svg' },
+        { name: 'Tailwind', href: 'https://tailwindcss.com/', picto: 'tailwind.svg' },
+        { name: 'Supabase', href: 'https://supabase.com/', picto: 'supabase.svg' },
+        { name: 'Zustand', href: 'https://zustand-demo.pmnd.rs/', picto: 'zustand.png' },
+        { name: 'Cypress', href: 'https://www.cypress.io/', picto: 'cypress.svg' },
       ],
       mainKeywords: [
         "Responsive",

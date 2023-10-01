@@ -76,8 +76,13 @@
   /* TITRES */
 
 
-  /* TITRES */
+  /* SPACES */
   .space-container {
     @apply px-3 sm:px-8;
+  }
+
+  /* MODALS */
+  .alert-modal {
+    @apply p-5;
   }
 }

@@ -1,10 +1,10 @@
 import type { JSXElementConstructor, ReactElement, ReactNode, ReactPortal} from 'react';
 import { useEffect, useState } from 'react';
-import { Link } from '@remix-run/react';
+import type { To } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 
+import ItemListLayout from '~/components/Layout/ItemListLayout';
 import useSidebarStore from '~/services/store/useSidebarStore';
-import type { To } from 'react-router';
 
 
 export default function Sidebar({data}: any) {
@@ -22,9 +22,9 @@ export default function Sidebar({data}: any) {
         <ul className='flex flex-col'>
           {
             data?.map((item: { href: To; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined; }) => (
-              <li key={uuidv4()}>
-                <Link to={item.href} className='sidebar-link'>{item.name}</Link>
-              </li>
+              <ItemListLayout key={uuidv4()} 
+                              data={item} 
+                              linkClass='sidebar-link' />
             ))
           }
         </ul>

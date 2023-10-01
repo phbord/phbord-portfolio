@@ -10,7 +10,7 @@
     @apply min-h-screen flex flex-col bg-neutral-200 font-roboto text-white text-sm;
   }
   .main {
-    @apply relative grow overflow-x-hidden;
+    @apply relative grow overflow-x-hidden bg-transparent bg-[url('/images/svg/bg-body.png')] bg-no-repeat bg-cover bg-top;
   }
   .container-custom {
     @apply w-full max-w-[50rem] mx-auto px-5;

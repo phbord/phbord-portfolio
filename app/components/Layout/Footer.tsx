@@ -3,7 +3,7 @@ import { Link } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
 
-import ItemList from './ItemList';
+import ItemListLayout from '~/components/Layout/ItemListLayout';
 
 
 export default function Footer() {
@@ -20,10 +20,11 @@ export default function Footer() {
           {/* COLONNE 01 : Menu */}
           <ul className=''>
             {
-              menuData?.map((item: { href: To; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined; }) => (
-                <li key={uuidv4()} className='mb-1.5'>
-                  <Link to={item.href} className='hover:text-orange-500 transition-all'>{item.name}</Link>
-                </li>
+              menuData?.map((item) => (
+                <ItemListLayout key={uuidv4()} 
+                          data={item} 
+                          itemClass='mb-1.5'
+                          linkClass='hover:text-orange-500 transition-all' />
               ))
             }
           </ul>
@@ -49,11 +50,12 @@ export default function Footer() {
               </li>
               {
                 socialNetworkData?.map((item) =>(
-                  <ItemList data={item} 
+                  <ItemListLayout key={uuidv4()}
+                            data={item} 
                             itemClass={''} 
                             linkClass={''} 
                             imgClass={'footer-social-network-img'} 
-                            textClass={''} 
+                            textClass={'sr-only'} 
                             imgSrc={`/images/svg/${item.picto}`} />
                 ))
               }
@@ -68,14 +70,13 @@ export default function Footer() {
               <ul className='footer-technologies-used-list'>
                 {
                   technologiesUsedData?.map((item) =>(
-                    <li key={uuidv4()}>
-                      <Link to={item.href} className=''>
-                        <span className='sr-only'>{item.name}</span>
-                        <img src={`/images/svg/${item.picto}`} 
-                          alt={item.name} 
-                          className='footer-technologies-used-img' />
-                      </Link>
-                    </li>
+                    <ItemListLayout key={uuidv4()} 
+                              data={item} 
+                              itemClass={''} 
+                              linkClass={''} 
+                              imgClass={'footer-technologies-used-img'} 
+                              textClass={'sr-only'} 
+                              imgSrc={`/images/svg/${item.picto}`} />
                   ))
                 }
               </ul>

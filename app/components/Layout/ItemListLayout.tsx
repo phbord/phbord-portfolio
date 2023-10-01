@@ -1,11 +1,8 @@
 import { Link } from '@remix-run/react';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 
-export default function ItemList(props) {
-  const { data, itemClass, linkClass, imgClass, textClass, imgSrc} = props;
-  const [newTextClass] = useState(textClass ? textClass : 'sr-only');
+export default function ItemListLayout(props) {
+  const { data, itemClass, linkClass, imgClass, textClass, imgSrc } = props;
 
   const contentBlock = (
     <>
@@ -16,7 +13,7 @@ export default function ItemList(props) {
       }
       {
         data.name && (
-          <span className={newTextClass}>
+          <span className={textClass}>
             {data.name}
           </span>
         )
@@ -26,7 +23,7 @@ export default function ItemList(props) {
 
   return (
     <>
-      <li key={uuidv4()} className={itemClass}>
+      <li className={itemClass}>
         {
           data.href
             ? (
@@ -34,11 +31,11 @@ export default function ItemList(props) {
                 {contentBlock}
               </Link>
             )
-          : (
-            <>
-              {contentBlock}
-            </>
-          )
+            : (
+              <>
+                {contentBlock}
+              </>
+            )
         }
       </li>
     </>

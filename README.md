@@ -15,6 +15,8 @@
   - [Tailwind UI](https://tailwindui.com/)
 - Gestionnaire d'états pour React
   - [Zustand](https://github.com/pmndrs/zustand)
+- Système d'internationalisation
+  - [i18next](https://react.i18next.com/)
 - Base de données
   - API basée sur Postgres
   - [Supabase](https://supabase.com/)

@@ -79,6 +79,14 @@
     @apply px-3 sm:px-8;
   }
 
+  /* TOOLTIPS */
+  .tooltips {
+    @apply absolute z-10 p-1 opacity-0 group-hover:opacity-75 transition-all;
+  }
+  .tooltips-knowledges {
+    @apply left-0 bottom-[-2rem] bg-orange-500 rotate-[-12.5deg];
+  }
+
   /* MODALS */
   .snackbar {
     @apply fixed bottom-0 left-0 right-0 z-20 px-5 pt-2 pb-10 text-lg;

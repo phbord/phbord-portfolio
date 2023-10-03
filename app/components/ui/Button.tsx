@@ -1,7 +1,12 @@
-export default function Button({children, className, srOnlyText, onClick}) {
+export default function Button(props) {
+  const { children, className, srOnlyText, onClick, onMouseOver, onMouseOut } = props;
+
   return (
     <>
-      <button className={className} onClick={(e) => onClick(e)}>
+      <button className={className} 
+              onClick={(e) => onClick(e)} 
+              onMouseOver={onMouseOver} 
+              onMouseOut={onMouseOut}>
         {
           srOnlyText
           && srOnlyText !== ''

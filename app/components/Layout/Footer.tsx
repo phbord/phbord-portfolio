@@ -3,7 +3,8 @@ import { Link } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
 
-import ItemListLayout from '~/components/Layout/ItemListLayout';
+import ItemListLayout from '~/components/layout/ItemListLayout';
+import logo from 'public/images/icons/picto-phb.png';
 
 
 export default function Footer() {
@@ -12,6 +13,46 @@ export default function Footer() {
   const keywordsData = t('mainKeywords', { returnObjects: true });
   const socialNetworkData = t('socialNetwork', { returnObjects: true });
   const technologiesUsedData = t('technologiesUsed', { returnObjects: true });
+
+  const socialNetworksBlock = (
+    <ul className='flex'>
+      {
+        socialNetworkData?.map((item) =>(
+          <ItemListLayout key={uuidv4()}
+                    data={item} 
+                    itemClass={''} 
+                    linkClass={''} 
+                    imgClass={'w-5 mr-2'} 
+                    textClass={'sr-only'} 
+                    imgSrc={`/images/svg/${item.picto}`} />
+        ))
+      }
+    </ul>
+  );
+
+  const infosBlock = (
+    <div className='mb-3 flex items-center text-xs'>
+      <span className='mr-4'>© {t('firstName')} {t('lastName')} 2023</span>
+      <span className='sr-only'>{t('logoHeaderText')}</span>
+      <img src={logo} alt={t('logoHeaderText')} className='w-8' />
+    </div>
+  );
+
+  const technologiesBlock = (
+    <ul className='flex'>
+      {
+        technologiesUsedData?.map((item) =>(
+          <ItemListLayout key={uuidv4()} 
+                    data={item} 
+                    itemClass={''} 
+                    linkClass={''} 
+                    imgClass={'w-5 mr-2'} 
+                    textClass={'sr-only'} 
+                    imgSrc={`/images/svg/${item.picto}`} />
+        ))
+      }
+    </ul>
+  );
 
   return (
     <footer className='footer'>
@@ -39,41 +80,16 @@ export default function Footer() {
             }
           </ul>
           {/* COLONNE 03 : Infos */}
-          <div>
-            {/* Réseaux sociaux */}
-            <ul className='footer-social-network-list'>
-              {
-                socialNetworkData?.map((item) =>(
-                  <ItemListLayout key={uuidv4()}
-                            data={item} 
-                            itemClass={''} 
-                            linkClass={''} 
-                            imgClass={'footer-social-network-img'} 
-                            textClass={'sr-only'} 
-                            imgSrc={`/images/svg/${item.picto}`} />
-                ))
-              }
-            </ul>
-            {/* Infos */}
-            <div className='mt-4 text-xs'>
-              © {t('firstName')} {t('lastName')} 2023
+          <div className='flex flex-col justify-between'>
+            {/* 3.1 Réseaux sociaux + Infos */}
+            <div>
+              {infosBlock}
+              {socialNetworksBlock}
             </div>
-            {/* Technologies */}
-            <div className=''>
-              <div className='footer-technologies-used-text'>Powered by</div>
-              <ul className='footer-technologies-used-list'>
-                {
-                  technologiesUsedData?.map((item) =>(
-                    <ItemListLayout key={uuidv4()} 
-                              data={item} 
-                              itemClass={''} 
-                              linkClass={''} 
-                              imgClass={'footer-technologies-used-img'} 
-                              textClass={'sr-only'} 
-                              imgSrc={`/images/svg/${item.picto}`} />
-                  ))
-                }
-              </ul>
+            {/* 3.2 Technologies */}
+            <div>
+              <div className='mb-2 text-xs'>Powered by</div>
+              {technologiesBlock}
             </div>
           </div>
         </nav>

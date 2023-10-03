@@ -21,7 +21,9 @@ export default function Header() {
           <span className="sr-only">
             {t('logoHeaderText')}
           </span>
-          <img className="header-logo" src={logo} alt="" />
+          <img className="header-logo" 
+                src={logo} 
+                alt={t('logoHeaderText')} />
           <figcaption className='header-figcaption'>
             <div className='header-title-name'>
               {t('firstName')} {t('lastName')}

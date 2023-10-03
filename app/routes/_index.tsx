@@ -5,7 +5,9 @@ import { useTranslation } from "react-i18next";
 
 import { getData } from "~/services/getData";
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, useState, useEffect } from "react";
+import BackgroundImageHeader from "~/components/ui/BackgroundImageHeader";
+import ItemListKnowledges from "~/components/ui/ItemListKnowledges";
 
 
 export const meta: MetaFunction = () => {
@@ -25,28 +27,29 @@ export async function loader() {
 export default function Index() {
   const data = useLoaderData<typeof loader>();
   const { t } = useTranslation();
-  //console.log('data --->', data);
+  const title = t('header.0.name', { returnObjects: true });
+  const noData = t('noDataText');
+  const [lang, setLang] = useState('');
+  console.log('data --->', data);
+
+  useEffect(() => {
+    setLang(localStorage.getItem('lang'));
+  }, [])
+
+  useEffect(() => {
+    setLang(localStorage.getItem('lang'));
+  }, [lang])
 
   return (
     <>
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' />
       <section className="container-custom mt-[5rem]">
-        <h2></h2>
-        <ul>
-          {
-            t('header', { returnObjects: true })?.map((item: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined) => (
-              <li key={uuidv4()}>
-                <div>{item.name}</div>
-              </li>
-            ))
-          }
-        </ul>
-        <hr />
+        <h1>{lang}</h1>
+        <h2 className="h2">{title}</h2>
         <ul>
           {
             data?.map((knowledge: any) => (
-              <li key={uuidv4()}>
-                <div>{knowledge.title}</div>
-              </li>
+              <ItemListKnowledges key={uuidv4()} data={knowledge} noData={noData} lang={lang} />
             ))
           }
         </ul>

@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import { useTranslation } from 'react-i18next';
 
-import Header from "~/components/Layout/Header";
-import Footer from "~/components/Layout/Footer";
-import Sidebar from "~/components/Layout/Sidebar";
+import Header from "~/components/layout/Header";
+import Footer from "~/components/layout/Footer";
+import Sidebar from "~/components/layout/Sidebar";
 
 
 export default function Layout({children}: {children: ReactNode}) {

@@ -1,5 +1,8 @@
 # Portfolio de Pierre-Henri Bord
 
+## URL
+- [https://phbord-portfolio-force.vercel.app/](https://phbord-portfolio-force.vercel.app/)
+
 ## Documentation et technologies utilisées
 
 - Liste de tâches à faire
@@ -25,37 +28,37 @@
 - Tests E2E
   - [Cypress](https://www.cypress.io/)
 
-## Development
+## Développement
 
-From your terminal:
+Sur le terminal:
 
 ```sh
 npm run dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+Cela démarre votre application en mode développement, en reconstruisant les assets lors des modifications de fichiers.
 
-## Deployment
+## Déploiement
 
-First, build your app for production:
+Tout d’abord, créez votre application pour la production :
 
 ```sh
 npm run build
 ```
 
-Then run the app in production mode:
+Exécutez ensuite l’application en mode production :
 
 ```sh
 npm start
 ```
 
-Now you'll need to pick a host to deploy it to.
+Vous devrez maintenant choisir un hôte sur lequel le déployer.
 
 ### DIY
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+Si vous êtes habitué au déploiement d'applications Node, le serveur d'applications Remix intégré est prêt pour la production.
 
-Make sure to deploy the output of `remix build`
+Assurez-vous de déployer la sortie de `remix build`
 
 - `build/`
 - `public/build/`

@@ -12,8 +12,8 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import { createInstance } from "i18next";
 
 import stylesheet from "~/assets/styles/tailwind.css";
-import Layout from "~/components/Layout/Layout";
-import Transitions from "~/components/Layout/Transitions";
+import Layout from "~/components/layout/Layout";
+import Transitions from "~/components/layout/Transitions";
 import mainData from "~/assets/data/mainData";
 
 

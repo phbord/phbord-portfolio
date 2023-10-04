@@ -27,20 +27,25 @@ export async function loader() {
 export default function Index() {
   const data = useLoaderData<typeof loader>();
   const { t } = useTranslation();
-  const title = t('header.0.name', { returnObjects: true });
-  const noData = t('noDataText');
   const { newLang } = useLangStore();
   console.log('data --->', data);
 
   return (
     <>
+      {/* IMAGE */}
       <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' />
+      {/* BODY */}
       <section className="container-custom mt-[5rem]">
-        <h2 className="h2">{title}</h2>
+        <h2 className="h2">
+          {t('header.0.name', { returnObjects: true })}
+        </h2>
         <ul>
           {
             data?.map((knowledge: any) => (
-              <ItemListKnowledges key={uuidv4()} data={knowledge} noData={noData} lang={newLang} />
+              <ItemListKnowledges key={uuidv4()} 
+                                  data={knowledge} 
+                                  noData={t('noDataText')} 
+                                  lang={newLang} />
             ))
           }
         </ul>

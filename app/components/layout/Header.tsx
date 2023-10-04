@@ -5,7 +5,7 @@ import {EllipsisHorizontalCircleIcon} from '@heroicons/react/20/solid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
 import logo from 'public/images/svg/svg-logo-gold.svg';
-import Button from '../ui/Button';
+import Button from '~/components/ui/Button';
 
 
 export default function Header() {

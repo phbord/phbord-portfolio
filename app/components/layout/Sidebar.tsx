@@ -4,7 +4,7 @@ import type { To } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
-import ItemListLayout from './ItemListLayout';
+import ItemListLayout from '~/components/layout/ItemListLayout';
 
 
 export default function Sidebar({data}: any) {

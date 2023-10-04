@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import Tooltip from './Tooltip';
-import Button from './Button';
+import Tooltip from '~/components/ui/Tooltip';
+import Button from '~/components/ui/Button';
 
 
 export default function ItemListKnowledges({data, noData, lang}) {

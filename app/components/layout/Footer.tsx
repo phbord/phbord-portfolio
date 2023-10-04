@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
 
 import logo from 'public/images/icons/picto-phb.png';
-import ItemListLayout from './ItemListLayout';
+import ItemListLayout from '~/components/layout/ItemListLayout';
 
 
 export default function Footer() {

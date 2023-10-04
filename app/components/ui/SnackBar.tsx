@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SparklesIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import Button from "./Button";
+import Button from "~/components/ui/Button";
 
 
 export default function SnackBar({children, modalClass='', isSuccess=false, isError=false}) {

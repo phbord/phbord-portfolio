@@ -13,8 +13,8 @@ import { createInstance } from "i18next";
 
 import stylesheet from "~/assets/styles/tailwind.css";
 import mainData from './assets/data/mainData';
-import Transitions from '~/components/layout/Transitions';
-import Layout from '~/components/layout/Layout';
+import Transitions from 'app/components/layout/Transitions';
+import Layout from 'app/components/layout/Layout';
 
 
 const i18n = createInstance({

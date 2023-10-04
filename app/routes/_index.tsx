@@ -1,13 +1,13 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from "react-i18next";
 
-import { getData } from "~/services/getData";
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, useState, useEffect } from "react";
-import BackgroundImageHeader from "~/components/ui/BackgroundImageHeader";
+import { getData } from "~/services/getData";
 import ItemListKnowledges from "~/components/ui/ItemListKnowledges";
+import BackgroundImageHeader from "~/components/ui/BackgroundImageHeader";
 
 
 export const meta: MetaFunction = () => {

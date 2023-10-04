@@ -3,8 +3,8 @@ import { Link } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
 
-import ItemListLayout from '~/components/layout/ItemListLayout';
 import logo from 'public/images/icons/picto-phb.png';
+import ItemListLayout from './ItemListLayout';
 
 
 export default function Footer() {

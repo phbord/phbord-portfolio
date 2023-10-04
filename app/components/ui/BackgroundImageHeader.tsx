@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from 'uuid';
 
 import BackgroundImage from "./BackgroundImage";
-import ItemListLayout from "~/components/layout1/ItemListLayout";
+import ItemListLayout from "~/components/layout/ItemListLayout";
 
 
 export default function BackgroundImageHeader({imgUrl}) {

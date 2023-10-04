@@ -12,9 +12,9 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import { createInstance } from "i18next";
 
 import stylesheet from "~/assets/styles/tailwind.css";
-import mainData from './assets/data/mainData';
-import Transitions from './components/layout/Transitions';
-import Layout from '~/components/layout/Layout';
+import mainData from '~/assets/data/mainData';
+import Transitions from '~/components/layout1/Transitions';
+import Layout from '~/components/layout1/Layout';
 
 
 const i18n = createInstance({

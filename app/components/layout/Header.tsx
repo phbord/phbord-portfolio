@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from '@remix-run/react';
-import { useEffect, useState } from 'react';
-import {EllipsisHorizontalCircleIcon} from '@heroicons/react/20/solid';
+import { EllipsisHorizontalCircleIcon } from '@heroicons/react/20/solid';
 
 
+import useLangStore from '~/services/store/useLangStore';
 import useSidebarStore from '~/services/store/useSidebarStore';
 import logo from 'public/images/svg/svg-logo-gold.svg';
 import Button from '~/components/ui/Button';
@@ -11,10 +11,11 @@ import Button from '~/components/ui/Button';
 
 export default function Header() {
   const { t } = useTranslation();
-  const { isSideBarOpened } = useSidebarStore();
-  const [lang, setLang] = useState('');
+  const { newLang } = useLangStore();
 
-  const handleClickLang = () => {};
+  const handleClickLang = () => {
+    useLangStore.getState().setNewLang();
+  };
 
   const handleClickMenu = () => useSidebarStore.getState().setSideBarOpened();
 
@@ -41,15 +42,6 @@ export default function Header() {
     </h1>
   );
 
-  
-  useEffect(() => {
-    setLang(localStorage.getItem('lang'));
-  }, [])
-
-  useEffect(() => {
-    setLang(localStorage.getItem('lang'));
-  }, [lang])
-
 
   return (
     <>
@@ -64,9 +56,7 @@ export default function Header() {
             <Button 
               className='btn-lang' 
               onClick={handleClickLang}>
-              {
-                lang === 'fr' ? 'Fr' : 'En'
-              }
+              {newLang === 'en' ? 'Fr' : 'En'}
             </Button>
             {/* Bouton MENU */}
             <Button 

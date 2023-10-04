@@ -1,11 +1,11 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from "react-i18next";
 
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import { getData } from "~/services/getData";
+import useLangStore from '~/services/store/useLangStore';
 import ItemListKnowledges from "~/components/ui/ItemListKnowledges";
 import BackgroundImageHeader from "~/components/ui/BackgroundImageHeader";
 
@@ -29,27 +29,18 @@ export default function Index() {
   const { t } = useTranslation();
   const title = t('header.0.name', { returnObjects: true });
   const noData = t('noDataText');
-  const [lang, setLang] = useState('');
+  const { newLang } = useLangStore();
   console.log('data --->', data);
-
-  useEffect(() => {
-    setLang(localStorage.getItem('lang'));
-  }, [])
-
-  useEffect(() => {
-    setLang(localStorage.getItem('lang'));
-  }, [lang])
 
   return (
     <>
       <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' />
       <section className="container-custom mt-[5rem]">
-        <h1>{lang}</h1>
         <h2 className="h2">{title}</h2>
         <ul>
           {
             data?.map((knowledge: any) => (
-              <ItemListKnowledges key={uuidv4()} data={knowledge} noData={noData} lang={lang} />
+              <ItemListKnowledges key={uuidv4()} data={knowledge} noData={noData} lang={newLang} />
             ))
           }
         </ul>

@@ -12,24 +12,11 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import { createInstance } from "i18next";
 
 import stylesheet from "~/assets/styles/tailwind.css";
+import useLangStore from '~/services/store/useLangStore';
 import mainData from '~/assets/data/mainData';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
 
-
-const i18n = createInstance({
-  fallbackLng: 'fr',
-  debug: true,
-  interpolation: {
-    escapeValue: false,
-  },
-  resources: mainData,
-  react: {
-    useSuspense: true
-  }
-});
-
-i18n.use(initReactI18next).init();
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -37,6 +24,7 @@ export const links: LinksFunction = () => [
 
 
 export default function App() {
+  const { newLang } = useLangStore();
   const [lang, setLang] = useState('');
   const [sidebar, setSidebar] = useState('');
 
@@ -60,6 +48,21 @@ export default function App() {
     setSidebar(sidebarStored);
   };
 
+  const i18n = createInstance({
+    fallbackLng: newLang,
+    debug: true,
+    interpolation: {
+      escapeValue: false,
+    },
+    resources: mainData,
+    react: {
+      useSuspense: true
+    }
+  });
+  
+  i18n.use(initReactI18next).init();
+  
+  
   useEffect(() => {
     setLangToStorage();
     setSidebarToStorage();
@@ -68,6 +71,7 @@ export default function App() {
   useEffect(() => {
     setSidebarToStorage();
   }, [sidebar]);
+
 
   return (
     <>

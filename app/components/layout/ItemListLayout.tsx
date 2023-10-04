@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react';
+import { NavLink } from '@remix-run/react';
 
 
 export default function ItemListLayout(props) {
@@ -27,9 +27,9 @@ export default function ItemListLayout(props) {
         {
           data.href
             ? (
-              <Link to={data.href} className={linkClass}>
+              <NavLink to={data.href} className={linkClass}>
                 {contentBlock}
-              </Link>
+              </NavLink>
             )
             : (
               <>

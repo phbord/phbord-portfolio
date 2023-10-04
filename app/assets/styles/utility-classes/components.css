@@ -41,6 +41,9 @@
   .header-title-position {
     @apply text-base leading-5 hidden sm:flex;
   }
+  .btn-lang {
+    @apply w-[25.6px] sm:w-9 h-[25.6px] sm:h-9 flex justify-center items-center border border-orange-500 rounded-[50%] hover:bg-white transition-all !important;
+  }
   .btn-burger-menu {
     @apply flex items-center hover:text-orange-400 transition-all !important;
   }

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from '@remix-run/react';
+import { useEffect, useState } from 'react';
 import {EllipsisHorizontalCircleIcon} from '@heroicons/react/20/solid';
 
 
@@ -11,8 +12,11 @@ import Button from '~/components/ui/Button';
 export default function Header() {
   const { t } = useTranslation();
   const { isSideBarOpened } = useSidebarStore();
+  const [lang, setLang] = useState('');
 
-  const onClick = () => useSidebarStore.getState().setSideBarOpened();
+  const handleClickLang = () => {};
+
+  const handleClickMenu = () => useSidebarStore.getState().setSideBarOpened();
 
   const logoBlock = (
     <h1 className="flex">
@@ -37,6 +41,16 @@ export default function Header() {
     </h1>
   );
 
+  
+  useEffect(() => {
+    setLang(localStorage.getItem('lang'));
+  }, [])
+
+  useEffect(() => {
+    setLang(localStorage.getItem('lang'));
+  }, [lang])
+
+
   return (
     <>
       <header className='header space-container'>
@@ -44,13 +58,21 @@ export default function Header() {
           {/* LOGO */}
           {logoBlock}
           
-          {/* DIALOG + POPOVER MENU */}
-          <div className="flex justify-end">
-            {/* BUTTON */}
+          {/* BOUTONS */}
+          <div className="flex justify-end items-center">
+            {/* Bouton LANGUE */}
             <Button 
-              className='btn-burger-menu' 
+              className='btn-lang' 
+              onClick={handleClickLang}>
+              {
+                lang === 'fr' ? 'Fr' : 'En'
+              }
+            </Button>
+            {/* Bouton MENU */}
+            <Button 
+              className='btn-burger-menu ml-1' 
               srOnlyText={t('logoBurgerText')}
-              onClick={onClick}>
+              onClick={handleClickMenu}>
               <EllipsisHorizontalCircleIcon className="icon-burger-menu" aria-hidden="true" />
             </Button>
           </div>

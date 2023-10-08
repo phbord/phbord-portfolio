@@ -1,7 +1,7 @@
 import { headerClass } from "~/assets/data/mainData/headerClass";
 
 const headerFr: headerClass[] = [
-  { name: 'Compétences', href: '/' },
+  { name: 'Compétences techniques', href: '/' },
   { name: 'Expériences', href: '/experiences' },
   { name: 'Formations', href: '/training' },
   { name: 'Liens', href: '/links' },

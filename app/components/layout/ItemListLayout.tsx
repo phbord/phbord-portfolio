@@ -2,7 +2,7 @@ import { NavLink } from '@remix-run/react';
 
 
 export default function ItemListLayout(props) {
-  const { data, itemClass, linkClass, imgClass, textClass, imgSrc } = props;
+  const { data, itemClass, linkClass, imgClass, textClass, imgSrc, onMouseOver, onMouseOut } = props;
 
   const contentBlock = (
     <>
@@ -23,11 +23,14 @@ export default function ItemListLayout(props) {
 
   return (
     <>
-      <li className={itemClass}>
+      <div className={itemClass}>
         {
           data.href
             ? (
-              <NavLink to={data.href} className={linkClass}>
+              <NavLink to={data.href} 
+                        className={linkClass} 
+                        onMouseOver={onMouseOver} 
+                        onMouseOut={onMouseOut}>
                 {contentBlock}
               </NavLink>
             )
@@ -37,7 +40,7 @@ export default function ItemListLayout(props) {
               </>
             )
         }
-      </li>
+      </div>
     </>
   )
 }

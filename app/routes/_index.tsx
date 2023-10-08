@@ -35,7 +35,7 @@ export default function Index() {
       {/* IMAGE */}
       <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' />
       {/* BODY */}
-      <section className="container-custom mt-[5rem]">
+      <section className="container-custom mt-[18.5rem] bg-neutral-200">
         <h2 className="h2">
           {t('header.0.name', { returnObjects: true })}
         </h2>

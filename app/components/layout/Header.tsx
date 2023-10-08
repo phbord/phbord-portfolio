@@ -33,9 +33,6 @@ export default function Header() {
             <div className='header-title-name'>
               {t('firstName')} {t('lastName')}
             </div>
-            <div className='header-title-position'>
-              {t('position')}
-            </div>
           </figcaption>
         </figure>
       </Link>
@@ -56,7 +53,7 @@ export default function Header() {
             <Button 
               className='btn-lang' 
               onClick={handleClickLang}>
-              {newLang === 'en' ? 'Fr' : 'En'}
+              {newLang === 'en' ? 'FR' : 'EN'}
             </Button>
             {/* Bouton MENU */}
             <Button 

@@ -1,4 +1,4 @@
-export default function BackgroundImage({children, containerClassName, contentClassName, imgUrl}) {
+export default function BackgroundImage({children, containerClassName, contentClassName, imgUrl, }) {
   return (
     <>
       {

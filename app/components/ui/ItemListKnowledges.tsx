@@ -6,19 +6,6 @@ import Button from '~/components/ui/Button';
 
 
 export default function ItemListKnowledges({data, noData, lang}) {
-  const [newIndex, setNewIndex] = useState(-1);
-  const [newName, setNewName] = useState('');
-
-  const onMouseOver = (index: number, name: string) => {
-    setNewIndex(index);
-    setNewName(name);
-  };
-
-  const onMouseOut = (index: number) => {
-    setNewIndex(-1);
-    setNewName('');
-  };
-
   return (
     <>
       {
@@ -43,29 +30,6 @@ export default function ItemListKnowledges({data, noData, lang}) {
                   ))
                 }
               </ul>
-              
-              {/* <div className="text-neutral-600">
-                {lang === 'fr' ? data.title_fr : data.title_en}
-              </div>
-              <ul className='flex ml-2'>
-                {
-                  data?.list?.map((item, index) => (
-                    <li key={uuidv4()} className=''>
-                      <Button className='group relative overflow-visible transition-all' 
-                              onMouseOver={() => onMouseOver(index, item.name)} 
-                              onMouseOut={() => onMouseOut(index)}>
-                        <img src={`/images/svg/${item.picto}`} 
-                              alt={item.name} 
-                              className='h-5 ml-2 my[.5rem]' />
-                        {
-                          newIndex === index 
-                            && <Tooltip name={newName} className='tooltips-knowledges' />
-                        }
-                      </Button>
-                    </li>
-                  ))
-                }
-              </ul> */}
             </li>
           )
           : (

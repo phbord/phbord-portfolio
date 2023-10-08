@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from '@remix-run/react';
+import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { EnvelopeIcon } from '@heroicons/react/20/solid';
 
 import logo from 'public/images/icons/picto-phb.png';
 import ItemListLayout from '~/components/layout/ItemListLayout';
+import Tooltip from "~/components/ui/Tooltip";
 
 
 export default function Footer() {
@@ -13,18 +13,42 @@ export default function Footer() {
   const keywordsData = t('mainKeywords', { returnObjects: true });
   const socialNetworkData = t('socialNetwork', { returnObjects: true });
   const technologiesUsedData = t('technologiesUsed', { returnObjects: true });
+  const [newIndex, setNewIndex] = useState(-1);
+  const [newName, setNewName] = useState('');
+
+  const handleMouseOver = (index: number, name: string) => {
+    setNewIndex(index);
+    setNewName(name);
+  };
+  
+  const handleMouseOut = (index: number) => {
+    setNewIndex(-1);
+    setNewName('');
+  };
 
   const socialNetworksBlock = (
     <ul className='flex'>
       {
-        socialNetworkData?.map((item) =>(
-          <ItemListLayout key={uuidv4()}
-                    data={item} 
-                    itemClass={''} 
-                    linkClass={''} 
-                    imgClass={'w-5 mr-2'} 
-                    textClass={'sr-only'} 
-                    imgSrc={`/images/svg/${item.picto}`} />
+        socialNetworkData?.map((item, index) =>(
+          <li key={uuidv4()} className="relative">
+            <ItemListLayout key={uuidv4()}
+                      data={item} 
+                      itemClass={''} 
+                      linkClass={''} 
+                      imgClass={'w-5 mr-2'} 
+                      textClass={'sr-only'} 
+                      tooltipClass={'tooltips-snt'}
+                      imgSrc={`/images/svg/${item.picto}`}
+                      index={index}
+                      onMouseOver={() => handleMouseOver(index, item.name)} 
+                      onMouseOut={() => handleMouseOut(index)} />
+            {/* TOOLTIPS */}
+            {
+              newIndex === index 
+                && <Tooltip name={newName} 
+                            className='tooltips-footer' />
+            }
+          </li>
         ))
       }
     </ul>

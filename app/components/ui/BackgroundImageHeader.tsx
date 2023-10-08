@@ -1,14 +1,41 @@
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 import BackgroundImage from "~/components/ui/BackgroundImage";
 import ItemListLayout from "~/components/layout/ItemListLayout";
+import Tooltip from "~/components/ui/Tooltip";
+import useScrollYPosition from "~/services/store/useScrollYPosition";
 
 
 export default function BackgroundImageHeader({imgUrl}) {
   const { t } = useTranslation();
   const keywordsData = t('mainKeywords', { returnObjects: true });
   const socialNetworkData = t('socialNetwork', { returnObjects: true });
+  const [newIndex, setNewIndex] = useState(-1);
+  const [newName, setNewName] = useState('');
+  const [isHiddenBgImgText, setIsHiddenBgImgText] = useState(false);
+  const { newScrollYPosition } = useScrollYPosition();
+
+  const handleMouseOver = (index: number, name: string): void => {
+    setNewIndex(index);
+    setNewName(name);
+  };
+  
+  const handleMouseOut = (index: number): void => {
+    setNewIndex(-1);
+    setNewName('');
+  };
+
+  const toggleBgImage = () => newScrollYPosition > 40 
+                                ? setIsHiddenBgImgText(true) 
+                                : setIsHiddenBgImgText(false);
+
+
+  useEffect(() => toggleBgImage(), [])
+
+  useEffect(() => toggleBgImage(), [newScrollYPosition])
+
 
   return (
     <>
@@ -17,7 +44,7 @@ export default function BackgroundImageHeader({imgUrl}) {
           <BackgroundImage containerClassName='bg-img-header'
                             contentClassName='bg-img-header-body'
                             imgUrl={imgUrl}>
-            <div className="h-full mt-[4rem] flex flex-col justify-between">
+            <div className={`bg-img-header-children ${isHiddenBgImgText ? 'opacity-0' : ''}`}>
               {/* HAUT */}
               <figure className='flex items-center'>
                 {/* COLONNE GAUCHE */}
@@ -41,17 +68,26 @@ export default function BackgroundImageHeader({imgUrl}) {
                 </figcaption>
               </figure>
 
-              {/* BAS */}
+              {/* BAS : Réseaux sociaux */}
               <ul className="mt-1 flex">
                 {
-                  socialNetworkData?.map((item) =>(
-                    <ItemListLayout key={uuidv4()}
-                              data={item} 
-                              itemClass={''} 
-                              linkClass={''} 
-                              imgClass={'w-5 mr-2'} 
-                              textClass={'sr-only'} 
-                              imgSrc={`/images/svg/${item.picto}`} />
+                  socialNetworkData?.map((item, index) =>(
+                    <li key={uuidv4()} className="relative">
+                      <ItemListLayout data={item} 
+                                      imgClass={'w-5 mr-2'} 
+                                      textClass={'hidden'} 
+                                      tooltipClass={'tooltips-snt'}
+                                      imgSrc={`/images/svg/${item.picto}`}
+                                      index={index}
+                                      onMouseOver={() => handleMouseOver(index, item.name)} 
+                                      onMouseOut={() => handleMouseOut(index)} />
+                      {/* TOOLTIPS */}
+                      {
+                        newIndex === index 
+                          && <Tooltip name={newName} 
+                                      className='tooltips-snt' />
+                      }
+                    </li>
                   ))
                 }
               </ul>

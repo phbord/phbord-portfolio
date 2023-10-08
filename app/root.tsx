@@ -16,6 +16,7 @@ import useLangStore from '~/services/store/useLangStore';
 import mainData from '~/assets/data/mainData';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
+import useScrollYPosition from './services/store/useScrollYPosition';
 
 
 export const links: LinksFunction = () => [
@@ -61,8 +62,18 @@ export default function App() {
   });
   
   i18n.use(initReactI18next).init();
+
+  const handleScroll = () => useScrollYPosition.getState().setNewScrollYPosition();
   
   
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     setLangToStorage();
     setSidebarToStorage();

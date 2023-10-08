@@ -115,4 +115,21 @@
   .snackbar-body {
     @apply w-full max-w-[25rem] mx-auto;
   }
+
+  /* STRATEGIES OBLIQUES */
+  .oblique-strategies-chapo {
+    @apply mb-6 text-orange-700 text-base font-light;
+  }
+  .oblique-strategies-random {
+    @apply mb-12 text-cyan-900 text-[2.25rem] leading-tight;
+  }
+  .oblique-strategies-paragraph {
+    @apply mb-6 p-3 border border-dotted border-cyan-900 text-cyan-900 text-sm font-light;
+  }
+  .oblique-strategies-btn {
+    @apply px-3 py-2 flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all;
+  }
+  .oblique-strategies-btn-icon {
+    @apply h-4 mr-1;
+  }
 }

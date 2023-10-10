@@ -8,7 +8,7 @@ import Tooltip from "~/components/ui/Tooltip";
 import useScrollYPosition from "~/services/store/useScrollYPosition";
 
 
-export default function BackgroundImageHeader({imgUrl}) {
+export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass}) {
   const { t } = useTranslation();
   const keywordsData = t('mainKeywords', { returnObjects: true });
   const socialNetworkData = t('socialNetwork', { returnObjects: true });
@@ -27,7 +27,7 @@ export default function BackgroundImageHeader({imgUrl}) {
     setNewName('');
   };
 
-  const toggleBgImage = () => newScrollYPosition > 40 
+  const toggleBgImage = () => newScrollYPosition > 20 
                                 ? setIsHiddenBgImgText(true) 
                                 : setIsHiddenBgImgText(false);
 
@@ -41,7 +41,7 @@ export default function BackgroundImageHeader({imgUrl}) {
     <>
       {
         imgUrl && (
-          <BackgroundImage containerClassName='bg-img-header'
+          <BackgroundImage containerClassName={`bg-img-header ${isHiddenBgImgText ? '-z-10' : 'z-0'}`}
                             contentClassName='bg-img-header-body'
                             imgUrl={imgUrl}>
             <div className={`bg-img-header-children ${isHiddenBgImgText ? 'opacity-0' : ''}`}>
@@ -53,13 +53,13 @@ export default function BackgroundImageHeader({imgUrl}) {
 
                 {/* COLONNE DROITE */}
                 <figcaption className='bg-img-header-figcaption'>
-                  <h2 className="mb-1 text-[1.35rem] text-yellow-200">
+                  <h2 className={titleClass}>
                     {t('position')}
                   </h2>
                   <p>
                     {
                       keywordsData?.map((item) =>(
-                        <span key={uuidv4()} className='mr-2'>
+                        <span key={uuidv4()} className={keywordsClass}>
                           {item}
                         </span>
                       ))

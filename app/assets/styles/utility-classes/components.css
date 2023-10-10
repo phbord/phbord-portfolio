@@ -66,7 +66,7 @@
 
   /* IMAGES */
   .bg-img-header {
-    @apply fixed top-[2rem] left-0 right-0 -z-10 pt-10 bg-no-repeat bg-cover;
+    @apply fixed top-[2rem] left-0 right-0 pt-10 bg-no-repeat bg-cover;
   }
   .bg-img-header-body {
     @apply w-full max-w-[50rem] h-[10rem] mx-auto px-5 pb-4 bg-no-repeat bg-cover bg-center;
@@ -118,13 +118,13 @@
 
   /* STRATEGIES OBLIQUES */
   .oblique-strategies-chapo {
-    @apply mb-6 text-orange-700 text-base font-light;
+    @apply mb-3 text-orange-700 text-base font-light;
   }
   .oblique-strategies-random {
-    @apply mb-12 text-cyan-900 text-[2.25rem] leading-tight;
+    @apply mb-6 text-cyan-900 text-[2.25rem] leading-none skew-x-[-10deg] skew-y-[-2.5deg];
   }
   .oblique-strategies-paragraph {
-    @apply mb-6 p-3 border border-dotted border-cyan-900 text-cyan-900 text-sm font-light;
+    @apply mb-6 p-3 border bg-gray-100 text-cyan-900 text-sm font-light;
   }
   .oblique-strategies-btn {
     @apply px-3 py-2 flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all;

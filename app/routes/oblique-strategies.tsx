@@ -47,28 +47,30 @@ export default function ObliqueStrategies() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-fuji.jpeg' />
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-fuji.jpeg' 
+                              titleClass='mb-1 text-[1.35rem] text-orange-600' 
+                              keywordsClass='mr-2 text-orange-500' />
       
       {/* BODY */}
       <section className="container-custom mt-[18.5rem] bg-neutral-200">
         <h2 className="h2">
           {t('header.5.name', { returnObjects: true })}
         </h2>
-        <p className="oblique-strategies-chapo">
-          {t('strategiesObliquesChapo')}
-        </p>
         <p className="oblique-strategies-random">
           "{sentence}"
         </p>
-        <p className="oblique-strategies-paragraph">
-          {t('strategiesObliquesParagraph')}
-        </p>
-        <div className="mt-3">
+        <div className="mb-10 flex justify-end">
           <Button className='oblique-strategies-btn' onClick={handleClick}>
             <BoltIcon className="oblique-strategies-btn-icon" />
             <span>{t('strategiesObliquesButton')}</span>
           </Button>
         </div>
+        <p className="oblique-strategies-chapo">
+          {t('strategiesObliquesChapo')}
+        </p>
+        <p className="oblique-strategies-paragraph">
+          {t('strategiesObliquesParagraph')}
+        </p>
       </section>
     </>
   )

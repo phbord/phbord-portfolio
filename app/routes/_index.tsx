@@ -33,7 +33,9 @@ export default function Index() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' />
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' 
+                              titleClass='mb-1 text-[1.35rem] text-yellow-200' 
+                              keywordsClass='mr-2' />
       
       {/* BODY */}
       <section className="container-custom mt-[18.5rem] bg-neutral-200">

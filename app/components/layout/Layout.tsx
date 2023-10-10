@@ -8,14 +8,15 @@ import Sidebar from "~/components/layout/Sidebar";
 
 export default function Layout({children}: {children: ReactNode}) {
   const { t } = useTranslation();
-  const headerData = t('header', { returnObjects: true });
+  const mainData = t('header', { returnObjects: true });
+  const authData = t('authentification', { returnObjects: true });
 
   return (
     <>
       <Header />
       <main className="main">
         {children}
-        <Sidebar data={headerData} />
+        <Sidebar mainData={mainData} authData={authData} />
       </main>
       <Footer />
     </>

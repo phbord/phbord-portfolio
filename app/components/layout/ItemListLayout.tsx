@@ -23,7 +23,7 @@ export default function ItemListLayout(props) {
 
   return (
     <>
-      <div className={itemClass}>
+      <li className={itemClass}>
         {
           data.href
             ? (
@@ -40,7 +40,7 @@ export default function ItemListLayout(props) {
               </>
             )
         }
-      </div>
+      </li>
     </>
   )
 }

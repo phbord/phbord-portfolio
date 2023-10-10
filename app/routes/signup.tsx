@@ -49,7 +49,7 @@ export default function Signup() {
           {/* Bouton SUBMIT */}
           <Button type="submit" 
                   className="btn-submit-form">
-            Sign in
+            {t('submitText')}
           </Button>
         </Form>
       </section>

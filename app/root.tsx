@@ -13,10 +13,11 @@ import { createInstance } from "i18next";
 
 import stylesheet from "~/assets/styles/tailwind.css";
 import useLangStore from '~/services/store/useLangStore';
+import useScrollYPositionStore from '~/services/store/useScrollYPositionStore';
 import mainData from '~/assets/data/mainData';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
-import useScrollYPosition from './services/store/useScrollYPosition';
+import TopPageButton from '~/components/core/TopPageButton';
 
 
 export const links: LinksFunction = () => [
@@ -63,7 +64,7 @@ export default function App() {
   
   i18n.use(initReactI18next).init();
 
-  const handleScroll = () => useScrollYPosition.getState().setNewScrollYPosition();
+  const handleScroll = () => useScrollYPositionStore.getState().setNewScrollYPosition();
   
   
   useEffect(() => {
@@ -98,6 +99,7 @@ export default function App() {
             <Layout>
               <Transitions>
                 <Outlet />
+                <TopPageButton />
               </Transitions>
               <ScrollRestoration />
               <Scripts />

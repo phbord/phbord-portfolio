@@ -1,4 +1,9 @@
-export default function Tooltip({name, className}) {
+interface TooltipInterface {
+  name?: string;
+  className?: string;
+}
+
+export default function Tooltip({name, className}: TooltipInterface) {  
   return (
     <>
       {

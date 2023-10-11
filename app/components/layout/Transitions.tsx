@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 const animationConfiguration = {
@@ -6,7 +7,7 @@ const animationConfiguration = {
   exit: { opacity: 0 },
 }
 
-const Transitions = ({children}) => {
+const Transitions = ({children}: {children: ReactNode}) => {
   return (
     <motion.div
       variants={animationConfiguration}

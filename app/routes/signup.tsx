@@ -2,7 +2,7 @@ import { Form } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 
 import useLangStore from '~/services/store/useLangStore';
-import Button from "~/components/ui/Button";
+import Button from "~/components/core/Button";
 
 
 export default function Signup() {

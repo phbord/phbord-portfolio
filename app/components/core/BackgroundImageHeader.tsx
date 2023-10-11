@@ -2,20 +2,26 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-import BackgroundImage from "~/components/ui/BackgroundImage";
+import useScrollYPositionStore from "~/services/store/useScrollYPositionStore";
+import BackgroundImage from "~/components/core/BackgroundImage";
+import Tooltip from "~/components/core/Tooltip";
 import ItemListLayout from "~/components/layout/ItemListLayout";
-import Tooltip from "~/components/ui/Tooltip";
-import useScrollYPosition from "~/services/store/useScrollYPosition";
 
 
-export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass}) {
+interface BackgroundImageHeaderInterface {
+  imgUrl: string;
+  titleClass?: string;
+  keywordsClass?: string;
+}
+
+export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass}: BackgroundImageHeaderInterface) {
   const { t } = useTranslation();
   const keywordsData = t('mainKeywords', { returnObjects: true });
   const socialNetworkData = t('socialNetwork', { returnObjects: true });
   const [newIndex, setNewIndex] = useState(-1);
   const [newName, setNewName] = useState('');
   const [isHiddenBgImgText, setIsHiddenBgImgText] = useState(false);
-  const { newScrollYPosition } = useScrollYPosition();
+  const { newScrollYPosition } = useScrollYPositionStore();
 
   const handleMouseOver = (index: number, name: string): void => {
     setNewIndex(index);
@@ -56,31 +62,31 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
                   <h2 className={titleClass}>
                     {t('position')}
                   </h2>
-                  <p>
+                  <ul className="flex">
                     {
-                      keywordsData?.map((item) =>(
-                        <span key={uuidv4()} className={keywordsClass}>
+                      keywordsData?.map((item: any) =>(
+                        <li key={uuidv4()} className={keywordsClass}>
                           {item}
-                        </span>
+                        </li>
                       ))
                     }
-                  </p>
+                  </ul>
                 </figcaption>
               </figure>
 
               {/* BAS : Réseaux sociaux */}
               <ul className="mt-1 flex">
                 {
-                  socialNetworkData?.map((item, index) =>(
+                  socialNetworkData?.map((item: any, index: number) =>(
                     <li key={uuidv4()} className="relative">
-                      <ItemListLayout data={item} 
-                                      imgClass={'w-5 mr-2'} 
-                                      textClass={'hidden'} 
-                                      tooltipClass={'tooltips-snt'}
-                                      imgSrc={`/images/svg/${item.picto}`}
-                                      index={index}
-                                      onMouseOver={() => handleMouseOver(index, item.name)} 
-                                      onMouseOut={() => handleMouseOut(index)} />
+                      <ul>
+                        <ItemListLayout data={item} 
+                                        imgClass={'w-5 mr-2'} 
+                                        textClass={'hidden'} 
+                                        imgSrc={`/images/svg/${item.picto}`}
+                                        onMouseOver={() => handleMouseOver(index, item.name)} 
+                                        onMouseOut={() => handleMouseOut(index)} />
+                      </ul>
                       {/* TOOLTIPS */}
                       {
                         newIndex === index 

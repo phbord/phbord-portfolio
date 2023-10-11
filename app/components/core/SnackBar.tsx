@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import { SparklesIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
-import Button from "~/components/ui/Button";
+import Button from "~/components/core/Button";
 
 
-export default function SnackBar({children, modalClass='', isSuccess=false, isError=false}) {
+interface SnackBarInterface {
+  children: any;
+  modalClass?: string;
+  isSuccess?: boolean;
+  isError?: boolean;
+}
+
+export default function SnackBar({children, modalClass='', isSuccess=false, isError=false}: SnackBarInterface) {
   const [stateClass, setStateClass] = useState('');
 
   const changeStateClass = () => {

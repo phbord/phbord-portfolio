@@ -133,6 +133,17 @@
     @apply w-full px-3 py-2 flex justify-center items-center bg-orange-500 hover:bg-orange-400 text-white text-sm font-bold transition-all !important;
   }
 
+  /* BOUTON HAUT DE PAGE */
+  .top-scroll-btn {
+    @apply fixed bottom-10 right-6 w-8 h-8 flex justify-center items-center rounded-[50%] bg-orange-500 hover:opacity-70 transition-all !important;
+  }
+  .top-scroll-btn-hidden {
+    @apply hidden !important;
+  }
+  .top-scroll-icon {
+    @apply h-6 text-white;
+  }
+
   /* STRATEGIES OBLIQUES */
   .oblique-strategies-chapo {
     @apply mb-3 text-orange-700 text-base font-light;

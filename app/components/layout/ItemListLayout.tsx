@@ -1,9 +1,24 @@
 import { NavLink } from '@remix-run/react';
 
 
-export default function ItemListLayout(props) {
-  const { data, itemClass, linkClass, imgClass, textClass, imgSrc, onMouseOver, onMouseOut } = props;
+interface ItemListLayoutProps {
+  data: DataItemListLayoutInterface;
+  itemClass?: string;
+  linkClass?: string;
+  imgClass?: string;
+  textClass?: string;
+  imgSrc?: string;
+  onMouseOver?: () => void;
+  onMouseOut?: () => void;
+}
 
+interface DataItemListLayoutInterface {
+  name: string;
+  href?: string;
+}
+
+
+export default function ItemListLayout({data, itemClass, linkClass, imgClass, textClass, imgSrc, onMouseOver, onMouseOut}: ItemListLayoutProps) {
   const contentBlock = (
     <>
       {
@@ -19,7 +34,7 @@ export default function ItemListLayout(props) {
         )
       }
     </>
-  )
+  );
 
   return (
     <>

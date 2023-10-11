@@ -1,11 +1,28 @@
-import { useState } from 'react';
+import { JSXElementConstructor, ReactElement, ReactNode, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import Tooltip from '~/components/ui/Tooltip';
-import Button from '~/components/ui/Button';
+import Tooltip from '~/components/core/Tooltip';
+import Button from '~/components/core/Button';
 
 
-export default function ItemListKnowledges({data, noData, lang}) {
+interface ItemListKnowledgesInterface {
+  data: DataItemListKnowledgesInterface;
+  noData?: string;
+  lang: string;
+}
+
+interface DataItemListKnowledgesInterface {
+  title_fr?: string;
+  title_en?: string;
+  list?: DataListItemListKnowledgesInterface;
+}
+
+interface DataListItemListKnowledgesInterface {
+  picto?: string;
+  name?: string;
+}
+
+export default function ItemListKnowledges({data, noData, lang}: ItemListKnowledgesInterface) {
   return (
     <>
       {
@@ -17,7 +34,7 @@ export default function ItemListKnowledges({data, noData, lang}) {
               </h3>
               <ul className='flex flex-wrap border-t border-dotted border-orange-500'>
                 {
-                  data?.list?.map((item) => (
+                  data?.list?.map((item: {picto: string; name: string}) => (
                     <li key={uuidv4()} 
                         className='mx-3 my-[.375rem] flex items-stretch'>
                       <figure className='flex flex-col flex-nowrap items-center justify-end'>
@@ -33,7 +50,9 @@ export default function ItemListKnowledges({data, noData, lang}) {
             </li>
           )
           : (
-            <li className=''>{noData}</li>
+            <li>
+              {noData}
+            </li>
           )
       }
     </>

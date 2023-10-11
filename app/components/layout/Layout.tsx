@@ -16,7 +16,8 @@ export default function Layout({children}: {children: ReactNode}) {
       <Header />
       <main className="main">
         {children}
-        <Sidebar mainData={mainData} authData={authData} />
+        <Sidebar mainData={mainData} 
+                  authData={authData} />
       </main>
       <Footer />
     </>

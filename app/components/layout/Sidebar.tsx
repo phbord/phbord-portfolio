@@ -7,7 +7,16 @@ import useSidebarStore from '~/services/store/useSidebarStore';
 import ItemListLayout from '~/components/layout/ItemListLayout';
 
 
-export default function Sidebar({mainData, authData}: any) {
+interface SidebarInterface {
+  mainData: ItemSidebarInterface;
+  authData: ItemSidebarInterface;
+}
+interface ItemSidebarInterface {
+  name: string;
+  href: string;
+}
+
+export default function Sidebar({mainData, authData}: SidebarInterface) {
   const openedClass = 'right-0';
   const { isSideBarOpened }: any = useSidebarStore();
   const [toggleClass, setToggleClass] = useState(() => isSideBarOpened ? openedClass : '');
@@ -24,12 +33,10 @@ export default function Sidebar({mainData, authData}: any) {
         {/* Menu PRINCIPAL */}
         <ul className='flex flex-col'>
           {
-            mainData?.map((item: { href: To; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined; }) => (
-              <>
-                <ItemListLayout key={uuidv4()} 
-                                data={item} 
-                                linkClass='sidebar-link' />
-              </>
+            mainData?.map((item: ItemSidebarInterface) => (
+              <ItemListLayout key={uuidv4()} 
+                              data={item} 
+                              linkClass='sidebar-link' />
             ))
           }
         </ul>
@@ -37,12 +44,10 @@ export default function Sidebar({mainData, authData}: any) {
         {/* Menu SECONDAIRE */}
         <ul className='mt-5 flex flex-col'>
           {
-            authData?.map((item: { href: To; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Iterable<ReactNode> | null | undefined; }) => (
-              <>
-                <ItemListLayout key={uuidv4()} 
-                                data={item} 
-                                linkClass='sidebar-link' />
-              </>
+            authData?.map((item: ItemSidebarInterface) => (
+              <ItemListLayout key={uuidv4()} 
+                              data={item} 
+                              linkClass='sidebar-link' />
             ))
           }
         </ul>

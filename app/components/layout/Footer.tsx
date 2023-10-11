@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import logo from 'public/images/icons/picto-phb.png';
 import ItemListLayout from '~/components/layout/ItemListLayout';
-import Tooltip from "~/components/ui/Tooltip";
+import Tooltip from "~/components/core/Tooltip";
 
 
 export default function Footer() {
@@ -29,25 +29,24 @@ export default function Footer() {
   const socialNetworksBlock = (
     <ul className='flex'>
       {
-        socialNetworkData?.map((item, index) =>(
+        socialNetworkData?.map((item: any, index: number) =>(
           <li key={uuidv4()} className="relative">
-            <ItemListLayout key={uuidv4()}
-                      data={item} 
-                      itemClass={''} 
-                      linkClass={''} 
-                      imgClass={'w-5 mr-2'} 
-                      textClass={'sr-only'} 
-                      tooltipClass={'tooltips-snt'}
-                      imgSrc={`/images/svg/${item.picto}`}
-                      index={index}
-                      onMouseOver={() => handleMouseOver(index, item.name)} 
-                      onMouseOut={() => handleMouseOut(index)} />
-            {/* TOOLTIPS */}
-            {
-              newIndex === index 
-                && <Tooltip name={newName} 
-                            className='tooltips-footer' />
-            }
+            <ul>
+              <ItemListLayout data={item} 
+                              itemClass={''} 
+                              linkClass={''} 
+                              imgClass={'w-5 mr-2'} 
+                              textClass={'sr-only'} 
+                              imgSrc={`/images/svg/${item.picto}`}
+                              onMouseOver={() => handleMouseOver(index, item.name)} 
+                              onMouseOut={() => handleMouseOut(index)} />
+              {/* TOOLTIPS */}
+              {
+                newIndex === index 
+                  && <Tooltip name={newName} 
+                              className='tooltips-footer' />
+              }
+            </ul>
           </li>
         ))
       }
@@ -65,14 +64,14 @@ export default function Footer() {
   const technologiesBlock = (
     <ul className='flex'>
       {
-        technologiesUsedData?.map((item) =>(
+        technologiesUsedData?.map((item: any) =>(
           <ItemListLayout key={uuidv4()} 
-                    data={item} 
-                    itemClass={''} 
-                    linkClass={''} 
-                    imgClass={'w-5 mr-2'} 
-                    textClass={'sr-only'} 
-                    imgSrc={`/images/svg/${item.picto}`} />
+                          data={item} 
+                          itemClass={''} 
+                          linkClass={''} 
+                          imgClass={'w-5 mr-2'} 
+                          textClass={'sr-only'} 
+                          imgSrc={`/images/svg/${item.picto}`} />
         ))
       }
     </ul>
@@ -85,20 +84,20 @@ export default function Footer() {
           {/* COLONNE 01 : Menu */}
           <ul>
             {
-              menuData?.map((item) => (
+              menuData?.map((item: any) => (
                 <ItemListLayout key={uuidv4()} 
-                          data={item} 
-                          itemClass='mb-1.5'
-                          linkClass='hover:text-orange-500 transition-all' />
+                                data={item} 
+                                itemClass='mb-1.5'
+                                linkClass='hover:text-orange-500 transition-all' />
               ))
             }
           </ul>
           {/* COLONNE 02 : Mots-clés */}
           <ul>
             {
-              keywordsData?.map((item) =>(
-                <li key={uuidv4()} className=''>
-                  <span className=''>{item}</span>
+              keywordsData?.map((item: any) =>(
+                <li key={uuidv4()}>
+                  <span>{item}</span>
                 </li>
               ))
             }

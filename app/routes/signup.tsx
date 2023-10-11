@@ -3,11 +3,16 @@ import { useTranslation } from "react-i18next";
 
 import useLangStore from '~/services/store/useLangStore';
 import Button from "~/components/core/Button";
+import FormMessage from "~/components/core/FormMessage";
 
 
 export default function Signup() {
   const { t } = useTranslation();
   const { newLang } = useLangStore();
+  const dataMessage = {
+    status: 200,
+    message: "Saisie des champs incorrecte"
+  };
 
   return (
     <>
@@ -20,6 +25,8 @@ export default function Signup() {
 
         {/* FORMULAIRE */}
         <Form className="form">
+          {/* Champ EMAIL */}
+          <FormMessage data={dataMessage} isError />
           {/* Champ EMAIL */}
           <div className="mb-4">
             <label htmlFor="email" 

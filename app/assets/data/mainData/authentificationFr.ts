@@ -1,6 +1,6 @@
-import { authentificationClass } from "~/assets/data/mainData/authentificationClass";
+import { authentificationInterface } from "~/interfaces/mainData/authentificationInterface";
 
-const authentificationFr: authentificationClass[] = [
+const authentificationFr: authentificationInterface[] = [
   { name: 'Connexion', href: '/signin' },
   { name: 'Déconnexion', href: '/disconnection' },
 ];

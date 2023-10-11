@@ -1,6 +1,6 @@
-import { headerClass } from "~/assets/data/mainData/headerClass";
+import { headerInterface } from "~/interfaces/mainData/headerInterface";
 
-const headerFr: headerClass[] = [
+const headerFr: headerInterface[] = [
   { name: 'Compétences techniques', href: '/' },
   { name: 'Expériences', href: '/experiences' },
   { name: 'Formations', href: '/training' },

@@ -12,7 +12,7 @@ interface ButtonInterfaceProps {
   onMouseOut?: () => void;
 }
 
-export default function Button({ children, className, srOnlyText, type, disabled, onClick, onMouseOver, onMouseOut}: ButtonInterfaceProps) {
+export default function Button({ children, className, srOnlyText, type='button', disabled, onClick, onMouseOver, onMouseOut}: ButtonInterfaceProps) {
   return (
     <>
       <button className={className} 

@@ -159,6 +159,9 @@
   .form-element-message {
     @apply mt-1 mb-4 flex leading-tight text-orange-500 transition-all;
   }
+  .btn-input-eye {
+    @apply absolute right-0 top-0 bottom-0 px-1 pt-2 flex justify-center items-center bg-white text-cyan-900;
+  }
 
   /* BOUTON HAUT DE PAGE */
   .top-scroll-btn {

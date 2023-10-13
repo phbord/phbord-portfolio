@@ -6,6 +6,8 @@ import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValid
 import Button from "~/components/core/buttons/Button";
 import FormMessage from "~/components/core/form/FormMessage";
 import FormElementMessage from "~/components/core/form/FormElementMessage";
+import InputPassword from "~/components/core/form/InputPassword";
+import Input from "~/components/core/form/Input";
 
 
 export default function AuthForm() {
@@ -62,40 +64,46 @@ export default function AuthForm() {
               <FormMessage data={dataForm} isError />
             )
         }
+
         {/* Champ EMAIL */}
         <div className="mb-4">
           <label htmlFor="email" 
                   className="label">
             Email
           </label>
-          <input id="email" 
+          <Input id="email" 
+                  type="email" 
+                  inputRef={emailRef}
+                  autoComplete="email" 
+                  isInputErrorDisplayed={isEmailErrorDisplayed}
+                  onChange={handlehange} />
+          {/* <input id="email" 
                   name="email" 
                   type="email" 
                   ref={emailRef}
                   autoComplete="email" 
                   required 
                   className={`input ${isEmailErrorDisplayed ? 'input--error' : ''}`}
-                  onChange={handlehange} />
+                  onChange={handlehange} /> */}
           <FormElementMessage className={isEmailErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputEmailWrongEntry')} />
         </div>
+
         {/* Champ MOT DE PASSE */}
         <div className="mb-6">
           <label htmlFor="password" 
                   className="label">
             {t('passwordText')}
           </label>
-          <input id="password" 
-                  name="password" 
-                  type="password" 
-                  ref={passwordRef}
-                  autoComplete="current-password" 
-                  required 
-                  className={`input ${isPasswordErrorDisplayed ? 'input--error' : ''}`}
-                  onChange={handlehange} />
+          <InputPassword id="password" 
+                          passwordRef={passwordRef} 
+                          autoComplete="current-password" 
+                          isPasswordErrorDisplayed={isPasswordErrorDisplayed} 
+                          onChange={handlehange} />
           <FormElementMessage className={isPasswordErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputPasswordWrongEntry')} />
         </div>
+
         {/* Bouton SUBMIT */}
         <Button disabled={isDisabled}
                 className="btn-submit-form">

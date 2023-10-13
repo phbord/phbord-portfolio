@@ -3,7 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getSupabase } from "~/services/api";
 
 
-export interface getDataClass {
+export interface getDataInterface {
   table: String,
   columns?: String,
   match?: String | null,
@@ -12,7 +12,7 @@ export interface getDataClass {
   ascending?: boolean
 }
 
-export async function getData({ table, columns='*', match=null, join=null, orderBy=null, ascending=false }: getDataClass) {
+export async function getData({ table, columns='*', match=null, join=null, orderBy=null, ascending=false }: getDataInterface) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
 

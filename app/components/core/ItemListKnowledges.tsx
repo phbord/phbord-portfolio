@@ -2,7 +2,7 @@ import { JSXElementConstructor, ReactElement, ReactNode, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 import Tooltip from '~/components/core/Tooltip';
-import Button from '~/components/core/Button';
+import Button from '~/components/core/buttons/Button';
 
 
 interface ItemListKnowledgesInterface {

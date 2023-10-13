@@ -1,10 +1,21 @@
-import { Form } from "@remix-run/react";
+import { redirect } from "@remix-run/node";
 import { useTranslation } from "react-i18next";
 
 import useLangStore from '~/services/store/useLangStore';
-import Button from "~/components/core/Button";
-import FormMessage from "~/components/core/FormMessage";
+import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
+import AuthForm from "~/components/core/form/AuthForm";
 
+
+export async function action({request}) {
+  const formData = await request.formData();
+  const signupData = Object.fromEntries(formData);
+  console.log(formData.get('email'), '))))))', signupData);
+
+  if (!isInputEmailValidate(formData.get('email')) || !isInputPasswordValidate(formData.get('password'))) {
+    return { isDisplayedError: true, messageType: 'inputWrongEntries' };
+  }
+  return redirect('/signup');
+}
 
 export default function Signup() {
   const { t } = useTranslation();
@@ -24,41 +35,7 @@ export default function Signup() {
         </h2>
 
         {/* FORMULAIRE */}
-        <Form className="form">
-          {/* Champ EMAIL */}
-          <FormMessage data={dataMessage} isError />
-          {/* Champ EMAIL */}
-          <div className="mb-4">
-            <label htmlFor="email" 
-                    className="label">
-              Email
-            </label>
-            <input id="email" 
-                    name="email" 
-                    type="email" 
-                    autoComplete="email" 
-                    required 
-                    className="input" />
-          </div>
-          {/* Champ MOT DE PASSE */}
-          <div className="mb-6">
-            <label htmlFor="password" 
-                    className="label">
-              {t('passwordText')}
-            </label>
-            <input id="password" 
-                    name="password" 
-                    type="password" 
-                    autoComplete="current-password" 
-                    required 
-                    className="input" />
-          </div>
-          {/* Bouton SUBMIT */}
-          <Button type="submit" 
-                  className="btn-submit-form">
-            {t('submitText')}
-          </Button>
-        </Form>
+        <AuthForm />
       </section>
     </>
   )

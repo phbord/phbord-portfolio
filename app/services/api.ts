@@ -1,9 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
+import { SupabaseClient, createClient } from "@supabase/supabase-js";
 
 import { SUPABASE_URL, SUPABASE_KEY } from "~/assets/data/constants";
 
 
-async function initializeSupabase() {
+async function initializeSupabase(): Promise<SupabaseClient<any, "public", any> | undefined> {
   try {
     return createClient(
       SUPABASE_URL,

@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import useLangStore from '~/services/store/useLangStore';
-import BackgroundImageHeader from "~/components/core/BackgroundImageHeader";
-import Button from "~/components/core/Button";
+import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
+import Button from "~/components/core/buttons/Button";
 import { BoltIcon } from "@heroicons/react/20/solid";
 
 

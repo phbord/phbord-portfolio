@@ -7,7 +7,7 @@ import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import { getData } from "~/services/getData";
 import useLangStore from '~/services/store/useLangStore';
 import ItemListKnowledges from "~/components/core/ItemListKnowledges";
-import BackgroundImageHeader from "~/components/core/BackgroundImageHeader";
+import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
 
 
 export const meta: MetaFunction = () => {

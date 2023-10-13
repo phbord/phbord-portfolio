@@ -4,6 +4,7 @@ import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal } from "rea
 interface ButtonInterfaceProps {
   children: string | number | boolean | ReactPortal | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined;
   className?: string;
+  disabled?: boolean | undefined;
   srOnlyText?: string;
   type?: "button" | "submit" | "reset" | undefined;
   onClick?: () => (void | undefined) | undefined;
@@ -11,11 +12,12 @@ interface ButtonInterfaceProps {
   onMouseOut?: () => void;
 }
 
-export default function Button({ children, className, srOnlyText, type, onClick, onMouseOver, onMouseOut}: ButtonInterfaceProps) {
+export default function Button({ children, className, srOnlyText, type, disabled, onClick, onMouseOver, onMouseOut}: ButtonInterfaceProps) {
   return (
     <>
       <button className={className} 
-              onClick={(e) => onClick(e)} 
+              onClick={onClick} 
+              disabled={disabled}
               onMouseOver={onMouseOver} 
               onMouseOut={onMouseOut}
               type={type}>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SparklesIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
-import Button from "~/components/core/Button";
+import Button from "~/components/core/buttons/Button";
 
 
 interface SnackBarInterface {

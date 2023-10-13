@@ -24,11 +24,15 @@ export default function FormMessage({data, isError=false}: FormMessageInterface)
       }
       <div className="form-message-body">
         {
-          data.status && (
+          data?.status && (
             <p className="form-message-status">{t('statusText')} : {data.status}</p>
           )
         }
-        <p>{data.message}</p>
+        {
+          data?.message && (
+            <p>{data.message}</p>
+          )
+        }
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import anime from "animejs";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
 import useScrollYPositionStore from "~/services/store/useScrollYPositionStore";
-import Button from "~/components/core/Button";
+import Button from "~/components/core/buttons/Button";
 
 
 export default function TopPageButton() {

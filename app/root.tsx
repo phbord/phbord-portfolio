@@ -17,7 +17,7 @@ import useScrollYPositionStore from '~/services/store/useScrollYPositionStore';
 import mainData from '~/assets/data/mainData';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
-import TopPageButton from '~/components/core/TopPageButton';
+import TopPageButton from '~/components/core/buttons/TopPageButton';
 
 
 export const links: LinksFunction = () => [

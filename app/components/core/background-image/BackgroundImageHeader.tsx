@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 import useScrollYPositionStore from "~/services/store/useScrollYPositionStore";
-import BackgroundImage from "~/components/core/BackgroundImage";
+import BackgroundImage from "~/components/core/background-image/BackgroundImage";
 import Tooltip from "~/components/core/Tooltip";
 import ItemListLayout from "~/components/layout/ItemListLayout";
 

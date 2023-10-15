@@ -77,14 +77,6 @@ export default function AuthForm() {
                   autoComplete="email" 
                   isInputErrorDisplayed={isEmailErrorDisplayed}
                   onChange={handlehange} />
-          {/* <input id="email" 
-                  name="email" 
-                  type="email" 
-                  ref={emailRef}
-                  autoComplete="email" 
-                  required 
-                  className={`input ${isEmailErrorDisplayed ? 'input--error' : ''}`}
-                  onChange={handlehange} /> */}
           <FormElementMessage className={isEmailErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputEmailWrongEntry')} />
         </div>
@@ -96,8 +88,8 @@ export default function AuthForm() {
             {t('passwordText')}
           </label>
           <InputPassword id="password" 
-                          passwordRef={passwordRef} 
-                          autoComplete="current-password" 
+                          inputRef={passwordRef} 
+                          autoComplete="password" 
                           isPasswordErrorDisplayed={isPasswordErrorDisplayed} 
                           onChange={handlehange} />
           <FormElementMessage className={isPasswordErrorDisplayed ? '' : 'hidden'} 

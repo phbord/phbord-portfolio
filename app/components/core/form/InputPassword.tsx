@@ -1,18 +1,18 @@
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 
-import Button from "../buttons/Button";
+import Button from "~/components/core/buttons/Button";
 
 
 interface InputPasswordInterface {
   id: string;
   autoComplete: string;
-  passwordRef: any;
+  inputRef: any;
   isPasswordErrorDisplayed: boolean;
   onChange?: () => void;
 }
 
-export default function InputPassword({id, isPasswordErrorDisplayed, autoComplete, passwordRef, onChange}: InputPasswordInterface) {
+export default function InputPassword({id, isPasswordErrorDisplayed, autoComplete, inputRef, onChange}: InputPasswordInterface) {
   const [isShow, setIsShow] = useState(false);
 
   const handleClick = () => isShow === true ? setIsShow(false) : setIsShow(true);
@@ -23,7 +23,7 @@ export default function InputPassword({id, isPasswordErrorDisplayed, autoComplet
         <input id={id}
                 name={id}
                 type={isShow ? 'text' : 'password'}
-                ref={passwordRef}
+                ref={inputRef}
                 autoComplete={autoComplete}
                 required 
                 className={`pr-7 input ${isPasswordErrorDisplayed ? 'input--error' : ''}`}

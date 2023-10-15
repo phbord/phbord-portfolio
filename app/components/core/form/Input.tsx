@@ -5,7 +5,6 @@ interface InputPasswordInterface {
   id: string;
   autoComplete: string;
   inputRef: MutableRefObject<string>;
-  passwordRef: any;
   isInputErrorDisplayed: boolean;
   onChange?: () => void;
 }
@@ -17,6 +16,7 @@ export default function Input({type='text', id, isInputErrorDisplayed, autoCompl
               name={id}
               type={type}
               ref={inputRef}
+              placeholder={type === 'email' && 'Ex : chuck@norris.com'}
               autoComplete={autoComplete}
               required 
               className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}

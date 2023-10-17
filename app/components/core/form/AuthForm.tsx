@@ -1,4 +1,4 @@
-import { Form, useActionData } from "@remix-run/react";
+import { Form, useActionData, useMatches } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -16,18 +16,30 @@ export default function AuthForm() {
   const [dataForm, setDataForm] = useState(data);
   const [isEmailErrorDisplayed, setIsEmailErrorDisplayed] = useState(false);
   const [isPasswordErrorDisplayed, setIsPasswordErrorDisplayed] = useState(false);
+  const [isPasswordBisErrorDisplayed, setIsPasswordBisErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const emailRef = useRef('');
   const passwordRef = useRef('');
+  const passwordBisRef = useRef('');
+  const matches = useMatches();
+  const pathname = matches[1].pathname;
 
-  const handlehange = (): void => {
-    if (emailRef.current.id === 'email') {
+  const handlehange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.id === 'email') {
       setIsEmailErrorDisplayed(() => isInputEmailValidate(emailRef.current.value) ? false : true);
     }
-    if (passwordRef.current.id === 'password') {
+    if (e.target.id === 'password') {
       setIsPasswordErrorDisplayed(() => isInputPasswordValidate(passwordRef.current.value) ? false : true);
     }
-    setIsDisabled(() => isInputEmailValidate(emailRef.current.value) && isInputPasswordValidate(passwordRef.current.value) ? false : true);
+    if (e.target.id === 'password-bis' && pathname === '/signup') {
+      setIsPasswordBisErrorDisplayed(() => isInputPasswordValidate(passwordBisRef.current.value) ? false : true);
+    }
+    if (pathname === '/signup') {
+      setIsDisabled(() => isInputEmailValidate(emailRef.current.value) && isInputPasswordValidate(passwordRef.current.value) && passwordRef.current.value === passwordBisRef.current.value ? false : true);
+    }
+    else {
+      setIsDisabled(() => isInputEmailValidate(emailRef.current.value) && isInputPasswordValidate(passwordRef.current.value) ? false : true);
+    }
   };
 
   const getErrorMessage = (data: { messageType: any; } | undefined) => {
@@ -82,7 +94,7 @@ export default function AuthForm() {
         </div>
 
         {/* Champ MOT DE PASSE */}
-        <div className="mb-6">
+        <div className="mb-4">
           <label htmlFor="password" 
                   className="label">
             {t('passwordText')}
@@ -96,9 +108,28 @@ export default function AuthForm() {
                               message={t('inputPasswordWrongEntry')} />
         </div>
 
+        {/* Champ MOT DE PASSE - Bis */}
+        {
+          pathname === '/signup' && (
+            <div className="mb-4">
+              <label htmlFor="password-bis" 
+                      className="label">
+                {t('passwordConfirmationText')}
+              </label>
+              <InputPassword id="password-bis" 
+                              inputRef={passwordBisRef} 
+                              autoComplete="password confirmation" 
+                              isPasswordBisErrorDisplayed={isPasswordBisErrorDisplayed} 
+                              onChange={handlehange} />
+              <FormElementMessage className={isPasswordBisErrorDisplayed ? '' : 'hidden'} 
+                                  message={t('inputPasswordWrongEntry')} />
+            </div>
+          )
+        }
+
         {/* Bouton SUBMIT */}
         <Button disabled={isDisabled}
-                className="btn-submit-form">
+                className="mt-6 btn-submit-form">
           {t('submitText')}
         </Button>
       </Form>

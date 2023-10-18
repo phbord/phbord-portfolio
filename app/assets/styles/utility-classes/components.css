@@ -16,6 +16,15 @@
     @apply w-full max-w-[50rem] mx-auto px-5 pb-10 transition-all;
   }
   .container-form {
+    @apply w-full mx-auto px-5 pb-10 transition-all;
+  }
+  .container-form--light {
+    @apply h-screen flex flex-col justify-center bg-no-repeat bg-center bg-cover ;
+  }
+  .container-form--bg-body {
+    @apply bg-[url('/images/backgrounds/bg-map.jpg')];
+  }
+  .content-form {
     @apply w-full max-w-[25rem] mx-auto px-5 pb-10 transition-all;
   }
 
@@ -175,6 +184,15 @@
   }
 
   /* STRATEGIES OBLIQUES */
+  .container-oblique-strategies {
+    @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fuji.jpeg')] transition-all;
+  }
+  .content-oblique-strategies {
+    @apply w-full max-w-[40rem] mx-auto px-5 pb-10 transition-all;
+  }
+  .oblique-strategies-body {
+    @apply w-full max-w-[50rem] px-3 sm:px-6 py-4 sm:py-8 border border-dotted border-orange-500;
+  }
   .oblique-strategies-chapo {
     @apply mb-3 text-orange-700 text-base font-light;
   }
@@ -185,7 +203,7 @@
     @apply mb-6 p-3 border bg-gray-100 text-cyan-900 text-sm font-light;
   }
   .oblique-strategies-btn {
-    @apply px-3 py-2 flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all;
+    @apply px-3 py-2 flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all !important;
   }
   .oblique-strategies-btn-icon {
     @apply h-4 mr-1;

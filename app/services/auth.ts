@@ -15,3 +15,5 @@ export async function signUp(email: string, password: string) {
     
   }
 }
+
+export async function signIn(email: string, password: string) {}

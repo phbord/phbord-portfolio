@@ -10,7 +10,11 @@ import InputPassword from "~/components/core/form/InputPassword";
 import Input from "~/components/core/form/Input";
 
 
-export default function AuthForm() {
+interface AuthFormInterface {
+  className?: string;
+}
+
+export default function AuthForm({className=''}: AuthFormInterface) {
   const { t } = useTranslation();
   const data = useActionData();
   const [dataForm, setDataForm] = useState(data);
@@ -68,7 +72,7 @@ export default function AuthForm() {
 
   return (
     <>
-      <Form method="post" className="form">
+      <Form method="post" className={`form ${className}`}>
         {/* Bloc MESSAGE */}
         {
           data?.isDisplayedError && data?.messageType
@@ -129,6 +133,7 @@ export default function AuthForm() {
 
         {/* Bouton SUBMIT */}
         <Button disabled={isDisabled}
+                type="submit"
                 className="mt-6 btn-submit-form">
           {t('submitText')}
         </Button>

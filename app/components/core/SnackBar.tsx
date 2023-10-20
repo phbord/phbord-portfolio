@@ -9,9 +9,10 @@ interface SnackBarInterface {
   modalClass?: string;
   isSuccess?: boolean;
   isError?: boolean;
+  isCloseButton?: boolean;
 }
 
-export default function SnackBar({children, modalClass='', isSuccess=false, isError=false}: SnackBarInterface) {
+export default function SnackBar({children, modalClass='', isSuccess=false, isError=false, isCloseButton=false}: SnackBarInterface) {
   const [stateClass, setStateClass] = useState('');
 
   const changeStateClass = () => {

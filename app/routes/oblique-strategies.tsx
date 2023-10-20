@@ -21,7 +21,7 @@ export default function ObliqueStrategies() {
   const { t } = useTranslation();
   const { newLang } = useLangStore();
   const [sentence, setSentence] = useState('');
-    const titlePage = t('header.5.name', { returnObjects: true });
+  const titlePage = t('header.5.name', { returnObjects: true });
 
   const createRandomSentence = () => {
     const data = t('strategiesObliques', { returnObjects: true });

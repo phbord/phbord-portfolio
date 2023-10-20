@@ -1,4 +1,4 @@
-import { Form, useActionData, useMatches } from "@remix-run/react";
+import { Form, useActionData, useMatches, useNavigate, useNavigation } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -8,6 +8,7 @@ import FormMessage from "~/components/core/form/FormMessage";
 import FormElementMessage from "~/components/core/form/FormElementMessage";
 import InputPassword from "~/components/core/form/InputPassword";
 import Input from "~/components/core/form/Input";
+import SnackBar from "../SnackBar";
 
 
 interface AuthFormInterface {
@@ -27,6 +28,9 @@ export default function AuthForm({className=''}: AuthFormInterface) {
   const passwordBisRef = useRef('');
   const matches = useMatches();
   const pathname = matches[1].pathname;
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+  const navigate = useNavigate();
 
   const handlehange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.id === 'email') {
@@ -67,6 +71,9 @@ export default function AuthForm({className=''}: AuthFormInterface) {
 
   useEffect(() => {
     getErrorMessage(data);
+    data?.isDisplayedSnackBar && setTimeout(() => {
+      navigate(data?.redirectionPath);
+    }, 3000);
   }, [data])
 
 
@@ -132,12 +139,21 @@ export default function AuthForm({className=''}: AuthFormInterface) {
         }
 
         {/* Bouton SUBMIT */}
-        <Button disabled={isDisabled}
+        <Button disabled={isDisabled || isSubmitting}
                 type="submit"
                 className="mt-6 btn-submit-form">
-          {t('submitText')}
+          {isSubmitting ? t('submittingText') : t('submitText')}
         </Button>
       </Form>
+      <div>
+        {
+          data?.isDisplayedSnackBar && (
+            <SnackBar isSuccess modalClass="snackbar-slide-in">
+              {t(data?.message)}
+            </SnackBar>
+          )
+        }
+      </div>
     </>
   )
 }

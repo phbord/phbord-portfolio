@@ -26,6 +26,9 @@ const mainData = {
       topPageText: 'Haut de page',
       signupText: 'Inscription',
       signinText: 'Connexion',
+      notFoundText: 'Page non trouvée',
+      notFoundDescText: 'Désolé, nous n’avons pas trouvé la page que vous recherchez.',
+      errorText: 'Erreur',
       statusText: 'Statut',
       submitText: 'Envoyer',
       submittingText: 'Soumission',
@@ -44,6 +47,7 @@ const mainData = {
       mainKeywords: mainKeywordsFr,
       technologiesUsed: technologiesUsed,
       strategiesObliques: strategiesObliquesFr,
+      signupSnackbarText: 'Bravo, vous allez recevoir un email comprenant un lien de corfirmation.',
     }
   },
   // /////////////////////////////////////////
@@ -61,6 +65,9 @@ const mainData = {
       topPageText: 'Top of page',
       signupText: 'Registration',
       signinText: 'Sign in',
+      notFoundText: 'Page not found',
+      notFoundDescText: 'Sorry, we couldn\'t find the page you were looking for.',
+      errorText: 'Error',
       statusText: 'Status',
       submitText: 'Submit',
       submittingText: 'Submitting',
@@ -79,6 +86,7 @@ const mainData = {
       mainKeywords: mainKeywordsEn,
       technologiesUsed: technologiesUsed,
       strategiesObliques: strategiesObliquesEn,
+      signupSnackbarText: 'Well done, you will receive an email including a confirmation link.',
     }
   }
 };

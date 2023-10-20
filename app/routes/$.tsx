@@ -1,37 +1,46 @@
-import { isRouteErrorResponse, useRouteError } from '@remix-run/react'
+import { Link, isRouteErrorResponse, useRouteError } from '@remix-run/react'
+import { useTranslation } from "react-i18next";
 
 
 export default function ErrorBoundary() {
+  const { t } = useTranslation();
   const error = useRouteError
   const titleValue = "Page non trouvée"
   const detailsValue = "Désolé, nous n’avons pas trouvé la page que vous recherchez."
   const homeLinkValue = "Retour à l'accueil"
 
   return (
-    <div className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-      {
-        isRouteErrorResponse(error)
-          ? `${error.status} ${error.statusText}`
-          : error instanceof Error
-            ? error.message
-            : (
-              <div className="text-center">
-                <p className="text-base font-semibold text-indigo-600">404</p>
-                <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                  {titleValue}
-                </h1>
-                <p className="mt-6 text-base leading-7 text-gray-600">
-                  {detailsValue}
-                </p>
-                <div className="mt-10 flex items-center justify-center gap-x-6">
-                  <a href="#"
-                      className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    {homeLinkValue}
-                  </a>
-                </div>
-              </div>
-            )
-        }
-    </div>
+    <>
+      {/* BODY */}
+      <section className="container-not-found bg-neutral-200">
+        <div className="content-oblique-strategies">
+          {
+            isRouteErrorResponse(error)
+              ? `${error.status} ${error.statusText}`
+              : error instanceof Error
+                ? error.message
+                : (
+                  <>
+                    {/* Titre */}
+                    <h2 className="h2">
+                      {t('notFoundText')}
+                    </h2>
+                    <div className="oblique-strategies-body">
+                      <p className='mb-1 text-cyan-900 text-xl'>
+                        {t('errorText')} 404
+                      </p>
+                      <p className='mb-5 text-cyan-900 text-base'>
+                        {t('notFoundDescText')}
+                      </p>
+                      <Link to='/' className='btn-auto'>
+                        {homeLinkValue}
+                      </Link>
+                    </div>
+                  </>
+                )
+          }
+        </div>
+      </section>
+    </>
   )
 }

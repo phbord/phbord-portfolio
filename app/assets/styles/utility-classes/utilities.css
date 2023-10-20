@@ -8,4 +8,17 @@
   .filter-grayscale {
     filter: grayscale(100%);
   }
+
+  @keyframes slide-in-snackbar {
+    0% {
+      bottom: -25vh;
+    }
+    100% {
+      bottom: 0;
+    }
+  }
+  .snackbar-slide-in {
+    animation-name: slide-in-snackbar;
+    animation-duration: .25s;
+  }
 }

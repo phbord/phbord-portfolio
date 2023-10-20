@@ -1,8 +1,8 @@
-export default function isCompleteLayout(pathname: string): boolean {
+export default function isCompleteLayout(pathname: string, idRoute: string): boolean {
   if (pathname === '/signup' 
       || pathname === '/signin' 
-      || pathname === '/oblique-strategies' 
-      || pathname == '/error-404') {
+      || pathname === '/oblique-strategies'
+      || idRoute === 'routes/$') {
     return false;
   }
   return true;

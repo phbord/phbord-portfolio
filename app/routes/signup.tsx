@@ -14,7 +14,12 @@ export async function action({request}) {
     return { isDisplayedError: true, messageType: 'inputWrongEntries' };
   }
   signUp(formData.get('email'), formData.get('password'));
-  return redirect('/');
+  
+  return {
+    isDisplayedSnackBar: true,
+    redirectionPath: '/',
+    message: 'signupSnackbarText'
+  }
 }
 
 export default function Signup() {

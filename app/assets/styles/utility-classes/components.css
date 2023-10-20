@@ -24,6 +24,9 @@
   .container-form--bg-body {
     @apply bg-[url('/images/backgrounds/bg-map.jpg')];
   }
+  .container-not-found {
+    @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fly-tv.jpeg')] transition-all;
+  }
   .content-form {
     @apply w-full max-w-[25rem] mx-auto px-5 pb-10 transition-all;
   }
@@ -172,6 +175,11 @@
     @apply absolute right-0 top-0 bottom-0 px-1 pt-2 flex justify-center items-center bg-white text-cyan-900;
   }
 
+  /* BOUTONS */
+  .btn-auto {
+    @apply px-3 py-2 inline-flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all !important;
+  }
+
   /* BOUTON HAUT DE PAGE */
   .top-scroll-btn {
     @apply fixed bottom-10 right-6 w-8 h-8 flex justify-center items-center rounded-[50%] bg-orange-500 hover:opacity-70 transition-all !important;
@@ -191,7 +199,7 @@
     @apply w-full max-w-[40rem] mx-auto px-5 pb-10 transition-all;
   }
   .oblique-strategies-body {
-    @apply w-full max-w-[50rem] px-3 sm:px-6 py-4 sm:py-8 border border-dotted border-orange-500;
+    @apply w-full max-w-[50rem] px-3 sm:px-6 py-4 sm:py-8 border border-dotted border-orange-500 bg-[#FFFFFF5a];
   }
   .oblique-strategies-chapo {
     @apply mb-3 text-orange-700 text-base font-light;

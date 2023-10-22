@@ -7,7 +7,7 @@ import { getSupabase } from "~/services/api";
 export async function signUp(email: string, password: string) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
-    const { error, data } = await supabase.auth.signUp({
+    const { data, user, session, error, status } = await supabase.auth.signUp({
       email,
       password,
     });
@@ -27,7 +27,7 @@ export async function signUp(email: string, password: string) {
 export async function signIn(email: string, password: string) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
-    const { error, data } = await supabase.auth.signInWithPassword({
+    const { data, session, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -35,6 +35,7 @@ export async function signIn(email: string, password: string) {
     if (error) {
       throw error;
     }
+    console.log(session, '==========> Connexion : ', data);
     return true;
   }
   catch (error) {
@@ -47,15 +48,36 @@ export async function signIn(email: string, password: string) {
 export async function signOut() {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
-    const { error, data } = await supabase.auth.signOut();
+    const { error, data, status } = await supabase.auth.signOut();
 
     if (error) {
       throw error;
     }
+    console.log(status, '==========> Déconnexion : ', data);
     return true;
   }
   catch (error) {
     console.log(error.message);
+    return null;
+  }
+}
+
+// Récupération de la session
+export async function getSession() {
+  try {
+    const supabase = await getSupabase();
+    const { error, data: { session } } = await supabase.auth.getSession();
+    console.log('==========> Récupération de la session : ', session);
+
+    if (error) {
+      throw error;
+    }
+    else if (!error) {
+      return session;
+    }
+  }
+  catch (error) {
+    console.log(error.message)
     return null;
   }
 }

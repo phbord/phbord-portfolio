@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useActionData, useNavigate } from '@remix-run/react';
+import { Form, useActionData, useLoaderData, useNavigate } from '@remix-run/react';
+import { LoaderFunctionArgs, json } from '@remix-run/node';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
+import { getSession } from '~/services/auth';
 import ItemListLayout from '~/components/layout/ItemListLayout';
 import Button from '~/components/core/buttons/Button';
 import SnackBar from '~/components/core/SnackBar';
@@ -18,7 +20,19 @@ interface ItemSidebarInterface {
   href: string;
 }
 
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const response = new Response();
+  const session = await getSession();
+  console.log('LOADER ----> sessionData:', session, ' / headers:', response.headers);
+  return json(
+    { session },
+    { headers: response.headers }
+  );
+}
+
 export default function Sidebar({mainData, authData}: SidebarInterface) {
+  const session = useLoaderData<typeof loader>();
+  console.log('Sidebar > sessionData:', session);
   const { t } = useTranslation();
   const data = useActionData();
   const openedClass = 'right-0';
@@ -30,6 +44,8 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
 
 
   useEffect(() => {
+    console.log('useEffect )))session:', session);
+    
     data?.isDisplayedSnackBar && setTimeout(() => {
       navigate(data?.redirectionPath);
     }, 3000);

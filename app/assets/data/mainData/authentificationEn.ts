@@ -2,7 +2,7 @@ import { authentificationInterface } from "~/interfaces/mainData/authentificatio
 
 const authentificationEn: authentificationInterface[] = [
   { name: 'Sign in', href: '/signin' },
-  { name: 'Disconnection', href: '/disconnection' },
+  { name: 'Sign out', href: '/signout' },
 ];
 
 export default authentificationEn;

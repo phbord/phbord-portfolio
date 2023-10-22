@@ -11,14 +11,26 @@ export async function action({request}) {
   const formData = await request.formData();
 
   if (!isInputEmailValidate(formData.get('email')) || !isInputPasswordValidate(formData.get('password'))) {
-    return { isDisplayedError: true, messageType: 'inputWrongEntries' };
+    return {
+      isDisplayedError: true,
+      messageType: 'inputWrongEntries'
+    };
   }
-  signUp(formData.get('email'), formData.get('password'));
-  
+
+  const res = await signUp(formData.get('email'), formData.get('password'));
+  if (res) {
+    return {
+      isValid: true,
+      isDisplayedSnackBar: true,
+      redirectionPath: '/',
+      message: 'signupSnackbarText'
+    }
+  }
   return {
+    isValid: false,
     isDisplayedSnackBar: true,
     redirectionPath: '/',
-    message: 'signupSnackbarText'
+    message: 'signupSnackbarErrorText'
   }
 }
 

@@ -8,7 +8,7 @@ import FormMessage from "~/components/core/form/FormMessage";
 import FormElementMessage from "~/components/core/form/FormElementMessage";
 import InputPassword from "~/components/core/form/InputPassword";
 import Input from "~/components/core/form/Input";
-import SnackBar from "../SnackBar";
+import SnackBar from "~/components/core/SnackBar";
 
 
 interface AuthFormInterface {
@@ -145,15 +145,25 @@ export default function AuthForm({className=''}: AuthFormInterface) {
           {isSubmitting ? t('submittingText') : t('submitText')}
         </Button>
       </Form>
-      <div>
+
+      {/* SNACKBAR */}
+      <>
         {
-          data?.isDisplayedSnackBar && (
-            <SnackBar isSuccess modalClass="snackbar-slide-in">
-              {t(data?.message)}
-            </SnackBar>
-          )
+          data?.isDisplayedSnackBar
+            ? data?.isValid
+              ? (
+                <SnackBar isSuccess modalClass="snackbar-slide-in">
+                  {t(data?.message)}
+                </SnackBar>
+              )
+              : (
+                <SnackBar isError modalClass="snackbar-slide-in">
+                  {t(data?.message)}
+                </SnackBar>
+              )
+            : ''
         }
-      </div>
+      </>
     </>
   )
 }

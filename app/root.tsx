@@ -18,11 +18,30 @@ import mainData from '~/assets/data/mainData';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
 import TopPageButton from '~/components/core/buttons/TopPageButton';
+import { signOut } from './services/auth';
 
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
+
+export async function action() {
+  const res = await signOut();
+  if (res) {
+    return {
+      isValid: true,
+      isDisplayedSnackBar: true,
+      redirectionPath: '/',
+      message: 'signoutSnackbarText'
+    }
+  }
+  return {
+    isValid: false,
+    isDisplayedSnackBar: true,
+    redirectionPath: '/',
+    message: 'signoutSnackbarErrorText'
+  }
+}
 
 
 export default function App() {

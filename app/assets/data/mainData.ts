@@ -48,6 +48,11 @@ const mainData = {
       technologiesUsed: technologiesUsed,
       strategiesObliques: strategiesObliquesFr,
       signupSnackbarText: 'Bravo, vous allez recevoir un email comprenant un lien de corfirmation.',
+      signupSnackbarErrorText: 'Désolé, l\'inscription n\'a pas fonctionnée.',
+      signinSnackbarText: 'Bravo, vous êtes connecté.',
+      signinSnackbarErrorText: 'Désolé, vous n\'êtes pas connecté.',
+      signoutSnackbarText: 'Bravo, vous êtes bien déconnecté.',
+      signoutSnackbarErrorText: 'Désolé, vous n\'êtes pas déconnecté.',
     }
   },
   // /////////////////////////////////////////
@@ -87,6 +92,11 @@ const mainData = {
       technologiesUsed: technologiesUsed,
       strategiesObliques: strategiesObliquesEn,
       signupSnackbarText: 'Well done, you will receive an email including a confirmation link.',
+      signupSnackbarErrorText: 'Sorry, registration did not work.',
+      signinSnackbarText: 'Well done, you are connected.',
+      signinSnackbarErrorText: 'Sorry, you are not connected.',
+      signoutSnackbarText: 'Well done, you are disconnected.',
+      signoutSnackbarErrorText: 'Sorry, you are not logged out.',
     }
   }
 };

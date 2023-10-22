@@ -6,15 +6,32 @@ import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
 import AuthForm from "~/components/core/form/AuthForm";
 
+
 export async function action({request}) {
   const formData = await request.formData();
-  const signupData = Object.fromEntries(formData);
-  console.log(formData.get('email'), '))))))', formData.get('password'), '))))))', signupData);
 
   if (!isInputEmailValidate(formData.get('email')) || !isInputPasswordValidate(formData.get('password'))) {
-    return { isDisplayedError: true, messageType: 'inputWrongEntries' };
+    return {
+      isDisplayedError: true,
+      messageType: 'inputWrongEntries'
+    };
   }
-  return redirect('/signin');
+
+  const res = await signIn(formData.get('email'), formData.get('password'));
+  if (res) {
+    return {
+      isValid: true,
+      isDisplayedSnackBar: true,
+      redirectionPath: '/',
+      message: 'signinSnackbarText'
+    }
+  }
+  return {
+    isValid: false,
+    isDisplayedSnackBar: true,
+    redirectionPath: '/',
+    message: 'signinSnackbarErrorText'
+  }
 }
 
 export default function Signin() {

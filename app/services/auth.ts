@@ -36,7 +36,7 @@ export async function signIn(email: string, password: string) {
       throw error;
     }
     console.log(session, '==========> Connexion : ', data);
-    return true;
+    return data;
   }
   catch (error) {
     console.log(error.message);

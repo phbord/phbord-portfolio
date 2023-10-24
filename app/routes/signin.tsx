@@ -5,6 +5,8 @@ import useLangStore from '~/services/store/useLangStore';
 import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
 import AuthForm from "~/components/core/form/AuthForm";
+import { useActionData } from "@remix-run/react";
+import { useEffect } from "react";
 
 
 export async function action({request}) {
@@ -18,8 +20,11 @@ export async function action({request}) {
   }
 
   const res = await signIn(formData.get('email'), formData.get('password'));
+  console.log('---------- res:', res);
+  
   if (res) {
     return {
+      accessToken: res.session.access_token,
       isValid: true,
       isDisplayedSnackBar: true,
       redirectionPath: '/',
@@ -41,6 +46,11 @@ export default function Signin() {
     status: 200,
     message: t('inputWrongEntries')
   };
+  const data = useActionData();
+
+  useEffect(() => {
+    data?.isValid && localStorage.setItem('access_token', data?.accessToken);
+  }, [data])
 
   return (
     <>

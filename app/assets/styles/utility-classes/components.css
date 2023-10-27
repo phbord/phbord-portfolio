@@ -179,6 +179,21 @@
   .btn-auto {
     @apply px-3 py-2 inline-flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all !important;
   }
+  .btn-admin-form-group {
+    @apply flex;
+  }
+  .btn-admin-form {
+    @apply w-7 h-7 px-1 py-0 border-2 rounded-[50%] flex justify-center items-center transition-all;
+  }
+  .btn-admin-form--new {
+    @apply border-green-400 text-green-400 hover:border-green-300 hover:text-green-300 !important;
+  }
+  .btn-admin-form--edit {
+    @apply border-orange-300 text-orange-300 hover:border-orange-200 hover:text-orange-200 !important;
+  }
+  .btn-admin-form--delete {
+    @apply border-orange-600 text-orange-600 hover:border-orange-400 hover:text-orange-400 !important;
+  }
 
   /* BOUTON HAUT DE PAGE */
   .top-scroll-btn {

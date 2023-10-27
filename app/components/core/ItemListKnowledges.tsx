@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import Tooltip from '~/components/core/Tooltip';
 import Button from '~/components/core/buttons/Button';
+import FormButtonGroup from './form/FormButtonGroup';
 
 
 interface ItemListKnowledgesInterface {
@@ -29,10 +30,13 @@ export default function ItemListKnowledges({data, noData, lang}: ItemListKnowled
         data
           ? (
             <li className='mb-6'>
-              <h3 className='h3'>
-                {lang === 'fr' ? data.title_fr : data.title_en}
-              </h3>
-              <ul className='flex flex-wrap border-t border-dotted border-orange-500'>
+              <div className='flex justify-between mb-1'>
+                <h3 className='h3 mr-3'>
+                  {lang === 'fr' ? data.title_fr : data.title_en}
+                </h3>
+                <FormButtonGroup />
+              </div>
+              <ul className='flex flex-wrap border-t border-orange-500'>
                 {
                   data?.list?.map((item: {picto: string; name: string}) => (
                     <li key={uuidv4()} 

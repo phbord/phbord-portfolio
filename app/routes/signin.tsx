@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, createCookie, isCookie, json } from "@remix-run/node";
-import { useActionData } from "@remix-run/react";
+import { useActionData, useNavigate } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -7,7 +7,7 @@ import useLangStore from '~/services/store/useLangStore';
 import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
 import AuthForm from "~/components/core/form/AuthForm";
-import { sbSession } from "~/services/cookies";
+import { isSbSession, sbSession } from "~/services/cookies";
 
 
 export async function action({request}: ActionFunctionArgs) {
@@ -35,7 +35,6 @@ export async function action({request}: ActionFunctionArgs) {
       accessToken: res,
       isValid: true,
       isDisplayedSnackBar: true,
-      redirectionPath: '/',
       message: 'signinSnackbarText'
     },
     {
@@ -47,7 +46,6 @@ export async function action({request}: ActionFunctionArgs) {
   return {
     isValid: false,
     isDisplayedSnackBar: true,
-    redirectionPath: '/',
     message: 'signinSnackbarErrorText'
   }
 }
@@ -56,6 +54,7 @@ export default function Signin() {
   const data = useActionData();
   const { t } = useTranslation();
   const { newLang } = useLangStore();
+  const navigate = useNavigate();
   const dataMessage = {
     status: 200,
     message: t('inputWrongEntries')
@@ -63,8 +62,11 @@ export default function Signin() {
 
 
   useEffect(() => {
-    if (data?.isValid) {
-    }
+    isSbSession() && navigate('/');
+  }, [])
+
+  useEffect(() => {
+    (isSbSession() || data?.isValid) && navigate('/');
   }, [data])
 
 

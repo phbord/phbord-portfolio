@@ -53,6 +53,10 @@ const mainData = {
       signinSnackbarErrorText: 'Désolé, vous n\'êtes pas connecté.',
       signoutSnackbarText: 'Bravo, vous êtes bien déconnecté.',
       signoutSnackbarErrorText: 'Désolé, vous n\'êtes pas déconnecté.',
+      buttonText: 'Bouton',
+      buttonNewText: 'Créer',
+      buttonEditText: 'Editer',
+      buttonDeleteText: 'Supprimer',
     }
   },
   // /////////////////////////////////////////
@@ -97,6 +101,10 @@ const mainData = {
       signinSnackbarErrorText: 'Sorry, you are not connected.',
       signoutSnackbarText: 'Well done, you are disconnected.',
       signoutSnackbarErrorText: 'Sorry, you are not logged out.',
+      buttonText: 'Button',
+      buttonNewText: 'Create',
+      buttonEditText: 'Edit',
+      buttonDeleteText: 'Delete',
     }
   }
 };

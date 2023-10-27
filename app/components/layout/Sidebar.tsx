@@ -36,7 +36,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const handleClickSignOut = async () => {
     handleClickMenu();
     setIsSignoutClick(!isSignoutClick);
-    //removeCookie('sb_session');
+    navigate('/');
   };
 
 

@@ -1,4 +1,4 @@
-export default function Knowledge() {
+export default function KnowledgeEdit() {
   return (
     <div>KnowledgesEdit</div>
   )

@@ -7,6 +7,8 @@ interface ItemListKnowledgesInterface {
   data: DataItemListKnowledgesInterface;
   noData?: string;
   lang: string;
+  idEdit: string;
+  idDelete: string;
   onNewClick?: () => void;
   onEditClick?: () => void;
   onDeleteClick?: () => void;
@@ -23,7 +25,7 @@ interface DataListItemListKnowledgesInterface {
   name?: string;
 }
 
-export default function ItemListKnowledges({data, noData, lang, onNewClick, onEditClick, onDeleteClick}: ItemListKnowledgesInterface) {
+export default function ItemListKnowledges({data, noData, lang, idEdit, idDelete, onEditClick, onDeleteClick}: ItemListKnowledgesInterface) {
   return (
     <>
       {
@@ -37,9 +39,10 @@ export default function ItemListKnowledges({data, noData, lang, onNewClick, onEd
                   {lang === 'fr' ? data.title_fr : data.title_en}
                 </h3>
                 {/* GROUPE de boutons */}
-                <FormButtonGroup onNewClick={onNewClick} 
-                                  onEditClick={onEditClick} 
-                                  onDeleteClick={onDeleteClick} />
+                <FormButtonGroup onEditClick={onEditClick}
+                                  onDeleteClick={onDeleteClick}
+                                  idEdit={idEdit}
+                                  idDelete={idDelete} />
               </div>
 
               {/* L I S T E */}

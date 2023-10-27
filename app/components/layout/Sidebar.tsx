@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Form, useActionData, useNavigate } from '@remix-run/react';
+import { useActionData, useFetcher, useNavigate } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
@@ -31,6 +31,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const [isSignoutClick, setIsSignoutClick] = useState(false);
   const [displayedSnackBar, setDisplayedSnackBar] = useState(false);
   const navigate = useNavigate();
+  const fetcher = useFetcher();
 
   const handleClickMenu = () => useSidebarStore.getState().setSideBarOpened();
 
@@ -48,13 +49,13 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
 
   const buttonSignOutBlock = (
     <li>
-      <Form method="post">
+      <fetcher.Form method="post">
         <Button type='submit'
                 className='sidebar-link w-full flex'
                 onClick={handleClickSignOut}>
           {authData[1]?.name}
         </Button>
-      </Form>
+      </fetcher.Form>
     </li>
   );
 

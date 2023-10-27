@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { type LinksFunction } from "@remix-run/node";
+import { ActionFunctionArgs, createCookie, json, type LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,44 +7,48 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useActionData,
 } from "@remix-run/react";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import { createInstance } from "i18next";
 
+import mainData from '~/assets/data/mainData';
 import stylesheet from "~/assets/styles/tailwind.css";
 import useLangStore from '~/services/store/useLangStore';
 import useScrollYPositionStore from '~/services/store/useScrollYPositionStore';
-import mainData from '~/assets/data/mainData';
+import { getCookie } from '~/services/cookies';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
 import TopPageButton from '~/components/core/buttons/TopPageButton';
-import { signOut } from './services/auth';
 
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-export async function action() {
-  const res = await signOut();
-  if (res) {
-    return {
-      isValid: true,
-      isDisplayedSnackBar: true,
-      redirectionPath: '/',
-      message: 'signoutSnackbarText'
-    }
-  }
-  return {
-    isValid: false,
+
+export async function action({request}: ActionFunctionArgs) {
+  const formData: FormData = await request.formData();
+  const cookieHeader = request.headers.get("Cookie");
+  const sessionCookie = createCookie("sb_session", {
+    expires: new Date("1970-01-01"),
+  });
+
+  return json({
+    isValid: true,
     isDisplayedSnackBar: true,
-    redirectionPath: '/',
-    message: 'signoutSnackbarErrorText'
-  }
+    message: 'signoutSnackbarText',
+    cookieHeader,
+  },
+  {
+    headers: {
+      "Set-Cookie": await sessionCookie.serialize(),
+    },
+  });
 }
 
-
 export default function App() {
+  const data = useActionData();
   const { newLang } = useLangStore();
   const [lang, setLang] = useState('');
   const [sidebar, setSidebar] = useState('');
@@ -123,6 +127,7 @@ export default function App() {
               <ScrollRestoration />
               <Scripts />
               <LiveReload />
+              <Scripts />
             </Layout>
           </body>
         </html>

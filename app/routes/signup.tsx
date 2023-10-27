@@ -1,23 +1,23 @@
-import { redirect } from "@remix-run/node";
 import { useTranslation } from "react-i18next";
 
 import useLangStore from '~/services/store/useLangStore';
 import { signUp } from "~/services/auth";
-import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
 import AuthForm from "~/components/core/form/AuthForm";
 
 
 export async function action({request}) {
-  const formData = await request.formData();
+  const formData: FormData = await request.formData();
+  const emailValue: FormDataEntryValue | null = formData.get('email');
+  const passwordValue: FormDataEntryValue | null = formData.get('password');
 
-  if (!isInputEmailValidate(formData.get('email')) || !isInputPasswordValidate(formData.get('password'))) {
+  if (emailValue !== 'phbord@gmail.com' || emailValue !== 'phbord@protonmail.com') {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'
     };
   }
 
-  const res = await signUp(formData.get('email'), formData.get('password'));
+  const res = await signUp(emailValue, passwordValue);
   if (res) {
     return {
       isValid: true,

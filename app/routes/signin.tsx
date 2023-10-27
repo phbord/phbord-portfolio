@@ -1,35 +1,48 @@
-import { redirect } from "@remix-run/node";
+import { ActionFunctionArgs, createCookie, isCookie, json } from "@remix-run/node";
+import { useActionData } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import useLangStore from '~/services/store/useLangStore';
 import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
 import AuthForm from "~/components/core/form/AuthForm";
-import { useActionData } from "@remix-run/react";
-import { useEffect } from "react";
+import { sbSession } from "~/services/cookies";
 
 
-export async function action({request}) {
-  const formData = await request.formData();
+export async function action({request}: ActionFunctionArgs) {
+  const formData: FormData = await request.formData();
+  const emailValue: FormDataEntryValue | null = formData.get('email');
+  const passwordValue: FormDataEntryValue | null = formData.get('password');
 
-  if (!isInputEmailValidate(formData.get('email')) || !isInputPasswordValidate(formData.get('password'))) {
+  if (!isInputEmailValidate(emailValue) || !isInputPasswordValidate(passwordValue)) {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'
     };
   }
 
-  const res = await signIn(formData.get('email'), formData.get('password'));
-  console.log('---------- res:', res);
+  const res = await signIn(emailValue, passwordValue);
   
   if (res) {
-    return {
-      accessToken: res.session.access_token,
+    const cookieHeader = request.headers.get("Cookie");
+    //const sessionCookie = await sbSession(res.access_token).parse(cookieHeader);
+    const sessionCookie = sbSession(res.access_token);
+    
+    return json({
+      cookieHeader,
+      signIn: res,
+      accessToken: res,
       isValid: true,
       isDisplayedSnackBar: true,
       redirectionPath: '/',
       message: 'signinSnackbarText'
-    }
+    },
+    {
+      headers: {
+        "Set-Cookie": await sessionCookie.serialize({}),
+      },
+    })
   }
   return {
     isValid: false,
@@ -40,17 +53,20 @@ export async function action({request}) {
 }
 
 export default function Signin() {
+  const data = useActionData();
   const { t } = useTranslation();
   const { newLang } = useLangStore();
   const dataMessage = {
     status: 200,
     message: t('inputWrongEntries')
   };
-  const data = useActionData();
+
 
   useEffect(() => {
-    data?.isValid && localStorage.setItem('access_token', data?.accessToken);
+    if (data?.isValid) {
+    }
   }, [data])
+
 
   return (
     <>

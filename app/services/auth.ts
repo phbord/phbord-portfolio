@@ -1,9 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-import { getSupabase } from "~/services/api";
+import { getSupabase, getSupabaseFront } from "~/services/api";
 
 
-// Inscription
+// INSCRIPTION
 export async function signUp(email: string, password: string) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
@@ -23,7 +23,7 @@ export async function signUp(email: string, password: string) {
   }
 }
 
-// Connexion
+// CONNEXION
 export async function signIn(email: string, password: string) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
@@ -35,8 +35,8 @@ export async function signIn(email: string, password: string) {
     if (error) {
       throw error;
     }
-    console.log(session, '==========> Connexion : ', data);
-    return data;
+    console.log('==========> Connexion : ', data);
+    return data.session;
   }
   catch (error) {
     console.log(error.message);
@@ -44,7 +44,7 @@ export async function signIn(email: string, password: string) {
   }
 }
 
-// Déconnexion
+// DECONNEXION
 export async function signOut() {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
@@ -62,7 +62,7 @@ export async function signOut() {
   }
 }
 
-// Récupération de la session
+// RECUPERATION DE LA SESSION
 export async function getSession() {
   try {
     const supabase = await getSupabase();
@@ -74,6 +74,26 @@ export async function getSession() {
     }
     else if (!error) {
       return session;
+    }
+  }
+  catch (error) {
+    console.log(error.message)
+    return null;
+  }
+}
+
+// Récupération de l'utilisateur
+export async function getUser() {
+  try {
+    const supabase = await getSupabase();
+    const { error, data: { user } } = await supabase.auth.getUser();
+    console.log('==========> Récupération de l\'utilisateur : ', user);
+
+    if (error) {
+      throw error;
+    }
+    else if (!error) {
+      return user;
     }
   }
   catch (error) {

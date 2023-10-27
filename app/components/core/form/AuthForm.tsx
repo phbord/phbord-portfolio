@@ -32,7 +32,7 @@ export default function AuthForm({className=''}: AuthFormInterface) {
   const isSubmitting = navigation.state === 'submitting';
   const navigate = useNavigate();
 
-  const handlehange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.id === 'email') {
       setIsEmailErrorDisplayed(() => isInputEmailValidate(emailRef.current.value) ? false : true);
     }
@@ -87,7 +87,7 @@ export default function AuthForm({className=''}: AuthFormInterface) {
               <FormMessage data={dataForm} isError />
             )
         }
-
+        
         {/* Champ EMAIL */}
         <div className="mb-4">
           <label htmlFor="email" 
@@ -99,7 +99,7 @@ export default function AuthForm({className=''}: AuthFormInterface) {
                   inputRef={emailRef}
                   autoComplete="email" 
                   isInputErrorDisplayed={isEmailErrorDisplayed}
-                  onChange={handlehange} />
+                  onChange={handleChange} />
           <FormElementMessage className={isEmailErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputEmailWrongEntry')} />
         </div>
@@ -114,7 +114,7 @@ export default function AuthForm({className=''}: AuthFormInterface) {
                           inputRef={passwordRef} 
                           autoComplete="password" 
                           isPasswordErrorDisplayed={isPasswordErrorDisplayed} 
-                          onChange={handlehange} />
+                          onChange={handleChange} />
           <FormElementMessage className={isPasswordErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputPasswordWrongEntry')} />
         </div>
@@ -131,7 +131,7 @@ export default function AuthForm({className=''}: AuthFormInterface) {
                               inputRef={passwordBisRef} 
                               autoComplete="password confirmation" 
                               isPasswordBisErrorDisplayed={isPasswordBisErrorDisplayed} 
-                              onChange={handlehange} />
+                              onChange={handleChange} />
               <FormElementMessage className={isPasswordBisErrorDisplayed ? '' : 'hidden'} 
                                   message={t('inputPasswordWrongEntry')} />
             </div>

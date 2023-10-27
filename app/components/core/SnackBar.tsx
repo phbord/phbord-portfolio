@@ -33,9 +33,13 @@ export default function SnackBar({children, modalClass='', isSuccess=false, isEr
       <div className={`snackbar ${modalClass} ${stateClass}`}>
         {/* BOUTON "Fermer" */}
         <div className="flex justify-end mb-2">
-          <Button className="hover:text-orange-500 transition-all">
-            <XCircleIcon className="h-7" />
-          </Button>
+          {
+            isCloseButton && (
+                <Button className="hover:text-orange-500 transition-all">
+                  <XCircleIcon className="h-7" />
+                </Button>
+            )
+          }
         </div>
 
         {/* CONTENU */}

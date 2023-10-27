@@ -13,12 +13,18 @@
     0% {
       bottom: -25vh;
     }
-    100% {
+    12.5% {
       bottom: 0;
+    }
+    87.5% {
+      bottom: 0;
+    }
+    100% {
+      bottom: -25vh;
     }
   }
   .snackbar-slide-in {
     animation-name: slide-in-snackbar;
-    animation-duration: .25s;
+    animation-duration: 3s;
   }
 }

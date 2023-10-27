@@ -4,6 +4,7 @@ import { Form, useActionData, useNavigate } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
+import useSession from '~/services/store/useSession';
 import { getCookie, isSbSession, removeCookie } from '~/services/cookies';
 import ItemListLayout from '~/components/layout/ItemListLayout';
 import Button from '~/components/core/buttons/Button';
@@ -25,10 +26,10 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const { t } = useTranslation();
   const openedClass = 'right-0';
   const { isSideBarOpened }: any = useSidebarStore();
+  const { isSession }: any = useSession();
   const [toggleClass, setToggleClass] = useState(() => isSideBarOpened ? openedClass : '');
   const [isSignoutClick, setIsSignoutClick] = useState(false);
   const [displayedSnackBar, setDisplayedSnackBar] = useState(false);
-  const [isSession, setIsSession] = useState(false);
   const navigate = useNavigate();
 
   const handleClickMenu = () => useSidebarStore.getState().setSideBarOpened();
@@ -39,9 +40,27 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
     navigate('/');
   };
 
+  const buttonSignInBlock = (
+    <ItemListLayout data={authData[0]} 
+                    linkClass='sidebar-link'
+                    onClick={handleClickMenu} />
+  );
+
+  const buttonSignOutBlock = (
+    <li>
+      <Form method="post">
+        <Button type='submit'
+                className='sidebar-link w-full flex'
+                onClick={handleClickSignOut}>
+          {authData[1]?.name}
+        </Button>
+      </Form>
+    </li>
+  );
+
 
   useEffect(() => {
-    setIsSession(() => isSbSession());
+    useSession.getState().setSession();
   }, [])
 
   useEffect(() => {
@@ -49,16 +68,15 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
       navigate(data?.redirectionPath);
     }, 3000); */
     //console.log('isSignoutClick -------->', isSignoutClick);
-    setIsSession(() => isSbSession());
   }, [isSignoutClick])
 
   useEffect(() => {
     setToggleClass(() => isSideBarOpened ? openedClass : '');
-    setIsSession(() => isSbSession());
+    useSession.getState().setSession();
   }, [isSideBarOpened])
 
   useEffect(() => {
-    setIsSession(() => isSbSession());
+    useSession.getState().setSession();
 
     if (data?.isDisplayedSnackBar) {
       setDisplayedSnackBar(data?.isDisplayedSnackBar);
@@ -86,31 +104,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
 
         {/* Menu SECONDAIRE */}
         <ul className='mt-5 flex flex-col'>
-          {
-            isSession
-              ? (
-                <>
-                  {/* Bouton de DECONNEXION */}
-                  <li>
-                    <Form method="post">
-                      <Button type='submit'
-                              className='sidebar-link w-full flex'
-                              onClick={handleClickSignOut}>
-                        {authData[1]?.name}
-                      </Button>
-                    </Form>
-                  </li>
-                </>
-              )
-              : (
-                <>
-                  {/* Bouton de CONNEXION */}
-                  <ItemListLayout data={authData[0]} 
-                                  linkClass='sidebar-link'
-                                  onClick={handleClickMenu} />
-                </>
-              )
-          }
+          { isSession ? buttonSignOutBlock : buttonSignInBlock }
         </ul>
       </nav>
 

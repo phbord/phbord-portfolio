@@ -16,7 +16,8 @@ import mainData from '~/assets/data/mainData';
 import stylesheet from "~/assets/styles/tailwind.css";
 import useLangStore from '~/services/store/useLangStore';
 import useScrollYPositionStore from '~/services/store/useScrollYPositionStore';
-import { getCookie } from '~/services/cookies';
+import useSession from '~/services/store/useSession';
+import { getCookie, isSbSession } from '~/services/cookies';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
 import TopPageButton from '~/components/core/buttons/TopPageButton';
@@ -49,7 +50,8 @@ export async function action({request}: ActionFunctionArgs) {
 
 export default function App() {
   const data = useActionData();
-  const { newLang } = useLangStore();
+  const { newLang }: any = useLangStore();
+  const { isSession }: any = useSession();
   const [lang, setLang] = useState('');
   const [sidebar, setSidebar] = useState('');
 
@@ -101,10 +103,12 @@ export default function App() {
   useEffect(() => {
     setLangToStorage();
     setSidebarToStorage();
+    useSession.getState().setSession();
   }, []);
 
   useEffect(() => {
     setSidebarToStorage();
+    useSession.getState().setSession();
   }, [sidebar]);
 
 

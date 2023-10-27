@@ -1,9 +1,7 @@
-import { JSXElementConstructor, ReactElement, ReactNode, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import Tooltip from '~/components/core/Tooltip';
-import Button from '~/components/core/buttons/Button';
-import FormButtonGroup from './form/FormButtonGroup';
+import useSession from '~/services/store/useSession';
+import FormButtonGroup from '~/components/core/form/FormButtonGroup';
 
 
 interface ItemListKnowledgesInterface {
@@ -24,18 +22,25 @@ interface DataListItemListKnowledgesInterface {
 }
 
 export default function ItemListKnowledges({data, noData, lang}: ItemListKnowledgesInterface) {
+  const { isSession }: any = useSession();
+
   return (
     <>
       {
         data
           ? (
             <li className='mb-6'>
+              {/* H E A D E R */}
               <div className='flex justify-between mb-1'>
+                {/* TITRE */}
                 <h3 className='h3 mr-3'>
                   {lang === 'fr' ? data.title_fr : data.title_en}
                 </h3>
-                <FormButtonGroup />
+                {/* GROUPE de boutons */}
+                { isSession && <FormButtonGroup /> }
               </div>
+
+              {/* L I S T E */}
               <ul className='flex flex-wrap border-t border-orange-500'>
                 {
                   data?.list?.map((item: {picto: string; name: string}) => (

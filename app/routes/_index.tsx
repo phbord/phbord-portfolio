@@ -30,6 +30,19 @@ export default function Index() {
   const { newLang } = useLangStore();
   console.log('data --->', data);
 
+  const onNewClick = () => {
+    console.log('=== onNewClick ===');
+  };
+
+  const onEditClick = () => {
+    console.log('=== onEditClick ===');
+  };
+
+  const onDeleteClick = () => {
+    console.log('=== onDeleteClick ===');
+  };
+
+
   return (
     <>
       {/* IMAGE */}
@@ -48,7 +61,10 @@ export default function Index() {
               <ItemListKnowledges key={uuidv4()} 
                                   data={knowledge} 
                                   noData={t('noDataText')} 
-                                  lang={newLang} />
+                                  lang={newLang}
+                                  onNewClick={onNewClick}
+                                  onEditClick={onEditClick}
+                                  onDeleteClick={onDeleteClick} />
             ))
           }
         </ul>

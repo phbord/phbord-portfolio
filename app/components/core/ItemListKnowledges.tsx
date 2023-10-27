@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import useSession from '~/services/store/useSession';
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
 
 
@@ -8,6 +7,9 @@ interface ItemListKnowledgesInterface {
   data: DataItemListKnowledgesInterface;
   noData?: string;
   lang: string;
+  onNewClick?: () => void;
+  onEditClick?: () => void;
+  onDeleteClick?: () => void;
 }
 
 interface DataItemListKnowledgesInterface {
@@ -21,9 +23,7 @@ interface DataListItemListKnowledgesInterface {
   name?: string;
 }
 
-export default function ItemListKnowledges({data, noData, lang}: ItemListKnowledgesInterface) {
-  const { isSession }: any = useSession();
-
+export default function ItemListKnowledges({data, noData, lang, onNewClick, onEditClick, onDeleteClick}: ItemListKnowledgesInterface) {
   return (
     <>
       {
@@ -37,7 +37,9 @@ export default function ItemListKnowledges({data, noData, lang}: ItemListKnowled
                   {lang === 'fr' ? data.title_fr : data.title_en}
                 </h3>
                 {/* GROUPE de boutons */}
-                { isSession && <FormButtonGroup /> }
+                <FormButtonGroup onNewClick={onNewClick} 
+                                  onEditClick={onEditClick} 
+                                  onDeleteClick={onDeleteClick} />
               </div>
 
               {/* L I S T E */}

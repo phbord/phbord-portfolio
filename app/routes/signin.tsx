@@ -71,18 +71,18 @@ export default function Signin() {
 
   return (
     <>
-    {/* BODY */}
-    <section className="container-form container-form--light container-form--bg-body bg-neutral-200">
-      <div className="content-form">
-        {/* TITRE */}
-        <h2 className="h2 text-white">
-          {t('signinText')}
-        </h2>
+      {/* BODY */}
+      <section className="container-form container-form--light container-form--bg-body bg-neutral-200">
+        <div className="content-form">
+          {/* TITRE */}
+          <h2 className="h2 text-white">
+            {t('signinText')}
+          </h2>
 
-        {/* FORMULAIRE */}
-        <AuthForm className="bg-[#FFFFFF5a]" />
-      </div>
-    </section>
-  </>
+          {/* FORMULAIRE */}
+          <AuthForm className="bg-[#FFFFFF5a]" />
+        </div>
+      </section>
+    </>
   )
 }

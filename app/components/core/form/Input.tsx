@@ -1,22 +1,36 @@
-import { MutableRefObject } from "react";
+import { LegacyRef } from "react";
 
 interface InputPasswordInterface {
   type: string;
   id: string;
-  autoComplete: string;
-  inputRef: MutableRefObject<string>;
-  isInputErrorDisplayed: boolean;
+  placeholder: string;
+  autoComplete?: string;
+  value?: string;
+  inputRef: LegacyRef<HTMLInputElement> | undefined;
+  isInputErrorDisplayed?: boolean;
   onChange?: () => void;
 }
 
-export default function Input({type='text', id, isInputErrorDisplayed, autoComplete, inputRef, onChange}: InputPasswordInterface) {
+export default function Input({
+  type='text', 
+  id, 
+  value, 
+  isInputErrorDisplayed, 
+  placeholder='', 
+  autoComplete, 
+  inputRef, 
+  onChange
+}: InputPasswordInterface) {
+  const emailPlaceholder = type === 'email' ? 'Ex : chuck@norris.com' : placeholder;
+
   return (
     <>
       <input id={id}
               name={id}
               type={type}
+              value={value}
               ref={inputRef}
-              placeholder={type === 'email' && 'Ex : chuck@norris.com'}
+              placeholder={emailPlaceholder}
               autoComplete={autoComplete}
               required 
               className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}

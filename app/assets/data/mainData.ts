@@ -57,6 +57,10 @@ const mainData = {
       buttonNewText: 'Créer',
       buttonEditText: 'Editer',
       buttonDeleteText: 'Supprimer',
+      orderText: 'Ordre',
+      titleFrText: 'Titre (en français)',
+      titleEnText: 'Titre (en anglais)',
+      iconListText: 'Liste des icônes',
     }
   },
   // /////////////////////////////////////////
@@ -105,6 +109,10 @@ const mainData = {
       buttonNewText: 'Create',
       buttonEditText: 'Edit',
       buttonDeleteText: 'Delete',
+      orderText: 'Order',
+      titleFrText: 'Title (in french)',
+      titleEnText: 'Title (in english)',
+      iconListText: 'Icon list',
     }
   }
 };

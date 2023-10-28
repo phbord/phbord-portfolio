@@ -8,11 +8,12 @@ import useSession from '~/services/store/useSession';
 import BackgroundImageHeader from '~/components/core/background-image/BackgroundImageHeader';
 import KnowledgesForm from '~/components/core/form/KnowledgesForm';
 import { getData } from '~/services/getData';
+import { PencilIcon } from '@heroicons/react/20/solid';
 
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();
-  console.log('************** formData:', formData);
+  //console.log('************** formData:', formData);
   
   return json({});
 }
@@ -30,7 +31,6 @@ export async function loader({params}) {
 export default function KnowledgeEdit() {
   const { dataLoader, id} = useLoaderData<typeof loader>();
   const { t } = useTranslation();
-  const { newLang } = useLangStore();
   const { isSession }: any = useSession();
   const navigate = useNavigate();
   //console.log('dataLoader --->', dataLoader);
@@ -52,23 +52,21 @@ export default function KnowledgeEdit() {
 
   return (
     <>
-      {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' 
-                              titleClass='mb-1 text-[1.35rem] text-yellow-200' 
-                              keywordsClass='mr-2' />
-      
-      {/* BODY */}
-      <section className="container-custom mt-[18.5rem] bg-neutral-200">
-        {/* H E A D E R */}
-        <div className="flex justify-between">
+    {/* BODY */}
+      <section className="container-form container-form--light container-form--bg-body bg-neutral-200">
+        <div className="content-form">
           {/* TITRE */}
-          <h2 className="h2 mr-3">
+          <h2 className="h2 text-white">
             {t('header.0.name', { returnObjects: true })}
           </h2>
-        </div>
+          <h3 className="h3 mb-2 text-white flex items-center">
+            <PencilIcon className='w-7 h-7 mr-2 p-1 border rounded-[50%] flex justify-center items-center' />
+            <span>{t('buttonEditText')}</span>
+          </h3>
 
-        {/* F O R M U L A I R E */}
-        <KnowledgesForm />
+          {/* FORMULAIRE */}
+          <KnowledgesForm className="bg-[#FFFFFF5a]" data={dataLoader} />
+        </div>
       </section>
     </>
   )

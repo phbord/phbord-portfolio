@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
+import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
 import { SparklesIcon, XCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
 import Button from "~/components/core/buttons/Button";
 
 
 interface SnackBarInterface {
-  children: any;
+  children: string | number | boolean | ReactPortal | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined;
   modalClass?: string;
   isSuccess?: boolean;
   isError?: boolean;
   isCloseButton?: boolean;
 }
 
-export default function SnackBar({children, modalClass='', isSuccess=false, isError=false, isCloseButton=false}: SnackBarInterface) {
+export default function SnackBar({
+  children, 
+  modalClass='', 
+  isSuccess=false, 
+  isError=false, 
+  isCloseButton=false
+}: SnackBarInterface) {
   const [stateClass, setStateClass] = useState('');
 
   const changeStateClass = () => {

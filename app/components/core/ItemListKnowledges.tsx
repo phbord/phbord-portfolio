@@ -1,3 +1,4 @@
+import { useNavigate } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
@@ -26,6 +27,8 @@ interface DataListItemListKnowledgesInterface {
 }
 
 export default function ItemListKnowledges({data, noData, lang, idEdit, idDelete, onEditClick, onDeleteClick}: ItemListKnowledgesInterface) {
+  const navigate = useNavigate();
+  
   return (
     <>
       {

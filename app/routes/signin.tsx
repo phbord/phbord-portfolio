@@ -26,7 +26,6 @@ export async function action({request}: ActionFunctionArgs) {
   
   if (res) {
     const cookieHeader = request.headers.get("Cookie");
-    //const sessionCookie = await sbSession(res.access_token).parse(cookieHeader);
     const sessionCookie = sbSession(res.access_token);
     
     return json({

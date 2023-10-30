@@ -1,7 +1,8 @@
-import { Form, useMatches, useNavigate, useNavigation } from "@remix-run/react";
+import { Form, useNavigate, useNavigation } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { isInputTextObjectArrayValidate, isInputTextValidate } from "~/utils/formValidate";
 import FormMessage from "~/components/core/form/FormMessage";
 import FormElementMessage from "~/components/core/form/FormElementMessage";
 import Input from "~/components/core/form/Input";
@@ -23,23 +24,48 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
   const [isTitleEnErrorDisplayed, setIsTitleEnErrorDisplayed] = useState(false);
   const [isIconListErrorDisplayed, setIsIconListErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [orderValue, setOrderValue] = useState(data.order);
+  const [titleFrValue, setTitleFr] = useState(data.title_fr);
+  const [titleEnValue, setTitleEn] = useState(data.title_en);
+  const [iconListValue, setIconListValue] = useState(JSON.stringify(data.list));
   const orderRef = useRef('');
   const titleFrRef = useRef('');
   const titleEnRef = useRef('');
   const iconListRef = useRef('');
-  const matches = useMatches();
-  const pathname = matches[1].pathname;
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const navigate = useNavigate();
 
-  const handleChange = () => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.id === 'order') {
+      setOrderValue(e.target.value);
+      setIsOrderErrorDisplayed(() => isInputTextValidate(orderRef.current.value) ? false : true);
+    }
+    if (e.target.id === 'title-fr') {
+      setTitleFr(e.target.value);
+      setIsTitleFrErrorDisplayed(() => isInputTextValidate(titleFrRef.current.value, 3) ? false : true);
+    }
+    if (e.target.id === 'title-en') {
+      setTitleEn(e.target.value);
+      setIsTitleEnErrorDisplayed(() => isInputTextValidate(titleEnRef.current.value, 3) ? false : true);
+    }
+    if (e.target.id === 'icon-list') {
+      setIconListValue(e.target.value);
+      setIsIconListErrorDisplayed(() => isInputTextObjectArrayValidate(iconListRef.current.value, 3) ? false : true);
+    }
+    
+    setIsDisabled(() => isInputTextValidate(orderRef.current.value) 
+                        && isInputTextValidate(titleFrRef.current.value, 3) 
+                        && isInputTextValidate(titleEnRef.current.value, 3) 
+                        && isInputTextObjectArrayValidate(iconListRef.current.value, 3) 
+                          ? false : true);
+  };
 
 
   useEffect(() => {
     console.log('_______', data.list);
-    
   }, [])
+
 
   return (
     <>
@@ -60,7 +86,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
           </label>
           <Input id="order" 
                   type="text" 
-                  value={data.order}
+                  value={orderValue}
                   inputRef={orderRef}
                   autoComplete="email" 
                   isInputErrorDisplayed={isOrderErrorDisplayed}
@@ -77,7 +103,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
           </label>
           <Input id="title-fr" 
                   type="text" 
-                  value={data.title_fr}
+                  value={titleFrValue}
                   inputRef={titleFrRef}
                   autoComplete="email" 
                   isInputErrorDisplayed={isTitleFrErrorDisplayed}
@@ -94,7 +120,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
           </label>
           <Input id="title-en" 
                   type="text" 
-                  value={data.title_en}
+                  value={titleEnValue}
                   inputRef={titleEnRef}
                   autoComplete="email" 
                   isInputErrorDisplayed={isTitleEnErrorDisplayed}
@@ -103,18 +129,18 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                               message={t('inputEmailWrongEntry')} />
         </div>
 
-        {/* Champ LISTE des ICONES */}
+        {/* Textarea LISTE des ICONES */}
         <div className="mb-4">
           <label htmlFor="icon-list" 
                   className="label">
             {t('iconListText')}
           </label>
           <Textarea id="icon-list"
+                    value={iconListValue}
                     inputRef={iconListRef}
                     autoComplete="email" 
                     isInputErrorDisplayed={isIconListErrorDisplayed}
-                    onChange={handleChange}
-                    value={JSON.stringify(data.list)} />
+                    onChange={handleChange} />
           <FormElementMessage className={isIconListErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputEmailWrongEntry')} />
         </div>

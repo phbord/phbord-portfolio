@@ -3,12 +3,9 @@ import { ActionFunctionArgs, json } from '@remix-run/node';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
-import BackgroundImageHeader from '~/components/core/background-image/BackgroundImageHeader';
 import KnowledgesForm from '~/components/core/form/KnowledgesForm';
 import { getData } from '~/services/getData';
-import { PencilIcon } from '@heroicons/react/20/solid';
 
 
 export async function action({request}: ActionFunctionArgs) {
@@ -57,12 +54,8 @@ export default function KnowledgeEdit() {
         <div className="content-form">
           {/* TITRE */}
           <h2 className="h2 text-white">
-            {t('header.0.name', { returnObjects: true })}
+            {t('editKnowledgesText', { returnObjects: true })}
           </h2>
-          <h3 className="h3 mb-2 text-white flex items-center">
-            <PencilIcon className='w-7 h-7 mr-2 p-1 border rounded-[50%] flex justify-center items-center' />
-            <span>{t('buttonEditText')}</span>
-          </h3>
 
           {/* FORMULAIRE */}
           <KnowledgesForm className="bg-[#FFFFFF5a]" data={dataLoader} />

@@ -61,6 +61,8 @@ const mainData = {
       titleFrText: 'Titre (en français)',
       titleEnText: 'Titre (en anglais)',
       iconListText: 'Liste des icônes',
+      editKnowledgesText: 'Edition d\'une compétence technique',
+      createKnowledgesText: 'Création d\'une compétence technique',
     }
   },
   // /////////////////////////////////////////
@@ -113,6 +115,8 @@ const mainData = {
       titleFrText: 'Title (in french)',
       titleEnText: 'Title (in english)',
       iconListText: 'Icon list',
+      editKnowledgesText: 'Editing a technical skill',
+      createKnowledgesText: 'Creation of a technical skill',
     }
   }
 };

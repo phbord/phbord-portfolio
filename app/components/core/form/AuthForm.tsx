@@ -42,6 +42,7 @@ export default function AuthForm({className=''}: AuthFormInterface) {
     if (e.target.id === 'password-bis' && pathname === '/signup') {
       setIsPasswordBisErrorDisplayed(() => isInputPasswordValidate(passwordBisRef.current.value) ? false : true);
     }
+    
     if (pathname === '/signup') {
       setIsDisabled(() => isInputEmailValidate(emailRef.current.value) && isInputPasswordValidate(passwordRef.current.value) && passwordRef.current.value === passwordBisRef.current.value ? false : true);
     }

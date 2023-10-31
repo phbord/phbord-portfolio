@@ -73,7 +73,6 @@ export default function KnowledgeEdit() {
   const { t } = useTranslation();
   const { isSession }: any = useSession();
   const navigate = useNavigate();
-  //console.log('dataLoader --->', dataLoader);
 
   const protectRoute = () => isSession 
                               ? navigate(`/knowledges/${id}/edit`) 
@@ -95,7 +94,7 @@ export default function KnowledgeEdit() {
 
   return (
     <>
-    {/* BODY */}
+      {/* BODY */}
       <section className="container-form container-form--light container-form--bg-body bg-neutral-200">
         <div className="content-form">
           {/* TITRE */}

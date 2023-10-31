@@ -45,10 +45,10 @@ export default function Index() {
 
   const onNewClick = () => {
     console.log('=== onNewClick ===');
+    navigate(`/knowledges/create`);
   };
 
   const onEditClick = (id: number) => {
-    console.log('=== onEditClick ===', id);
     navigate(`/knowledges/${id}/edit`);
     return id;
   };

@@ -13,7 +13,7 @@ import SnackBar from "~/components/core/SnackBar";
 
 interface KnowledgesFormInterface {
   className?: string;
-  data: any;
+  data?: any;
 }
 
 export default function KnowledgesForm({className='', data}: KnowledgesFormInterface) {
@@ -25,10 +25,10 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
   const [isTitleEnErrorDisplayed, setIsTitleEnErrorDisplayed] = useState(false);
   const [isIconListErrorDisplayed, setIsIconListErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
-  const [orderValue, setOrderValue] = useState(data.order);
-  const [titleFrValue, setTitleFr] = useState(data.title_fr);
-  const [titleEnValue, setTitleEn] = useState(data.title_en);
-  const [iconListValue, setIconListValue] = useState(JSON.stringify(data.list));
+  const [orderValue, setOrderValue] = useState('');
+  const [titleFrValue, setTitleFr] = useState('');
+  const [titleEnValue, setTitleEn] = useState('');
+  const [iconListValue, setIconListValue] = useState('');
   const idRef = useRef('');
   const orderRef = useRef('');
   const titleFrRef = useRef('');
@@ -80,6 +80,13 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
 
   useEffect(() => {
     getErrorMessage(dataAction);
+
+    if (data) {
+      setOrderValue(data.order);
+      setTitleFr(data.title_fr);
+      setTitleEn(data.title_en);
+      setIconListValue(JSON.stringify(data.list));
+    }
   }, [])
 
   useEffect(() => {
@@ -102,10 +109,14 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
         }
 
         {/* Champ caché ID */}
-        <Input id="id" 
+        {
+          data && (
+            <Input id="id" 
                 type="hidden" 
                 value={data.id}
                 inputRef={idRef} />
+          )
+        }
         
         {/* Champ ORDRE */}
         <div className="mb-4">

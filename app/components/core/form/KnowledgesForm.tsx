@@ -1,4 +1,4 @@
-import { Form, useNavigate, useNavigation } from "@remix-run/react";
+import { Form, useActionData, useNavigate, useNavigation } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -18,6 +18,7 @@ interface KnowledgesFormInterface {
 
 export default function KnowledgesForm({className='', data}: KnowledgesFormInterface) {
   const { t } = useTranslation();
+  const dataAction = useActionData();
   const [dataForm, setDataForm] = useState(data);
   const [isOrderErrorDisplayed, setIsOrderErrorDisplayed] = useState(false);
   const [isTitleFrErrorDisplayed, setIsTitleFrErrorDisplayed] = useState(false);
@@ -28,6 +29,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
   const [titleFrValue, setTitleFr] = useState(data.title_fr);
   const [titleEnValue, setTitleEn] = useState(data.title_en);
   const [iconListValue, setIconListValue] = useState(JSON.stringify(data.list));
+  const idRef = useRef('');
   const orderRef = useRef('');
   const titleFrRef = useRef('');
   const titleEnRef = useRef('');
@@ -61,10 +63,31 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                           ? false : true);
   };
 
+  const getErrorMessage = (data: { messageType: any; } | undefined) => {
+    if (!data) {
+      return;
+    }
+    switch (data.messageType) {
+      case 'inputWrongEntries':
+        setDataForm({ message: t('inputWrongEntries') });
+        break;
+      default:
+        setDataForm({ message: t('inputWrongEntries') });
+        break;
+    }
+  };
+
 
   useEffect(() => {
-    console.log('_______', data.list);
+    getErrorMessage(dataAction);
   }, [])
+
+  useEffect(() => {
+    getErrorMessage(dataAction);
+    dataAction?.isDisplayedSnackBar && setTimeout(() => {
+      navigate(dataAction?.redirectionPath);
+    }, 3000);
+  }, [dataAction])
 
 
   return (
@@ -77,6 +100,12 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
               <FormMessage data={dataForm} isError />
             )
         }
+
+        {/* Champ caché ID */}
+        <Input id="id" 
+                type="hidden" 
+                value={data.id}
+                inputRef={idRef} />
         
         {/* Champ ORDRE */}
         <div className="mb-4">
@@ -92,7 +121,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                   isInputErrorDisplayed={isOrderErrorDisplayed}
                   onChange={handleChange} />
           <FormElementMessage className={isOrderErrorDisplayed ? '' : 'hidden'} 
-                              message={t('inputEmailWrongEntry')} />
+                              message={t('inputTextWrongEntry')} />
         </div>
 
         {/* Champ TITRE (français) */}
@@ -109,7 +138,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                   isInputErrorDisplayed={isTitleFrErrorDisplayed}
                   onChange={handleChange} />
           <FormElementMessage className={isTitleFrErrorDisplayed ? '' : 'hidden'} 
-                              message={t('inputEmailWrongEntry')} />
+                              message={t('inputTextWrongEntry')} />
         </div>
 
         {/* Champ TITRE (anglais) */}
@@ -126,7 +155,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                   isInputErrorDisplayed={isTitleEnErrorDisplayed}
                   onChange={handleChange} />
           <FormElementMessage className={isTitleEnErrorDisplayed ? '' : 'hidden'} 
-                              message={t('inputEmailWrongEntry')} />
+                              message={t('inputTextWrongEntry')} />
         </div>
 
         {/* Textarea LISTE des ICONES */}
@@ -142,7 +171,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                     isInputErrorDisplayed={isIconListErrorDisplayed}
                     onChange={handleChange} />
           <FormElementMessage className={isIconListErrorDisplayed ? '' : 'hidden'} 
-                              message={t('inputEmailWrongEntry')} />
+                              message={t('inputTextWrongEntry')} />
         </div>
 
         {/* Bouton SUBMIT */}
@@ -152,6 +181,23 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
           {isSubmitting ? t('submittingText') : t('submitText')}
         </Button>
       </Form>
+
+      {/* SNACKBAR */}
+      {
+        data?.isDisplayedSnackBar
+          ? data?.isValid
+            ? (
+              <SnackBar isSuccess modalClass="snackbar-slide-in">
+                {t(data?.message)}
+              </SnackBar>
+            )
+            : (
+              <SnackBar isError modalClass="snackbar-slide-in">
+                {t(data?.message)}
+              </SnackBar>
+            )
+          : ''
+      }
     </>
   )
 }

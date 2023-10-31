@@ -12,7 +12,7 @@ export interface getDataInterface {
   ascending?: boolean
 }
 
-export async function getData({ table, columns='*', match=null, join=null, orderBy=null, ascending=false }: getDataInterface) {
+export default async function getData({ table, columns='*', match=null, join=null, orderBy=null, ascending=false }: getDataInterface) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
 

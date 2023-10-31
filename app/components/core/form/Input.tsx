@@ -3,7 +3,7 @@ import { LegacyRef } from "react";
 interface InputPasswordInterface {
   type: string;
   id: string;
-  placeholder: string;
+  placeholder?: string;
   autoComplete?: string;
   value?: string;
   inputRef: LegacyRef<HTMLInputElement> | undefined;

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { PlusIcon } from "@heroicons/react/20/solid";
 
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
-import { getData } from "~/services/getData";
+import getData from "~/services/getData";
 import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
 import ItemListKnowledges from "~/components/core/ItemListKnowledges";
@@ -89,15 +89,15 @@ export default function Index() {
         {/* L I S T E */}
         <ul>
           {
-            data?.map((knowledge: any) => (
+            data?.map((knowledge: any, index: number) => (
               <ItemListKnowledges key={uuidv4()} 
                                   data={knowledge} 
                                   noData={t('noDataText')} 
                                   lang={newLang}
-                                  idEdit={`btn-admin-edit-${knowledge?.id}`}
-                                  idDelete={`btn-admin-delete-${knowledge?.id}`}
-                                  onEditClick={() => onEditClick(knowledge?.id)}
-                                  onDeleteClick={() => onDeleteClick(knowledge?.id)} />
+                                  idEdit={`btn-admin-edit-${index}`}
+                                  idDelete={`btn-admin-delete-${index}`}
+                                  onEditClick={() => onEditClick(index)}
+                                  onDeleteClick={() => onDeleteClick(index)} />
             ))
           }
         </ul>

@@ -148,23 +148,21 @@ export default function AuthForm({className=''}: AuthFormInterface) {
       </Form>
 
       {/* SNACKBAR */}
-      <>
-        {
-          data?.isDisplayedSnackBar
-            ? data?.isValid
-              ? (
-                <SnackBar isSuccess modalClass="snackbar-slide-in">
-                  {t(data?.message)}
-                </SnackBar>
-              )
-              : (
-                <SnackBar isError modalClass="snackbar-slide-in">
-                  {t(data?.message)}
-                </SnackBar>
-              )
-            : ''
-        }
-      </>
+      {
+        data?.isDisplayedSnackBar
+          ? data?.isValid
+            ? (
+              <SnackBar isSuccess modalClass="snackbar-slide-in">
+                {t(data?.message)}
+              </SnackBar>
+            )
+            : (
+              <SnackBar isError modalClass="snackbar-slide-in">
+                {t(data?.message)}
+              </SnackBar>
+            )
+          : ''
+      }
     </>
   )
 }

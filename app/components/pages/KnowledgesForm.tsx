@@ -91,6 +91,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
 
   useEffect(() => {
     getErrorMessage(dataAction);
+    
     dataAction?.isDisplayedSnackBar && setTimeout(() => {
       navigate(dataAction?.redirectionPath);
     }, 3000);
@@ -125,7 +126,7 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
             {t('orderText')}
           </label>
           <Input id="order" 
-                  type="text" 
+                  type="number" 
                   value={orderValue}
                   inputRef={orderRef}
                   autoComplete="email" 

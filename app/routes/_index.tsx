@@ -1,17 +1,18 @@
 import { ActionFunctionArgs, json, type MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { useActionData, useNavigate } from "@remix-run/react";
+import { useActionData, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from "react-i18next";
-import { PlusIcon } from "@heroicons/react/20/solid";
+import { PlusIcon, TrashIcon } from "@heroicons/react/20/solid";
 
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import getData from "~/services/getData";
 import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
 import ItemListKnowledges from "~/components/core/ItemListKnowledges";
+import Modal from "~/components/core/Modal";
 import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
 import Button from "~/components/core/buttons/Button";
+import { useState } from "react";
 
 
 export const meta: MetaFunction = () => {
@@ -41,21 +42,40 @@ export default function Index() {
   const { newLang } = useLangStore();
   const { isSession }: any = useSession();
   const navigate = useNavigate();
+  const fetcher = useFetcher();
+  const [idItem, setIdItem] = useState(null);
+  const [modalOpened, setModalOpened] = useState(false);
   console.log('data --->', data);
 
-  const onNewClick = () => {
-    console.log('=== onNewClick ===');
+  // CREATION d'un nouvel élément
+  const onNewClick = (): void => {
     navigate(`/knowledges/create`);
   };
 
-  const onEditClick = (id: number) => {
+  // EDITION d'un nouvel élément
+  const onEditClick = (id: number): number => {
     navigate(`/knowledges/${id}/edit`);
     return id;
   };
 
+  // SUPPRESSION d'un nouvel élément
   const onDeleteClick = (id: number) => {
     console.log('=== onDeleteClick ===', id);
+    setModalOpened(true);
+    setIdItem(id);
     return id;
+  };
+
+  // Ouverture de la MODAL
+  const onOpenedModalClick = (id: number): void => {
+    setModalOpened(true);
+    setIdItem(id);
+  };
+
+  // Fermeture de la MODAL
+  const onCancelModalClick = (): void => {
+    setModalOpened(false);
+    setIdItem(null);
   };
 
 
@@ -97,11 +117,32 @@ export default function Index() {
                                   idEdit={`btn-admin-edit-${index}`}
                                   idDelete={`btn-admin-delete-${index}`}
                                   onEditClick={() => onEditClick(index)}
-                                  onDeleteClick={() => onDeleteClick(index)} />
+                                  onDeleteClick={() => onOpenedModalClick(knowledge?.id)} />
             ))
           }
         </ul>
       </section>
+
+      {/* M O D A L */}
+      {
+        modalOpened && (
+          <Modal onDeleteItemClick={() => onDeleteClick(idItem)} 
+                  onCancelModalClick={onCancelModalClick}
+                  buttonValue={t('buttonDeleteText')}>
+            <div className='flex'>
+              <TrashIcon className='modal-icon' />
+              <div className='modal-'>
+                <h3 className='modal-title'>
+                  {t('modalDeleteRowTitleText')}
+                </h3>
+                <p className='modal-desc'>
+                  {t('modalDeleteRowText')}
+                </p>
+              </div>
+            </div>
+          </Modal>
+        )
+      }
     </>
   );
 }

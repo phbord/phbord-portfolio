@@ -22,8 +22,7 @@ export default function SnackBar({
   const [stateClass, setStateClass] = useState('');
 
   const changeStateClass = () => {
-    (isSuccess) && setStateClass('bg-green-400');
-    (isError) && setStateClass('bg-orange-600');
+    setStateClass(isSuccess ? 'bg-green-400' : 'bg-orange-600');
   };
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import useLangStore from '~/services/store/useLangStore';
 import { signUp } from "~/services/auth";
-import AuthForm from "~/components/core/form/AuthForm";
+import AuthForm from "~/components/pages/AuthForm";
 
 
 export async function action({request}) {

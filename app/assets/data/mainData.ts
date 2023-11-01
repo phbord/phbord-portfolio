@@ -13,6 +13,7 @@ import authentificationFr from "~/assets/data/mainData/authentificationFr";
 const mainData = {
   // /////////////////////////////////////////
   // F R A N C A I S  ////////////////////////
+  // /////////////////////////////////////////
   fr: {
     translation: {
       firstName: 'Pierre-henri',
@@ -60,16 +61,21 @@ const mainData = {
       buttonNewText: 'Créer',
       buttonEditText: 'Editer',
       buttonDeleteText: 'Supprimer',
+      buttonCancelText: 'Annuler',
       orderText: 'Ordre',
       titleFrText: 'Titre (en français)',
       titleEnText: 'Titre (en anglais)',
       iconListText: 'Liste des icônes',
       editKnowledgesText: 'Edition d\'une compétence technique',
       createKnowledgesText: 'Création d\'une compétence technique',
+      modalDeleteRowTitleText: 'Supprimer un élément',
+      modalDeleteRowText: 'Etes-vous sûr de vouloir supprimer définitivement cette élément ?',
+      modalCloseText: 'Fermer la modal',
     }
   },
   // /////////////////////////////////////////
   // A N G L A I S  //////////////////////////
+  // /////////////////////////////////////////
   en: {
     translation: {
       firstName: 'Pierre-henri',
@@ -117,12 +123,16 @@ const mainData = {
       buttonNewText: 'Create',
       buttonEditText: 'Edit',
       buttonDeleteText: 'Delete',
+      buttonCancelText: 'Cancel',
       orderText: 'Order',
       titleFrText: 'Title (in french)',
       titleEnText: 'Title (in english)',
       iconListText: 'Icon list',
       editKnowledgesText: 'Editing a technical skill',
       createKnowledgesText: 'Creation of a technical skill',
+      modalDeleteRowTitleText: 'Delete a row',
+      modalDeleteRowText: 'Are you sure you want to permanently delete this item?',
+      modalCloseText: 'Close modal',
     }
   }
 };

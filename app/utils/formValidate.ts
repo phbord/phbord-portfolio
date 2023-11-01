@@ -26,7 +26,6 @@ export function isInputTextValidate(data: string, charSize: number = 0): boolean
 export function isInputTextObjectArrayValidate(data: string, charSize: number = 1): boolean {
   if (data.length > charSize 
       && data[0] === '[' 
-      && data[1] === '{' 
       && data[data.length - 1] === ']') {
     return true;
   }

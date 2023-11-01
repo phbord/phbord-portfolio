@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import useLangStore from '~/services/store/useLangStore';
 import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
-import AuthForm from "~/components/core/form/AuthForm";
+import AuthForm from "~/components/pages/AuthForm";
 import { isSbSession, sbSession } from "~/services/cookies";
 
 

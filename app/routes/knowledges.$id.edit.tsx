@@ -7,7 +7,7 @@ import { isInputTextObjectArrayValidate, isInputTextValidate } from '~/utils/for
 import useSession from '~/services/store/useSession';
 import getData from '~/services/getData';
 import updateData from '~/services/updateData';
-import KnowledgesForm from '~/components/core/form/KnowledgesForm';
+import KnowledgesForm from '~/components/pages/KnowledgesForm';
 
 
 export async function action({request}: ActionFunctionArgs) {
@@ -69,7 +69,6 @@ export async function loader({params}) {
 
 export default function KnowledgeEdit() {
   const { dataLoader, id} = useLoaderData<typeof loader>();
-  const dataAction = useActionData();
   const { t } = useTranslation();
   const { isSession }: any = useSession();
   const navigate = useNavigate();
@@ -86,10 +85,6 @@ export default function KnowledgeEdit() {
   useEffect(() => {
     protectRoute();
   }, [isSession])
-
-  useEffect(() => {
-    console.log('dataAction --->', dataAction);
-  }, [dataAction])
 
 
   return (

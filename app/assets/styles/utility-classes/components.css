@@ -117,7 +117,7 @@
     @apply left-0 bottom-[-2rem] bg-orange-500 rotate-[-12.5deg];
   }
 
-  /* MODALS */
+  /* SNACKBAR */
   .snackbar {
     @apply fixed bottom-[-25vh] left-0 right-0 z-20 px-5 pt-2 pb-10 text-lg;
   }
@@ -204,6 +204,35 @@
   }
   .top-scroll-icon {
     @apply h-6 text-white;
+  }
+
+  /* MODAL */
+  .modal {
+    @apply fixed top-0 bottom-0 left-0 right-0 z-30 flex justify-center items-center bg-cyan-950 bg-opacity-50 overflow-hidden transition-opacity !important;
+  }
+  .modal-body {
+    @apply relative w-full max-w-[36rem] min-h-[10rem] m-5 p-5 border border-dotted border-orange-500 bg-neutral-200 shadow-xl transition-all;
+  }
+  .modal-icon {
+    @apply h-8 mr-2 p-1 text-orange-500 rounded-full bg-white;
+  }
+  .modal-close-btn {
+    @apply absolute top-4 right-4;
+  }
+  .modal-close-icon {
+    @apply w-8 text-orange-500 hover:text-orange-400 transition-all;
+  }
+  .modal-title {
+    @apply mt-0 mb-2 pr-5 text-2xl text-orange-500 font-light;
+  }
+  .modal-desc {
+    @apply h-6 mr-2 text-cyan-900 text-base;
+  }
+  .btn-submit-modal {
+    @apply px-3 py-2 flex justify-center items-center bg-orange-500 hover:bg-orange-400 text-white text-sm font-bold transition-all !important;
+  }
+  .btn-cancel-modal {
+    @apply px-3 py-2 flex justify-center items-center bg-neutral-500 hover:bg-neutral-400 text-white text-sm font-bold transition-all !important;
   }
 
   /* STRATEGIES OBLIQUES */

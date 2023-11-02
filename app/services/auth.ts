@@ -13,7 +13,6 @@ export async function signUp(email: string, password: string, first_name: string
       email,
       password,
     });
-    console.log('==========> data.user.id:', data.user.id)
 
     if (error) {
       throw error;
@@ -27,9 +26,7 @@ export async function signUp(email: string, password: string, first_name: string
         last_name,
         account_created: moment(Date.now()).format('MM/DD/YYYY'),
       };
-      console.log('==========> values:', values)
       await postData({ table: 'Profile', values });
-      
       console.log('==========> Inscription');
     }
     return true;

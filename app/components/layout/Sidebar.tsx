@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useActionData, useFetcher, useNavigate } from '@remix-run/react';
+import { Link, useActionData, useFetcher, useNavigate } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
@@ -30,6 +30,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const [toggleClass, setToggleClass] = useState(() => isSideBarOpened ? openedClass : '');
   const [isSignoutClick, setIsSignoutClick] = useState(false);
   const [displayedSnackBar, setDisplayedSnackBar] = useState(false);
+  const [profileId, setProfileId] = useState(null);
   const navigate = useNavigate();
   const fetcher = useFetcher();
 
@@ -38,6 +39,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const handleClickSignOut = async () => {
     handleClickMenu();
     setIsSignoutClick(!isSignoutClick);
+    localStorage.removeItem('sb_profile_id');
     navigate('/');
   };
 
@@ -48,20 +50,32 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   );
 
   const buttonSignOutBlock = (
-    <li>
-      <fetcher.Form method="post">
-        <Button type='submit'
-                className='sidebar-link w-full flex'
-                onClick={handleClickSignOut}>
-          {authData[1]?.name}
-        </Button>
-      </fetcher.Form>
-    </li>
+    <>
+      {/* Bouton de DECONNEXION */}
+      <li>
+        <fetcher.Form method="post">
+          <Button type='submit'
+                  className='sidebar-link w-full flex'
+                  onClick={handleClickSignOut}>
+            {authData[1]?.name}
+          </Button>
+        </fetcher.Form>
+      </li>
+      {/* Bouton PROFIL */}
+      <li>
+        <Link to={`/profile/${profileId}`} 
+              className='sidebar-link w-full flex'>
+          {t('profileText')}/{profileId}
+        </Link>
+      </li>
+    </>
   );
 
 
   useEffect(() => {
     useSession.getState().setSession();
+    const id = localStorage.getItem('sb_profile_id');
+    setProfileId(id);
   }, [])
 
   useEffect(() => {
@@ -69,6 +83,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
       navigate(data?.redirectionPath);
     }, 3000); */
     //console.log('isSignoutClick -------->', isSignoutClick);
+    setProfileId(null);
   }, [isSignoutClick])
 
   useEffect(() => {
@@ -78,6 +93,8 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
 
   useEffect(() => {
     useSession.getState().setSession();
+    const id = localStorage.getItem('sb_profile_id');
+    setProfileId(id);
 
     if (data?.isDisplayedSnackBar) {
       setDisplayedSnackBar(data?.isDisplayedSnackBar);

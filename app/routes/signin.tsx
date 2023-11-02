@@ -8,6 +8,7 @@ import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
 import AuthForm from "~/components/pages/AuthForm";
 import { isSbSession, sbSession } from "~/services/cookies";
+import getData from "~/services/getData";
 
 
 export async function action({request}: ActionFunctionArgs) {
@@ -25,6 +26,8 @@ export async function action({request}: ActionFunctionArgs) {
   const res = await signIn(emailValue, passwordValue);
   
   if (res) {
+    const options: object = { table: 'Profile', columns: 'id', match: { user_id: res.user.id } };
+    const data = await getData(options);
     const cookieHeader = request.headers.get("Cookie");
     const sessionCookie = sbSession(res.access_token);
     
@@ -32,6 +35,7 @@ export async function action({request}: ActionFunctionArgs) {
       cookieHeader,
       signIn: res,
       accessToken: res,
+      profileId: data[0].id,
       isValid: true,
       isDisplayedSnackBar: true,
       message: 'signinSnackbarText'
@@ -66,6 +70,7 @@ export default function Signin() {
 
   useEffect(() => {
     (isSbSession() || data?.isValid) && navigate('/');
+    localStorage.setItem('sb_profile_id', data?.profileId);
   }, [data])
 
 

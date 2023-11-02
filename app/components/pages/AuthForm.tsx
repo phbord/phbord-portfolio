@@ -2,7 +2,7 @@ import { Form, useActionData, useMatches, useNavigate, useNavigation } from "@re
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
+import { isInputEmailValidate, isInputPasswordValidate, isInputTextValidate } from "~/utils/formValidate";
 import Button from "~/components/core/buttons/Button";
 import FormMessage from "~/components/core/form/FormMessage";
 import FormElementMessage from "~/components/core/form/FormElementMessage";
@@ -22,10 +22,14 @@ export default function AuthForm({className=''}: AuthFormInterface) {
   const [isEmailErrorDisplayed, setIsEmailErrorDisplayed] = useState(false);
   const [isPasswordErrorDisplayed, setIsPasswordErrorDisplayed] = useState(false);
   const [isPasswordBisErrorDisplayed, setIsPasswordBisErrorDisplayed] = useState(false);
+  const [isFirstnameErrorDisplayed, setIsFirstnameErrorDisplayed] = useState(false);
+  const [isLastnameErrorDisplayed, setIsLastnameErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const emailRef = useRef('');
   const passwordRef = useRef('');
   const passwordBisRef = useRef('');
+  const firstnameRef = useRef('');
+  const lastnameRef = useRef('');
   const matches = useMatches();
   const pathname = matches[1].pathname;
   const navigation = useNavigation();
@@ -41,6 +45,12 @@ export default function AuthForm({className=''}: AuthFormInterface) {
     }
     if (e.target.id === 'password-bis' && pathname === '/signup') {
       setIsPasswordBisErrorDisplayed(() => isInputPasswordValidate(passwordBisRef.current.value) ? false : true);
+    }
+    if (e.target.id === 'firstname' && pathname === '/signup') {
+      setIsFirstnameErrorDisplayed(() => isInputTextValidate(firstnameRef.current.value) ? false : true);
+    }
+    if (e.target.id === 'lastname' && pathname === '/signup') {
+      setIsLastnameErrorDisplayed(() => isInputTextValidate(lastnameRef.current.value) ? false : true);
     }
     
     if (pathname === '/signup') {
@@ -120,22 +130,56 @@ export default function AuthForm({className=''}: AuthFormInterface) {
                               message={t('inputPasswordWrongEntry')} />
         </div>
 
-        {/* Champ MOT DE PASSE - Bis */}
         {
           pathname === '/signup' && (
+            <>
+              {/* Champ MOT DE PASSE - Bis */}
+              <div className="mb-4">
+                <label htmlFor="password-bis" 
+                        className="label">
+                  {t('passwordConfirmationText')}
+                </label>
+                <InputPassword id="password-bis" 
+                                inputRef={passwordBisRef} 
+                                autoComplete="password confirmation" 
+                                isPasswordBisErrorDisplayed={isPasswordBisErrorDisplayed} 
+                                onChange={handleChange} />
+                <FormElementMessage className={isPasswordBisErrorDisplayed ? '' : 'hidden'} 
+                                    message={t('inputPasswordWrongEntry')} />
+              </div>
+
+              {/* Champ PRENOM */}
+              <div className="mb-4">
+                <label htmlFor="firstname" 
+                        className="label">
+                  {t('firstnameText')}
+                </label>
+                <Input id="firstname" 
+                        type="text"
+                        inputRef={firstnameRef}
+                        autoComplete="firstname" 
+                        isInputErrorDisplayed={isFirstnameErrorDisplayed}
+                        onChange={handleChange} />
+                <FormElementMessage className={isFirstnameErrorDisplayed ? '' : 'hidden'} 
+                                    message={t('inputTextWrongEntry')} />
+              </div>
+
+            {/* Champ NOM */}
             <div className="mb-4">
-              <label htmlFor="password-bis" 
+              <label htmlFor="lastname" 
                       className="label">
-                {t('passwordConfirmationText')}
+                {t('lastnameText')}
               </label>
-              <InputPassword id="password-bis" 
-                              inputRef={passwordBisRef} 
-                              autoComplete="password confirmation" 
-                              isPasswordBisErrorDisplayed={isPasswordBisErrorDisplayed} 
-                              onChange={handleChange} />
-              <FormElementMessage className={isPasswordBisErrorDisplayed ? '' : 'hidden'} 
-                                  message={t('inputPasswordWrongEntry')} />
+              <Input id="lastname" 
+                      type="text"
+                      inputRef={lastnameRef}
+                      autoComplete="lastname" 
+                      isInputErrorDisplayed={isLastnameErrorDisplayed}
+                      onChange={handleChange} />
+              <FormElementMessage className={isLastnameErrorDisplayed ? '' : 'hidden'} 
+                                  message={t('inputTextWrongEntry')} />
             </div>
+            </>
           )
         }
 

@@ -1,19 +1,36 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import moment from 'moment';
 
-import { getSupabase, getSupabaseFront } from "~/services/api";
+import { getSupabase } from "~/services/api";
+import postData from "~/services/postData";
 
 
 // INSCRIPTION
-export async function signUp(email: string, password: string) {
+export async function signUp(email: string, password: string, first_name: string, last_name: string): Promise<boolean | null> {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
     const { data, user, session, error, status } = await supabase.auth.signUp({
       email,
       password,
     });
+    console.log('==========> data.user.id:', data.user.id)
 
     if (error) {
       throw error;
+    }
+    else {
+      // Insertion de données complémentaires dans la table "Profile"
+      const user_id = data.user.id;
+      const values: object = {
+        user_id: data.user.id,
+        first_name,
+        last_name,
+        account_created: moment(Date.now()).format('MM/DD/YYYY'),
+      };
+      console.log('==========> values:', values)
+      await postData({ table: 'Profile', values });
+      
+      console.log('==========> Inscription');
     }
     return true;
   }
@@ -24,7 +41,7 @@ export async function signUp(email: string, password: string) {
 }
 
 // CONNEXION
-export async function signIn(email: string, password: string) {
+export async function signIn(email: string, password: string): Promise<object | null> {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
     const { data, session, error } = await supabase.auth.signInWithPassword({
@@ -45,7 +62,7 @@ export async function signIn(email: string, password: string) {
 }
 
 // DECONNEXION
-export async function signOut() {
+export async function signOut(): Promise<boolean | null> {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
     const { error, data, status } = await supabase.auth.signOut();
@@ -63,7 +80,7 @@ export async function signOut() {
 }
 
 // RECUPERATION DE LA SESSION
-export async function getSession() {
+export async function getSession(): Promise<any> {
   try {
     const supabase = await getSupabase();
     const { error, data: { session } } = await supabase.auth.getSession();
@@ -83,7 +100,7 @@ export async function getSession() {
 }
 
 // Récupération de l'utilisateur
-export async function getUser() {
+export async function getUser(): Promise<any> {
   try {
     const supabase = await getSupabase();
     const { error, data: { user } } = await supabase.auth.getUser();

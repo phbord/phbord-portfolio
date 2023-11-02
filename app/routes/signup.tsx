@@ -7,17 +7,19 @@ import AuthForm from "~/components/pages/AuthForm";
 
 export async function action({request}) {
   const formData: FormData = await request.formData();
-  const emailValue: FormDataEntryValue | null = formData.get('email');
+  const emailValue = formData.get('email');
   const passwordValue: FormDataEntryValue | null = formData.get('password');
+  const firstnameValue: FormDataEntryValue | null = formData.get('firstname');
+  const lastnameValue: FormDataEntryValue | null = formData.get('lastname');
 
-  if (emailValue !== 'phbord@gmail.com' || emailValue !== 'phbord@protonmail.com') {
+  if (emailValue !== 'phbord@gmail.com') {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'
     };
   }
 
-  const res = await signUp(emailValue, passwordValue);
+  const res = await signUp(emailValue, passwordValue, firstnameValue, lastnameValue);
   if (res) {
     return {
       isValid: true,

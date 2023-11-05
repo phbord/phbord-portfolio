@@ -104,6 +104,8 @@ export default function App() {
     setLangToStorage();
     setSidebarToStorage();
     useSession.getState().setSession();
+    !isSession && localStorage.removeItem('sb_profile_id');
+    
   }, []);
 
   useEffect(() => {

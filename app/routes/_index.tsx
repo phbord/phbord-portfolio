@@ -1,18 +1,19 @@
 import { ActionFunctionArgs, json, type MetaFunction } from "@remix-run/node";
 import { useActionData, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
-import { v4 as uuidv4 } from 'uuid';
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon, TrashIcon } from "@heroicons/react/20/solid";
 
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import getData from "~/services/getData";
+import deleteData from "~/services/deleteData";
 import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
 import ItemListKnowledges from "~/components/core/ItemListKnowledges";
 import Modal from "~/components/core/Modal";
 import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
 import Button from "~/components/core/buttons/Button";
-import { useState } from "react";
 
 
 export const meta: MetaFunction = () => {
@@ -21,13 +22,6 @@ export const meta: MetaFunction = () => {
     { name: "description", content: metaGlobal.description },
   ];
 };
-
-/* export async function action({request}: ActionFunctionArgs) {
-  const formData: FormData = await request.formData();
-  console.log(formData, '************** formData:', formData.get("id"));
-  
-  return json({});
-} */
 
 export async function loader() {
   const options: object = { table: 'Knowledges', orderBy: 'order', ascending: true };
@@ -38,6 +32,7 @@ export async function loader() {
 
 export default function Index() {
   const data = useLoaderData<typeof loader>();
+  const dataAction = useActionData();
   const { t } = useTranslation();
   const { newLang } = useLangStore();
   const { isSession }: any = useSession();
@@ -45,7 +40,7 @@ export default function Index() {
   const fetcher = useFetcher();
   const [idItem, setIdItem] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
-  console.log('data --->', data);
+  //console.log('data --->', data);
 
   // CREATION d'un nouvel élément
   const onNewClick = (): void => {
@@ -63,6 +58,11 @@ export default function Index() {
     console.log('=== onDeleteClick ===', id);
     setModalOpened(true);
     setIdItem(id);
+    // Suppression de la ligne
+    fetcher.submit(
+      { table: 'Knowledges', id },
+      { method: 'post', action: '/api/delete' }
+    );
     return id;
   };
 
@@ -77,6 +77,15 @@ export default function Index() {
     setModalOpened(false);
     setIdItem(null);
   };
+
+
+  useEffect(() => {
+    !isSession && localStorage.removeItem('sb_profile_id');
+  }, [])
+
+  useEffect(() => {
+    dataAction?.isReloadData === true && window.location.reload();
+  }, [dataAction?.isReloadData])
 
 
   return (

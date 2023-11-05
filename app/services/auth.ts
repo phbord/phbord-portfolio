@@ -49,7 +49,6 @@ export async function signIn(email: string, password: string): Promise<object | 
     if (error) {
       throw error;
     }
-    console.log('==========> Connexion : ', data);
     return data.session;
   }
   catch (error) {

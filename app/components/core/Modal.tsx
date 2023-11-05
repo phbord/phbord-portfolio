@@ -1,9 +1,10 @@
 import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState } from 'react';
-import { useFetcher } from "@remix-run/react";
+import { Form } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 
 import { XCircleIcon } from '@heroicons/react/20/solid';
 import Button from "~/components/core/buttons/Button";
+import Input from './form/Input';
 
 
 interface ModalInterface {
@@ -15,7 +16,6 @@ interface ModalInterface {
 
 export default function Modal({children, buttonValue, onDeleteItemClick, onCancelModalClick}: ModalInterface) {
   const { t } = useTranslation();
-  const fetcher = useFetcher();
 
   return (
     <div className='modal' aria-labelledby="modal-title" role="dialog" aria-modal="true" onClick={onCancelModalClick}>
@@ -29,14 +29,17 @@ export default function Modal({children, buttonValue, onDeleteItemClick, onCance
         {children}
 
         {/* B O U T O N S */}
-        <fetcher.Form method="post" action="/" className='mt-8 flex justify-end'>
+        <div className='mt-8 flex justify-end'>
+            <Input id="id" 
+                    type="hidden" 
+                    value={'10'} />
             <Button type='button' className='btn-cancel-modal mr-2' onClick={onCancelModalClick}>
               {t('buttonCancelText')}
             </Button>
-            <Button type='submit' className='btn-submit-modal' onClick={onDeleteItemClick}>
+            <Button type='button' className='btn-submit-modal' onClick={onDeleteItemClick}>
               {buttonValue}
             </Button>
-          </fetcher.Form>
+          </div>
       </div>
     </div>
   )

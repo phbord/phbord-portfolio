@@ -6,7 +6,7 @@ interface InputPasswordInterface {
   placeholder?: string;
   autoComplete?: string;
   value?: string;
-  inputRef: LegacyRef<HTMLInputElement> | undefined;
+  inputRef?: LegacyRef<HTMLInputElement> | undefined;
   isInputErrorDisplayed?: boolean;
   onChange?: () => void;
 }

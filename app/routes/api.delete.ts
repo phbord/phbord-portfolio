@@ -9,9 +9,19 @@ export async function action({ request }: ActionFunctionArgs) {
   const id = data.get('id');
 
   // Suppression
-  deleteData({ table, match: { id } });
+  const res = await deleteData({ table, match: { id } });
+
+  if (res) {
+    return json({
+      isValid: true,
+      isDisplayedSnackBar: true,
+      message: 'deleteDataText'
+    });
+  }
 
   return json({
-    isReloadData: true
+    isValid: false,
+    isDisplayedSnackBar: true,
+    message: 'deleteDataErrorText'
   });
 }

@@ -65,12 +65,10 @@ export default function KnowledgeCreate() {
 
   useEffect(() => {
     protectRoute();
-    !isSession && localStorage.removeItem('sb_profile_id');
   }, [])
 
   useEffect(() => {
     protectRoute();
-    !isSession && localStorage.removeItem('sb_profile_id');
   }, [isSession])
                             
 

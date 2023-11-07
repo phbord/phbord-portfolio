@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useActionData, useFetcher, useNavigate } from '@remix-run/react';
+import { Link, useActionData, useFetcher, useLoaderData, useRevalidator } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
 import useSession from '~/services/store/useSession';
-import { getCookie, isSbSession, removeCookie } from '~/services/cookies';
 import ItemListLayout from '~/components/layout/ItemListLayout';
 import Button from '~/components/core/buttons/Button';
 import SnackBar from '~/components/core/SnackBar';
+import { UserCircleIcon } from '@heroicons/react/20/solid';
 
 
 interface SidebarInterface {
@@ -22,6 +22,7 @@ interface ItemSidebarInterface {
 
 
 export default function Sidebar({mainData, authData}: SidebarInterface) {
+  const { profilesData } = useLoaderData<typeof loader>();
   const data = useActionData();
   const { t } = useTranslation();
   const openedClass = 'right-0';
@@ -30,9 +31,11 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const [toggleClass, setToggleClass] = useState(() => isSideBarOpened ? openedClass : '');
   const [isSignoutClick, setIsSignoutClick] = useState(false);
   const [displayedSnackBar, setDisplayedSnackBar] = useState(false);
-  const [profileId, setProfileId] = useState(null);
-  const navigate = useNavigate();
+  const [profileId, setProfileId] = useState(0);
+  const [profiles, setProfiles] = useState(profilesData);
   const fetcher = useFetcher();
+  const revalidator = useRevalidator();
+  
 
   const handleClickMenu = () => useSidebarStore.getState().setSideBarOpened();
 
@@ -40,7 +43,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
     handleClickMenu();
     setIsSignoutClick(!isSignoutClick);
     localStorage.removeItem('sb_profile_id');
-    navigate('/');
+    window.location.reload();
   };
 
   const buttonSignInBlock = (
@@ -52,7 +55,6 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const buttonSignOutBlock = (
     <>
       {/* Bouton de DECONNEXION */}
-      <li>
         <fetcher.Form method="post">
           <Button type='submit'
                   className='sidebar-link w-full flex'
@@ -60,14 +62,6 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
             {authData[1]?.name}
           </Button>
         </fetcher.Form>
-      </li>
-      {/* Bouton PROFIL */}
-      <li>
-        <Link to={`/profile/${profileId}`} 
-              className='sidebar-link w-full flex'>
-          {t('profileText')}/{profileId}
-        </Link>
-      </li>
     </>
   );
 
@@ -76,6 +70,8 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
     useSession.getState().setSession();
     const id = localStorage.getItem('sb_profile_id');
     setProfileId(id);
+    setProfiles(() => profilesData.filter((profile) => profile.id == id));    
+    //setProfiles((dataLoader.filter(profile => profile.id === id)));
   }, [])
 
   useEffect(() => {
@@ -118,12 +114,35 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
                               onClick={handleClickMenu} />
             ))
           }
+          { !isSession && buttonSignInBlock }
         </ul>
 
-        {/* Menu SECONDAIRE */}
-        <ul className='mt-5 flex flex-col'>
-          { isSession ? buttonSignOutBlock : buttonSignInBlock }
-        </ul>
+        {/* PROFILE */}
+        {
+          isSession && profileId && (
+            <aside className='sidebar-body'>
+              <h2 className='h3 px-5 pt-5 pb-3 flex items-center'>
+                {t('profileText')}
+                <UserCircleIcon className='sidebar-icon' />
+              </h2>
+              {
+                profilesData?.map((profile) => (
+                  <div key={profile.id} className=''>
+                    {profile.id == profileId && (
+                      <div className='pb-5'>
+                        <div className='px-5 font-light'>
+                          {profile.first_name}
+                          <span className='uppercase'> {profile.last_name}</span>
+                        </div>
+                        { isSession && buttonSignOutBlock }
+                      </div>
+                    )}
+                  </div>
+                ))
+              }
+            </aside>
+          )
+        }
       </nav>
 
       {/* SNACKBAR */}

@@ -17,11 +17,19 @@ import stylesheet from "~/assets/styles/tailwind.css";
 import useLangStore from '~/services/store/useLangStore';
 import useScrollYPositionStore from '~/services/store/useScrollYPositionStore';
 import useSession from '~/services/store/useSession';
-import { getCookie, isSbSession } from '~/services/cookies';
+import getData from '~/services/getData';
 import Transitions from '~/components/layout/Transitions';
 import Layout from '~/components/layout/Layout';
 import TopPageButton from '~/components/core/buttons/TopPageButton';
 
+
+export async function loader() {
+  const profilesData = await getData({ table: 'Profile' });
+  
+  return json(await {
+    profilesData
+  });
+}
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -104,7 +112,7 @@ export default function App() {
     setLangToStorage();
     setSidebarToStorage();
     useSession.getState().setSession();
-    !isSession && localStorage.removeItem('sb_profile_id');
+    //!isSession && localStorage.removeItem('sb_profile_id');
     
   }, []);
 

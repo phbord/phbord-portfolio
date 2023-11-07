@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, json, type MetaFunction } from "@remix-run/node";
-import { useActionData, useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import { useActionData, useFetcher, useLoaderData, useNavigate, useNavigation, useRevalidator } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from 'uuid';
@@ -14,6 +14,7 @@ import ItemListKnowledges from "~/components/core/ItemListKnowledges";
 import Modal from "~/components/core/Modal";
 import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
 import Button from "~/components/core/buttons/Button";
+import SnackBar from "~/components/core/SnackBar";
 
 
 export const meta: MetaFunction = () => {
@@ -25,13 +26,15 @@ export const meta: MetaFunction = () => {
 
 export async function loader() {
   const options: object = { table: 'Knowledges', orderBy: 'order', ascending: true };
-  const data = await getData(options);
-  return json(await data);
+  const knowledges = await getData(options);
+  return json(await {
+    knowledges,
+  });
 }
 
 
 export default function Index() {
-  const data = useLoaderData<typeof loader>();
+  const { knowledges } = useLoaderData<typeof loader>();
   const dataAction = useActionData();
   const { t } = useTranslation();
   const { newLang } = useLangStore();
@@ -40,7 +43,8 @@ export default function Index() {
   const fetcher = useFetcher();
   const [idItem, setIdItem] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
-  //console.log('data --->', data);
+  const revalidator = useRevalidator();
+  //console.log('knowledges --->', knowledges);
 
   // CREATION d'un nouvel élément
   const onNewClick = (): void => {
@@ -80,12 +84,8 @@ export default function Index() {
 
 
   useEffect(() => {
-    !isSession && localStorage.removeItem('sb_profile_id');
-  }, [])
-
-  useEffect(() => {
-    dataAction?.isReloadData === true && window.location.reload();
-  }, [dataAction?.isReloadData])
+    dataAction?.isValid === true && revalidator.revalidate();
+  }, [revalidator])
 
 
   return (
@@ -118,7 +118,7 @@ export default function Index() {
         {/* L I S T E */}
         <ul>
           {
-            data?.map((knowledge: any, index: number) => (
+            knowledges?.map((knowledge: any, index: number) => (
               <ItemListKnowledges key={uuidv4()} 
                                   data={knowledge} 
                                   noData={t('noDataText')} 
@@ -151,6 +151,23 @@ export default function Index() {
             </div>
           </Modal>
         )
+      }
+
+      {/* S N A C K B A R */}
+      {
+        dataAction?.isDisplayedSnackBar
+          ? dataAction?.isValid
+            ? (
+              <SnackBar isSuccess modalClass="snackbar-slide-in">
+                {t(dataAction?.message)}
+              </SnackBar>
+            )
+            : (
+              <SnackBar isError modalClass="snackbar-slide-in">
+                {t(dataAction?.message)}
+              </SnackBar>
+            )
+          : ''
       }
     </>
   );

@@ -5,6 +5,11 @@
 
 /* Regroupement de classes au sein d'une classe */
 @layer components {
+  /* COMMONS */
+  .favorite {
+    @apply font-semibold;
+  }
+
   /* LAYOUT */
   .body {
     @apply min-h-screen flex flex-col bg-neutral-200 font-roboto text-white text-sm;
@@ -68,10 +73,16 @@
 
   /* SIDEBAR */
   .sidebar {
-    @apply absolute top-0 bottom-0 right-[-13rem] z-10 w-52 pt-[5.5rem] pb-6 bg-neutral-300 transition-all;
+    @apply fixed top-0 bottom-0 right-[-13rem] z-10 w-52 pt-[5.5rem] pb-6 bg-neutral-300 transition-all;
   }
   .sidebar-link {
     @apply px-5 py-1 hover:py-3 block text-base hover:bg-neutral-200 text-neutral-500 hover:text-orange-500 transition-all;
+  }
+  .sidebar-body {
+    @apply mt-5 border-y border-neutral-200 border-dashed text-base text-cyan-900;
+  }
+  .sidebar-icon {
+    @apply ml-1 h-7 text-orange-500;
   }
 
   /* FOOTER */

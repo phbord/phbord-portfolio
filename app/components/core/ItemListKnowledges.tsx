@@ -48,14 +48,18 @@ export default function ItemListKnowledges({data, noData, lang, idEdit, idDelete
               {/* L I S T E */}
               <ul className='flex flex-wrap border-t border-orange-500'>
                 {
-                  data && data?.list && data?.list?.map((item: {picto: string; name: string}) => (
+                  data && data?.list && data?.list?.map((item: {picto: string; name: string; fav: boolean}) => (
                     <li key={uuidv4()} 
                         className='mx-3 my-[.375rem] flex items-stretch'>
                       <figure className='flex flex-col flex-nowrap items-center justify-end'>
                         <img src={`/images/svg/${item.picto}`} 
                               alt={item.name} 
                               className='max-w-[1.5rem] mb-1' />
-                        <figcaption className='text-cyan-900'>{item.name}</figcaption>
+                        <figcaption className='text-cyan-900'>
+                          <span className={item?.fav && 'favorite'}>
+                            {item.name}
+                          </span>
+                        </figcaption>
                       </figure>
                     </li>
                   ))

@@ -8,6 +8,7 @@ interface ItemListLayoutProps {
   imgClass?: string;
   textClass?: string;
   imgSrc?: string;
+  isNotItem?: boolean;
   onClick?: () => void;
   onMouseOver?: () => void;
   onMouseOut?: () => void;
@@ -19,7 +20,7 @@ interface DataItemListLayoutInterface {
 }
 
 
-export default function ItemListLayout({data, itemClass, linkClass, imgClass, textClass, imgSrc, onClick, onMouseOver, onMouseOut}: ItemListLayoutProps) {
+export default function ItemListLayout({data, itemClass, linkClass, imgClass, textClass, imgSrc, isNotItem=false, onClick, onMouseOver, onMouseOut}: ItemListLayoutProps) {
   const contentBlock = (
     <>
       {
@@ -37,27 +38,29 @@ export default function ItemListLayout({data, itemClass, linkClass, imgClass, te
     </>
   );
 
+  const navLinkBlock = (
+    <NavLink to={data.href} 
+              className={linkClass} 
+              onClick={onClick}
+              onMouseOver={onMouseOver} 
+              onMouseOut={onMouseOut}>
+      {contentBlock}
+    </NavLink>
+  );
+
   return (
     <>
-      <li className={itemClass}>
-        {
-          data.href
-            ? (
-              <NavLink to={data.href} 
-                        className={linkClass} 
-                        onClick={onClick}
-                        onMouseOver={onMouseOver} 
-                        onMouseOut={onMouseOut}>
-                {contentBlock}
-              </NavLink>
-            )
-            : (
-              <>
-                {contentBlock}
-              </>
-            )
-        }
-      </li>
+      {
+        isNotItem
+          ? (
+            data.href ? navLinkBlock : contentBlock
+          )
+          : (
+            <li className={itemClass}>
+              { data.href ? navLinkBlock : contentBlock }
+            </li>
+          )
+      }
     </>
   )
 }

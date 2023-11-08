@@ -9,10 +9,11 @@ export interface getDataInterface {
   match?: String | null,
   join?: String | null,
   orderBy?: String | null,
+  orderByBis?: String | null,
   ascending?: boolean
 }
 
-export default async function getData({ table, columns='*', match=null, join=null, orderBy=null, ascending=false }: getDataInterface) {
+export default async function getData({ table, columns='*', match=null, join=null, orderBy=null, orderByBis=null, ascending=false }: getDataInterface) {
   try {
     const supabase: SupabaseClient<any, "public", any> | undefined = await getSupabase();
 
@@ -25,7 +26,10 @@ export default async function getData({ table, columns='*', match=null, join=nul
         query = query.match(match)
       }
       if (orderBy !== null) {
-        query = query.order(orderBy, { ascending: ascending })
+        query = query.order(orderBy, { ascending })
+      }
+      if (orderByBis !== null) {
+        query = query.order(orderByBis, { ascending })
       }
 
       let { data, error, status } = await query

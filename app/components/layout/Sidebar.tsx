@@ -49,7 +49,8 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const buttonSignInBlock = (
     <ItemListLayout data={authData[0]} 
                     linkClass='sidebar-link'
-                    onClick={handleClickMenu} />
+                    onClick={handleClickMenu}
+                    isNotItem />
   );
 
   const buttonSignOutBlock = (
@@ -114,35 +115,41 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
                               onClick={handleClickMenu} />
             ))
           }
-          { !isSession && buttonSignInBlock }
+          {/* { !isSession && buttonSignInBlock } */}
         </ul>
 
         {/* PROFILE */}
-        {
-          isSession && profileId && (
-            <aside className='sidebar-body'>
-              <h2 className='h3 px-5 pt-5 pb-3 flex items-center'>
-                {t('profileText')}
-                <UserCircleIcon className='sidebar-icon' />
-              </h2>
-              {
+        <aside className='sidebar-body'>
+          <h2 className='h2 my-0 px-5 pt-5 pb-3 flex items-center'>
+            {t('profileText')}
+            <UserCircleIcon className='sidebar-icon' />
+          </h2>
+          {
+            isSession && profileId 
+              ? (
                 profilesData?.map((profile) => (
-                  <div key={profile.id} className=''>
-                    {profile.id == profileId && (
-                      <div className='pb-5'>
-                        <div className='px-5 font-light'>
-                          {profile.first_name}
-                          <span className='uppercase'> {profile.last_name}</span>
+                  <div key={profile.id}>
+                    {
+                      profile.id == profileId && (
+                        <div className='pb-5'>
+                          <div className='px-5 font-light'>
+                            {profile.first_name}
+                            <span className='uppercase'> {profile.last_name}</span>
+                          </div>
+                          { isSession && buttonSignOutBlock }
                         </div>
-                        { isSession && buttonSignOutBlock }
-                      </div>
-                    )}
+                      )
+                    }
                   </div>
-                ))
-              }
-            </aside>
-          )
-        }
+              ))
+            )
+            : (
+              <div className='pb-5'>
+                {buttonSignInBlock}
+              </div>
+            )
+          }
+        </aside>
       </nav>
 
       {/* SNACKBAR */}

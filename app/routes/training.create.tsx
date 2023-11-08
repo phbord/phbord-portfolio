@@ -6,20 +6,25 @@ import { useTranslation } from 'react-i18next';
 import { isInputTextObjectArrayValidate, isInputTextValidate } from '~/utils/formValidate';
 import useSession from '~/services/store/useSession';
 import postData from '~/services/postData';
-import KnowledgesForm from '~/components/pages/KnowledgesForm';
+import TrainingForm from '~/components/pages/TrainingForm';
 
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();
-  const orderValue: FormDataEntryValue | null = formData.get('order');
+  const dateStartValue: FormDataEntryValue | null = formData.get('date-start');
+  const dateEndValue: FormDataEntryValue | null = formData.get('date-end');
   const titleFrValue: FormDataEntryValue | null = formData.get('title-fr');
   const titleEnValue: FormDataEntryValue | null = formData.get('title-en');
-  const iconListValue: FormDataEntryValue | null = formData.get('icon-list');
+  const durationValue: FormDataEntryValue | null = formData.get('duration');
+  const schoolValue: FormDataEntryValue | null = formData.get('school');
+  const pictoValue: FormDataEntryValue | null = formData.get('picto');
+  const projectsListValue: FormDataEntryValue | null = formData.get('projects-list');
+  const importantValue: FormDataEntryValue | null = formData.get('important');
 
-  if (!isInputTextValidate(orderValue) 
+  if (!isInputTextValidate(dateStartValue) 
       || !isInputTextValidate(titleFrValue) 
       || !isInputTextValidate(titleEnValue) 
-      || !isInputTextObjectArrayValidate(iconListValue)) {
+      || !isInputTextValidate(schoolValue)) {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'
@@ -27,13 +32,18 @@ export async function action({request}: ActionFunctionArgs) {
   }
 
   const values: object = {
-    order: orderValue,
+    year_start: parseInt(dateStartValue),
+    year_end: parseInt(dateEndValue),
     title_fr: titleFrValue,
     title_en: titleEnValue,
-    list: JSON.parse(iconListValue),
+    duration: durationValue,
+    school: schoolValue,
+    picto: pictoValue,
+    is_important: JSON.parse(importantValue),
+    projects: projectsListValue === '' ? '' : JSON.parse(projectsListValue),
   };
   const res = await postData({
-    table: 'Knowledges',
+    table: 'Trainings',
     values
   });
 
@@ -42,7 +52,7 @@ export async function action({request}: ActionFunctionArgs) {
       isValid: true,
       isDisplayedSnackBar: true,
       message: 'savedSnackbarText',
-      redirectionPath: '/'
+      redirectionPath: '/training'
     })
   }
   return json({
@@ -54,13 +64,13 @@ export async function action({request}: ActionFunctionArgs) {
 }
 
 
-export default function KnowledgeCreate() {
+export default function TrainingCreate() {
   const { t } = useTranslation();
   const { isSession }: any = useSession();
   const navigate = useNavigate();
 
   const protectRoute = () => isSession 
-                              ? navigate(`/knowledges/create`) 
+                              ? navigate(`/training/create`) 
                               : navigate('/');
 
 
@@ -71,7 +81,7 @@ export default function KnowledgeCreate() {
   useEffect(() => {
     protectRoute();
   }, [isSession])
-                            
+
 
   return (
     <>
@@ -80,11 +90,11 @@ export default function KnowledgeCreate() {
         <div className="content-form">
           {/* TITRE */}
           <h2 className="h2 text-white">
-            {t('createKnowledgesText', { returnObjects: true })}
+            {t('createTrainingText', { returnObjects: true })}
           </h2>
 
           {/* FORMULAIRE */}
-          <KnowledgesForm className="bg-[#FFFFFF5a]" />
+          <TrainingForm className="bg-[#FFFFFF5a]" />
         </div>
       </section>
     </>

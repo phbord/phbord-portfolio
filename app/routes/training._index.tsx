@@ -24,7 +24,6 @@ export const meta: MetaFunction = () => {
 export async function loader() {
   const options: object = { table: 'Trainings', orderBy: 'year_start', orderByBis: 'year_end' };
   const trainings = await getData(options);
-  console.log('+++++++++++++', trainings);
   
   return json(await {
     trainings,
@@ -43,10 +42,48 @@ export default function Training() {
   const [idItem, setIdItem] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
   const revalidator = useRevalidator();
-  console.log('trainings --->', trainings);
+  //console.log('trainings --->', trainings);
+
+  // CREATION d'un nouvel élément
+  const onNewClick = (): void => {
+    navigate(`/training/create`);
+  };
+
+  // EDITION d'un nouvel élément
+  const onEditClick = (id: number): number => {
+    navigate(`/training/${id}/edit`);
+    return id;
+  };
+
+  // SUPPRESSION d'un nouvel élément
+  const onDeleteClick = (id: number) => {
+    console.log('=== onDeleteClick ===', id);
+    setModalOpened(true);
+    setIdItem(id);
+    // Suppression de la ligne
+    fetcher.submit(
+      { table: 'Trainings', id },
+      { method: 'post', action: '/api/delete' }
+    );
+    return id;
+  };
+
+  // Ouverture de la MODAL
+  const onOpenedModalClick = (id: number): void => {
+    setModalOpened(true);
+    setIdItem(id);
+  };
+
+  // Fermeture de la MODAL
+  const onCancelModalClick = (): void => {
+    setModalOpened(false);
+    setIdItem(null);
+  };
 
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    dataAction?.isValid === true && revalidator.revalidate();
+  }, [revalidator])
 
 
   return (
@@ -64,6 +101,16 @@ export default function Training() {
           <h2 className="h2 mr-3">
             {t('header.2.name', { returnObjects: true })}
           </h2>
+          {/* Bouton de CREATION */}
+          {
+            isSession && (
+              <Button className='btn-admin-form btn-admin-form--new mt-12'
+                      srOnlyText={`${t('buttonText')} ${t('buttonNewText')}`}
+                      onClick={onNewClick} >
+                <PlusIcon className='h-5' />
+              </Button>
+            )
+          }
         </div>
            
         {/* L I S T E */}
@@ -76,8 +123,8 @@ export default function Training() {
                                   lang={newLang}
                                   idEdit={`btn-admin-edit-${index}`}
                                   idDelete={`btn-admin-delete-${index}`}
-                                  onEditClick={() => 'onEditClick(index)'}
-                                  onDeleteClick={() => 'onOpenedModalClick(knowledge?.id)'} />
+                                  onEditClick={() => onEditClick(index)}
+                                  onDeleteClick={() => onOpenedModalClick(training?.id)} />
             ))
           }
         </ul>

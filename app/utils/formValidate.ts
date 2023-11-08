@@ -15,8 +15,9 @@ export function isInputPasswordValidate(data: string): boolean {
 }
 
 // Contrôle des champs "texte"
-export function isInputTextValidate(data: string, charSize: number = 0): boolean {
-  if (data.length > charSize) {
+export function isInputTextValidate(data: string, charSizeMin: number = 0, charSizeMax?: number): boolean {
+  if ((!charSizeMax && data.length > charSizeMin) 
+      || (charSizeMax && data.length > charSizeMin && data.length <= charSizeMax)) {
     return true;
   }
   return false;

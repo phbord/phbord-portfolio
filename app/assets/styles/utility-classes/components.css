@@ -24,7 +24,7 @@
     @apply w-full mx-auto px-5 pb-10 transition-all;
   }
   .container-form--light {
-    @apply h-screen flex flex-col justify-center bg-no-repeat bg-center bg-cover ;
+    @apply min-h-screen flex flex-col justify-center bg-no-repeat bg-center bg-cover ;
   }
   .container-form--bg-body {
     @apply bg-[url('/images/backgrounds/bg-map.jpg')];
@@ -33,7 +33,7 @@
     @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fly-tv.jpeg')] transition-all;
   }
   .content-form {
-    @apply w-full max-w-[25rem] mx-auto px-5 pb-10 transition-all;
+    @apply w-full max-w-[25rem] mx-auto my-24 px-5 pb-10 transition-all;
   }
 
   /* HEADER */
@@ -186,6 +186,36 @@
     @apply absolute right-0 top-0 bottom-0 px-1 pt-2 flex justify-center items-center bg-white text-cyan-900;
   }
 
+  /* BOUTONS RADIO */
+  [type="radio"]:checked,
+  [type="radio"]:not(:checked) {
+    @apply absolute left-[-9999px];
+  }
+  [type="radio"]:checked + label,
+  [type="radio"]:not(:checked) + label {
+    @apply relative pl-6 inline-block leading-5 cursor-pointer;
+  }
+  [type="radio"]:checked + label:before,
+  [type="radio"]:not(:checked) + label:before {
+    @apply content-[''] absolute top-0 left-0 w-[18px] h-[18px] border border-gray-500 rounded-full bg-white;
+  }
+  [type="radio"]:checked + label:after,
+  [type="radio"]:not(:checked) + label:after {
+    @apply content-[''] absolute top-[.175rem] left-[.195rem] w-3 h-3 rounded-full bg-orange-500 transition-all;
+  }
+  [type="radio"]:not(:checked) + label:after {
+    @apply opacity-0 scale-0;
+  }
+  [type="radio"]:checked + label:after {
+    @apply opacity-100 scale-100;
+  }
+  .banary-radio-buttons-group {
+    @apply flex;
+  }
+  .banary-radio-buttons-group label {
+    @apply mr-2 text-cyan-900;
+  }
+
   /* BOUTONS */
   .btn-auto {
     @apply px-3 py-2 inline-flex items-center text-cyan-900 text-sm font-bold text-white bg-orange-500 hover:bg-orange-400 transition-all !important;
@@ -200,7 +230,7 @@
     @apply border-0 bg-cyan-900 hover:bg-cyan-700 !important;
   }
   .btn-admin-form--edit {
-    @apply border-orange-300 text-orange-300 hover:border-orange-200 hover:text-orange-200 !important;
+    @apply border-cyan-600 text-cyan-600 hover:border-cyan-500 hover:text-cyan-500 !important;
   }
   .btn-admin-form--delete {
     @apply border-orange-600 text-orange-600 hover:border-orange-400 hover:text-orange-400 !important;
@@ -272,8 +302,12 @@
     @apply h-4 mr-1;
   }
 
+  /* FORMATIONS */
   .trainings {
     @apply w-full mb-6 pb-5 flex border-b border-orange-500 text-orange-500;
+  }
+  .trainings-title {
+    @apply flex items-center text-lg;
   }
   .trainings-date {
     @apply w-[7rem] text-lg;
@@ -282,6 +316,6 @@
     @apply flex flex-wrap;
   }
   .trainings-link {
-    @apply flex items-center hover:text-orange-500 transition-all;
+    @apply flex items-center text-cyan-700 hover:text-orange-500 transition-all;
   }
 }

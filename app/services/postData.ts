@@ -26,7 +26,7 @@ export default async function postData({ table, values, match=null, join=null }:
     }
 
     const { data, error, status } = await query
-    console.error('===========> data:', data);
+    console.log('===========> data:', data);
 
     if (error && status !== 406) {
       console.error('===========> INSERT error');

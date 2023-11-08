@@ -59,7 +59,6 @@ export default function Index() {
 
   // SUPPRESSION d'un nouvel élément
   const onDeleteClick = (id: number) => {
-    console.log('=== onDeleteClick ===', id);
     setModalOpened(true);
     setIdItem(id);
     // Suppression de la ligne

@@ -1,7 +1,7 @@
 import { LegacyRef } from "react";
 
 interface InputPasswordInterface {
-  type: string;
+  type?: string;
   id: string;
   placeholder?: string;
   autoComplete?: string;
@@ -32,7 +32,6 @@ export default function Input({
               ref={inputRef}
               placeholder={emailPlaceholder}
               autoComplete={autoComplete}
-              required 
               className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
               onChange={onChange} />
     </>

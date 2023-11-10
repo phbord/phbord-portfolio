@@ -307,7 +307,7 @@
     @apply w-full mb-6 pb-5 flex border-b border-orange-500 text-orange-500;
   }
   .trainings-title {
-    @apply flex items-center text-lg;
+    @apply flex flex-wrap items-center text-lg;
   }
   .trainings-date {
     @apply w-[7rem] text-lg;
@@ -318,4 +318,36 @@
   .trainings-link {
     @apply flex items-center text-cyan-700 hover:text-orange-500 transition-all;
   }
+}
+
+/* EXPERIENCES */
+.experiences {
+  @apply pt-2 pb-8 flex flex-col border-t border-orange-500;
+}
+.experiences-head {
+  @apply w-full flex justify-between text-orange-500;
+}
+.experiences-date {
+  @apply w-[8rem];
+}
+.icon-chevron {
+  @apply h-7 transition-all;
+}
+.icon-chevron--opened {
+  @apply rotate-180;
+}
+.experiences-body {
+  @apply h-0 pl-[8rem] flex flex-col justify-between flex-grow text-cyan-900 overflow-hidden transition-all;
+}
+.experiences-body--opened {
+  @apply h-auto;
+}
+.experiences-descripton {
+  @apply flex;
+}
+.experiences-list {
+  @apply mt-2 pl-3;
+}
+.experiences-list li {
+  @apply list-disc ml-1;
 }

@@ -53,7 +53,7 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                 <div>
                   {/* Titre */}
                   <div className={data.is_important ? 'trainings-title font-900' : 'trainings-title font-light'}>
-                    {lang === 'fr' ? data.title_fr : data.title_en}
+                    <span>{lang === 'fr' ? data.title_fr : data.title_en}</span>
                     {
                       data.duration && (
                         <span className='ml-1 text-sm'> - {data.duration}</span>

@@ -10,7 +10,7 @@ import getData from "~/services/getData";
 import deleteData from "~/services/deleteData";
 import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
-import ItemListKnowledges from "~/components/core/ItemListKnowledges";
+import ItemListKnowledges from "~/components/layout/ItemListKnowledges";
 import Modal from "~/components/core/Modal";
 import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
 import Button from "~/components/core/buttons/Button";
@@ -139,7 +139,7 @@ export default function Index() {
                   buttonValue={t('buttonDeleteText')}>
             <div className='flex'>
               <TrashIcon className='modal-icon' />
-              <div className='modal-'>
+              <div>
                 <h3 className='modal-title'>
                   {t('modalDeleteRowTitleText')}
                 </h3>

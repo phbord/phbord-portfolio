@@ -11,30 +11,30 @@ import useSession from '~/services/store/useSession';
 import getData from '~/services/getData';
 import BackgroundImageHeader from '~/components/core/background-image/BackgroundImageHeader';
 import Button from '~/components/core/buttons/Button';
-import ItemListTrainings from '~/components/layout/ItemListTrainings';
+import ItemListExperiences from '~/components/layout/ItemListExperiences';
 import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 
 
 export const meta: MetaFunction = () => {
   return [
-    { title: metaGlobal.title },
+    { title: `${metaGlobal.title} - Expériences` },
     { name: "description", content: metaGlobal.description },
   ];
 };
 
 export async function loader() {
-  const options: object = { table: 'Trainings', orderBy: 'year_start', orderByBis: 'year_end' };
-  const trainings = await getData(options);
+  const options: object = { table: 'Experiences', orderBy: 'year_start', orderByBis: 'month_start' };
+  const experiences = await getData(options);
   
   return json(await {
-    trainings,
+    experiences,
   });
 }
 
 
-export default function Training() {
-  const { trainings } = useLoaderData<typeof loader>();
+export default function Experiences() {
+  const { experiences } = useLoaderData<typeof loader>();
   const dataAction = useActionData();
   const { t } = useTranslation();
   const { newLang } = useLangStore();
@@ -44,16 +44,16 @@ export default function Training() {
   const [idItem, setIdItem] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
   const revalidator = useRevalidator();
-  //console.log('trainings --->', trainings);
+  console.log('experiences --->', experiences);
 
   // CREATION d'un nouvel élément
   const onNewClick = (): void => {
-    navigate(`/training/create`);
+    navigate(`/experiences/create`);
   };
 
   // EDITION d'un nouvel élément
   const onEditClick = (id: number): number => {
-    navigate(`/training/${id}/edit`);
+    navigate(`/experiences/${id}/edit`);
     return id;
   };
 
@@ -64,7 +64,7 @@ export default function Training() {
     setIdItem(id);
     // Suppression de la ligne
     fetcher.submit(
-      { table: 'Trainings', id },
+      { table: 'Experiences', id },
       { method: 'post', action: '/api/delete' }
     );
     return id;
@@ -91,7 +91,7 @@ export default function Training() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-old-city.jpeg' 
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-modern-town.jpeg' 
                               titleClass='mb-1 text-[1.35rem] text-yellow-200' 
                               keywordsClass='mr-2' />
 
@@ -101,7 +101,7 @@ export default function Training() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.2.name', { returnObjects: true })}
+            {t('header.1.name', { returnObjects: true })}
           </h2>
           {/* Bouton de CREATION */}
           {
@@ -118,8 +118,8 @@ export default function Training() {
         {/* L I S T E */}
         <ul>
           {
-            trainings?.map((training: any, index: number) => (
-              <ItemListTrainings key={uuidv4()} 
+            experiences?.map((training: any, index: number) => (
+              <ItemListExperiences key={uuidv4()} 
                                   data={training} 
                                   noData={t('noDataText')} 
                                   lang={newLang}

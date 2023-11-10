@@ -23,6 +23,10 @@ import Layout from '~/components/layout/Layout';
 import TopPageButton from '~/components/core/buttons/TopPageButton';
 
 
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
+
 export async function loader() {
   const profilesData = await getData({ table: 'Profile' });
   
@@ -30,11 +34,6 @@ export async function loader() {
     profilesData
   });
 }
-
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
-
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();
@@ -55,6 +54,7 @@ export async function action({request}: ActionFunctionArgs) {
     },
   });
 }
+
 
 export default function App() {
   const data = useActionData();

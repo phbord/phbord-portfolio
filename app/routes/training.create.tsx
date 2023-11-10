@@ -86,7 +86,7 @@ export default function TrainingCreate() {
   return (
     <>
       {/* BODY */}
-      <section className="container-form container-form--light container-form--bg-body bg-neutral-200">
+      <section className="container-form container-form--light container-form--bg-trainings bg-neutral-200">
         <div className="content-form">
           {/* TITRE */}
           <h2 className="h2 text-white">

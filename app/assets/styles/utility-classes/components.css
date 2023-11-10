@@ -26,8 +26,14 @@
   .container-form--light {
     @apply min-h-screen flex flex-col justify-center bg-no-repeat bg-center bg-cover ;
   }
-  .container-form--bg-body {
+  .container-form--bg-knowledges {
     @apply bg-[url('/images/backgrounds/bg-map.jpg')];
+  }
+  .container-form--bg-experiences {
+    @apply bg-[url('/images/backgrounds/bg-modern-town.jpeg')];
+  }
+  .container-form--bg-trainings {
+    @apply bg-[url('/images/backgrounds/bg-old-city.jpeg')];
   }
   .container-not-found {
     @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fly-tv.jpeg')] transition-all;
@@ -235,6 +241,9 @@
   .btn-admin-form--delete {
     @apply border-orange-600 text-orange-600 hover:border-orange-400 hover:text-orange-400 !important;
   }
+  .btn-admin-form--toggle {
+    @apply border-dotted border-cyan-900 text-cyan-900 hover:border-cyan-700 hover:text-cyan-700 !important;
+  }
 
   /* BOUTON HAUT DE PAGE */
   .top-scroll-btn {
@@ -328,10 +337,10 @@
   @apply w-full flex justify-between text-orange-500;
 }
 .experiences-date {
-  @apply w-[8rem];
+  @apply w-[8rem] text-left;
 }
 .icon-chevron {
-  @apply h-7 transition-all;
+  @apply h-5 transition-all;
 }
 .icon-chevron--opened {
   @apply rotate-180;

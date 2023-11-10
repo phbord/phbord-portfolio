@@ -11,7 +11,7 @@ import useSession from '~/services/store/useSession';
 import getData from '~/services/getData';
 import BackgroundImageHeader from '~/components/core/background-image/BackgroundImageHeader';
 import Button from '~/components/core/buttons/Button';
-import ItemListExperiences from '~/components/layout/ItemListExperiences';
+import ItemListExperiences from '~/components/pages/ItemListExperiences';
 import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 

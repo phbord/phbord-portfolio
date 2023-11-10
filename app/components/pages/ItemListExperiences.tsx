@@ -60,10 +60,10 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
         data
           ? (
             <li className='experiences'>
-              {/* H E A D */}
+              {/* H E A D E R */}
               <div className='experiences-head'>
                 {/* Bloc GAUCHE */}
-                <div className='flex'>
+                {/* <div className='flex'>
                   <div className='experiences-date'>
                     {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
                   </div>
@@ -75,9 +75,27 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                       <img src={`/images/icons/${data.picto}`} alt={data.firm} className='h-6' />
                     )
                   }
-                </div>
+                </div> */}
+                <Button className='flex' 
+                        onClick={handleClick}>
+                  <div className='experiences-date'>
+                    {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
+                  </div>
+                  <strong className='mr-2 flex justify-between'>
+                    {data.firm}
+                  </strong>
+                  {
+                    data?.picto && (
+                      <img src={`/images/icons/${data.picto}`} alt={data.firm} className='h-6' />
+                    )
+                  }
+                </Button>
                 {/* Bloc DROIT */}
                 <div className='flex'>
+                  <FormButtonGroup onEditClick={onEditClick}
+                                    onDeleteClick={onDeleteClick}
+                                    idEdit={idEdit}
+                                    idDelete={idDelete} />
                   <ButtonToggleItem isItemOpened={isItemOpened} 
                                     onClick={handleClick} />
                 </div>

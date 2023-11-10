@@ -2,6 +2,8 @@ import { LegacyRef } from "react";
 
 interface InputPasswordInterface {
   type?: string;
+  min?: string | number;
+  max?: string | number;
   id: string;
   placeholder?: string;
   autoComplete?: string;
@@ -13,6 +15,8 @@ interface InputPasswordInterface {
 
 export default function Input({
   type='text', 
+  min,
+  max,
   id, 
   value, 
   isInputErrorDisplayed, 
@@ -25,15 +29,33 @@ export default function Input({
 
   return (
     <>
-      <input id={id}
-              name={id}
-              type={type}
-              value={value}
-              ref={inputRef}
-              placeholder={emailPlaceholder}
-              autoComplete={autoComplete}
-              className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
-              onChange={onChange} />
+      {
+        type === 'number' 
+          ? (
+            <input id={id}
+                    name={id}
+                    type={type}
+                    min={min}
+                    max={max}
+                    value={value}
+                    ref={inputRef}
+                    placeholder={emailPlaceholder}
+                    autoComplete={autoComplete}
+                    className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
+                    onChange={onChange} />
+          )
+          : (
+            <input id={id}
+                    name={id}
+                    type={type}
+                    value={value}
+                    ref={inputRef}
+                    placeholder={emailPlaceholder}
+                    autoComplete={autoComplete}
+                    className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
+                    onChange={onChange} />
+          )
+      }
     </>
   )
 }

@@ -156,18 +156,11 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
       <>
         {
           displayedSnackBar
-            ? data?.isValid
-              ? (
-                <SnackBar isSuccess modalClass="snackbar-slide-in">
-                  {t(data?.message)}
-                </SnackBar>
-              )
-              : (
-                <SnackBar isError modalClass="snackbar-slide-in">
-                  {t(data?.message)}
-                </SnackBar>
-              )
-            : ''
+            && (
+              <SnackBar isSuccess modalClass="snackbar-slide-in">
+                {t(data?.message)}
+              </SnackBar>
+            )
         }
       </>
     </>

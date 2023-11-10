@@ -32,3 +32,26 @@ export function isInputTextObjectArrayValidate(data: string, charSize: number = 
   }
   return false;
 }
+
+// Contrôle des champs "texte"
+export function isInputNumberValidate(charData: string | number, charMin?: string | number, charMax?: string | number): boolean {
+  const data = parseInt(charData);
+  const min = parseInt(charMin);
+  const max = parseInt(charMax);
+
+  if (min && max && data >= min && data <= max) {
+    return true;
+  }
+  else if (min && !max && data >= min) {
+    return true;
+  }
+  else if (!min && max && data <= max) {
+    return true;
+  }
+  else if (!min && !max) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}

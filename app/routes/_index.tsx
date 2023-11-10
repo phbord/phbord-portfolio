@@ -10,7 +10,7 @@ import getData from "~/services/getData";
 import deleteData from "~/services/deleteData";
 import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
-import ItemListKnowledges from "~/components/layout/ItemListKnowledges";
+import ItemListKnowledges from "~/components/pages/ItemListKnowledges";
 import Modal from "~/components/core/Modal";
 import BackgroundImageHeader from "~/components/core/background-image/BackgroundImageHeader";
 import Button from "~/components/core/buttons/Button";

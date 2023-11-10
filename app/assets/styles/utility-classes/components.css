@@ -35,6 +35,18 @@
   .container-form--bg-trainings {
     @apply bg-[url('/images/backgrounds/bg-old-city.jpeg')];
   }
+  .container-form--bg-links {
+    @apply bg-[url('/images/backgrounds/bg-rails.jpeg')];
+  }
+  .container-form--bg-downloads {
+    @apply bg-[url('/images/backgrounds/bg-astroman.jpeg')];
+  }
+  .container-form--bg-signup {
+    @apply bg-[url('/images/backgrounds/bg-cakes-sample.jpeg')];
+  }
+  .container-form--bg-signin {
+    @apply bg-[url('/images/backgrounds/bg-drinks.jpeg')];
+  }
   .container-not-found {
     @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fly-tv.jpeg')] transition-all;
   }

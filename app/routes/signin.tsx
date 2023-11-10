@@ -77,7 +77,7 @@ export default function Signin() {
   return (
     <>
       {/* BODY */}
-      <section className="container-form container-form--light container-form--bg-knowledges bg-neutral-200">
+      <section className="container-form container-form--light container-form--bg-signin bg-neutral-200">
         <div className="content-form">
           {/* TITRE */}
           <h2 className="h2 text-white">

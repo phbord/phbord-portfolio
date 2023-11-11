@@ -47,6 +47,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
   const yearStart = data.year_start && data.year_start;
   const yearEnd = data.year_end && data.year_end;
   const monthYearUnion = data.year_end && '-';
+  const isPicto: boolean = data?.picto ? true : false;
   const [isItemOpened, setIsItemOpened] = useState(false);
 
   const handleClick = () => {
@@ -76,10 +77,10 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                     </strong>
                     {/* Picto */}
                     {
-                      data?.picto !== undefined && (
+                      (isPicto) && (
                         <img src={`/images/icons/${data.picto}`} 
                               alt={data.firm} 
-                              className='h-6' />
+                              className='experiences-picto' />
                       )
                     }
                   </div>

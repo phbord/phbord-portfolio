@@ -263,7 +263,7 @@
     @apply border-orange-600 text-orange-600 hover:border-orange-400 hover:text-orange-400 !important;
   }
   .btn-admin-form--toggle {
-    @apply border-dotted border-cyan-900 text-cyan-900 hover:border-cyan-700 hover:text-cyan-700 !important;
+    @apply border-green-600 text-green-600 hover:border-green-400 hover:text-green-400 !important;
   }
 
   /* BOUTON HAUT DE PAGE */
@@ -364,7 +364,7 @@
   @apply pt-2 pb-8 flex flex-col border-t border-orange-500;
 }
 .experiences-head {
-  @apply w-full text-orange-500;
+  @apply w-full flex justify-between flex-col sm:flex-row text-orange-500;
 }
 .experiences-info {
   @apply mb-2 sm:mb-0 flex flex-col;
@@ -383,6 +383,9 @@
 }
 .experiences-firm {
   @apply mr-2 pl-2 flex justify-between text-left;
+}
+.experiences-picto {
+  @apply h-6;
 }
 .icon-chevron {
   @apply h-5 transition-all;

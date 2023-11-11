@@ -28,6 +28,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [isFirmErrorDisplayed, setIsFirmErrorDisplayed] = useState(false);
   const [isDescriptionErrorDisplayed, setIsDescriptionErrorDisplayed] = useState(false);
   const [isStackErrorDisplayed, setIsStackErrorDisplayed] = useState(false);
+  const [isEsnErrorDisplayed, setIsEsnErrorDisplayed] = useState(false);
   const [isPictoErrorDisplayed, setIsPictoErrorDisplayed] = useState(false);
   const [isListErrorDisplayed, setIsListErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -38,6 +39,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [firmValue, setFirmValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
   const [stackValue, setStackValue] = useState('');
+  const [esnValue, setEsnValue] = useState('');
   const [pictoValue, setPictoValue] = useState('');
   const [listValue, setListValue] = useState('');
   const idRef = useRef('');
@@ -48,6 +50,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const firmRef = useRef('');
   const descriptionRef = useRef('');
   const stackRef = useRef('');
+  const esnRef = useRef('');
   const pictoRef = useRef('');
   const listRef = useRef('');
   const navigation = useNavigation();
@@ -90,6 +93,11 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
     if (e.target.id === 'stack') {
       setStackValue(e.target.value);
       setIsStackErrorDisplayed(() => isInputTextValidate(stackRef.current.value, 3) ? false : true);
+    }
+
+    if (e.target.id === 'esn') {
+      setEsnValue(e.target.value);
+      setIsEsnErrorDisplayed(() => isInputTextValidate(esnRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'list') {
@@ -261,6 +269,23 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                   isInputErrorDisplayed={isPictoErrorDisplayed}
                   onChange={handleChange} />
           <FormElementMessage className={isPictoErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+        
+        {/* Champ ESN */}
+        <div className="mb-4">
+          <label htmlFor="esn" 
+                  className="label">
+            {t('esnText')}
+          </label>
+          <Input id="esn" 
+                  type="text" 
+                  value={esnValue}
+                  inputRef={esnRef}
+                  autoComplete="picto" 
+                  isInputErrorDisplayed={isEsnErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isEsnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         

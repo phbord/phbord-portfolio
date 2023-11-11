@@ -20,6 +20,7 @@ export async function action({request}: ActionFunctionArgs) {
   const descriptionValue: FormDataEntryValue | null = formData.get('description');
   const listValue: FormDataEntryValue | null = formData.get('list');
   const stackValue: FormDataEntryValue | null = formData.get('stack');
+  const esnValue: FormDataEntryValue | null = formData.get('esn');
 
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue)
@@ -41,7 +42,8 @@ export async function action({request}: ActionFunctionArgs) {
     picto: pictoValue,
     description: descriptionValue,
     list: listValue === '' ? '' : JSON.parse(listValue),
-    stack: parseInt(stackValue),
+    stack: stackValue,
+    esn: esnValue,
   };
   const res = await postData({
     table: 'Experiences',

@@ -48,15 +48,15 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
               </div>
 
               {/* Bloc DROIT */}
-              <div className='flex justify-between flex-grow'>
+              <div className='trainings-info'>
                 {/* Détails */}
-                <div>
+                <div className='trainings-details'>
                   {/* Titre */}
                   <div className={data.is_important ? 'trainings-title font-900' : 'trainings-title font-light'}>
                     <span>{lang === 'fr' ? data.title_fr : data.title_en}</span>
                     {
                       data.duration && (
-                        <span className='ml-1 text-sm'> - {data.duration}</span>
+                        <span className='trainings-duration'> - {data.duration}</span>
                       )
                     }
                     {
@@ -75,8 +75,10 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                       )
                     }
                     {
-                      data.picto && (
-                        <img src={`/images/icons/${data.picto}`} alt={''} className='h-6' />
+                      data?.picto !== undefined && (
+                        <img src={`/images/icons/${data.picto}`} 
+                              alt={lang === 'fr' ? data.title_fr : data.title_en} 
+                              className='h-6' />
                       )
                     }
                   </figure>
@@ -111,10 +113,12 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                 </div>
 
                 {/* GROUPE de boutons */}
-                <FormButtonGroup onEditClick={onEditClick}
-                                  onDeleteClick={onDeleteClick}
-                                  idEdit={idEdit}
-                                  idDelete={idDelete} />
+                <div className='flex justify-end'>
+                  <FormButtonGroup onEditClick={onEditClick}
+                                    onDeleteClick={onDeleteClick}
+                                    idEdit={idEdit}
+                                    idDelete={idDelete} />
+                </div>
               </div>
             </li>
           )

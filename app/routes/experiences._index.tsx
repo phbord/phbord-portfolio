@@ -92,11 +92,11 @@ export default function Experiences() {
     <>
       {/* IMAGE */}
       <BackgroundImageHeader imgUrl='/images/backgrounds/bg-modern-town.jpeg' 
-                              titleClass='mb-1 text-[1.35rem] text-yellow-200' 
+                              titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
 
       {/* BODY */}
-      <section className="container-custom mt-[18.5rem] bg-neutral-200">
+      <section className="container-custom mt-[13rem] sm:mt-[18.5rem] bg-neutral-200">
         {/* H E A D E R */}
         <div className="flex justify-between">
           {/* TITRE */}

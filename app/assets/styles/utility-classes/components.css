@@ -110,16 +110,25 @@
 
   /* IMAGES */
   .bg-img-header {
-    @apply fixed top-[2rem] left-0 right-0 pt-10 bg-no-repeat bg-cover;
+    @apply fixed top-[2rem] left-0 right-0 pt-0 sm:pt-10 bg-no-repeat bg-cover;
+  }
+  .bg-img-header-h2 {
+    @apply mb-1 text-[1.15rem] sm:text-[1.35rem] text-center sm:text-left text-yellow-200;
   }
   .bg-img-header-body {
     @apply w-full max-w-[50rem] h-[10rem] mx-auto px-5 pb-4 bg-no-repeat bg-cover bg-center;
   }
   .bg-img-header-children {
-    @apply h-full mt-[4rem] flex flex-col justify-between transition-all;
+    @apply h-full mt-[2.5rem] sm:mt-[4rem] flex flex-col justify-between transition-all;
+  }
+  .bg-img-header-figure {
+    @apply flex items-center flex-col sm:flex-row;
   }
   .bg-img-header-figcaption {
-    @apply flex flex-col text-base;
+    @apply w-full flex flex-col text-base overflow-hidden;
+  }
+  .bg-img-header-figcaption-list {
+    @apply w-full hidden sm:flex flex-wrap overflow-hidden;
   }
 
   /* TITRES */
@@ -328,10 +337,19 @@
     @apply w-full mb-6 pb-5 flex border-b border-orange-500 text-orange-500;
   }
   .trainings-title {
-    @apply flex flex-wrap items-center text-lg;
+    @apply flex flex-wrap items-center text-lg leading-5 sm:leading-7;
+  }
+  .trainings-info {
+    @apply flex justify-between flex-grow flex-col sm:flex-row;
+  }
+  .trainings-details {
+    @apply flex flex-col;
   }
   .trainings-date {
-    @apply w-[7rem] text-lg;
+    @apply min-w-[5rem] sm:min-w-[7rem] text-lg;
+  }
+  .trainings-duration {
+    @apply ml-1 text-sm;
   }
   .trainings-body {
     @apply flex flex-wrap;
@@ -346,10 +364,25 @@
   @apply pt-2 pb-8 flex flex-col border-t border-orange-500;
 }
 .experiences-head {
-  @apply w-full flex justify-between text-orange-500;
+  @apply w-full text-orange-500;
+}
+.experiences-info {
+  @apply mb-2 sm:mb-0 flex flex-col;
+}
+.experiences-head-row-1 {
+  @apply w-full flex sm:flex-row justify-between;
+}
+.experiences-head-row-2 {
+  @apply ml-[4rem] sm:ml-[8rem] pl-2 text-left;
+}
+.experiences-btn-group {
+  @apply flex justify-end;
 }
 .experiences-date {
-  @apply w-[8rem] text-left;
+  @apply w-[4rem] min-w-[4rem] sm:w-[8rem] sm:min-w-[8rem] text-left;
+}
+.experiences-firm {
+  @apply mr-2 pl-2 flex justify-between text-left;
 }
 .icon-chevron {
   @apply h-5 transition-all;

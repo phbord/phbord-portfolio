@@ -63,39 +63,42 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
               {/* H E A D E R */}
               <div className='experiences-head'>
                 {/* Bloc GAUCHE */}
-                {/* <div className='flex'>
-                  <div className='experiences-date'>
-                    {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
-                  </div>
-                  <strong className='mr-2 flex justify-between'>
-                    {data.firm}
-                  </strong>
-                  {
-                    data?.picto && (
-                      <img src={`/images/icons/${data.picto}`} alt={data.firm} className='h-6' />
-                    )
-                  }
-                </div> */}
-                <Button className='flex' 
+                <Button className='experiences-info' 
                         onClick={handleClick}>
-                  <div className='experiences-date'>
-                    {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
+                  <div className='experiences-head-row-1'>
+                    {/* Dates */}
+                    <div className='experiences-date'>
+                      {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
+                    </div>
+                    {/* Entreprise */}
+                    <strong className='experiences-firm'>
+                      {data.firm}
+                    </strong>
+                    {/* Picto */}
+                    {
+                      data?.picto !== undefined && (
+                        <img src={`/images/icons/${data.picto}`} 
+                              alt={data.firm} 
+                              className='h-6' />
+                      )
+                    }
                   </div>
-                  <strong className='mr-2 flex justify-between'>
-                    {data.firm}
-                  </strong>
                   {
-                    data?.picto && (
-                      <img src={`/images/icons/${data.picto}`} alt={data.firm} className='h-6' />
+                    data?.esn && (
+                      <div className='experiences-head-row-2'>
+                        {data?.esn}
+                      </div>
                     )
                   }
                 </Button>
                 {/* Bloc DROIT */}
-                <div className='flex'>
+                <div className='experiences-btn-group'>
+                  {/* Boutons d'édition et de suppression */}
                   <FormButtonGroup onEditClick={onEditClick}
                                     onDeleteClick={onDeleteClick}
                                     idEdit={idEdit}
                                     idDelete={idDelete} />
+                  {/* Bouton d'ouverture/fermeture du bloc */}
                   <ButtonToggleItem isItemOpened={isItemOpened} 
                                     onClick={handleClick} />
                 </div>
@@ -108,7 +111,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                 </p>
                 <ul className='experiences-list'>
                   {
-                    data?.list?.map((item) => (
+                    data?.list && data?.list?.map((item) => (
                       <li key={uuidv4()}>{item}</li>
                     ))
                   }

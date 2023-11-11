@@ -41,7 +41,7 @@ export async function action({request}: ActionFunctionArgs) {
     picto: pictoValue,
     description: descriptionValue,
     list: listValue === '' ? '' : JSON.parse(listValue),
-    stackt: parseInt(stackValue),
+    stack: parseInt(stackValue),
   };
   const res = await postData({
     table: 'Experiences',

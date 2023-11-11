@@ -52,7 +52,7 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
                             imgUrl={imgUrl}>
             <div className={`bg-img-header-children ${isHiddenBgImgText ? 'opacity-0' : ''}`}>
               {/* HAUT */}
-              <figure className='flex items-center'>
+              <figure className='bg-img-header-figure'>
                 {/* COLONNE GAUCHE */}
                 <span className='sr-only'>{t('logoProfileText')}</span>
                 <img src="/images/ph-profile.png" alt={t('logoProfileText')} className='w-[4rem] h-[4rem] mr-3' />
@@ -62,7 +62,7 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
                   <h2 className={titleClass}>
                     {t('position')}
                   </h2>
-                  <ul className="flex">
+                  <ul className="bg-img-header-figcaption-list">
                     {
                       keywordsData?.map((item: any) =>(
                         <li key={uuidv4()} className={keywordsClass}>

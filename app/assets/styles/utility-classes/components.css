@@ -151,6 +151,9 @@
   .tooltips-footer {
     @apply left-0 bottom-[-2rem] bg-white text-orange-500 rotate-[-12.5deg];
   }
+  .tooltips-footer-inverse {
+    @apply left-0 top-[-4.5rem] bg-white text-orange-500 rotate-[-12.5deg];
+  }
   .tooltips-snt {
     @apply left-0 bottom-[-2rem] bg-orange-500 rotate-[-12.5deg];
   }

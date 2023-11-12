@@ -14,6 +14,7 @@ import Button from '~/components/core/buttons/Button';
 import ItemListTrainings from '~/components/pages/ItemListTrainings';
 import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
+import Tooltip from '~/components/core/Tooltip';
 
 
 export const meta: MetaFunction = () => {
@@ -44,7 +45,11 @@ export default function Training() {
   const [idItem, setIdItem] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
   const revalidator = useRevalidator();
+  const [isNewTooltipOpened, setIsNewTooltipOpened] = useState(false);
   //console.log('trainings --->', trainings);
+
+  const handleNewMouseOver = () => setIsNewTooltipOpened(true);
+  const handleNewMouseOut = () => setIsNewTooltipOpened(false);
 
   // CREATION d'un nouvel élément
   const onNewClick = (): void => {
@@ -106,10 +111,19 @@ export default function Training() {
           {/* Bouton de CREATION */}
           {
             isSession && (
-              <Button className='btn-admin-form btn-admin-form--new mt-12'
+              <Button className='relative btn-admin-form btn-admin-form--new mt-12'
                       srOnlyText={`${t('buttonText')} ${t('buttonNewText')}`}
-                      onClick={onNewClick} >
+                      onClick={onNewClick}
+                      onMouseOver={handleNewMouseOver}
+                      onMouseOut={handleNewMouseOut}>
                 <PlusIcon className='h-5' />
+                {/* TOOLTIPS */}
+                {
+                  isNewTooltipOpened && (
+                    <Tooltip name={t('buttonNewText')} 
+                              className='tooltips-footer' />
+                  )
+                }
               </Button>
             )
           }

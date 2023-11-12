@@ -5,12 +5,17 @@ import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
 import useScrollYPositionStore from "~/services/store/useScrollYPositionStore";
 import Button from "~/components/core/buttons/Button";
+import Tooltip from '~/components/core/Tooltip';
 
 
 export default function TopPageButton() {
   const { t } = useTranslation();
   const { newScrollYPosition }: any = useScrollYPositionStore();
   const [isHidden, setIsHidden] = useState(false);
+  const [isNewTooltipOpened, setIsNewTooltipOpened] = useState(false);
+
+  const handleNewMouseOver = () => setIsNewTooltipOpened(true);
+  const handleNewMouseOut = () => setIsNewTooltipOpened(false);
 
   const toggleScrollButton = () => {
     if (window.innerHeight === document.documentElement.offsetHeight || newScrollYPosition < 100) {
@@ -47,10 +52,19 @@ export default function TopPageButton() {
   return (
     <>
       <Button type='button' 
-              className={`top-scroll-btn ${isHidden ? 'top-scroll-btn-hidden' : ''}`} 
+              className={`relative top-scroll-btn ${isHidden ? 'top-scroll-btn-hidden' : ''}`} 
               onClick={handleClick} 
+              onMouseOver={handleNewMouseOver}
+              onMouseOut={handleNewMouseOut}
               srOnlyText={t('topPageText')}>
         <ChevronUpIcon className="top-scroll-icon" />
+        {/* TOOLTIPS */}
+        {
+          isNewTooltipOpened && (
+            <Tooltip name={t('topPageText')} 
+                      className='tooltips-footer-inverse' />
+          )
+        }
       </Button>
     </>
   )

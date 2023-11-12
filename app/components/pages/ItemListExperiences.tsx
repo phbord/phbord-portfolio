@@ -63,7 +63,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
             <li className='experiences'>
               {/* H E A D E R */}
               <div className='experiences-head'>
-                {/* Bloc GAUCHE */}
+                {/* Bloc  G A U C H E */}
                 <Button className='experiences-info' 
                         onClick={handleClick}>
                   <div className='experiences-head-row-1'>
@@ -84,6 +84,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                       )
                     }
                   </div>
+                  {/* ESN */}
                   {
                     data?.esn && (
                       <div className='experiences-head-row-2'>
@@ -92,7 +93,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                     )
                   }
                 </Button>
-                {/* Bloc DROIT */}
+                {/* Bloc  D R O I T */}
                 <div className='experiences-btn-group'>
                   {/* Boutons d'édition et de suppression */}
                   <FormButtonGroup onEditClick={onEditClick}

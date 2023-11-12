@@ -373,7 +373,7 @@
   @apply w-full flex sm:flex-row justify-between;
 }
 .experiences-head-row-2 {
-  @apply ml-[4rem] sm:ml-[8rem] pl-2 text-left;
+  @apply ml-[4rem] sm:ml-[8rem] pl-2 text-left text-gray-400 text-xs font-light;
 }
 .experiences-btn-group {
   @apply flex justify-end;
@@ -394,7 +394,7 @@
   @apply rotate-180;
 }
 .experiences-body {
-  @apply h-0 pl-[8rem] flex flex-col justify-between flex-grow text-cyan-900 overflow-hidden transition-all;
+  @apply h-0 mt-2 pl-[4.5rem] sm:pl-[8.5rem] flex flex-col justify-between flex-grow text-cyan-900 overflow-hidden transition-all;
 }
 .experiences-body--opened {
   @apply h-auto;

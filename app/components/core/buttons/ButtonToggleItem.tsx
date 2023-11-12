@@ -16,7 +16,7 @@ export default function ButtonToggleItem({isItemOpened, onClick}: ButtonToggleIt
   return (
     <Button onClick={onClick} 
             srOnlyText={t('toggleItemButtonText')}
-            className='btn-admin-form btn-admin-form--toggle ml-1'>
+            className='btn-admin-form btn-admin-form--new ml-1'>
       <ChevronDownIcon className={isItemOpened ? 'icon-chevron icon-chevron--opened' : 'icon-chevron'} />
     </Button>
   )

@@ -388,7 +388,7 @@
   @apply h-6;
 }
 .icon-chevron {
-  @apply h-5 transition-all;
+  @apply h-5 fill-white transition-all;
 }
 .icon-chevron--opened {
   @apply rotate-180;

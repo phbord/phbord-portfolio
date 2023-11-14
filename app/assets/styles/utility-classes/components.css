@@ -426,7 +426,7 @@
   @apply mb-[1fr];
 }
 .link {
-  @apply p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
+  @apply h-full p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
 }
 .link-figure {
   @apply flex justify-center;
@@ -442,4 +442,42 @@
 }
 .link-url {
   @apply mt-1 text-cyan-700 hover:text-orange-500 transition-all;
+}
+
+/* TELECHARGEMENTS */
+.downloads {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+}
+.downloads-item {
+  @apply mb-[1fr];
+}
+.download {
+  @apply h-full p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
+}
+.download-article {
+  @apply h-full flex flex-col align-middle justify-between text-center;
+}
+.download-year {
+  @apply mb-1 text-cyan-900;
+}
+.download-title {
+  @apply text-orange-500;
+}
+.download-school {
+  @apply mt-2 flex align-middle justify-center text-gray-400 text-xs uppercase font-light;
+}
+.download-school-icon {
+  @apply h-5;
+}
+.download-school-figcaption {
+  @apply leading-normal align-middle;
+}
+.download-school-icon + .download-school-figcaption {
+  @apply ml-2;
+}
+.download-icon-group {
+  @apply flex align-middle justify-center;
+}
+.download-icon {
+  @apply h-5 mt-1 text-orange-500;
 }

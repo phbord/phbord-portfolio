@@ -426,7 +426,7 @@
   @apply mb-[1fr];
 }
 .link {
-  @apply p-4 border border-dashed border-orange-500;
+  @apply p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
 }
 .link-figure {
   @apply flex justify-center;
@@ -435,7 +435,7 @@
   @apply min-w-[1.75rem] h-10 mb-2 p-1 bg-white rounded-full;
 }
 .link-subtitle {
-  @apply mb-2 text-left text-gray-400 text-xs font-light;
+  @apply mt-2 mb-1 text-left text-gray-400 text-xs uppercase font-light;
 }
 .link-description {
   @apply text-cyan-900;

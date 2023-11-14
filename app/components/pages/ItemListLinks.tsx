@@ -26,8 +26,8 @@ interface DataItemListLinksInterface {
 export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onEditClick, onDeleteClick}: ItemListLinksInterface) {
   return (
     <li className='links-item'>
-      <article className='link'>
-        <Link to={data.url}>
+      <Link to={data.url} className='link'>
+        <article>
           {
             data?.picto && (
               <figure className='link-figure'>
@@ -40,7 +40,7 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
               </figure>
             )
           }
-          <h3 className='h3'>
+          <h3 className='h3 text-center'>
             {data.title}
           </h3>
           <p className='link-subtitle'>
@@ -52,8 +52,8 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
           <p className='link-url truncate'>
             {data.url}
           </p>
-        </Link>
-      </article>
+        </article>
+      </Link>
     </li>
   )
 }

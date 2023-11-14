@@ -35,6 +35,9 @@ interface DataListItemListTrainingsInterface {
 
 
 export default function ItemListTrainings({data, noData, lang, idEdit, idDelete, onEditClick, onDeleteClick}: ItemListTrainingsInterface) {
+  const isPicto: boolean = data?.picto ? true : false;
+
+  
   return (
     <>
       {
@@ -75,7 +78,7 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                       )
                     }
                     {
-                      data?.picto !== undefined && (
+                      (isPicto) && (
                         <img src={`/images/icons/${data.picto}`} 
                               alt={lang === 'fr' ? data.title_fr : data.title_en} 
                               className='h-6' />

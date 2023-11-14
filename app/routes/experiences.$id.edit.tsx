@@ -1,9 +1,9 @@
-import { useActionData, useLoaderData, useNavigate } from '@remix-run/react';
+import { useLoaderData, useNavigate } from '@remix-run/react';
 import { ActionFunctionArgs, json } from '@remix-run/node';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { isInputTextObjectArrayValidate, isInputTextValidate } from '~/utils/formValidate';
+import { isInputTextValidate } from '~/utils/formValidate';
 import useSession from '~/services/store/useSession';
 import getData from '~/services/getData';
 import updateData from '~/services/updateData';
@@ -23,6 +23,7 @@ export async function action({request}: ActionFunctionArgs) {
   const stackValue: FormDataEntryValue | null = formData.get('stack');
   const esnValue: FormDataEntryValue | null = formData.get('esn');
   const listValue: FormDataEntryValue | null = formData.get('list');
+  const importantValue: FormDataEntryValue | null = formData.get('important');
 
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue) 
@@ -46,6 +47,7 @@ export async function action({request}: ActionFunctionArgs) {
     stack: stackValue,
     esn: esnValue,
     picto: pictoValue,
+    is_important: JSON.parse(importantValue),
     list: listValue === '' ? '' : JSON.parse(listValue),
   };
 

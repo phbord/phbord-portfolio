@@ -60,7 +60,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
       {
         data
           ? (
-            <li className='experiences'>
+            <li className={data.is_important ? 'experiences experiences--important' : 'experiences'}>
               {/* H E A D E R */}
               <div className='experiences-head'>
                 {/* Bloc  G A U C H E */}
@@ -73,6 +73,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                     </div>
                     {/* Entreprise */}
                     <strong className='experiences-firm'>
+                      <span className='experiences-mark'></span>
                       {data.firm}
                     </strong>
                     {/* Picto */}

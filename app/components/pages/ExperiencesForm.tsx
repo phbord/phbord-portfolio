@@ -31,6 +31,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [isEsnErrorDisplayed, setIsEsnErrorDisplayed] = useState(false);
   const [isPictoErrorDisplayed, setIsPictoErrorDisplayed] = useState(false);
   const [isListErrorDisplayed, setIsListErrorDisplayed] = useState(false);
+  const [isIsImportantErrorDisplayed, setIsIsImportantErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [monthStartValue, setMonthStartValue] = useState('');
   const [yearStartValue, setYearStartValue] = useState('');
@@ -42,6 +43,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [esnValue, setEsnValue] = useState('');
   const [pictoValue, setPictoValue] = useState('');
   const [listValue, setListValue] = useState('');
+  const [isImportantValue, setIsImportantValue] = useState('');
   const idRef = useRef('');
   const monthStartRef = useRef('');
   const yearStartRef = useRef('');
@@ -53,6 +55,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const esnRef = useRef('');
   const pictoRef = useRef('');
   const listRef = useRef('');
+  const isImportantRef = useRef('');
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const navigate = useNavigate();
@@ -103,6 +106,10 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
       setListValue(e.target.value);
     }
 
+    if (e.target.id === 'important') {
+      setIsImportantValue(e.target.value);
+    }
+
     setIsDisabled(() => isInputTextValidate(monthStartRef.current.value, 0, 2) 
                         && isInputTextValidate(yearStartRef.current.value, 3, 4) 
                         && isInputTextValidate(firmRef.current.value, 3) 
@@ -142,7 +149,8 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
       setStackValue(data.stack);
       setEsnValue(data.esn);
       setPictoValue(data.picto);
-      setListValue(data.list);
+      setListValue(JSON.stringify(data.list));
+      setIsImportantValue(data.is_important);
     }
   }, [])
 
@@ -351,6 +359,22 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                   onChange={handleChange} />
           <FormElementMessage className={isStackErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
+        </div>
+        
+        {/* Champ IMPORTANT */}
+        <div className="mb-4">
+          <label htmlFor="important" 
+                  className="label">
+            {t('isImportantText')}
+          </label>
+          <BinaryRadioButton className="banary-radio-buttons-group"
+                              value={isImportantValue}
+                              text1={t('noText')}
+                              text2={t('yesText')}
+                              name="important"
+                              id1="important-radio-button-1"
+                              id2="important-radio-button-2"
+                              onClick={handleButtonRadioClick} />
         </div>
 
         {/* Bouton SUBMIT */}

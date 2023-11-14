@@ -366,6 +366,9 @@
 .experiences {
   @apply pt-2 pb-8 flex flex-col border-t border-orange-500;
 }
+.experiences--important {
+  @apply border-t-[3px];
+}
 .experiences-head {
   @apply w-full flex justify-between flex-col sm:flex-row text-orange-500;
 }
@@ -385,7 +388,10 @@
   @apply w-[4rem] min-w-[4rem] sm:w-[8rem] sm:min-w-[8rem] text-left;
 }
 .experiences-firm {
-  @apply mr-2 pl-2 flex justify-between text-left;
+  @apply relative mr-2 pl-2 flex justify-between text-left;
+}
+.experiences--important .experiences-mark {
+  @apply absolute top-[-.52rem] left-2 w-0 h-0 border-t-[4px] border-x-[5px] border-t-orange-500;
 }
 .experiences-picto {
   @apply h-6;

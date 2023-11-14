@@ -107,7 +107,6 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
 
   const handleButtonRadioClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsImportantValue(e.target.value);
-    console.log(e.target.value, '**************', e.target.id);
   };
 
   const getErrorMessage = (data: { messageType: any; } | undefined) => {
@@ -136,7 +135,7 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
       setDurationValue(data.duration);
       setSchoolValue(data.school);
       setPictoValue(data.picto);
-      setProjectsListValue(data.projects);
+      setProjectsListValue(JSON.stringify(data.projects));
       setIsImportantValue(data.is_important);
     }
   }, [])

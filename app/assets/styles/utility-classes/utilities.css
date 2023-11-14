@@ -27,4 +27,17 @@
     animation-name: slide-in-snackbar;
     animation-duration: 3s;
   }
+
+  .truncate {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .multilines-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }

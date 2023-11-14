@@ -45,7 +45,6 @@ export async function action({request}: ActionFunctionArgs) {
     is_important: JSON.parse(importantValue),
     projects: projectsListValue === '' ? '' : JSON.parse(projectsListValue),
   };
-  console.log(')))))))))))))))))', values);
   const res = await updateData({
     table: 'Trainings',
     values,
@@ -53,7 +52,6 @@ export async function action({request}: ActionFunctionArgs) {
   });
 
   if (res) {
-    console.log('))))))) if');
     return json({
       isValid: true,
       isDisplayedSnackBar: true,

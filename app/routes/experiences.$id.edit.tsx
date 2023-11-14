@@ -7,7 +7,7 @@ import { isInputTextObjectArrayValidate, isInputTextValidate } from '~/utils/for
 import useSession from '~/services/store/useSession';
 import getData from '~/services/getData';
 import updateData from '~/services/updateData';
-import TrainingForm from '~/components/pages/TrainingForm';
+import ExperiencesForm from '~/components/pages/ExperiencesForm';
 
 
 export async function action({request}: ActionFunctionArgs) {
@@ -39,7 +39,7 @@ export async function action({request}: ActionFunctionArgs) {
     id: idValue,
     month_start: parseInt(monthStartValue),
     year_start: parseInt(yearStartValue),
-    month_end: parseInt(monthStartValue),
+    month_end: parseInt(monthEndValue),
     year_end: parseInt(yearEndValue),
     firm: firmValue,
     description: descriptionValue,
@@ -48,15 +48,14 @@ export async function action({request}: ActionFunctionArgs) {
     picto: pictoValue,
     list: listValue === '' ? '' : JSON.parse(listValue),
   };
-  console.log(')))))))))))))))))', values);
+
   const res = await updateData({
-    table: 'Trainings',
+    table: 'Experiences',
     values,
     match: { id: idValue }
   });
 
   if (res) {
-    console.log('))))))) if');
     return json({
       isValid: true,
       isDisplayedSnackBar: true,
@@ -73,18 +72,51 @@ export async function action({request}: ActionFunctionArgs) {
 }
 
 export async function loader({params}) {
-  const options: object = { table: 'Experiences', orderBy: 'month_start', orderByBis: 'year_end' };
+  const options: object = { table: 'Experiences', orderBy: 'year_start', orderByBis: 'month_start' };
   const data = await getData(options);
-  const id = params.id;
+  const id = parseInt(params.id);
+  const dataLoader = data.filter((item) => item.id === id)[0];
   return json({
-    dataLoader: data[id],
+    dataLoader,
     id,
   });
 }
 
 
 export default function ExperiencesEdit() {
+  const { dataLoader, id} = useLoaderData<typeof loader>();
+  const { t } = useTranslation();
+  const { isSession }: any = useSession();
+  const navigate = useNavigate();
+
+  const protectRoute = () => isSession 
+                              ? navigate(`/experiences/${id}/edit`) 
+                              : navigate('/');
+
+
+  useEffect(() => {
+    protectRoute();
+  }, [])
+
+  useEffect(() => {
+    protectRoute();
+  }, [isSession])
+
+
   return (
-    <div></div>
+    <>
+      {/* BODY */}
+      <section className="container-form container-form--light container-form--bg-trainings bg-neutral-200">
+        <div className="content-form">
+          {/* TITRE */}
+          <h2 className="h2 text-white">
+            {t('editExperienceText', { returnObjects: true })}
+          </h2>
+
+          {/* FORMULAIRE */}
+          <ExperiencesForm className="bg-[#FFFFFF5a]" data={dataLoader} />
+        </div>
+      </section>
+    </>
   )
 }

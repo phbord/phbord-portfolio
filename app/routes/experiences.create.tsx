@@ -25,8 +25,7 @@ export async function action({request}: ActionFunctionArgs) {
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue)
       || !isInputTextValidate(firmValue)
-      || !isInputTextValidate(descriptionValue)
-      || !isInputTextValidate(stackValue)) {
+      || !isInputTextValidate(descriptionValue)) {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'

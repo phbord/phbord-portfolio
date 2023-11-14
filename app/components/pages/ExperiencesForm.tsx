@@ -92,7 +92,6 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
 
     if (e.target.id === 'stack') {
       setStackValue(e.target.value);
-      setIsStackErrorDisplayed(() => isInputTextValidate(stackRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'esn') {
@@ -108,13 +107,11 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                         && isInputTextValidate(yearStartRef.current.value, 3, 4) 
                         && isInputTextValidate(firmRef.current.value, 3) 
                         && isInputTextValidate(descriptionRef.current.value, 3) 
-                        && isInputTextValidate(stackRef.current.value, 3) 
                           ? false : true);
   };
 
   const handleButtonRadioClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsImportantValue(e.target.value);
-    console.log(e.target.value, '**************', e.target.id);
   };
 
   const getErrorMessage = (data: { messageType: any; } | undefined) => {
@@ -131,6 +128,23 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
     }
   };
 
+
+  useEffect(() => {
+    getErrorMessage(dataAction);
+
+    if (data) {
+      setMonthStartValue(data.month_start);
+      setYearStartValue(data.year_start);
+      setMonthEndValue(data.month_end);
+      setYearEndValue(data.year_end);
+      setFirmValue(data.firm);
+      setDescriptionValue(data.description);
+      setStackValue(data.stack);
+      setEsnValue(data.esn);
+      setPictoValue(data.picto);
+      setListValue(data.list);
+    }
+  }, [])
 
   useEffect(() => {
     getErrorMessage(dataAction);

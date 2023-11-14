@@ -373,7 +373,7 @@
   @apply mb-2 sm:mb-0 flex flex-col;
 }
 .experiences-head-row-1 {
-  @apply w-full flex sm:flex-row justify-between;
+  @apply w-full flex sm:flex-row;
 }
 .experiences-head-row-2 {
   @apply ml-[4rem] sm:ml-[8rem] pl-2 text-left text-gray-400 text-xs font-light;

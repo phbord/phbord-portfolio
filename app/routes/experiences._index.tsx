@@ -46,7 +46,6 @@ export default function Experiences() {
   const [modalOpened, setModalOpened] = useState(false);
   const revalidator = useRevalidator();
   const [isNewTooltipOpened, setIsNewTooltipOpened] = useState(false);
-  console.log('experiences --->', experiences);
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);
   const handleNewMouseOut = () => setIsNewTooltipOpened(false);
@@ -64,7 +63,6 @@ export default function Experiences() {
 
   // SUPPRESSION d'un nouvel élément
   const onDeleteClick = (id: number) => {
-    console.log('=== onDeleteClick ===', id);
     setModalOpened(true);
     setIdItem(id);
     // Suppression de la ligne
@@ -139,7 +137,7 @@ export default function Experiences() {
                                   lang={newLang}
                                   idEdit={`btn-admin-edit-${index}`}
                                   idDelete={`btn-admin-delete-${index}`}
-                                  onEditClick={() => onEditClick(index)}
+                                  onEditClick={() => onEditClick(training?.id)}
                                   onDeleteClick={() => onOpenedModalClick(training?.id)} />
             ))
           }

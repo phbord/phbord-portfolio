@@ -74,7 +74,7 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
                                 onDeleteClick={onDeleteClick}
                                 idEdit={idEdit}
                                 idDelete={idDelete}
-                                className='justify-end my-2 mr-2' />
+                                className='btn-admin-form-group--bottom' />
             </li>
           )
           : (

@@ -253,6 +253,9 @@
   .btn-admin-form-group {
     @apply flex;
   }
+  .btn-admin-form-group--bottom {
+    @apply justify-end mt-[-1px] py-2 pr-2 border-x border-b border-dashed border-orange-500 bg-gray-300;
+  }
   .btn-admin-form {
     @apply w-7 h-7 px-1 py-0 border-2 rounded-[50%] flex justify-center items-center transition-all;
   }

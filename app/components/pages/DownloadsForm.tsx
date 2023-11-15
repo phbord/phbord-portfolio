@@ -201,22 +201,6 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
                               message={t('inputTextWrongEntry')} />
         </div>
         
-        {/* Champ IMPORTANT */}
-        <div className="mb-4">
-          <label htmlFor="important" 
-                  className="label">
-            {t('isImportantText')}
-          </label>
-          <BinaryRadioButton className="banary-radio-buttons-group"
-                              value={isImportantValue}
-                              text1={t('noText')}
-                              text2={t('yesText')}
-                              name="important"
-                              id1="important-radio-button-1"
-                              id2="important-radio-button-2"
-                              onClick={handleButtonRadioClick} />
-        </div>
-        
         {/* Champ ORDER */}
         <div className="mb-4">
           <label htmlFor="order" 
@@ -232,6 +216,22 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
                   onChange={handleChange} />
           <FormElementMessage className={isOrderErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
+        </div>
+        
+        {/* Champ IMPORTANT */}
+        <div className="mb-4">
+          <label htmlFor="important" 
+                  className="label">
+            {t('isImportantText')}
+          </label>
+          <BinaryRadioButton className="banary-radio-buttons-group"
+                              value={isImportantValue}
+                              text1={t('noText')}
+                              text2={t('yesText')}
+                              name="important"
+                              id1="important-radio-button-1"
+                              id2="important-radio-button-2"
+                              onClick={handleButtonRadioClick} />
         </div>
         
         {/* Champ LOGO */}

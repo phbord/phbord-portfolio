@@ -214,6 +214,22 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
           </div>
         </div>
         
+        {/* Champ IMPORTANT */}
+        <div className="mb-4">
+          <label htmlFor="important" 
+                  className="label">
+            {t('isImportantText')}
+          </label>
+          <BinaryRadioButton className="banary-radio-buttons-group"
+                              value={isImportantValue}
+                              text1={t('noText')}
+                              text2={t('yesText')}
+                              name="important"
+                              id1="important-radio-button-1"
+                              id2="important-radio-button-2"
+                              onClick={handleButtonRadioClick} />
+        </div>
+        
         {/* Champ TITRE (français) */}
         <div className="mb-4">
           <label htmlFor="title-fr" 
@@ -328,22 +344,6 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
                     onChange={handleChange} />
           <FormElementMessage className={isProjectsListEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
-        </div>
-        
-        {/* Champ IMPORTANT */}
-        <div className="mb-4">
-          <label htmlFor="important" 
-                  className="label">
-            {t('isImportantText')}
-          </label>
-          <BinaryRadioButton className="banary-radio-buttons-group"
-                              value={isImportantValue}
-                              text1={t('noText')}
-                              text2={t('yesText')}
-                              name="important"
-                              id1="important-radio-button-1"
-                              id2="important-radio-button-2"
-                              onClick={handleButtonRadioClick} />
         </div>
 
         {/* Bouton SUBMIT */}

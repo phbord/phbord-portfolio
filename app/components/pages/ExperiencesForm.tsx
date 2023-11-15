@@ -297,6 +297,22 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
           </div>
         </div>
         
+        {/* Champ IMPORTANT */}
+        <div className="mb-4">
+          <label htmlFor="important" 
+                  className="label">
+            {t('isImportantText')}
+          </label>
+          <BinaryRadioButton className="banary-radio-buttons-group"
+                              value={isImportantValue}
+                              text1={t('noText')}
+                              text2={t('yesText')}
+                              name="important"
+                              id1="important-radio-button-1"
+                              id2="important-radio-button-2"
+                              onClick={handleButtonRadioClick} />
+        </div>
+        
         {/* Champ ENTREPRISE */}
         <div className="mb-4">
           <label htmlFor="firm-fr" 
@@ -459,22 +475,6 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                   onChange={handleChange} />
           <FormElementMessage className={isStackErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
-        </div>
-        
-        {/* Champ IMPORTANT */}
-        <div className="mb-4">
-          <label htmlFor="important" 
-                  className="label">
-            {t('isImportantText')}
-          </label>
-          <BinaryRadioButton className="banary-radio-buttons-group"
-                              value={isImportantValue}
-                              text1={t('noText')}
-                              text2={t('yesText')}
-                              name="important"
-                              id1="important-radio-button-1"
-                              id2="important-radio-button-2"
-                              onClick={handleButtonRadioClick} />
         </div>
 
         {/* Bouton SUBMIT */}

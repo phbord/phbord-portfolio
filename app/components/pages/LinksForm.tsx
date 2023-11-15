@@ -161,6 +161,23 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
           )
         }
         
+        {/* Champ ORDER */}
+        <div className="mb-4">
+          <label htmlFor="order" 
+                  className="label">
+            {t('orderText')}
+          </label>
+          <Input id="order" 
+                  type="number" 
+                  value={orderValue}
+                  inputRef={orderRef}
+                  autoComplete="picto" 
+                  isInputErrorDisplayed={isOrderErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isOrderErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+        
         {/* Champ TITLE */}
         <div className="mb-4">
           <label htmlFor="title-fr" 
@@ -275,23 +292,6 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
                   isInputErrorDisplayed={isUrlErrorDisplayed}
                   onChange={handleChange} />
           <FormElementMessage className={isUrlErrorDisplayed ? '' : 'hidden'} 
-                              message={t('inputTextWrongEntry')} />
-        </div>
-        
-        {/* Champ ORDER */}
-        <div className="mb-4">
-          <label htmlFor="order" 
-                  className="label">
-            {t('orderText')}
-          </label>
-          <Input id="order" 
-                  type="number" 
-                  value={orderValue}
-                  inputRef={orderRef}
-                  autoComplete="picto" 
-                  isInputErrorDisplayed={isOrderErrorDisplayed}
-                  onChange={handleChange} />
-          <FormElementMessage className={isOrderErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
 

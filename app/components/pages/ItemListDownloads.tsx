@@ -84,7 +84,7 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
                                 onDeleteClick={onDeleteClick}
                                 idEdit={idEdit}
                                 idDelete={idDelete}
-                                className='justify-center mt-2 mr-1' />
+                                className='justify-end my-2 mr-2' />
             </li>
           )
           : (

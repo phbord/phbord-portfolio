@@ -30,9 +30,12 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
     <li className='downloads-item'>
       <Link to={data.file} className='download'>
         <article className='download-article'>
+          {/* HAUT : Année */}
           <time dateTime={data.year} className='download-year'>
             {data.year}
           </time>
+
+          {/* MILLIEU */}
           <div>
             {/* Dipplôme */}
             <h3 className='h3 uppercase'>
@@ -59,11 +62,12 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
                 )
               }
             </figure>
-            {/* Icône */}
-            <p className='download-icon-group'>
-              <CloudArrowDownIcon className='download-icon' />
-            </p>
           </div>
+          
+          {/* BAS : Icône */}
+          <p className='download-icon-group'>
+            <CloudArrowDownIcon className='download-icon' />
+          </p>
         </article>
       </Link>
     </li>

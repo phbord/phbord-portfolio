@@ -1,6 +1,5 @@
 import { CloudArrowDownIcon } from '@heroicons/react/20/solid';
 import { Link } from '@remix-run/react';
-import { useEffect, useState } from 'react';
 
 
 interface ItemListDownloadsInterface {
@@ -21,50 +20,12 @@ interface DataItemListDownloadsInterface {
   title: string;
   school?: string;
   file: string;
+  picto?: string;
   is_important?: boolean;
 }
 
 
 export default function ItemListDownloads({data, noData, lang, idEdit, idDelete, onEditClick, onDeleteClick}: ItemListDownloadsInterface) {
-  const [newIcon, setNewIcon] = useState(null);
-  const [isShowSchool, setIsShowSchool] = useState(true);
-
-  const displayIcon = (icon) => {
-    switch (icon.toLowerCase()) {
-      case 'greta 92':
-        setNewIcon('picto-greta.png');
-        setIsShowSchool(false);
-        break;
-      case 'the hacking project':
-        setNewIcon('picto-thp.jpg');
-        setIsShowSchool(false);
-        break;
-      case 'udemy':
-        setNewIcon('picto-udemy.png');
-        break;
-      case 'openclassroom':
-        setNewIcon('picto-oc.png');
-        break;
-      case 'iiis':
-        setNewIcon('picto-iiis.jpg');
-        break;
-      case 'sqli institut':
-        setNewIcon('picto-sqli.png');
-        break;
-      case 'afpa':
-        setNewIcon('picto-afpa.svg');
-        break;
-      default:
-        break;
-    }
-  };
-
-
-  useEffect(() => {
-    displayIcon(data.school);
-  }, [])
-
-
   return (
     <li className='downloads-item'>
       <Link to={data.file} className='download'>
@@ -73,28 +34,32 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
             {data.year}
           </time>
           <div>
+            {/* Dipplôme */}
             <h3 className='h3 uppercase'>
               {data.diploma}
             </h3>
+            {/* Titre */}
             <p className='download-title'>
               {data.title}
             </p>
+            {/* School */}
             <figure className='download-school'>
               {
-                newIcon && (
-                  <img src={`/images/icons/${newIcon}`} 
+                data.picto && (
+                  <img src={`/images/icons/${data.picto}`} 
                         alt={data.school} 
                         className='download-school-icon' />
                 )
               }
               {
-                isShowSchool && (
+                data.school && (
                   <figcaption className='download-school-figcaption'>
                     {data.school}
                   </figcaption>
                 )
               }
             </figure>
+            {/* Icône */}
             <p className='download-icon-group'>
               <CloudArrowDownIcon className='download-icon' />
             </p>

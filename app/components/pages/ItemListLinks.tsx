@@ -1,6 +1,6 @@
 import { Link } from '@remix-run/react';
-import { useState } from 'react';
-import FormButtonGroup from '../core/form/FormButtonGroup';
+
+import FormButtonGroup from '~/components/core/form/FormButtonGroup';
 
 
 interface ItemListLinksInterface {
@@ -30,47 +30,59 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
   const title = lang === 'fr' ? data.title_fr : data.title_en;
 
   return (
-    <li className='links-item'>
-      <Link to={data.url} className='link'>
-        <article>
-          {/* Logo */}
-          {
-            data?.picto && (
-              <figure className='link-figure'>
-                <img src={`/images/icons/${data.picto}`} 
-                      alt={title}
-                      className='link-img' />
-                <figcaption className='sr-only'>
-                  {title}
-                </figcaption>
-              </figure>
-            )
-          }
-          {/* Titre */}
-          <h3 className='h3 text-center'>
-            {title}
-          </h3>
-          {/* Sous-titre */}
-          <p className='link-subtitle'>
-            {data.subtitle}
-          </p>
-          {/* Description */}
-          <p className='link-description multilines-truncate-3'>
-            {lang === 'fr' ? data.description_fr : data.description_en}
-          </p>
-          {/* Url */}
-          <p className='link-url truncate'>
-            {data.url}
-          </p>
+    <>
+      {
+        data 
+          ? (
+            <li className='links-item'>
+              <Link to={data.url} className='link'>
+                <article>
+                  {/* Logo */}
+                  {
+                    data?.picto && (
+                      <figure className='link-figure'>
+                        <img src={`/images/icons/${data.picto}`} 
+                              alt={title}
+                              className='link-img' />
+                        <figcaption className='sr-only'>
+                          {title}
+                        </figcaption>
+                      </figure>
+                    )
+                  }
+                  {/* Titre */}
+                  <h3 className='h3 text-center'>
+                    {title}
+                  </h3>
+                  {/* Sous-titre */}
+                  <p className='link-subtitle'>
+                    {data.subtitle}
+                  </p>
+                  {/* Description */}
+                  <p className='link-description multilines-truncate-3'>
+                    {lang === 'fr' ? data.description_fr : data.description_en}
+                  </p>
+                  {/* Url */}
+                  <p className='link-url truncate'>
+                    {data.url}
+                  </p>
+                </article>
+              </Link>
 
-          {/* B O U T O N S  d'édition et de suppression */}
-          <FormButtonGroup onEditClick={onEditClick}
-                            onDeleteClick={onDeleteClick}
-                            idEdit={idEdit}
-                            idDelete={idDelete}
-                            className='justify-center mt-2 mr-1' />
-        </article>
-      </Link>
-    </li>
+              {/* B O U T O N S  d'édition et de suppression */}
+              <FormButtonGroup onEditClick={onEditClick}
+                                onDeleteClick={onDeleteClick}
+                                idEdit={idEdit}
+                                idDelete={idDelete}
+                                className='justify-center mt-2 mr-1' />
+            </li>
+          )
+          : (
+            <li>
+              {noData}
+            </li>
+          )
+      }
+    </>
   )
 }

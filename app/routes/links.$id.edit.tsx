@@ -1,16 +1,18 @@
-import { useNavigate } from '@remix-run/react';
+import { useLoaderData, useNavigate } from '@remix-run/react';
 import { ActionFunctionArgs, json } from '@remix-run/node';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { isInputTextValidate } from '~/utils/formValidate';
 import useSession from '~/services/store/useSession';
-import postData from '~/services/postData';
+import getData from '~/services/getData';
+import updateData from '~/services/updateData';
 import LinksForm from '~/components/pages/LinksForm';
 
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();
+  const idValue: FormDataEntryValue | null = formData.get('id');
   const pictoValue: FormDataEntryValue | null = formData.get('picto');
   const titleFrValue: FormDataEntryValue | null = formData.get('title-fr');
   const titleEnValue: FormDataEntryValue | null = formData.get('title-en');
@@ -43,9 +45,11 @@ export async function action({request}: ActionFunctionArgs) {
     url: urlValue,
     order: orderValue,
   };
-  const res = await postData({
+
+  const res = await updateData({
     table: 'Links',
-    values
+    values,
+    match: { id: idValue }
   });
 
   if (res) {
@@ -64,14 +68,26 @@ export async function action({request}: ActionFunctionArgs) {
   });
 }
 
+export async function loader({params}) {
+  const options: object = { table: 'Links', orderBy: 'order' };
+  const data = await getData(options);
+  const id = parseInt(params.id);
+  const dataLoader = data.filter((item) => item.id === id)[0];
+  return json({
+    dataLoader,
+    id,
+  });
+}
 
-export default function LinksCreate() {
+
+export default function LinksEdit() {
+  const { dataLoader, id} = useLoaderData<typeof loader>();
   const { t } = useTranslation();
   const { isSession }: any = useSession();
   const navigate = useNavigate();
 
   const protectRoute = () => isSession 
-                              ? navigate(`/links/create`) 
+                              ? navigate(`/links/${id}/edit`) 
                               : navigate('/');
 
 
@@ -91,11 +107,11 @@ export default function LinksCreate() {
         <div className="content-form">
           {/* TITRE */}
           <h2 className="h2 text-white">
-            {t('createLinkText', { returnObjects: true })}
+            {t('editLinkText', { returnObjects: true })}
           </h2>
 
           {/* FORMULAIRE */}
-          <LinksForm className="bg-[#FFFFFF5a]" />
+          <LinksForm className="bg-[#FFFFFF5a]" data={dataLoader} />
         </div>
       </section>
     </>

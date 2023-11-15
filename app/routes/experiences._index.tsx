@@ -130,15 +130,15 @@ export default function Experiences() {
         {/* L I S T E */}
         <ul>
           {
-            experiences?.map((training: any, index: number) => (
+            experiences?.map((experience: any, index: number) => (
               <ItemListExperiences key={uuidv4()} 
-                                  data={training} 
+                                  data={experience} 
                                   noData={t('noDataText')} 
                                   lang={newLang}
                                   idEdit={`btn-admin-edit-${index}`}
                                   idDelete={`btn-admin-delete-${index}`}
-                                  onEditClick={() => onEditClick(training?.id)}
-                                  onDeleteClick={() => onOpenedModalClick(training?.id)} />
+                                  onEditClick={() => onEditClick(experience?.id)}
+                                  onDeleteClick={() => onOpenedModalClick(experience?.id)} />
             ))
           }
         </ul>

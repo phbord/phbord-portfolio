@@ -423,7 +423,7 @@
   @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
 }
 .links-item {
-  @apply mb-[1fr];
+  @apply flex flex-col;
 }
 .link {
   @apply h-full p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
@@ -449,7 +449,7 @@
   @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
 }
 .downloads-item {
-  @apply mb-[1fr];
+  @apply flex flex-col;
 }
 .download {
   @apply h-full p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
@@ -479,5 +479,5 @@
   @apply flex align-middle justify-center;
 }
 .download-icon {
-  @apply h-6 mt-1 text-orange-500;
+  @apply h-8 mt-1 text-orange-500;
 }

@@ -91,13 +91,13 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
       setPictoValue(e.target.value);
     }
 
-    setIsDisabled(() => isInputTextValidate(titleFrRef.current.value, 0, 2) 
-                        && isInputTextValidate(titleEnRef.current.value, 0, 2)
-                        && isInputTextValidate(subtitleRef.current.value, 3, 4) 
+    setIsDisabled(() => isInputTextValidate(titleFrRef.current.value, 3) 
+                        && isInputTextValidate(titleEnRef.current.value, 3)
+                        && isInputTextValidate(subtitleRef.current.value, 3) 
                         && isInputTextValidate(descriptionFrRef.current.value, 3) 
                         && isInputTextValidate(descriptionEnRef.current.value, 3) 
                         && isInputTextValidate(urlRef.current.value, 3) 
-                        && isInputTextValidate(orderRef.current.value, 3) 
+                        && isInputTextValidate(orderRef.current.value) 
                           ? false : true);
   };
 

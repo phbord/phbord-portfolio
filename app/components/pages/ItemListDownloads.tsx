@@ -50,7 +50,7 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
               {
                 data.picto && (
                   <img src={`/images/icons/${data.picto}`} 
-                        alt={data.school} 
+                        alt={data.school ? data.school : data.picto} 
                         className='download-school-icon' />
                 )
               }
@@ -63,7 +63,7 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
               }
             </figure>
           </div>
-          
+
           {/* BAS : Icône */}
           <p className='download-icon-group'>
             <CloudArrowDownIcon className='download-icon' />

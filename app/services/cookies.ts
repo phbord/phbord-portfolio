@@ -3,7 +3,7 @@ import { createCookie } from "@remix-run/node"; // or cloudflare/deno
 export const sbSession = (token?: string) => createCookie("sb_session", {
   secrets: [token],
   expires: new Date(Date.now() + 60000),
-  maxAge: 8*3600,
+  maxAge: 20*3600,
   sameSite: true,
   secure: true,
 });

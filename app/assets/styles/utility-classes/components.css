@@ -479,5 +479,5 @@
   @apply flex align-middle justify-center;
 }
 .download-icon {
-  @apply h-5 mt-1 text-orange-500;
+  @apply h-6 mt-1 text-orange-500;
 }

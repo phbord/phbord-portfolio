@@ -25,36 +25,48 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [isYearStartErrorDisplayed, setIsYearStartErrorDisplayed] = useState(false);
   const [isMonthEndErrorDisplayed, setIsMonthEndErrorDisplayed] = useState(false);
   const [isYearEndErrorDisplayed, setIsYearEndErrorDisplayed] = useState(false);
-  const [isFirmErrorDisplayed, setIsFirmErrorDisplayed] = useState(false);
-  const [isDescriptionErrorDisplayed, setIsDescriptionErrorDisplayed] = useState(false);
+  const [isFirmFrErrorDisplayed, setIsFirmFrErrorDisplayed] = useState(false);
+  const [isFirmEnErrorDisplayed, setIsFirmEnErrorDisplayed] = useState(false);
+  const [isDescriptionFrErrorDisplayed, setIsDescriptionFrErrorDisplayed] = useState(false);
+  const [isDescriptionEnErrorDisplayed, setIsDescriptionEnErrorDisplayed] = useState(false);
   const [isStackErrorDisplayed, setIsStackErrorDisplayed] = useState(false);
-  const [isEsnErrorDisplayed, setIsEsnErrorDisplayed] = useState(false);
+  const [isEsnFrErrorDisplayed, setIsEsnFrErrorDisplayed] = useState(false);
+  const [isEsnEnErrorDisplayed, setIsEsnEnErrorDisplayed] = useState(false);
   const [isPictoErrorDisplayed, setIsPictoErrorDisplayed] = useState(false);
-  const [isListErrorDisplayed, setIsListErrorDisplayed] = useState(false);
+  const [isListFrErrorDisplayed, setIsListFrErrorDisplayed] = useState(false);
+  const [isListEnErrorDisplayed, setIsListEnErrorDisplayed] = useState(false);
   const [isIsImportantErrorDisplayed, setIsIsImportantErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [monthStartValue, setMonthStartValue] = useState('');
   const [yearStartValue, setYearStartValue] = useState('');
   const [monthEndValue, setMonthEndValue] = useState('');
   const [yearEndValue, setYearEndValue] = useState('');
-  const [firmValue, setFirmValue] = useState('');
-  const [descriptionValue, setDescriptionValue] = useState('');
+  const [firmFrValue, setFirmFrValue] = useState('');
+  const [firmEnValue, setFirmEnValue] = useState('');
+  const [descriptionFrValue, setDescriptionFrValue] = useState('');
+  const [descriptionEnValue, setDescriptionEnValue] = useState('');
   const [stackValue, setStackValue] = useState('');
-  const [esnValue, setEsnValue] = useState('');
+  const [esnFrValue, setEsnFrValue] = useState('');
+  const [esnEnValue, setEsnEnValue] = useState('');
   const [pictoValue, setPictoValue] = useState('');
-  const [listValue, setListValue] = useState('');
+  const [listFrValue, setListFrValue] = useState('');
+  const [listEnValue, setListEnValue] = useState('');
   const [isImportantValue, setIsImportantValue] = useState('');
   const idRef = useRef('');
   const monthStartRef = useRef('');
   const yearStartRef = useRef('');
   const monthEndRef = useRef('');
   const yearEndRef = useRef('');
-  const firmRef = useRef('');
-  const descriptionRef = useRef('');
+  const firmFrRef = useRef('');
+  const firmEnRef = useRef('');
+  const descriptionFrRef = useRef('');
+  const descriptionEnRef = useRef('');
   const stackRef = useRef('');
-  const esnRef = useRef('');
+  const esnFrRef = useRef('');
+  const esnEnRef = useRef('');
   const pictoRef = useRef('');
-  const listRef = useRef('');
+  const listFrRef = useRef('');
+  const listEnRef = useRef('');
   const isImportantRef = useRef('');
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -79,31 +91,50 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
       setYearEndValue(e.target.value);
     }
 
-    if (e.target.id === 'firm') {
-      setFirmValue(e.target.value);
-      setIsFirmErrorDisplayed(() => isInputTextValidate(firmRef.current.value, 3) ? false : true);
+    if (e.target.id === 'firm-fr') {
+      setFirmFrValue(e.target.value);
+      setIsFirmFrErrorDisplayed(() => isInputTextValidate(firmFrRef.current.value, 3) ? false : true);
+    }
+
+    if (e.target.id === 'firm-en') {
+      setFirmEnValue(e.target.value);
+      setIsFirmEnErrorDisplayed(() => isInputTextValidate(firmEnRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'picto') {
       setPictoValue(e.target.value);
     }
 
-    if (e.target.id === 'description') {
-      setDescriptionValue(e.target.value);
-      setIsDescriptionErrorDisplayed(() => isInputTextValidate(descriptionRef.current.value, 3) ? false : true);
+    if (e.target.id === 'description-fr') {
+      setDescriptionFrValue(e.target.value);
+      setIsDescriptionFrErrorDisplayed(() => isInputTextValidate(descriptionFrRef.current.value, 3) ? false : true);
+    }
+
+    if (e.target.id === 'description-en') {
+      setDescriptionEnValue(e.target.value);
+      setIsDescriptionEnErrorDisplayed(() => isInputTextValidate(descriptionEnRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'stack') {
       setStackValue(e.target.value);
     }
 
-    if (e.target.id === 'esn') {
-      setEsnValue(e.target.value);
-      setIsEsnErrorDisplayed(() => isInputTextValidate(esnRef.current.value, 3) ? false : true);
+    if (e.target.id === 'esn-fr') {
+      setEsnFrValue(e.target.value);
+      setIsEsnFrErrorDisplayed(() => isInputTextValidate(esnFrRef.current.value, 3) ? false : true);
     }
 
-    if (e.target.id === 'list') {
-      setListValue(e.target.value);
+    if (e.target.id === 'esn-en') {
+      setEsnEnValue(e.target.value);
+      setIsEsnEnErrorDisplayed(() => isInputTextValidate(esnEnRef.current.value, 3) ? false : true);
+    }
+
+    if (e.target.id === 'list-fr') {
+      setListFrValue(e.target.value);
+    }
+
+    if (e.target.id === 'list-en') {
+      setListEnValue(e.target.value);
     }
 
     if (e.target.id === 'important') {
@@ -112,8 +143,10 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
 
     setIsDisabled(() => isInputTextValidate(monthStartRef.current.value, 0, 2) 
                         && isInputTextValidate(yearStartRef.current.value, 3, 4) 
-                        && isInputTextValidate(firmRef.current.value, 3) 
-                        && isInputTextValidate(descriptionRef.current.value, 3) 
+                        && isInputTextValidate(firmFrRef.current.value, 3) 
+                        && isInputTextValidate(firmEnRef.current.value, 3) 
+                        && isInputTextValidate(descriptionFrRef.current.value, 3) 
+                        && isInputTextValidate(descriptionEnRef.current.value, 3) 
                           ? false : true);
   };
 
@@ -144,12 +177,16 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
       setYearStartValue(data.year_start);
       setMonthEndValue(data.month_end);
       setYearEndValue(data.year_end);
-      setFirmValue(data.firm);
-      setDescriptionValue(data.description);
+      setFirmFrValue(data.firm_fr);
+      setFirmEnValue(data.firm_en);
+      setDescriptionFrValue(data.description_fr);
+      setDescriptionEnValue(data.description_en);
       setStackValue(data.stack);
-      setEsnValue(data.esn);
+      setEsnFrValue(data.esn_fr);
+      setEsnEnValue(data.esn_en);
       setPictoValue(data.picto);
-      setListValue(JSON.stringify(data.list));
+      setListFrValue(JSON.stringify(data.list_fr));
+      setListEnValue(JSON.stringify(data.list_en));
       setIsImportantValue(data.is_important);
     }
   }, [])
@@ -262,18 +299,34 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
         
         {/* Champ ENTREPRISE */}
         <div className="mb-4">
-          <label htmlFor="firm" 
+          <label htmlFor="firm-fr" 
                   className="label">
-            {t('firmText')}
+            {t('firmText')} ({t('inFrText')})
           </label>
-          <Input id="firm" 
+          <Input id="firm-fr" 
                   type="text" 
-                  value={firmValue}
-                  inputRef={firmRef}
-                  autoComplete="picto" 
-                  isInputErrorDisplayed={isFirmErrorDisplayed}
+                  value={firmFrValue}
+                  inputRef={firmFrRef}
+                  autoComplete="firm" 
+                  isInputErrorDisplayed={isFirmFrErrorDisplayed}
                   onChange={handleChange} />
-          <FormElementMessage className={isFirmErrorDisplayed ? '' : 'hidden'} 
+          <FormElementMessage className={isFirmFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="firm-en" 
+                  className="label">
+            {t('firmText')} ({t('inEnText')})
+          </label>
+          <Input id="firm-en" 
+                  type="text" 
+                  value={firmEnValue}
+                  inputRef={firmEnRef}
+                  autoComplete="firm" 
+                  isInputErrorDisplayed={isFirmEnErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isFirmEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         
@@ -296,51 +349,98 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
         
         {/* Champ ESN */}
         <div className="mb-4">
-          <label htmlFor="esn" 
+          <label htmlFor="esn-fr" 
                   className="label">
-            {t('esnText')}
+            {t('esnText')} ({t('inFrText')})
           </label>
-          <Input id="esn" 
+          <Input id="esn-fr" 
                   type="text" 
-                  value={esnValue}
-                  inputRef={esnRef}
+                  value={esnFrValue}
+                  inputRef={esnFrRef}
                   autoComplete="picto" 
-                  isInputErrorDisplayed={isEsnErrorDisplayed}
+                  isInputErrorDisplayed={isEsnFrErrorDisplayed}
                   onChange={handleChange} />
-          <FormElementMessage className={isEsnErrorDisplayed ? '' : 'hidden'} 
+          <FormElementMessage className={isEsnFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="esn-en" 
+                  className="label">
+            {t('esnText')} ({t('inEnText')})
+          </label>
+          <Input id="esn-en" 
+                  type="text" 
+                  value={esnEnValue}
+                  inputRef={esnEnRef}
+                  autoComplete="esn" 
+                  isInputErrorDisplayed={isEsnEnErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isEsnEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         
         {/* Champ DESCRIPTION */}
         <div className="mb-4">
-          <label htmlFor="description" 
+          <label htmlFor="description-fr" 
                   className="label">
-            {t('descriptionText')}
+            {t('descriptionText')} ({t('inFrText')})
           </label>
-          <Input id="description" 
+          <Input id="description-fr" 
                   type="text" 
-                  value={descriptionValue}
-                  inputRef={descriptionRef}
-                  autoComplete="picto" 
-                  isInputErrorDisplayed={isDescriptionErrorDisplayed}
+                  value={descriptionFrValue}
+                  inputRef={descriptionFrRef}
+                  autoComplete="description" 
+                  isInputErrorDisplayed={isDescriptionFrErrorDisplayed}
                   onChange={handleChange} />
-          <FormElementMessage className={isDescriptionErrorDisplayed ? '' : 'hidden'} 
+          <FormElementMessage className={isDescriptionFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="description-en" 
+                  className="label">
+            {t('descriptionText')} ({t('inEnText')})
+          </label>
+          <Input id="description-en" 
+                  type="text" 
+                  value={descriptionEnValue}
+                  inputRef={descriptionEnRef}
+                  autoComplete="description" 
+                  isInputErrorDisplayed={isDescriptionEnErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isDescriptionEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         
         {/* Textarea LISTE  */}
         <div className="mb-4">
-          <label htmlFor="list" 
+          <label htmlFor="list-fr" 
                   className="label">
-            {t('listText')}
+            {t('listText')} ({t('inFrText')})
           </label>
-          <Textarea id="list"
-                    value={listValue}
-                    inputRef={listRef}
+          <Textarea id="list-fr"
+                    value={listFrValue}
+                    inputRef={listFrRef}
                     autoComplete="list of projects" 
-                    isInputErrorDisplayed={isListErrorDisplayed}
+                    isInputErrorDisplayed={isListFrErrorDisplayed}
                     onChange={handleChange} />
-          <FormElementMessage className={isListErrorDisplayed ? '' : 'hidden'} 
+          <FormElementMessage className={isListFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="list-en" 
+                  className="label">
+            {t('listText')} ({t('inEnText')})
+          </label>
+          <Textarea id="list-en"
+                    value={listEnValue}
+                    inputRef={listEnRef}
+                    autoComplete="list of projects" 
+                    isInputErrorDisplayed={isListEnErrorDisplayed}
+                    onChange={handleChange} />
+          <FormElementMessage className={isListEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         

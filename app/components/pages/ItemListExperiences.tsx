@@ -25,11 +25,15 @@ interface DataItemListExperiencesInterface {
   month_start?: number;
   month_end?: number;
   picto?: string;
-  firm: string;
-  description?: string;
+  firm_fr: string;
+  firm_en: string;
+  description_fr?: string;
+  description_en?: string;
   stack?: string;
-  esn?: string;
-  list?: Array<string>;
+  esn_fr?: string;
+  esn_en?: string;
+  list_fr?: Array<string>;
+  list_en?: Array<string>;
 }
 
 
@@ -74,7 +78,7 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                     {/* Entreprise */}
                     <strong className='experiences-firm'>
                       <span className='experiences-mark'></span>
-                      {data.firm}
+                      {lang === 'fr' ? data.firm_fr : data.firm_en}
                     </strong>
                     {/* Picto */}
                     {
@@ -87,9 +91,9 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                   </div>
                   {/* ESN */}
                   {
-                    data?.esn && (
+                    (data?.esn_fr || data?.esn_en) && (
                       <div className='experiences-head-row-2'>
-                        {data?.esn}
+                        {lang === 'fr' ? data?.esn_fr : data?.esn_en}
                       </div>
                     )
                   }
@@ -110,13 +114,17 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
               {/* B O D Y */}
               <div className={isItemOpened ? 'experiences-body experiences-body--opened' : 'experiences-body'}>
                 <p className='experiences-descripton'>
-                  {data?.description}
+                  {lang === 'fr' ? data?.description_fr : data?.description_en}
                 </p>
                 <ul className='experiences-list'>
                   {
-                    data?.list && data?.list?.map((item) => (
-                      <li key={uuidv4()}>{item}</li>
-                    ))
+                    lang === 'fr'
+                      ? data?.list_fr && data?.list_fr?.map((item) => (
+                          <li key={uuidv4()}>{item}</li>
+                        ))
+                      : data?.list_en && data?.list_en?.map((item) => (
+                          <li key={uuidv4()}>{item}</li>
+                        ))
                   }
                 </ul>
               </div>

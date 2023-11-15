@@ -1,5 +1,6 @@
 import { Link } from '@remix-run/react';
 import { useState } from 'react';
+import FormButtonGroup from '../core/form/FormButtonGroup';
 
 
 interface ItemListLinksInterface {
@@ -16,42 +17,58 @@ interface ItemListLinksInterface {
 interface DataItemListLinksInterface {
   order?: number;
   picto?: string;
-  title: string;
+  title_fr: string;
+  title_en: string;
   subtitle: string;
-  description: string;
+  description_fr: string;
+  description_en: string;
   url: string;
 }
 
 
 export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onEditClick, onDeleteClick}: ItemListLinksInterface) {
+  const title = lang === 'fr' ? data.title_fr : data.title_en;
+
   return (
     <li className='links-item'>
       <Link to={data.url} className='link'>
         <article>
+          {/* Logo */}
           {
             data?.picto && (
               <figure className='link-figure'>
                 <img src={`/images/icons/${data.picto}`} 
-                      alt={data.title} 
+                      alt={title}
                       className='link-img' />
                 <figcaption className='sr-only'>
-                  {data.title}
+                  {title}
                 </figcaption>
               </figure>
             )
           }
+          {/* Titre */}
           <h3 className='h3 text-center'>
-            {data.title}
+            {title}
           </h3>
+          {/* Sous-titre */}
           <p className='link-subtitle'>
             {data.subtitle}
           </p>
+          {/* Description */}
           <p className='link-description multilines-truncate-3'>
-            {data.description}
+            {lang === 'fr' ? data.description_fr : data.description_en}
           </p>
+          {/* Url */}
           <p className='link-url truncate'>
             {data.url}
           </p>
+
+          {/* B O U T O N S  d'édition et de suppression */}
+          <FormButtonGroup onEditClick={onEditClick}
+                            onDeleteClick={onDeleteClick}
+                            idEdit={idEdit}
+                            idDelete={idDelete}
+                            className='justify-center mt-2 mr-1' />
         </article>
       </Link>
     </li>

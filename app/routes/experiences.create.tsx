@@ -15,17 +15,23 @@ export async function action({request}: ActionFunctionArgs) {
   const monthEndValue: FormDataEntryValue | null = formData.get('month-end');
   const yearStartValue: FormDataEntryValue | null = formData.get('year-start');
   const yearEndValue: FormDataEntryValue | null = formData.get('year-end');
-  const firmValue: FormDataEntryValue | null = formData.get('firm');
+  const firmFrValue: FormDataEntryValue | null = formData.get('firm-fr');
+  const firmEnValue: FormDataEntryValue | null = formData.get('firm-en');
   const pictoValue: FormDataEntryValue | null = formData.get('picto');
-  const descriptionValue: FormDataEntryValue | null = formData.get('description');
-  const listValue: FormDataEntryValue | null = formData.get('list');
+  const descriptionFrValue: FormDataEntryValue | null = formData.get('description-fr');
+  const descriptionEnValue: FormDataEntryValue | null = formData.get('description-en');
+  const listFrValue: FormDataEntryValue | null = formData.get('list-fr');
+  const listEnValue: FormDataEntryValue | null = formData.get('list-en');
   const stackValue: FormDataEntryValue | null = formData.get('stack');
-  const esnValue: FormDataEntryValue | null = formData.get('esn');
+  const esnFrValue: FormDataEntryValue | null = formData.get('esn-fr');
+  const esnEnValue: FormDataEntryValue | null = formData.get('esn-en');
 
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue)
-      || !isInputTextValidate(firmValue)
-      || !isInputTextValidate(descriptionValue)) {
+      || !isInputTextValidate(firmFrValue)
+      || !isInputTextValidate(firmEnValue)
+      || !isInputTextValidate(descriptionFrValue)
+      || !isInputTextValidate(descriptionEnValue)) {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'
@@ -37,12 +43,16 @@ export async function action({request}: ActionFunctionArgs) {
     month_end: parseInt(monthEndValue),
     year_start: parseInt(yearStartValue),
     year_end: parseInt(yearEndValue),
-    firm: firmValue,
+    firm_fr: firmFrValue,
+    firm_en: firmEnValue,
     picto: pictoValue,
-    description: descriptionValue,
-    list: listValue === '' ? '' : JSON.parse(listValue),
+    description_fr: descriptionFrValue,
+    description_en: descriptionEnValue,
+    list_fr: listFrValue === '' ? '' : JSON.parse(listFrValue),
+    list_en: listEnValue === '' ? '' : JSON.parse(listEnValue),
     stack: stackValue,
-    esn: esnValue,
+    esn_fr: esnFrValue,
+    esn_en: esnEnValue,
   };
   const res = await postData({
     table: 'Experiences',

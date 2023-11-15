@@ -10,11 +10,12 @@ import Tooltip from "~/components/core/Tooltip";
 interface FormButtonGroupInterface {
   idEdit?: string;
   idDelete?: string;
+  className?: string;
   onEditClick?: () => void;
   onDeleteClick?: () => void;
 }
 
-export default function FormButtonGroup({idEdit, idDelete, onEditClick, onDeleteClick}: FormButtonGroupInterface) {
+export default function FormButtonGroup({idEdit, idDelete, className, onEditClick, onDeleteClick}: FormButtonGroupInterface) {
   const { t } = useTranslation();
   const { isSession }: any = useSession();
   const [isEditTooltipOpened, setIsEditTooltipOpened] = useState(false);
@@ -30,7 +31,7 @@ export default function FormButtonGroup({idEdit, idDelete, onEditClick, onDelete
     <>
       {
         isSession && (
-          <div className='btn-admin-form-group'>
+          <div className={`btn-admin-form-group ${className}`}>
             {/* Bouton d'EDITION */}
             <Button id={idEdit}
                     className='relative btn-admin-form btn-admin-form--edit ml-1'

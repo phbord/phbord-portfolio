@@ -17,18 +17,24 @@ export async function action({request}: ActionFunctionArgs) {
   const yearStartValue: FormDataEntryValue | null = formData.get('year-start');
   const monthEndValue: FormDataEntryValue | null = formData.get('month-end');
   const yearEndValue: FormDataEntryValue | null = formData.get('year-end');
-  const firmValue: FormDataEntryValue | null = formData.get('firm');
+  const firmFrValue: FormDataEntryValue | null = formData.get('firm-fr');
+  const firmEnValue: FormDataEntryValue | null = formData.get('firm-en');
   const pictoValue: FormDataEntryValue | null = formData.get('picto');
-  const descriptionValue: FormDataEntryValue | null = formData.get('description');
+  const descriptionFrValue: FormDataEntryValue | null = formData.get('description-fr');
+  const descriptionEnValue: FormDataEntryValue | null = formData.get('description-en');
   const stackValue: FormDataEntryValue | null = formData.get('stack');
-  const esnValue: FormDataEntryValue | null = formData.get('esn');
-  const listValue: FormDataEntryValue | null = formData.get('list');
+  const esnFrValue: FormDataEntryValue | null = formData.get('esn-fr');
+  const esnEnValue: FormDataEntryValue | null = formData.get('esn-en');
+  const listFrValue: FormDataEntryValue | null = formData.get('list-fr');
+  const listEnValue: FormDataEntryValue | null = formData.get('list-en');
   const importantValue: FormDataEntryValue | null = formData.get('important');
 
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue) 
-      || !isInputTextValidate(firmValue) 
-      || !isInputTextValidate(descriptionValue)
+      || !isInputTextValidate(firmFrValue)
+      || !isInputTextValidate(firmEnValue)
+      || !isInputTextValidate(descriptionFrValue)
+      || !isInputTextValidate(descriptionEnValue)
       || !isInputTextValidate(stackValue)) {
     return {
       isDisplayedError: true,
@@ -42,13 +48,17 @@ export async function action({request}: ActionFunctionArgs) {
     year_start: parseInt(yearStartValue),
     month_end: parseInt(monthEndValue),
     year_end: parseInt(yearEndValue),
-    firm: firmValue,
-    description: descriptionValue,
+    firm_fr: firmFrValue,
+    firm_en: firmEnValue,
+    description_fr: descriptionFrValue,
+    description_en: descriptionEnValue,
     stack: stackValue,
-    esn: esnValue,
+    esn_fr: esnFrValue,
+    esn_en: esnEnValue,
     picto: pictoValue,
     is_important: JSON.parse(importantValue),
-    list: listValue === '' ? '' : JSON.parse(listValue),
+    list_fr: listFrValue === '' ? '' : JSON.parse(listFrValue),
+    list_en: listEnValue === '' ? '' : JSON.parse(listEnValue),
   };
 
   const res = await updateData({

@@ -25,7 +25,8 @@ interface DataItemListTrainingsInterface {
   picto?: string;
   school?: string;
   is_important?: boolean;
-  projects?: DataListItemListTrainingsInterface;
+  projects_fr?: DataListItemListTrainingsInterface;
+  projects_en?: DataListItemListTrainingsInterface;
 }
 
 interface DataListItemListTrainingsInterface {
@@ -89,26 +90,48 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                   <div className='trainings-body'>
                     <ul>
                       {
-                        data && data?.projects && data?.projects?.map((item?: DataListItemListTrainingsInterface) => (
-                          <li key={uuidv4()} 
-                              className='my-[.375rem] flex items-stretch'>
-                            <figure className='flex flex-col flex-nowrap items-center justify-end'>
-                              <figcaption className='text-cyan-900'>
-                                <div>
-                                  {item.project}
-                                </div>
-                                <div>
-                                  {
-                                    item.url && (
-                                      <Link to={item.url} className='trainings-link'>
-                                        {item.url}
-                                      </Link>
-                                    )
-                                  }
-                                </div>
-                              </figcaption>
-                            </figure>
-                          </li>
+                        lang === 'fr'
+                          ? (data && data?.projects_fr) && data?.projects_fr?.map((item?: DataListItemListTrainingsInterface) => (
+                            <li key={uuidv4()} 
+                                className='my-[.375rem] flex items-stretch'>
+                              <figure className='flex flex-col flex-nowrap items-center justify-end'>
+                                <figcaption className='text-cyan-900'>
+                                  <div>
+                                    {item.project}
+                                  </div>
+                                  <div>
+                                    {
+                                      item.url && (
+                                        <Link to={item.url} className='trainings-link'>
+                                          {item.url}
+                                        </Link>
+                                      )
+                                    }
+                                  </div>
+                                </figcaption>
+                              </figure>
+                            </li>
+                          ))
+                          : (data && data?.projects_en) && data?.projects_en?.map((item?: DataListItemListTrainingsInterface) => (
+                            <li key={uuidv4()} 
+                                className='my-[.375rem] flex items-stretch'>
+                              <figure className='flex flex-col flex-nowrap items-center justify-end'>
+                                <figcaption className='text-cyan-900'>
+                                  <div>
+                                    {item.project}
+                                  </div>
+                                  <div>
+                                    {
+                                      item.url && (
+                                        <Link to={item.url} className='trainings-link'>
+                                          {item.url}
+                                        </Link>
+                                      )
+                                    }
+                                  </div>
+                                </figcaption>
+                              </figure>
+                            </li>
                         ))
                       }
                     </ul>

@@ -28,7 +28,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
   const [isDurationErrorDisplayed, setIsDurationErrorDisplayed] = useState(false);
   const [isSchoolErrorDisplayed, setIsSchoolErrorDisplayed] = useState(false);
   const [isPictoErrorDisplayed, setIsPictoErrorDisplayed] = useState(false);
-  const [isProjectsListErrorDisplayed, setIsProjectsListErrorDisplayed] = useState(false);
+  const [isProjectsListFrErrorDisplayed, setIsProjectsListFrErrorDisplayed] = useState(false);
+  const [isProjectsListEnErrorDisplayed, setIsProjectsListEnErrorDisplayed] = useState(false);
   const [isIsImportantErrorDisplayed, setIsIsImportantErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [dateStartValue, setDateStartValue] = useState('');
@@ -38,7 +39,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
   const [durationValue, setDurationValue] = useState('');
   const [schoolValue, setSchoolValue] = useState('');
   const [pictoValue, setPictoValue] = useState('');
-  const [projectsListValue, setProjectsListValue] = useState('');
+  const [projectsListFrValue, setProjectsListFrValue] = useState('');
+  const [projectsListEnValue, setProjectsListEnValue] = useState('');
   const [isImportantValue, setIsImportantValue] = useState('');
   const idRef = useRef('');
   const dateStartRef = useRef('');
@@ -48,7 +50,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
   const durationRef = useRef('');
   const schoolRef = useRef('');
   const pictoRef = useRef('');
-  const projetsListRef = useRef('');
+  const projectsListFrRef = useRef('');
+  const projectsListEnRef = useRef('');
   const isImportantRef = useRef('');
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
@@ -94,8 +97,12 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
       setIsImportantValue(e.target.value);
     }
 
-    if (e.target.id === 'projects-list') {
-      setProjectsListValue(e.target.value);
+    if (e.target.id === 'projects-list-fr') {
+      setProjectsListFrValue(e.target.value);
+    }
+
+    if (e.target.id === 'projects-list-en') {
+      setProjectsListEnValue(e.target.value);
     }
 
     setIsDisabled(() => isInputTextValidate(dateStartRef.current.value, 3, 4) 
@@ -135,7 +142,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
       setDurationValue(data.duration);
       setSchoolValue(data.school);
       setPictoValue(data.picto);
-      setProjectsListValue(JSON.stringify(data.projects));
+      setProjectsListFrValue(JSON.stringify(data.projects_fr));
+      setProjectsListEnValue(JSON.stringify(data.projects_en));
       setIsImportantValue(data.is_important);
     }
   }, [])
@@ -293,17 +301,32 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
         
         {/* Textarea LISTE des PROJETS */}
         <div className="mb-4">
-          <label htmlFor="projects-list" 
+          <label htmlFor="projects-list-fr" 
                   className="label">
-            {t('iconListText')}
+            {t('iconListText')} ({t('inFrText')})
           </label>
-          <Textarea id="projects-list"
-                    value={projectsListValue}
-                    inputRef={projetsListRef}
+          <Textarea id="projects-list-fr"
+                    value={projectsListFrValue}
+                    inputRef={projectsListFrRef}
                     autoComplete="list of projects" 
-                    isInputErrorDisplayed={isProjectsListErrorDisplayed}
+                    isInputErrorDisplayed={isProjectsListFrErrorDisplayed}
                     onChange={handleChange} />
-          <FormElementMessage className={isProjectsListErrorDisplayed ? '' : 'hidden'} 
+          <FormElementMessage className={isProjectsListFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="projects-list-en" 
+                  className="label">
+            {t('iconListText')} ({t('inEnText')})
+          </label>
+          <Textarea id="projects-list-en"
+                    value={projectsListEnValue}
+                    inputRef={projectsListEnRef}
+                    autoComplete="list of projects" 
+                    isInputErrorDisplayed={isProjectsListEnErrorDisplayed}
+                    onChange={handleChange} />
+          <FormElementMessage className={isProjectsListEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         

@@ -34,8 +34,7 @@ export async function action({request}: ActionFunctionArgs) {
       || !isInputTextValidate(firmFrValue)
       || !isInputTextValidate(firmEnValue)
       || !isInputTextValidate(descriptionFrValue)
-      || !isInputTextValidate(descriptionEnValue)
-      || !isInputTextValidate(stackValue)) {
+      || !isInputTextValidate(descriptionEnValue)) {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'

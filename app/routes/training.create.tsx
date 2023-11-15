@@ -18,7 +18,8 @@ export async function action({request}: ActionFunctionArgs) {
   const durationValue: FormDataEntryValue | null = formData.get('duration');
   const schoolValue: FormDataEntryValue | null = formData.get('school');
   const pictoValue: FormDataEntryValue | null = formData.get('picto');
-  const projectsListValue: FormDataEntryValue | null = formData.get('projects-list');
+  const projectsListFrValue: FormDataEntryValue | null = formData.get('projects-list-fr');
+  const projectsListEnValue: FormDataEntryValue | null = formData.get('projects-list-en');
   const importantValue: FormDataEntryValue | null = formData.get('important');
 
   if (!isInputTextValidate(dateStartValue) 
@@ -40,7 +41,8 @@ export async function action({request}: ActionFunctionArgs) {
     school: schoolValue,
     picto: pictoValue,
     is_important: JSON.parse(importantValue),
-    projects: projectsListValue === '' ? '' : JSON.parse(projectsListValue),
+    projects_fr: projectsListFrValue === '' ? '' : JSON.parse(projectsListFrValue),
+    projects_en: projectsListEnValue === '' ? '' : JSON.parse(projectsListEnValue),
   };
   const res = await postData({
     table: 'Trainings',

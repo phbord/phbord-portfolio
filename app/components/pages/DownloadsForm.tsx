@@ -59,7 +59,7 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.id === 'year-start') {
+    if (e.target.id === 'year') {
       setYearValue(e.target.value);
       setIsYearErrorDisplayed(() => isInputTextValidate(yearRef.current.value, 3, 4) ? false : true);
     }
@@ -99,7 +99,6 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
 
     if (e.target.id === 'school') {
       setSchoolValue(e.target.value);
-      setIsSchoolErrorDisplayed(() => isInputTextValidate(schoolRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'file') {
@@ -113,7 +112,6 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
                         && isInputTextValidate(titleEnRef.current.value, 3) 
                         && isInputTextValidate(diplomaFrRef.current.value, 3) 
                         && isInputTextValidate(diplomaEnRef.current.value, 3) 
-                        && isInputTextValidate(schoolRef.current.value, 3) 
                         && isInputTextValidate(fileRef.current.value, 3) 
                           ? false : true);
   };
@@ -188,7 +186,7 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
         <div className="mb-4">
           <label htmlFor="year" 
                   className="label">
-            {t('yearStartText')}
+            {t('yearText')}
           </label>
           <Input id="year" 
                   type="number" 
@@ -321,7 +319,7 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
         <div className="mb-4">
           <label htmlFor="school" 
                   className="label">
-            {t('Text')} ({t('inFrText')})
+            {t('schoolText')}
           </label>
           <Input id="school" 
                   type="text" 
@@ -338,7 +336,7 @@ export default function DownloadsForm({className='', data}: DownloadsFormInterfa
         <div className="mb-4">
           <label htmlFor="file" 
                   className="label">
-            {t('Text')} ({t('inFrText')})
+            {t('fileUrlText')}
           </label>
           <Input id="file" 
                   type="text" 

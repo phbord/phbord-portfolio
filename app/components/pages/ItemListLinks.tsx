@@ -51,7 +51,7 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
                     )
                   }
                   {/* Titre */}
-                  <h3 className='h3 text-center'>
+                  <h3 className='h3 text-center leading-5'>
                     {title}
                   </h3>
                   {/* Sous-titre */}

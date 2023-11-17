@@ -429,7 +429,7 @@
   @apply flex flex-col;
 }
 .link {
-  @apply h-full p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
+  @apply h-full p-4 block bg-white border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
 }
 .link-figure {
   @apply flex justify-center;
@@ -438,10 +438,10 @@
   @apply min-w-[1.75rem] h-10 mb-2 p-1 bg-white rounded-full;
 }
 .link-subtitle {
-  @apply mt-2 mb-1 text-left text-gray-400 text-xs uppercase font-light;
+  @apply mt-4 mb-2 text-left text-gray-400 text-xs uppercase font-light;
 }
 .link-description {
-  @apply text-cyan-900;
+  @apply text-cyan-900 leading-tight;
 }
 .link-url {
   @apply mt-1 text-cyan-700 hover:text-orange-500 transition-all;
@@ -455,7 +455,10 @@
   @apply flex flex-col;
 }
 .download {
-  @apply h-full p-4 block border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
+  @apply relative h-full p-4 block bg-white border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
+}
+.download-important-icon {
+  @apply absolute top-2 right-2 h-7 text-yellow-500;
 }
 .download-article {
   @apply h-full flex flex-col align-middle justify-between text-center;
@@ -464,7 +467,7 @@
   @apply mb-1 text-cyan-900;
 }
 .download-title {
-  @apply text-orange-500;
+  @apply text-orange-500 leading-tight;
 }
 .download-school {
   @apply mt-2 flex align-middle justify-center text-gray-400 text-xs uppercase font-light;

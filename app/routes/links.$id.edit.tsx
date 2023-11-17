@@ -25,8 +25,6 @@ export async function action({request}: ActionFunctionArgs) {
   if (!isInputTextValidate(titleFrValue)
       || !isInputTextValidate(titleEnValue)
       || !isInputTextValidate(subtitleValue)
-      || !isInputTextValidate(descriptionFrValue)
-      || !isInputTextValidate(descriptionEnValue)
       || !isInputTextValidate(urlValue)
       || !isInputTextValidate(orderValue)) {
     return {

@@ -69,12 +69,10 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
 
     if (e.target.id === 'description-fr') {
       setDescriptionFrValue(e.target.value);
-      setIsDescriptionFrErrorDisplayed(() => isInputTextValidate(descriptionFrRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'description-en') {
       setDescriptionEnValue(e.target.value);
-      setIsDescriptionEnErrorDisplayed(() => isInputTextValidate(descriptionEnRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'url') {
@@ -94,8 +92,6 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
     setIsDisabled(() => isInputTextValidate(titleFrRef.current.value, 3) 
                         && isInputTextValidate(titleEnRef.current.value, 3)
                         && isInputTextValidate(subtitleRef.current.value, 3) 
-                        && isInputTextValidate(descriptionFrRef.current.value, 3) 
-                        && isInputTextValidate(descriptionEnRef.current.value, 3) 
                         && isInputTextValidate(urlRef.current.value, 3) 
                         && isInputTextValidate(orderRef.current.value) 
                           ? false : true);

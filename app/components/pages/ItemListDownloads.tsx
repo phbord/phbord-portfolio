@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react';
-import { CloudArrowDownIcon } from '@heroicons/react/20/solid';
+import { BoltIcon, CloudArrowDownIcon } from '@heroicons/react/20/solid';
 
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
 
@@ -37,6 +37,12 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
           ? (
             <li className='downloads-item'>
               <Link to={data.file} className='download'>
+                {
+                  data.is_important && (
+                    <BoltIcon className='download-important-icon' />
+                  )
+                }
+
                 <article className='download-article'>
                   {/* H A U T : Année */}
                   <time dateTime={data.year} className='download-year'>

@@ -78,7 +78,7 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
           {
             data.file
               ? (<CloudArrowDownIcon className='download-icon text-orange-500' />)
-              : (<CloudIcon className='download-icon text-gray-400' />)
+              : (<CloudIcon className='download-icon text-gray-200' />)
           }
         </p>
       </article>

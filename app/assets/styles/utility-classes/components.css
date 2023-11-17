@@ -254,7 +254,7 @@
     @apply flex;
   }
   .btn-admin-form-group--bottom {
-    @apply justify-end mt-[-1px] py-2 pr-2 border-x border-b border-dashed border-orange-500 bg-gray-300;
+    @apply justify-end mt-[-1px] py-2 pr-2 border-x border-b border-dashed border-orange-500 bg-gray-100;
   }
   .btn-admin-form {
     @apply w-7 h-7 px-1 py-0 border-2 rounded-[50%] flex justify-center items-center transition-all;
@@ -367,10 +367,10 @@
 
 /* EXPERIENCES */
 .experiences {
-  @apply pt-2 pb-8 flex flex-col border-t border-orange-500;
+  @apply px-1 pt-4 pb-8 flex flex-col border-t border-orange-500;
 }
 .experiences--important {
-  @apply border-t-[3px];
+  @apply border-t-[3px] bg-white;
 }
 .experiences-head {
   @apply w-full flex justify-between flex-col sm:flex-row text-orange-500;
@@ -392,12 +392,6 @@
 }
 .experiences-firm {
   @apply relative mr-2 pl-2 flex justify-between text-left;
-}
-.experiences--important .experiences-mark {
-  @apply absolute top-[-.52rem] left-2 w-0 h-0 border-t-[4px] border-x-[5px] border-t-orange-500;
-}
-.experiences-picto {
-  @apply h-6;
 }
 .icon-chevron {
   @apply h-5 fill-white transition-all;

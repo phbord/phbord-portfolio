@@ -455,7 +455,10 @@
   @apply flex flex-col;
 }
 .download {
-  @apply relative h-full p-4 block bg-white border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
+  @apply relative h-full p-4 block bg-white border border-dashed border-orange-500 transition-all;
+}
+.download--link {
+  @apply hover:bg-gray-100 transition-all;
 }
 .download-important-icon {
   @apply absolute top-2 right-2 h-7 text-yellow-500;
@@ -485,5 +488,5 @@
   @apply flex align-middle justify-center;
 }
 .download-icon {
-  @apply h-8 mt-1 text-orange-500;
+  @apply h-8 mt-1;
 }

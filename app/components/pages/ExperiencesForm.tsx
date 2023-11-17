@@ -36,6 +36,9 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [isListFrErrorDisplayed, setIsListFrErrorDisplayed] = useState(false);
   const [isListEnErrorDisplayed, setIsListEnErrorDisplayed] = useState(false);
   const [isIsImportantErrorDisplayed, setIsIsImportantErrorDisplayed] = useState(false);
+  const [isPositionFrErrorDisplayed, setIsPositionFrErrorDisplayed] = useState(false);
+  const [isPositionEnErrorDisplayed, setIsPositionEnErrorDisplayed] = useState(false);
+  const [isPositionCodeErrorDisplayed, setIsPositionCodeErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [monthStartValue, setMonthStartValue] = useState('');
   const [yearStartValue, setYearStartValue] = useState('');
@@ -52,6 +55,9 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const [listFrValue, setListFrValue] = useState('');
   const [listEnValue, setListEnValue] = useState('');
   const [isImportantValue, setIsImportantValue] = useState('');
+  const [positionFrValue, setPositionFrValue] = useState('');
+  const [positionEnValue, setPositionEnValue] = useState('');
+  const [positionCodeValue, setPositionCodeValue] = useState('');
   const idRef = useRef('');
   const monthStartRef = useRef('');
   const yearStartRef = useRef('');
@@ -68,6 +74,9 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
   const listFrRef = useRef('');
   const listEnRef = useRef('');
   const isImportantRef = useRef('');
+  const positionFrRef = useRef('');
+  const positionEnRef = useRef('');
+  const positionCodeRef = useRef('');
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const navigate = useNavigate();
@@ -121,12 +130,10 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
 
     if (e.target.id === 'esn-fr') {
       setEsnFrValue(e.target.value);
-      setIsEsnFrErrorDisplayed(() => isInputTextValidate(esnFrRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'esn-en') {
       setEsnEnValue(e.target.value);
-      setIsEsnEnErrorDisplayed(() => isInputTextValidate(esnEnRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'list-fr') {
@@ -139,6 +146,18 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
 
     if (e.target.id === 'important') {
       setIsImportantValue(e.target.value);
+    }
+
+    if (e.target.id === 'position-fr') {
+      setPositionFrValue(e.target.value);
+    }
+
+    if (e.target.id === 'position-en') {
+      setPositionEnValue(e.target.value);
+    }
+
+    if (e.target.id === 'position-code') {
+      setPositionCodeValue(e.target.value);
     }
 
     setIsDisabled(() => isInputTextValidate(monthStartRef.current.value, 0, 2) 
@@ -188,6 +207,9 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
       setListFrValue(JSON.stringify(data.list_fr));
       setListEnValue(JSON.stringify(data.list_en));
       setIsImportantValue(data.is_important);
+      setPositionFrValue(data.position_fr);
+      setPositionEnValue(data.position_en);
+      setPositionCodeValue(data.position_code);
     }
   }, [])
 
@@ -363,7 +385,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                               message={t('inputTextWrongEntry')} />
         </div>
         
-        {/* Champ ESN */}
+        {/* Champ ESN (en français) */}
         <div className="mb-4">
           <label htmlFor="esn-fr" 
                   className="label">
@@ -380,6 +402,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                               message={t('inputTextWrongEntry')} />
         </div>
 
+        {/* Champ ESN (en anglais) */}
         <div className="mb-4">
           <label htmlFor="esn-en" 
                   className="label">
@@ -396,7 +419,59 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                               message={t('inputTextWrongEntry')} />
         </div>
         
-        {/* Champ DESCRIPTION */}
+        {/* Champ POSTE (en français) */}
+        <div className="mb-4">
+          <label htmlFor="position-fr" 
+                  className="label">
+            {t('positionText')} ({t('inFrText')})
+          </label>
+          <Input id="position-fr" 
+                  type="text" 
+                  value={positionFrValue}
+                  inputRef={positionFrRef}
+                  autoComplete="picto" 
+                  isInputErrorDisplayed={isPositionFrErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isPositionFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        {/* Champ POSTE (en anglais) */}
+        <div className="mb-4">
+          <label htmlFor="position-en" 
+                  className="label">
+            {t('positionText')} ({t('inEnText')})
+          </label>
+          <Input id="position-en" 
+                  type="text" 
+                  value={positionEnValue}
+                  inputRef={positionEnRef}
+                  autoComplete="picto" 
+                  isInputErrorDisplayed={isPositionEnErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isPositionEnErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+
+        
+        {/* Champ CODE DU POSTE */}
+        <div className="mb-4">
+          <label htmlFor="position-code" 
+                  className="label">
+            {t('positionCodeText')}
+          </label>
+          <Input id="position-code" 
+                  type="text" 
+                  value={positionCodeValue}
+                  inputRef={positionCodeRef}
+                  autoComplete="picto" 
+                  isInputErrorDisplayed={isPositionCodeErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isPositionCodeErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+        
+        {/* Champ DESCRIPTION (en français) */}
         <div className="mb-4">
           <label htmlFor="description-fr" 
                   className="label">
@@ -413,6 +488,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                               message={t('inputTextWrongEntry')} />
         </div>
 
+        {/* Champ DESCRIPTION (en anglais) */}
         <div className="mb-4">
           <label htmlFor="description-en" 
                   className="label">
@@ -429,7 +505,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                               message={t('inputTextWrongEntry')} />
         </div>
         
-        {/* Textarea LISTE  */}
+        {/* Textarea LISTE (en français) */}
         <div className="mb-4">
           <label htmlFor="list-fr" 
                   className="label">
@@ -445,6 +521,7 @@ export default function ExperiencesForm({className='', data}: ExperiencesFormInt
                               message={t('inputTextWrongEntry')} />
         </div>
 
+        {/* Textarea LISTE (en anglais) */}
         <div className="mb-4">
           <label htmlFor="list-en" 
                   className="label">

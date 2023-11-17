@@ -25,6 +25,10 @@ export async function action({request}: ActionFunctionArgs) {
   const stackValue: FormDataEntryValue | null = formData.get('stack');
   const esnFrValue: FormDataEntryValue | null = formData.get('esn-fr');
   const esnEnValue: FormDataEntryValue | null = formData.get('esn-en');
+  const importantValue: FormDataEntryValue | null = formData.get('important');
+  const positionFrValue: FormDataEntryValue | null = formData.get('position-fr');
+  const positionEnValue: FormDataEntryValue | null = formData.get('position-en');
+  const positionCodeValue: FormDataEntryValue | null = formData.get('position-code');
 
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue)
@@ -46,6 +50,7 @@ export async function action({request}: ActionFunctionArgs) {
     firm_fr: firmFrValue,
     firm_en: firmEnValue,
     picto: pictoValue,
+    is_important: importantValue,
     description_fr: descriptionFrValue,
     description_en: descriptionEnValue,
     list_fr: listFrValue === '' ? '' : JSON.parse(listFrValue),
@@ -53,6 +58,9 @@ export async function action({request}: ActionFunctionArgs) {
     stack: stackValue,
     esn_fr: esnFrValue,
     esn_en: esnEnValue,
+    position_fr: positionFrValue,
+    position_en: positionEnValue,
+    position_code: positionCodeValue,
   };
   const res = await postData({
     table: 'Experiences',

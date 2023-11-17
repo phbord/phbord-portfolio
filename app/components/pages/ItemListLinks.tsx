@@ -35,7 +35,7 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
         data 
           ? (
             <li className='links-item'>
-              <Link to={data.url} className='link'>
+              <Link to={data.url} target='_blank' className='link'>
                 <article>
                   {/* Logo */}
                   {

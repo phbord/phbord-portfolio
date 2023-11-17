@@ -28,6 +28,9 @@ export async function action({request}: ActionFunctionArgs) {
   const listFrValue: FormDataEntryValue | null = formData.get('list-fr');
   const listEnValue: FormDataEntryValue | null = formData.get('list-en');
   const importantValue: FormDataEntryValue | null = formData.get('important');
+  const positionFrValue: FormDataEntryValue | null = formData.get('position-fr');
+  const positionEnValue: FormDataEntryValue | null = formData.get('position-en');
+  const positionCodeValue: FormDataEntryValue | null = formData.get('position-code');
 
   if (!isInputTextValidate(monthStartValue) 
       || !isInputTextValidate(yearStartValue) 
@@ -55,9 +58,12 @@ export async function action({request}: ActionFunctionArgs) {
     esn_fr: esnFrValue,
     esn_en: esnEnValue,
     picto: pictoValue,
-    is_important: JSON.parse(importantValue),
+    is_important: importantValue,
     list_fr: listFrValue === '' ? '' : JSON.parse(listFrValue),
     list_en: listEnValue === '' ? '' : JSON.parse(listEnValue),
+    position_fr: positionFrValue,
+    position_en: positionEnValue,
+    position_code: positionCodeValue,
   };
 
   const res = await updateData({

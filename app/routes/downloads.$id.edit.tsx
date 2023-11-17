@@ -28,7 +28,6 @@ export async function action({request}: ActionFunctionArgs) {
       || !isInputTextValidate(titleEnValue)
       || !isInputTextValidate(diplomaFrValue)
       || !isInputTextValidate(diplomaEnValue)
-      || !isInputTextValidate(schoolValue)
       || !isInputTextValidate(fileValue)
       || !isInputTextValidate(orderValue)
       || !isInputTextValidate(yearValue)) {

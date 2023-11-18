@@ -391,7 +391,10 @@
   @apply w-[4rem] min-w-[4rem] sm:w-[8rem] sm:min-w-[8rem] text-left;
 }
 .experiences-firm {
-  @apply relative mr-2 pl-2 flex justify-between text-left;
+  @apply mr-2 pl-2 flex justify-between text-left;
+}
+.icon-experiences-firm {
+  @apply h-5 ml-2;
 }
 .icon-chevron {
   @apply h-5 fill-white transition-all;
@@ -429,7 +432,7 @@
   @apply flex justify-center;
 }
 .link-img {
-  @apply min-w-[1.75rem] h-10 mb-2 p-1 bg-white rounded-full;
+  @apply min-w-[1.75rem] h-10 mb-2 p-1 bg-white;
 }
 .link-subtitle {
   @apply mt-4 mb-2 text-left text-gray-400 text-xs uppercase font-light;

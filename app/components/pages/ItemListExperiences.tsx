@@ -80,8 +80,17 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                     </div>
                     {/* Entreprise */}
                     <strong className='experiences-firm'>
-                      <span className='experiences-mark'></span>
-                      {lang === 'fr' ? data.firm_fr : data.firm_en}
+                      <span>
+                        {lang === 'fr' ? data.firm_fr : data.firm_en}
+                      </span>
+                      <span>
+                        {
+                          data.picto && (<img src={`/images/icons/${data.picto}`} 
+                                              alt={lang === 'fr' ? data.firm_fr : data.firm_en} 
+                                              className='icon-experiences-firm' />)
+                        }
+                      </span>
+                      
                     </strong>
                   </div>
                   {/* ESN et POSTE */}

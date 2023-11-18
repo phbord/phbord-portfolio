@@ -46,7 +46,7 @@ export default function ItemListKnowledges({data, noData, lang, idEdit, idDelete
               </div>
 
               {/* L I S T E */}
-              <ul className='flex flex-wrap border-t border-orange-500'>
+              <ul className='pt-2 flex flex-wrap border-t border-orange-500'>
                 {
                   data && data?.list && data?.list?.map((item: {picto: string; name: string; fav: boolean}) => (
                     <li key={uuidv4()} 

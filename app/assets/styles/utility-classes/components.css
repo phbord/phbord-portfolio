@@ -312,6 +312,29 @@
     @apply px-3 py-2 flex justify-center items-center bg-neutral-500 hover:bg-neutral-400 text-white text-sm font-bold transition-all !important;
   }
 
+  /* FILTERS */
+  .filters {
+    @apply h-7 mt-12 hidden md:flex items-center;
+  }
+  .filters-title {
+    @apply mr-1 text-gray-400 font-light;
+  }
+  .filters-list {
+    @apply mr-1 flex;
+  }
+  .filters-button {
+    @apply h-7 px-2 flex items-center justify-center border-white bg-gray-400 hover:bg-orange-500 transition-all !important;
+  }
+  .filters-item:first-child .filters-button {
+    @apply border-r rounded-s-lg;
+  }
+  .filters-item:last-child .filters-button {
+    @apply border-l rounded-r-lg;
+  }
+  .filters-button--active {
+    @apply bg-orange-500 !important;
+  }
+
   /* STRATEGIES OBLIQUES */
   .container-oblique-strategies {
     @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fuji.jpeg')] transition-all;

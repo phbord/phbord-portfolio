@@ -113,6 +113,10 @@ const mainData = {
       yesText: 'Oui',
       noText: 'Non',
       toggleItemButtonText: 'Bouton d\'ouverture/fermeture de l\'élément',
+      filtersText: 'Filtres',
+      allText: 'Tous',
+      jsDevText: 'Développeur Javascript',
+      integrateurText: 'Intégrateur web',
     }
   },
   // /////////////////////////////////////////
@@ -217,6 +221,10 @@ const mainData = {
       yesText: 'Yes',
       noText: 'No',
       toggleItemButtonText: 'Element open/close button',
+      filtersText: 'Filters',
+      allText: 'All',
+      jsDevText: 'Javascript developer',
+      integrateurText: 'Web integrator',
     }
   }
 };

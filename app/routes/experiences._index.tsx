@@ -16,6 +16,7 @@ import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 import Tooltip from '~/components/core/Tooltip';
 import Filters from '~/components/core/Filters';
+import { useHandleFilterClick } from '~/utils/useHandleFilterClick';
 
 
 export const meta: MetaFunction = () => {
@@ -50,17 +51,8 @@ export default function Experiences() {
   const [experiencesData, setExperiencesData] = useState(experiences);
 
   const handleFilterClick = (e): void => {
-    switch (e.target.id) {
-      case 'btn-filter':
-        setExperiencesData(experiences.filter((item) => item.position_code === 'dev-js'));
-        break;
-      case 'btn-filter-inverse':
-        setExperiencesData(experiences.filter((item) => item.position_code === 'int'));
-        break;
-      default:
-        setExperiencesData(experiences);
-        break;
-    }
+    const { onPositionCodeClick } = useHandleFilterClick(experiences, e.target.id);
+    setExperiencesData(() => onPositionCodeClick());
   };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);

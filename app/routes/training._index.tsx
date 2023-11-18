@@ -16,6 +16,7 @@ import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 import Tooltip from '~/components/core/Tooltip';
 import Filters from '~/components/core/Filters';
+import { useHandleFilterClick } from '~/utils/useHandleFilterClick';
 
 
 export const meta: MetaFunction = () => {
@@ -50,17 +51,8 @@ export default function Training() {
   const [trainingsData, setTrainingsData] = useState(trainings);
 
   const handleFilterClick = (e): void => {
-    switch (e.target.id) {
-      case 'btn-filter':
-        setTrainingsData(trainings.filter((item) => item.is_important));
-        break;
-      case 'btn-filter-inverse':
-        setTrainingsData(trainings.filter((item) => !item.is_important));
-        break;
-      default:
-        setTrainingsData(trainings);
-        break;
-    }
+    const { onIsImportantClick } = useHandleFilterClick(trainings, e.target.id);
+    setTrainingsData(() => onIsImportantClick());
   };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);

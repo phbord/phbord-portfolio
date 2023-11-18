@@ -51,8 +51,8 @@ export default function Links() {
   const [linksData, setLinksData] = useState(links);
 
   const handleFilterClick = (e): void => {
-    const { onFilterClick } = useHandleFilterClick(links, e.target.id);
-    setLinksData(() => onFilterClick());
+    const { onIsImportantClick } = useHandleFilterClick(links, e.target.id);
+    setLinksData(() => onIsImportantClick());
   };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);

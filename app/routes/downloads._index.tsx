@@ -51,8 +51,8 @@ export default function Downloads() {
   const [downloadsData, setDownloadsData] = useState(downloads);
 
   const handleFilterClick = (e): void => {
-    const { onFilterClick } = useHandleFilterClick(downloads, e.target.id);
-    setDownloadsData(() => onFilterClick());
+    const { onIsImportantClick } = useHandleFilterClick(downloads, e.target.id);
+    setDownloadsData(() => onIsImportantClick());
   };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);

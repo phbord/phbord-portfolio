@@ -1,3 +1,4 @@
+import { FunnelIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -40,11 +41,8 @@ export default function Filters({onClick, textFilter, textFilterInverse, classNa
 
 
   return (
-    <div className={`filters ${className}`}>
-      {/* TITRE */}
-      <h3 className="filters-title">
-        {t('filtersText')}
-      </h3>
+    <nav className={`filters ${className}`}>
+      <FunnelIcon className="fiters-icon" />
       {/* Liste de FILTRES */}
       <ul className="filters-list">
         <li className="filters-item">
@@ -53,9 +51,11 @@ export default function Filters({onClick, textFilter, textFilterInverse, classNa
                   onClick={handleClick}>{t('allText')}</Button>
         </li>
         <li className="filters-item">
+          <span className="filters-separator">|</span>
           <Button className={activeFilterClass ? 'filters-button filters-button--active' : 'filters-button'}
                   id='btn-filter'
                   onClick={handleClick}>{textFilter}</Button>
+          <span className="filters-separator">|</span>
         </li>
         <li className="filters-item">
           <Button className={activeFilterInverseClass ? 'filters-button filters-button--active' : 'filters-button'}
@@ -63,6 +63,6 @@ export default function Filters({onClick, textFilter, textFilterInverse, classNa
                   onClick={handleClick}>{textFilterInverse}</Button>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }

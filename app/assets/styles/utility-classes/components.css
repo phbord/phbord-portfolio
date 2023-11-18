@@ -316,23 +316,20 @@
   .filters {
     @apply h-7 mt-12 hidden md:flex items-center;
   }
-  .filters-title {
-    @apply mr-1 text-gray-400 font-light;
+  .fiters-icon {
+    @apply h-4 text-gray-400;
   }
   .filters-list {
     @apply mr-1 flex;
   }
+  .filters-item {
+    @apply flex items-center text-gray-400 font-light;
+  }
   .filters-button {
-    @apply h-7 px-2 flex items-center justify-center border-white bg-gray-400 hover:bg-orange-500 transition-all !important;
-  }
-  .filters-item:first-child .filters-button {
-    @apply border-r rounded-s-lg;
-  }
-  .filters-item:last-child .filters-button {
-    @apply border-l rounded-r-lg;
+    @apply h-7 px-2 flex items-center justify-center text-gray-400 font-normal hover:text-orange-500 transition-all !important;
   }
   .filters-button--active {
-    @apply bg-orange-500 !important;
+    @apply text-orange-500 !important;
   }
 
   /* STRATEGIES OBLIQUES */

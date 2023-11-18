@@ -116,7 +116,11 @@ const mainData = {
       filtersText: 'Filtres',
       allText: 'Tous',
       jsDevText: 'Développeur Javascript',
-      integrateurText: 'Intégrateur web',
+      integratorText: 'Intégrateur web',
+      longTrainingText: 'Formations longues',
+      shortTrainingText: 'Formations courtes',
+      majorProjectText: 'Projets majeurs',
+      minorProjectText: 'Projets mineurs',
     }
   },
   // /////////////////////////////////////////
@@ -224,7 +228,11 @@ const mainData = {
       filtersText: 'Filters',
       allText: 'All',
       jsDevText: 'Javascript developer',
-      integrateurText: 'Web integrator',
+      integratorText: 'Web integrator',
+      longTrainingText: 'Long training courses',
+      shortTrainingText: 'Short training courses',
+      majorProjectText: 'Major projects',
+      minorProjectText: 'Minor projects',
     }
   }
 };

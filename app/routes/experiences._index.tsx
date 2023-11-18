@@ -47,7 +47,7 @@ export default function Experiences() {
   const [modalOpened, setModalOpened] = useState(false);
   const revalidator = useRevalidator();
   const [isNewTooltipOpened, setIsNewTooltipOpened] = useState(false);
-  const [experiencesData, setExperiencesData] = useState(experiences)
+  const [experiencesData, setExperiencesData] = useState(experiences);
 
   const handleFilterClick = (e): void => {
     switch (e.target.id) {
@@ -127,7 +127,7 @@ export default function Experiences() {
             {/* FILTRES */}
             <Filters onClick={handleFilterClick} 
                       textFilter={t('jsDevText')} 
-                      textFilterInverse={t('integrateurText')} />
+                      textFilterInverse={t('integratorText')} />
             {/* Bouton de CREATION */}
             {
               isSession && (

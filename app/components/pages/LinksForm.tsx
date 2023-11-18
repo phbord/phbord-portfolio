@@ -29,6 +29,7 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
   const [isUrlErrorDisplayed, setIsUrlErrorDisplayed] = useState(false);
   const [isOrderErrorDisplayed, setIsOrderErrorDisplayed] = useState(false);
   const [isPictoErrorDisplayed, setIsPictoErrorDisplayed] = useState(false);
+  const [isIsImportantErrorDisplayed, setIsIsImportantErrorDisplayed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [titleFrValue, setTitleFrValue] = useState('');
   const [titleEnValue, setTitleEnValue] = useState('');
@@ -38,6 +39,7 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
   const [urlValue, setUrlValue] = useState('');
   const [orderValue, setOrderValue] = useState('');
   const [pictoValue, setPictoValue] = useState('');
+  const [isImportantValue, setIsImportantValue] = useState('');
   const idRef = useRef('');
   const titleFrRef = useRef('');
   const titleEnRef = useRef('');
@@ -47,6 +49,7 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
   const urlRef = useRef('');
   const orderRef = useRef('');
   const pictoRef = useRef('');
+  const isImportantRef = useRef('');
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   const navigate = useNavigate();
@@ -89,12 +92,20 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
       setPictoValue(e.target.value);
     }
 
+    if (e.target.id === 'important') {
+      setIsImportantValue(e.target.value);
+    }
+
     setIsDisabled(() => isInputTextValidate(titleFrRef.current.value, 3) 
                         && isInputTextValidate(titleEnRef.current.value, 3)
                         && isInputTextValidate(subtitleRef.current.value, 3) 
                         && isInputTextValidate(urlRef.current.value, 3) 
                         && isInputTextValidate(orderRef.current.value) 
                           ? false : true);
+  };
+
+  const handleButtonRadioClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsImportantValue(e.target.value);
   };
 
   const getErrorMessage = (data: { messageType: any; } | undefined) => {
@@ -124,6 +135,7 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
       setUrlValue(data.url);
       setOrderValue(data.order);
       setPictoValue(data.picto);
+      setIsImportantValue(data.is_important);
     }
   }, [])
 
@@ -172,6 +184,22 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
                   onChange={handleChange} />
           <FormElementMessage className={isOrderErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
+        </div>
+        
+        {/* Champ IMPORTANT */}
+        <div className="mb-4">
+          <label htmlFor="important" 
+                  className="label">
+            {t('isImportantText')}
+          </label>
+          <BinaryRadioButton className="banary-radio-buttons-group"
+                              value={isImportantValue}
+                              text1={t('noText')}
+                              text2={t('yesText')}
+                              name="important"
+                              id1="important-radio-button-1"
+                              id2="important-radio-button-2"
+                              onClick={handleButtonRadioClick} />
         </div>
         
         {/* Champ TITLE */}

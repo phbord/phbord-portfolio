@@ -15,6 +15,7 @@ import ItemListLinks from '~/components/pages/ItemListLinks';
 import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 import Tooltip from '~/components/core/Tooltip';
+import Filters from '~/components/core/Filters';
 
 
 export const meta: MetaFunction = () => {
@@ -46,6 +47,21 @@ export default function Links() {
   const [modalOpened, setModalOpened] = useState(false);
   const revalidator = useRevalidator();
   const [isNewTooltipOpened, setIsNewTooltipOpened] = useState(false);
+  const [linksData, setLinksData] = useState(links);
+
+  const handleFilterClick = (e): void => {
+    switch (e.target.id) {
+      case 'btn-filter':
+        setLinksData(links.filter((item) => item.is_important));
+        break;
+      case 'btn-filter-inverse':
+        setLinksData(links.filter((item) => !item.is_important));
+        break;
+      default:
+        setLinksData(links);
+        break;
+    }
+  };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);
   const handleNewMouseOut = () => setIsNewTooltipOpened(false);
@@ -106,32 +122,39 @@ export default function Links() {
           <h2 className="h2 mr-3">
             {t('header.3.name', { returnObjects: true })}
           </h2>
-          {/* Bouton de CREATION */}
-          {
-            isSession && (
-              <Button className='relative btn-admin-form btn-admin-form--new mt-12'
-                      srOnlyText={`${t('buttonText')} ${t('buttonNewText')}`}
-                      onClick={onNewClick}
-                      onMouseOver={handleNewMouseOver}
-                      onMouseOut={handleNewMouseOut}>
-                <PlusIcon className='h-5' />
-                {/* TOOLTIPS */}
-                {
-                  isNewTooltipOpened && (
-                    <Tooltip name={t('buttonNewText')} 
-                              className='tooltips-footer' />
-                  )
-                }
-              </Button>
-            )
-          }
+          {/* Boutons */}
+          <div className='flex'>
+            {/* FILTRES */}
+            <Filters onClick={handleFilterClick} 
+                      textFilter={t('majorProjectText')} 
+                      textFilterInverse={t('minorProjectText')} />
+            {/* Bouton de CREATION */}
+            {
+              isSession && (
+                <Button className='relative btn-admin-form btn-admin-form--new mt-12'
+                        srOnlyText={`${t('buttonText')} ${t('buttonNewText')}`}
+                        onClick={onNewClick}
+                        onMouseOver={handleNewMouseOver}
+                        onMouseOut={handleNewMouseOut}>
+                  <PlusIcon className='h-5' />
+                  {/* TOOLTIPS */}
+                  {
+                    isNewTooltipOpened && (
+                      <Tooltip name={t('buttonNewText')} 
+                                className='tooltips-footer' />
+                    )
+                  }
+                </Button>
+              )
+            }
+          </div>
         </div>
            
         {/* L I S T E */}
         <div>
             <ul className='links'>
               {
-                links?.map((link: any, index: number) => (
+                linksData?.map((link: any, index: number) => (
                   <ItemListLinks key={uuidv4()} 
                                   data={link} 
                                   noData={t('noDataText')} 

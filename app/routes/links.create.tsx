@@ -19,6 +19,7 @@ export async function action({request}: ActionFunctionArgs) {
   const descriptionEnValue: FormDataEntryValue | null = formData.get('description-en');
   const urlValue: FormDataEntryValue | null = formData.get('url');
   const orderValue: FormDataEntryValue | null = formData.get('order');
+  const importantValue: FormDataEntryValue | null = formData.get('important');
 
   if (!isInputTextValidate(titleFrValue)
       || !isInputTextValidate(titleEnValue)
@@ -40,6 +41,7 @@ export async function action({request}: ActionFunctionArgs) {
     description_en: descriptionEnValue,
     url: urlValue,
     order: orderValue,
+    is_important: importantValue,
   };
   const res = await postData({
     table: 'Links',

@@ -1,3 +1,4 @@
+import { BoltIcon } from '@heroicons/react/20/solid';
 import { Link } from '@remix-run/react';
 
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
@@ -16,6 +17,7 @@ interface ItemListLinksInterface {
 
 interface DataItemListLinksInterface {
   order?: number;
+  is_important?: boolean;
   picto?: string;
   title_fr: string;
   title_en: string;
@@ -56,7 +58,14 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
                   </h3>
                   {/* Sous-titre */}
                   <p className='link-subtitle'>
-                    {data.subtitle}
+                    <span>
+                      {data.subtitle}
+                    </span>
+                    {
+                      data.is_important && (
+                        <BoltIcon className='link-important-icon' />
+                      )
+                    }
                   </p>
                   {/* Description */}
                   <p className='link-description multilines-truncate-3'>

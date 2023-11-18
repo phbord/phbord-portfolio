@@ -16,6 +16,7 @@ import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 import Tooltip from '~/components/core/Tooltip';
 import Filters from '~/components/core/Filters';
+import { useHandleFilterClick } from '~/utils/useHandleFilterClick';
 
 
 export const meta: MetaFunction = () => {
@@ -50,17 +51,8 @@ export default function Links() {
   const [linksData, setLinksData] = useState(links);
 
   const handleFilterClick = (e): void => {
-    switch (e.target.id) {
-      case 'btn-filter':
-        setLinksData(links.filter((item) => item.is_important));
-        break;
-      case 'btn-filter-inverse':
-        setLinksData(links.filter((item) => !item.is_important));
-        break;
-      default:
-        setLinksData(links);
-        break;
-    }
+    const { onFilterClick } = useHandleFilterClick(links, e.target.id);
+    setLinksData(() => onFilterClick());
   };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);
@@ -101,6 +93,10 @@ export default function Links() {
     setIdItem(null);
   };
 
+
+  useEffect(() => {
+    //setLinksData(handleFilterClick());
+  }, [])
 
   useEffect(() => {
     dataAction?.isValid === true && revalidator.revalidate();

@@ -16,6 +16,7 @@ import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 import Tooltip from '~/components/core/Tooltip';
 import Filters from '~/components/core/Filters';
+import { useHandleFilterClick } from '~/utils/useHandleFilterClick';
 
 
 export const meta: MetaFunction = () => {
@@ -50,17 +51,8 @@ export default function Downloads() {
   const [downloadsData, setDownloadsData] = useState(downloads);
 
   const handleFilterClick = (e): void => {
-    switch (e.target.id) {
-      case 'btn-filter':
-        setDownloadsData(downloads.filter((item) => item.is_important));
-        break;
-      case 'btn-filter-inverse':
-        setDownloadsData(downloads.filter((item) => !item.is_important));
-        break;
-      default:
-        setDownloadsData(downloads);
-        break;
-    }
+    const { onFilterClick } = useHandleFilterClick(downloads, e.target.id);
+    setDownloadsData(() => onFilterClick());
   };
 
   const handleNewMouseOver = () => setIsNewTooltipOpened(true);

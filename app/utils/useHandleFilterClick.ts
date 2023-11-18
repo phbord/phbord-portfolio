@@ -1,7 +1,6 @@
 export const useHandleFilterClick = (data, id) => {
   const onIsImportantClick = () => {
     let newData;
-
     switch (id) {
       case 'btn-filter':
         newData = data.filter((item) => item.is_important);
@@ -18,7 +17,6 @@ export const useHandleFilterClick = (data, id) => {
 
   const onPositionCodeClick = () => {
     let newData;
-
     switch (id) {
       case 'btn-filter':
         newData = data.filter((item) => item.position_code === 'dev-js');

@@ -16,7 +16,7 @@ import Modal from '~/components/core/Modal';
 import SnackBar from '~/components/core/SnackBar';
 import Tooltip from '~/components/core/Tooltip';
 import Filters from '~/components/core/Filters';
-import { useHandleFilterClick } from '~/utils/useHandleFilterClick';
+import { useHandleFilterClick } from '~/hooks/useHandleFilterClick';
 
 
 export const meta: MetaFunction = () => {

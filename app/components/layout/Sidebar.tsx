@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
 import useSession from '~/services/store/useSession';
+import { useHandleClickMenu } from '~/hooks/useHandleClickMenu';
 import ItemListLayout from '~/components/layout/ItemListLayout';
 import Button from '~/components/core/buttons/Button';
 import SnackBar from '~/components/core/SnackBar';
@@ -28,6 +29,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const openedClass = 'right-0';
   const { isSideBarOpened }: any = useSidebarStore();
   const { isSession }: any = useSession();
+  const { handleClickMenu } = useHandleClickMenu(useSidebarStore);
   const [toggleClass, setToggleClass] = useState(() => isSideBarOpened ? openedClass : '');
   const [isSignoutClick, setIsSignoutClick] = useState(false);
   const [displayedSnackBar, setDisplayedSnackBar] = useState(false);
@@ -36,9 +38,6 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
   const fetcher = useFetcher();
   const revalidator = useRevalidator();
   
-
-  const handleClickMenu = () => useSidebarStore.getState().setSideBarOpened();
-
   const handleClickSignOut = async () => {
     handleClickMenu();
     setIsSignoutClick(!isSignoutClick);
@@ -104,6 +103,13 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
 
   return (
     <>
+      {/* OVERLAY */}
+      {
+        isSideBarOpened && (
+          <Button className='overlay' onClick={handleClickMenu}></Button>
+        )
+      }
+      
       <nav className={`sidebar ${toggleClass}`}>
         {/* Menu PRINCIPAL */}
         <ul className='flex flex-col'>
@@ -115,7 +121,6 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
                               onClick={handleClickMenu} />
             ))
           }
-          {/* { !isSession && buttonSignInBlock } */}
         </ul>
 
         {/* PROFILE */}

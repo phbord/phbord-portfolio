@@ -1,6 +1,6 @@
 import { Link } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
-import { BoltIcon } from '@heroicons/react/20/solid';
+import { SparklesIcon } from '@heroicons/react/20/solid';
 
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
 
@@ -65,7 +65,7 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                     }
                     {
                       data.is_important && (
-                        <BoltIcon className='h-7 ml-2 text-yellow-400' />
+                        <SparklesIcon className='h-7 ml-2 text-yellow-400' />
                       )
                     }
                   </div>

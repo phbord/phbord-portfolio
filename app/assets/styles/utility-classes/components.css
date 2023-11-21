@@ -254,7 +254,11 @@
     @apply flex;
   }
   .btn-admin-form-group--bottom {
-    @apply justify-end mt-[-1px] py-2 pr-2 border-x border-b border-dashed border-orange-500 bg-gray-100;
+    @apply justify-end mt-[-2px] py-2 pr-2 border-x border-b border-dashed border-orange-500 bg-gray-100;
+  }
+  .links-item--important .btn-admin-form-group--bottom,
+  .downloads-item--important .btn-admin-form-group--bottom {
+    @apply border-x-2 border-b-2 border-solid;
   }
   .btn-admin-form {
     @apply w-7 h-7 px-1 py-0 border-2 rounded-[50%] flex justify-center items-center transition-all;
@@ -448,6 +452,9 @@
 .link {
   @apply h-full p-4 block bg-white border border-dashed border-orange-500 hover:bg-gray-100 transition-all;
 }
+.link--important {
+  @apply border-solid border-2;
+}
 .link-figure {
   @apply flex justify-center;
 }
@@ -478,7 +485,7 @@
   @apply relative h-full p-4 block bg-white border border-dashed border-orange-500 transition-all;
 }
 .download--link {
-  @apply hover:bg-gray-100 transition-all;
+  @apply border-solid border-2 hover:bg-gray-100 transition-all;
 }
 .download-important-icon {
   @apply absolute top-2 right-2 h-7 text-yellow-500;

@@ -1,4 +1,4 @@
-import { BoltIcon } from '@heroicons/react/20/solid';
+import { SparklesIcon } from '@heroicons/react/20/solid';
 import { Link } from '@remix-run/react';
 
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
@@ -36,8 +36,8 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
       {
         data 
           ? (
-            <li className='links-item'>
-              <Link to={data.url} target='_blank' className='link'>
+            <li className={data.is_important ? 'links-item links-item--important' : 'links-item'}>
+              <Link to={data.url} target='_blank' className={data.is_important ? 'link link--important' : 'link'}>
                 <article>
                   {/* Logo */}
                   {
@@ -63,7 +63,7 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
                     </span>
                     {
                       data.is_important && (
-                        <BoltIcon className='link-important-icon' />
+                        <SparklesIcon className='link-important-icon' />
                       )
                     }
                   </p>

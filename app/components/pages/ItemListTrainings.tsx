@@ -21,7 +21,8 @@ interface DataItemListTrainingsInterface {
   year_end?: number;
   title_fr?: string;
   title_en?: string;
-  duration?: string;
+  duration_fr?: string;
+  duration_en?: string;
   picto?: string;
   school?: string;
   is_important?: boolean;
@@ -59,8 +60,8 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                   <div className={data.is_important ? 'trainings-title font-900' : 'trainings-title font-light'}>
                     <span>{lang === 'fr' ? data.title_fr : data.title_en}</span>
                     {
-                      data.duration && (
-                        <span className='trainings-duration'> - {data.duration}</span>
+                      (data.duration_fr || data.duration_en) && (
+                        <span className='trainings-duration'> - {lang === 'fr' ? data.duration_fr : data.duration_en}</span>
                       )
                     }
                     {

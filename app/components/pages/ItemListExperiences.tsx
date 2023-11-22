@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import FormButtonGroup from '~/components/core/form/FormButtonGroup';
 import Button from '~/components/core/buttons/Button'
-import ButtonToggleItem from '../core/buttons/ButtonToggleItem';
+import ButtonToggleItem from '~/components/core/buttons/ButtonToggleItem';
 
 
 interface ItemListExperiencesInterface {

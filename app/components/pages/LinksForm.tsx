@@ -9,7 +9,8 @@ import Input from "~/components/core/form/Input";
 import Textarea from "~/components/core/form/Textarea";
 import Button from "~/components/core/buttons/Button";
 import SnackBar from "~/components/core/SnackBar";
-import BinaryRadioButton from "../core/form/BinaryRadioButton";
+import BinaryRadioButton from "~/components/core/form/BinaryRadioButton";
+import PrevPageLink from "~/components/core/buttons/PrevPageLink";
 
 
 interface LinksFormInterface {
@@ -317,6 +318,11 @@ export default function LinksForm({className='', data}: LinksFormInterface) {
                   onChange={handleChange} />
           <FormElementMessage className={isUrlErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
+        </div>
+
+        {/* Lien vers la page précédente */}
+        <div className="mt-10 mb-[-1rem]">
+          <PrevPageLink url='/links' />
         </div>
 
         {/* Bouton SUBMIT */}

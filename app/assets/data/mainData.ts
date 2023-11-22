@@ -121,6 +121,7 @@ const mainData = {
       shortTrainingText: 'Formations courtes',
       majorProjectText: 'Projets majeurs',
       minorProjectText: 'Projets mineurs',
+      prevPageText: 'Page précédente',
     }
   },
   // /////////////////////////////////////////
@@ -233,6 +234,7 @@ const mainData = {
       shortTrainingText: 'Short training courses',
       majorProjectText: 'Major projects',
       minorProjectText: 'Minor projects',
+      prevPageText: 'Previous page',
     }
   }
 };

@@ -9,7 +9,8 @@ import Input from "~/components/core/form/Input";
 import Textarea from "~/components/core/form/Textarea";
 import Button from "~/components/core/buttons/Button";
 import SnackBar from "~/components/core/SnackBar";
-import BinaryRadioButton from "../core/form/BinaryRadioButton";
+import BinaryRadioButton from "~/components/core/form/BinaryRadioButton";
+import PrevPageLink from "~/components/core/buttons/PrevPageLink";
 
 
 interface TrainingFormInterface {
@@ -25,7 +26,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
   const [isDateEndErrorDisplayed, setIsDateEndErrorDisplayed] = useState(false);
   const [isTitleFrErrorDisplayed, setIsTitleFrErrorDisplayed] = useState(false);
   const [isTitleEnErrorDisplayed, setIsTitleEnErrorDisplayed] = useState(false);
-  const [isDurationErrorDisplayed, setIsDurationErrorDisplayed] = useState(false);
+  const [isDurationFrErrorDisplayed, setIsDurationFrErrorDisplayed] = useState(false);
+  const [isDurationEnErrorDisplayed, setIsDurationEnErrorDisplayed] = useState(false);
   const [isSchoolErrorDisplayed, setIsSchoolErrorDisplayed] = useState(false);
   const [isPictoErrorDisplayed, setIsPictoErrorDisplayed] = useState(false);
   const [isProjectsListFrErrorDisplayed, setIsProjectsListFrErrorDisplayed] = useState(false);
@@ -36,7 +38,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
   const [dateEndValue, setDateEndValue] = useState('');
   const [titleFrValue, setTitleFrValue] = useState('');
   const [titleEnValue, setTitleEnValue] = useState('');
-  const [durationValue, setDurationValue] = useState('');
+  const [durationFrValue, setDurationFrValue] = useState('');
+  const [durationEnValue, setDurationEnValue] = useState('');
   const [schoolValue, setSchoolValue] = useState('');
   const [pictoValue, setPictoValue] = useState('');
   const [projectsListFrValue, setProjectsListFrValue] = useState('');
@@ -47,7 +50,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
   const dateEndRef = useRef('');
   const titleFrRef = useRef('');
   const titleEnRef = useRef('');
-  const durationRef = useRef('');
+  const durationFrRef = useRef('');
+  const durationEnRef = useRef('');
   const schoolRef = useRef('');
   const pictoRef = useRef('');
   const projectsListFrRef = useRef('');
@@ -78,9 +82,14 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
       setIsTitleEnErrorDisplayed(() => isInputTextValidate(titleEnRef.current.value, 3) ? false : true);
     }
 
-    if (e.target.id === 'duration') {
-      setDurationValue(e.target.value);
-      setIsDurationErrorDisplayed(() => isInputTextValidate(durationRef.current.value, 3) ? false : true);
+    if (e.target.id === 'duration-fr') {
+      setDurationFrValue(e.target.value);
+      setIsDurationFrErrorDisplayed(() => isInputTextValidate(durationFrRef.current.value, 3) ? false : true);
+    }
+
+    if (e.target.id === 'duration-en') {
+      setDurationEnValue(e.target.value);
+      setIsDurationEnErrorDisplayed(() => isInputTextValidate(durationEnRef.current.value, 3) ? false : true);
     }
 
     if (e.target.id === 'school') {
@@ -139,7 +148,8 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
       setDateEndValue(data.year_end);
       setTitleFrValue(data.title_fr);
       setTitleEnValue(data.title_en);
-      setDurationValue(data.duration);
+      setDurationFrValue(data.duration_fr);
+      setDurationEnValue(data.duration_en);
       setSchoolValue(data.school);
       setPictoValue(data.picto);
       setProjectsListFrValue(JSON.stringify(data.projects_fr));
@@ -264,20 +274,37 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
                               message={t('inputTextWrongEntry')} />
         </div>
         
-        {/* Champ DUREE */}
+        {/* Champ DUREE (français) */}
         <div className="mb-4">
-          <label htmlFor="duration" 
+          <label htmlFor="duration-fr" 
                   className="label">
-            {t('durationText')}
+            {t('durationText')} ({t('inFrText')})
           </label>
-          <Input id="duration" 
+          <Input id="duration-fr" 
                   type="text" 
-                  value={durationValue}
-                  inputRef={durationRef}
-                  autoComplete="duration" 
-                  isInputErrorDisplayed={isDurationErrorDisplayed}
+                  value={durationFrValue}
+                  inputRef={durationFrRef}
+                  autoComplete="duration french" 
+                  isInputErrorDisplayed={isDurationFrErrorDisplayed}
                   onChange={handleChange} />
-          <FormElementMessage className={isDurationErrorDisplayed ? '' : 'hidden'} 
+          <FormElementMessage className={isDurationFrErrorDisplayed ? '' : 'hidden'} 
+                              message={t('inputTextWrongEntry')} />
+        </div>
+        
+        {/* Champ DUREE (anglais) */}
+        <div className="mb-4">
+          <label htmlFor="duration-en" 
+                  className="label">
+            {t('durationText')} ({t('inEnText')})
+          </label>
+          <Input id="duration-en" 
+                  type="text" 
+                  value={durationEnValue}
+                  inputRef={durationEnRef}
+                  autoComplete="duration english" 
+                  isInputErrorDisplayed={isDurationEnErrorDisplayed}
+                  onChange={handleChange} />
+          <FormElementMessage className={isDurationEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
         </div>
         
@@ -344,6 +371,11 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
                     onChange={handleChange} />
           <FormElementMessage className={isProjectsListEnErrorDisplayed ? '' : 'hidden'} 
                               message={t('inputTextWrongEntry')} />
+        </div>
+
+        {/* Lien vers la page précédente */}
+        <div className="mt-10 mb-[-1rem]">
+          <PrevPageLink url='/training' />
         </div>
 
         {/* Bouton SUBMIT */}

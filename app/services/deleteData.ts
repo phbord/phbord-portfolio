@@ -36,7 +36,7 @@ export default async function deleteData({ table, match=null, join=null }: delet
     return true
   }
   catch (error) {
-    console.log(error.message)
+    //console.log(error.message)
     return null
   }
 }

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { isSbSession } from '../cookies';
+import { isSbSession } from '~/services/cookies';
 
 
 const useSession = create((set) => ({

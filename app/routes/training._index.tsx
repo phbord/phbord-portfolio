@@ -71,7 +71,7 @@ export default function Training() {
 
   // SUPPRESSION d'un nouvel élément
   const onDeleteClick = (id: number) => {
-    console.log('=== onDeleteClick ===', id);
+    //console.log('=== onDeleteClick ===', id);
     setModalOpened(true);
     setIdItem(id);
     // Suppression de la ligne

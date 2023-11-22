@@ -25,11 +25,11 @@ export default async function updateData({ table, values, match=null }: updateDa
       throw error;
     }
 
-    console.log('insert ----> status:', status);
+    //console.log('insert ----> status:', status);
     return status;
   }
   catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
     return null;
   }
 }

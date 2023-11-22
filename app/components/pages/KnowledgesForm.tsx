@@ -9,6 +9,7 @@ import Input from "~/components/core/form/Input";
 import Textarea from "~/components/core/form/Textarea";
 import Button from "~/components/core/buttons/Button";
 import SnackBar from "~/components/core/SnackBar";
+import PrevPageLink from "~/components/core/buttons/PrevPageLink";
 
 
 interface KnowledgesFormInterface {
@@ -186,10 +187,15 @@ export default function KnowledgesForm({className='', data}: KnowledgesFormInter
                               message={t('inputTextWrongEntry')} />
         </div>
 
+        {/* Lien vers la page précédente */}
+        <div className="mt-6 mb-2">
+          <PrevPageLink url='/' />
+        </div>
+
         {/* Bouton SUBMIT */}
         <Button disabled={isDisabled || isSubmitting}
                 type="submit"
-                className="mt-6 btn-submit-form">
+                className="btn-submit-form">
           {isSubmitting ? t('submittingText') : t('submitText')}
         </Button>
       </Form>

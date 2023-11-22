@@ -26,17 +26,17 @@ export default async function postData({ table, values, match=null, join=null }:
     }
 
     const { data, error, status } = await query
-    console.log('===========> data:', data);
+    //console.log('===========> data:', data);
 
     if (error && status !== 406) {
-      console.error('===========> INSERT error');
+      //console.error('===========> INSERT error');
       throw error
     }
 
     return true
   }
   catch (error) {
-    console.log(error.message)
+    //console.log(error.message)
     return null
   }
 }

@@ -27,12 +27,12 @@ export async function signUp(email: string, password: string, first_name: string
         account_created: moment(Date.now()).format('MM/DD/YYYY'),
       };
       await postData({ table: 'Profile', values });
-      console.log('==========> Inscription');
+      //console.log('==========> Inscription');
     }
     return true;
   }
   catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
     return null;
   }
 }
@@ -52,7 +52,7 @@ export async function signIn(email: string, password: string): Promise<object | 
     return data.session;
   }
   catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
     return null;
   }
 }
@@ -66,11 +66,11 @@ export async function signOut(): Promise<boolean | null> {
     if (error) {
       throw error;
     }
-    console.log(status, '==========> Déconnexion : ', data);
+    //console.log(status, '==========> Déconnexion : ', data);
     return true;
   }
   catch (error) {
-    console.log(error.message);
+    //console.log(error.message);
     return null;
   }
 }
@@ -80,7 +80,7 @@ export async function getSession(): Promise<any> {
   try {
     const supabase = await getSupabase();
     const { error, data: { session } } = await supabase.auth.getSession();
-    console.log('==========> Récupération de la session : ', session);
+    //console.log('==========> Récupération de la session : ', session);
 
     if (error) {
       throw error;
@@ -90,7 +90,7 @@ export async function getSession(): Promise<any> {
     }
   }
   catch (error) {
-    console.log(error.message)
+    //console.log(error.message)
     return null;
   }
 }
@@ -100,7 +100,7 @@ export async function getUser(): Promise<any> {
   try {
     const supabase = await getSupabase();
     const { error, data: { user } } = await supabase.auth.getUser();
-    console.log('==========> Récupération de l\'utilisateur : ', user);
+    //console.log('==========> Récupération de l\'utilisateur : ', user);
 
     if (error) {
       throw error;
@@ -110,7 +110,7 @@ export async function getUser(): Promise<any> {
     }
   }
   catch (error) {
-    console.log(error.message)
+    //console.log(error.message)
     return null;
   }
 }

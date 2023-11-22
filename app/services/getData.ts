@@ -57,7 +57,7 @@ export default async function getData({ table, columns='*', match=null, join=nul
     }
   }
   catch (error: any) {
-    console.log(error.message)
+    //console.log(error.message)
     return null
   }
 }

@@ -278,6 +278,9 @@
   .btn-admin-form--toggle {
     @apply border-green-600 text-green-600 hover:border-green-400 hover:text-green-400 !important;
   }
+  .btn-prev-page {
+    @apply relative w-full px-3 py-2 flex items-center justify-center bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-bold transition-all !important;
+  }
 
   /* BOUTON HAUT DE PAGE */
   .top-scroll-btn {

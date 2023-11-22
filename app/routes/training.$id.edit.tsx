@@ -17,7 +17,8 @@ export async function action({request}: ActionFunctionArgs) {
   const dateEndValue: FormDataEntryValue | null = formData.get('date-end');
   const titleFrValue: FormDataEntryValue | null = formData.get('title-fr');
   const titleEnValue: FormDataEntryValue | null = formData.get('title-en');
-  const durationValue: FormDataEntryValue | null = formData.get('duration');
+  const durationFrValue: FormDataEntryValue | null = formData.get('duration-fr');
+  const durationEnValue: FormDataEntryValue | null = formData.get('duration-en');
   const schoolValue: FormDataEntryValue | null = formData.get('school');
   const pictoValue: FormDataEntryValue | null = formData.get('picto');
   const projectsListFrValue: FormDataEntryValue | null = formData.get('projects-list-fr');
@@ -40,7 +41,8 @@ export async function action({request}: ActionFunctionArgs) {
     year_end: parseInt(dateEndValue),
     title_fr: titleFrValue,
     title_en: titleEnValue,
-    duration: durationValue,
+    duration_fr: durationFrValue,
+    duration_en: durationEnValue,
     school: schoolValue,
     picto: pictoValue,
     is_important: JSON.parse(importantValue),

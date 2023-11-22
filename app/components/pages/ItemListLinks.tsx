@@ -53,7 +53,7 @@ export default function ItemListLinks({data, noData, lang, idEdit, idDelete, onE
                     )
                   }
                   {/* Titre */}
-                  <h3 className='h3 text-center leading-5'>
+                  <h3 className={data.is_important ? 'h3 text-center leading-5 font-semibold' : 'h3 text-center leading-5'}>
                     {title}
                   </h3>
                   {/* Sous-titre */}

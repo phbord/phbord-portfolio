@@ -57,8 +57,8 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                 {/* Détails */}
                 <div className='trainings-details'>
                   {/* Titre */}
-                  <div className={data.is_important ? 'trainings-title font-900' : 'trainings-title font-light'}>
-                    <span>{lang === 'fr' ? data.title_fr : data.title_en}</span>
+                  <div className='trainings-title'>
+                    <span className={data.is_important ? 'font-900 font-semibold' : ''}>{lang === 'fr' ? data.title_fr : data.title_en}</span>
                     {
                       (data.duration_fr || data.duration_en) && (
                         <span className='trainings-duration'> - {lang === 'fr' ? data.duration_fr : data.duration_en}</span>

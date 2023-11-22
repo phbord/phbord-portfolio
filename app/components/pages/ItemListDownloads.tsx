@@ -51,7 +51,7 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
             {lang === 'fr' ? data.diploma_fr : data.diploma_en}
           </h3>
           {/* Titre */}
-          <p className='download-title'>
+          <p className={data.is_important ? 'download-title font-semibold' : 'download-title'}>
             {lang === 'fr' ? data.title_fr : data.title_en}
           </p>
           {/* Etablissement */}
@@ -97,7 +97,7 @@ export default function ItemListDownloads({data, noData, lang, idEdit, idDelete,
                   ? (
                     <Link to={data.file} 
                           target='_blank' 
-                          className={data.is_important ? 'download download--link' : 'download'}>
+                          className={data.is_important ? 'download download--hover download--link' : 'download download--hover'}>
                       {contentBlock}
                     </Link>
                   )

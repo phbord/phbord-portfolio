@@ -490,8 +490,11 @@
 .download {
   @apply relative h-full p-4 block bg-white border border-dashed border-orange-500 transition-all;
 }
+.download--hover {
+  @apply hover:bg-gray-100;
+}
 .download--link {
-  @apply border-solid border-2 hover:bg-gray-100 transition-all;
+  @apply border-solid border-2 transition-all;
 }
 .download-important-icon {
   @apply absolute top-2 right-2 h-7 text-yellow-500;

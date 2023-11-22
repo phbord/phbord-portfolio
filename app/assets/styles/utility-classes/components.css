@@ -91,7 +91,7 @@
 
   /* SIDEBAR */
   .overlay {
-    @apply fixed top-0 bottom-0 left-0 right-0 z-[5] bg-cyan-900 opacity-80 !important;
+    @apply fixed top-0 bottom-0 left-0 right-0 z-[5] bg-neutral-900 opacity-80 !important;
   }
   .sidebar {
     @apply fixed top-0 bottom-0 right-[-13rem] z-10 w-52 pt-[5.5rem] pb-6 bg-neutral-300 transition-all;

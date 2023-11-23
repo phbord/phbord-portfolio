@@ -38,6 +38,7 @@ export default function Footer() {
                               imgClass={'w-5 mr-2'} 
                               textClass={'sr-only'} 
                               imgSrc={`/images/svg/${item.picto}`}
+                              isBlank={true}
                               onMouseOver={() => handleMouseOver(index, item.name)} 
                               onMouseOut={() => handleMouseOut(index)} />
               {/* TOOLTIPS */}
@@ -70,7 +71,8 @@ export default function Footer() {
                           itemClass={''} 
                           linkClass={''} 
                           imgClass={'w-5 mr-2'} 
-                          textClass={'sr-only'} 
+                          textClass={'sr-only'}
+                          isBlank={true} 
                           imgSrc={`/images/svg/${item.picto}`} />
         ))
       }

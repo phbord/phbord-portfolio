@@ -1,4 +1,5 @@
 export interface metaGlobalClass {
+  canonical?: string,
   titleKnowledgesIndex?: String,
   titleKnowledgesNew?: String,
   titleKnowledgesEdit?: String,
@@ -15,12 +16,20 @@ export interface metaGlobalClass {
   titleDownloadsNew?: String,
   titleDownloadsEdit?: String,
   titleObliqueStrategiesIndex?: String,
-  description?: String
+  description?: String,
+  robots?: string,
+  keywords?: string,
+  author?: string,
+  ogType?: string,
+  ogUrl?: string,
+  ogImage?: string,
 }
 
 const titleBase = "Pierre-Henri Bord";
+const url = "https://phbord-portfolio-one.vercel.app/";
 
 const metaGlobal: metaGlobalClass = {
+  canonical: url,
   titleKnowledgesIndex: `${titleBase} - Accueil`,
   titleKnowledgesNew: `${titleBase} - Nouvelle compétence`,
   titleKnowledgesEdit: `${titleBase} - Edition d'une compétence`,
@@ -38,6 +47,12 @@ const metaGlobal: metaGlobalClass = {
   titleDownloadsEdit: `${titleBase} - Edition d'un téléchargement`,
   titleObliqueStrategiesIndex: `${titleBase} - Stratégies obliques`,
   description: "Portofolio de Pierre-Henri Bord, développeur front-end, intégrateur HTML, React, Nextjs, Remix, Vue, Javascript, Typescript",
+  robots: "index, follow",
+  keywords: "pierre-henri bord, développeur, front-end, intégrateur, web, javascript, react, testing",
+  author: "Pierre-Henri Bord",
+  ogType: "Portofolio",
+  ogUrl: "https://www.linkedin.com/in/phbord/",
+  ogImage: "/images/ph-profile.png",
 };
 
 export default metaGlobal;

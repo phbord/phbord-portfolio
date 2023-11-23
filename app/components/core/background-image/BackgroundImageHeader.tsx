@@ -84,6 +84,7 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
                                         imgClass={'w-5 mr-2'} 
                                         textClass={'hidden'} 
                                         imgSrc={`/images/svg/${item.picto}`}
+                                        isBlank={true}
                                         onMouseOver={() => handleMouseOver(index, item.name)} 
                                         onMouseOut={() => handleMouseOut(index)} />
                       </ul>

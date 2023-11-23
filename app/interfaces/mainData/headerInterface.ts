@@ -1,5 +1,6 @@
 export interface headerInterface {
   name: String,
   href: String,
-  isDownload?: boolean
+  isDownload?: boolean,
+  isBlank?: boolean
 }

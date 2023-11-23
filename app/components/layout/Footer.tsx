@@ -87,10 +87,24 @@ export default function Footer() {
           <ul>
             {
               menuData?.map((item: any) => (
-                <ItemListLayout key={uuidv4()} 
-                                data={item} 
-                                itemClass='mb-1.5'
-                                linkClass='hover:text-orange-500 transition-all' />
+                <>
+                  {
+                    item.isBlank
+                      ? (
+                        <ItemListLayout key={uuidv4()} 
+                                        data={item} 
+                                        isBlank={true}
+                                        itemClass='mb-1.5'
+                                        linkClass='hover:text-orange-500 transition-all' />
+                      )
+                      : (
+                        <ItemListLayout key={uuidv4()} 
+                                        data={item} 
+                                        itemClass='mb-1.5'
+                                        linkClass='hover:text-orange-500 transition-all' />
+                      )
+                  }
+                </>
               ))
             }
           </ul>

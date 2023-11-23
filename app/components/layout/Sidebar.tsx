@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useActionData, useFetcher, useLoaderData, useRevalidator } from '@remix-run/react';
+import { useActionData, useFetcher, useLoaderData, useRevalidator } from '@remix-run/react';
 import { v4 as uuidv4 } from 'uuid';
 
 import useSidebarStore from '~/services/store/useSidebarStore';
@@ -70,15 +70,10 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
     useSession.getState().setSession();
     const id = localStorage.getItem('sb_profile_id');
     setProfileId(id);
-    setProfiles(() => profilesData.filter((profile) => profile.id == id));    
-    //setProfiles((dataLoader.filter(profile => profile.id === id)));
+    setProfiles(() => profilesData.filter((profile) => profile.id == id));
   }, [])
 
   useEffect(() => {
-    /* data?.isDisplayedSnackBar && setTimeout(() => {
-      navigate(data?.redirectionPath);
-    }, 3000); */
-    //console.log('isSignoutClick -------->', isSignoutClick);
     setProfileId(null);
   }, [isSignoutClick])
 
@@ -115,10 +110,24 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
         <ul className='flex flex-col'>
           {
             mainData?.map((item: ItemSidebarInterface) => (
-              <ItemListLayout key={uuidv4()} 
+              <>
+                {
+                  item.isBlank
+                    ? (
+                      <ItemListLayout key={uuidv4()} 
+                              data={item} 
+                              isBlank={true}
+                              linkClass='sidebar-link'
+                              onClick={handleClickMenu} />
+                    )
+                    : (
+                      <ItemListLayout key={uuidv4()} 
                               data={item} 
                               linkClass='sidebar-link'
                               onClick={handleClickMenu} />
+                    )
+                }
+              </>
             ))
           }
         </ul>
@@ -127,7 +136,11 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
         <aside className='sidebar-body'>
           <h2 className='h2 my-0 px-5 pt-5 pb-3 flex items-center'>
             {t('profileText')}
-            <UserCircleIcon className='sidebar-icon' />
+            {
+              isSession && profileId 
+                ? (<img src='/images/icons/picto-phb.png' alt={t('logoProfileText')} className='sidebar-icon' />)
+                : (<UserCircleIcon className='sidebar-icon' />)
+            }
           </h2>
           {
             isSession && profileId 

@@ -49,7 +49,7 @@ const metaGlobal: metaGlobalClass = {
   titleSignupIndex: `${titleBase} - Inscription`,
   description: "Portofolio de Pierre-Henri Bord, développeur front-end, intégrateur HTML, React, Nextjs, Remix, Vue, Javascript, Typescript",
   robots: "index, follow",
-  keywords: "pierre-henri bord, développeur, front-end, intégrateur, web, javascript, react, testing",
+  keywords: "pierre-henri bord, développeur, front-end, intégrateur, web, javascript, react, testing, portfolio",
   author: "Pierre-Henri Bord",
   ogType: "Portofolio",
   ogUrl: "https://www.linkedin.com/in/phbord/",

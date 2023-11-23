@@ -110,24 +110,24 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
         <ul className='flex flex-col'>
           {
             mainData?.map((item: ItemSidebarInterface) => (
-              <>
-                {
-                  item.isBlank
-                    ? (
-                      <ItemListLayout key={uuidv4()} 
-                              data={item} 
-                              isBlank={true}
-                              linkClass='sidebar-link'
-                              onClick={handleClickMenu} />
-                    )
-                    : (
-                      <ItemListLayout key={uuidv4()} 
-                              data={item} 
-                              linkClass='sidebar-link'
-                              onClick={handleClickMenu} />
-                    )
-                }
-              </>
+              <li key={uuidv4()} >
+                <ul>
+                  {
+                    item.isBlank
+                      ? (
+                        <ItemListLayout data={item} 
+                                        isBlank={true}
+                                        linkClass='sidebar-link'
+                                        onClick={handleClickMenu} />
+                      )
+                      : (
+                        <ItemListLayout data={item} 
+                                        linkClass='sidebar-link'
+                                        onClick={handleClickMenu} />
+                      )
+                  }
+                </ul>
+              </li>
             ))
           }
         </ul>

@@ -1,8 +1,9 @@
-import { ActionFunctionArgs, createCookie, isCookie, json } from "@remix-run/node";
+import { ActionFunctionArgs, json, type MetaFunction } from "@remix-run/node";
 import { useActionData, useNavigate } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import useLangStore from '~/services/store/useLangStore';
 import { signIn } from "~/services/auth";
 import { isInputEmailValidate, isInputPasswordValidate } from "~/utils/formValidate";
@@ -10,6 +11,21 @@ import AuthForm from "~/components/pages/AuthForm";
 import { isSbSession, sbSession } from "~/services/cookies";
 import getData from "~/services/getData";
 
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: metaGlobal.titleSignupIndex },
+    { name: "description", content: metaGlobal.description },
+    { name: "robots", content: metaGlobal.robots },
+    { name: "keywords", content: metaGlobal.keywords },
+    { name: "author", content: metaGlobal.author },
+    { property:"og:title", content: metaGlobal.titleSignupIndex },
+    { property:"og:type", content: metaGlobal.ogType },
+    { property:"og:description", content: metaGlobal.description },
+    { property:"og:url", content: metaGlobal.ogUrl },
+    { property:"og:image", content: metaGlobal.ogImage },
+  ];
+};
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();

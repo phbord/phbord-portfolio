@@ -1,5 +1,5 @@
-import { useActionData, useLoaderData, useNavigate } from '@remix-run/react';
-import { ActionFunctionArgs, json } from '@remix-run/node';
+import { useLoaderData, useNavigate } from '@remix-run/react';
+import { json } from '@remix-run/node';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 

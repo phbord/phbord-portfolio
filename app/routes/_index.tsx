@@ -19,12 +19,11 @@ import Tooltip from "~/components/core/Tooltip";
 
 export const meta: MetaFunction = () => {
   return [
-    { canonical: metaGlobal.canonical },
     { title: metaGlobal.titleKnowledgesIndex },
     { name: "description", content: metaGlobal.description },
-    { robots: metaGlobal.robots },
-    { keywords: metaGlobal.keywords },
-    { author: metaGlobal.author },
+    { name: "robots", content: metaGlobal.robots },
+    { name: "keywords", content: metaGlobal.keywords },
+    { name: "author", content: metaGlobal.author },
     { property:"og:title", content: metaGlobal.titleKnowledgesIndex },
     { property:"og:type", content: metaGlobal.ogType },
     { property:"og:description", content: metaGlobal.description },

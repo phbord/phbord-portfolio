@@ -20,23 +20,21 @@ export default function Header() {
   };
 
   const logoBlock = (
-    <h1 className="flex">
-      <Link to={'/'} className='header-link'>
-        <figure className='header-figure'>
-          <span className="sr-only">
-            {t('logoHeaderText')}
-          </span>
-          <img className="header-logo" 
-                src={logo} 
-                alt={t('logoHeaderText')} />
-          <figcaption className='header-figcaption'>
-            <div className='header-title-name'>
-              {t('firstName')} {t('lastName')}
-            </div>
-          </figcaption>
-        </figure>
-      </Link>
-    </h1>
+    <Link to={'/'} className='header-link'>
+      <figure className='header-figure'>
+        <span className="sr-only">
+          {t('logoHeaderText')}
+        </span>
+        <img className="header-logo" 
+              src={logo} 
+              alt={t('logoHeaderText')} />
+        <figcaption className='header-figcaption'>
+          <h1 className='header-title-name'>
+            {t('firstName')} {t('lastName')}
+          </h1>
+        </figcaption>
+      </figure>
+    </Link>
   );
 
 

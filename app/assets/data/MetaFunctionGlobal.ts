@@ -1,5 +1,4 @@
 export interface metaGlobalClass {
-  canonical?: string,
   titleKnowledgesIndex?: String,
   titleKnowledgesNew?: String,
   titleKnowledgesEdit?: String,
@@ -26,10 +25,8 @@ export interface metaGlobalClass {
 }
 
 const titleBase = "Pierre-Henri Bord";
-const url = "https://phbord-portfolio-one.vercel.app/";
 
 const metaGlobal: metaGlobalClass = {
-  canonical: url,
   titleKnowledgesIndex: `${titleBase} - Accueil`,
   titleKnowledgesNew: `${titleBase} - Nouvelle compétence`,
   titleKnowledgesEdit: `${titleBase} - Edition d'une compétence`,

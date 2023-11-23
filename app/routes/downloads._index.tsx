@@ -1,6 +1,6 @@
 import { useActionData, useFetcher, useLoaderData, useNavigate, useRevalidator } from '@remix-run/react';
-import { json } from '@remix-run/node';
-import React, { useEffect, useState } from 'react';
+import { json, type MetaFunction } from '@remix-run/node';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import { PlusIcon, TrashIcon } from '@heroicons/react/20/solid';
@@ -21,7 +21,7 @@ import { useHandleFilterClick } from '~/hooks/useHandleFilterClick';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: `${metaGlobal.title} - Téléchargements` },
+    { title: `${metaGlobal.titleDownloadsIndex}` },
     { name: "description", content: metaGlobal.description },
   ];
 };
@@ -112,7 +112,7 @@ export default function Downloads() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.4.name', { returnObjects: true })}
+            {t('header.4.name', { returnObjects: true })} <span className='text-xs'>({downloadsData.length})</span>
           </h2>
           {/* Boutons */}
           <div className='flex'>

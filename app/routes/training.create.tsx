@@ -1,13 +1,21 @@
-import { useActionData, useLoaderData, useNavigate } from '@remix-run/react';
-import { ActionFunctionArgs, json } from '@remix-run/node';
+import { useNavigate } from '@remix-run/react';
+import { ActionFunctionArgs, json, type MetaFunction } from '@remix-run/node';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { isInputTextObjectArrayValidate, isInputTextValidate } from '~/utils/formValidate';
+import metaGlobal from "~/assets/data/MetaFunctionGlobal";
+import { isInputTextValidate } from '~/utils/formValidate';
 import useSession from '~/services/store/useSession';
 import postData from '~/services/postData';
 import TrainingForm from '~/components/pages/TrainingForm';
 
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: metaGlobal.titleTrainingsNew },
+    { name: "description", content: metaGlobal.description },
+  ];
+};
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();

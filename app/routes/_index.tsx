@@ -1,5 +1,5 @@
-import { ActionFunctionArgs, json, type MetaFunction } from "@remix-run/node";
-import { useActionData, useFetcher, useLoaderData, useNavigate, useNavigation, useRevalidator } from "@remix-run/react";
+import { json, type MetaFunction } from "@remix-run/node";
+import { useActionData, useFetcher, useLoaderData, useNavigate, useRevalidator } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from 'uuid';
@@ -7,7 +7,6 @@ import { PlusIcon, TrashIcon } from "@heroicons/react/20/solid";
 
 import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import getData from "~/services/getData";
-import deleteData from "~/services/deleteData";
 import useLangStore from '~/services/store/useLangStore';
 import useSession from '~/services/store/useSession';
 import ItemListKnowledges from "~/components/pages/ItemListKnowledges";
@@ -20,7 +19,7 @@ import Tooltip from "~/components/core/Tooltip";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: metaGlobal.title },
+    { title: metaGlobal.titleKnowledgesIndex },
     { name: "description", content: metaGlobal.description },
   ];
 };
@@ -105,7 +104,7 @@ export default function Index() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.0.name', { returnObjects: true })}
+            {t('header.0.name', { returnObjects: true })} <span className='text-xs'>({knowledges.length})</span>
           </h2>
           {/* Bouton de CREATION */}
           {

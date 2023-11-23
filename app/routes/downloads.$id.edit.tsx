@@ -1,14 +1,22 @@
 import { useLoaderData, useNavigate } from '@remix-run/react';
-import { ActionFunctionArgs, json } from '@remix-run/node';
+import { ActionFunctionArgs, json, type MetaFunction } from '@remix-run/node';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import metaGlobal from "~/assets/data/MetaFunctionGlobal";
 import { isInputTextValidate } from '~/utils/formValidate';
 import useSession from '~/services/store/useSession';
 import getData from '~/services/getData';
 import updateData from '~/services/updateData';
 import DownloadsForm from '~/components/pages/DownloadsForm';
 
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: metaGlobal.titleDownloadsEdit },
+    { name: "description", content: metaGlobal.description },
+  ];
+};
 
 export async function action({request}: ActionFunctionArgs) {
   const formData: FormData = await request.formData();

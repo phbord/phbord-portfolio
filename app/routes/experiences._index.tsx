@@ -1,5 +1,5 @@
 import { useActionData, useFetcher, useLoaderData, useNavigate, useRevalidator } from '@remix-run/react';
-import { json } from '@remix-run/node';
+import { json, type MetaFunction } from '@remix-run/node';
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
@@ -21,7 +21,7 @@ import { useHandleFilterClick } from '~/hooks/useHandleFilterClick';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: `${metaGlobal.title} - Expériences` },
+    { title: `${metaGlobal.titleExperiencesIndex}` },
     { name: "description", content: metaGlobal.description },
   ];
 };
@@ -112,7 +112,7 @@ export default function Experiences() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.1.name', { returnObjects: true })}
+            {t('header.1.name', { returnObjects: true })} <span className='text-xs'>({experiencesData.length})</span>
           </h2>
           {/* Boutons */}
           <div className='flex'>

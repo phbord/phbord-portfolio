@@ -73,7 +73,7 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                   {/* Ecole + Durée */}
                   <figure className='trainings-school-duration'>
                     {
-                      data.school && (
+                      (data.school) && (
                         <figcaption className='mr-2 uppercase'>
                           {data.school}
                         </figcaption>

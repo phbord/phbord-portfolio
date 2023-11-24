@@ -41,8 +41,7 @@ export async function action({request}: ActionFunctionArgs) {
 
   if (!isInputTextValidate(dateStartValue) 
       || !isInputTextValidate(titleFrValue) 
-      || !isInputTextValidate(titleEnValue) 
-      || !isInputTextValidate(schoolValue)) {
+      || !isInputTextValidate(titleEnValue)) {
     return {
       isDisplayedError: true,
       messageType: 'inputWrongEntries'

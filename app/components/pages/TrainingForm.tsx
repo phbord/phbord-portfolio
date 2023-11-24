@@ -117,7 +117,6 @@ export default function TrainingForm({className='', data}: TrainingFormInterface
     setIsDisabled(() => isInputTextValidate(dateStartRef.current.value, 3, 4) 
                         && isInputTextValidate(titleFrRef.current.value, 3) 
                         && isInputTextValidate(titleEnRef.current.value, 3) 
-                        && isInputTextValidate(schoolRef.current.value, 3) 
                           ? false : true);
   };
 

@@ -120,10 +120,14 @@ export default function Experiences() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.1.name', { returnObjects: true })} <span className='text-xs'>({experiencesData.length})</span>
+            {t('header.1.name', { returnObjects: true })}
           </h2>
           {/* Boutons */}
           <div className='flex'>
+            {/* NOMBRE d'éléments */}
+            <span className='items-count'>
+              {experiencesData.length}
+            </span>
             {/* FILTRES */}
             <Filters onClick={handleFilterClick} 
                       textFilter={t('jsDevText')} 

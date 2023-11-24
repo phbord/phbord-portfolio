@@ -112,8 +112,12 @@ export default function Index() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.0.name', { returnObjects: true })} <span className='text-xs'>({knowledges.length})</span>
+            {t('header.0.name', { returnObjects: true })}
           </h2>
+          {/* NOMBRE d'éléments */}
+          <span className='items-count'>
+            {knowledges.length}
+          </span>
           {/* Bouton de CREATION */}
           {
             isSession && (

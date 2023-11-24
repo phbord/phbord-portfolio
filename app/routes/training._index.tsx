@@ -121,10 +121,14 @@ export default function Training() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.2.name', { returnObjects: true })} <span className='text-xs'>({trainingsData.length})</span>
+            {t('header.2.name', { returnObjects: true })}
           </h2>
           {/* Boutons */}
           <div className='flex'>
+            {/* NOMBRE d'éléments */}
+            <span className='items-count'>
+              {trainingsData.length}
+            </span>
             {/* FILTRES */}
             <Filters onClick={handleFilterClick} 
                       textFilter={t('longTrainingText')} 

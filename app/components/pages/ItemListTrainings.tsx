@@ -45,7 +45,7 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
       {
         data
           ? (
-            <li className='trainings'>
+            <li className={data.is_important ? 'trainings trainings--important' : 'trainings'}>
               {/* Bloc GAUCHE */}
               <div className={data.is_important ? 'trainings-date font-800' : 'trainings-date font-light'}>
                 {data.year_start}
@@ -71,7 +71,7 @@ export default function ItemListTrainings({data, noData, lang, idEdit, idDelete,
                     }
                   </div>
                   {/* Ecole + Durée */}
-                  <figure className='flex items-center text-cyan-900'>
+                  <figure className='trainings-school-duration'>
                     {
                       data.school && (
                         <figcaption className='mr-2 uppercase'>

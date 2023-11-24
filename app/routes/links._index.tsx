@@ -124,10 +124,14 @@ export default function Links() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.3.name', { returnObjects: true })} <span className='text-xs'>({linksData.length})</span>
+            {t('header.3.name', { returnObjects: true })}
           </h2>
           {/* Boutons */}
           <div className='flex'>
+            {/* NOMBRE d'éléments */}
+            <span className='items-count'>
+              {linksData.length}
+            </span>
             {/* FILTRES */}
             <Filters onClick={handleFilterClick} 
                       textFilter={t('majorProjectText')} 

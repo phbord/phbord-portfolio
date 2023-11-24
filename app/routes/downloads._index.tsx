@@ -120,10 +120,14 @@ export default function Downloads() {
         <div className="flex justify-between">
           {/* TITRE */}
           <h2 className="h2 mr-3">
-            {t('header.4.name', { returnObjects: true })} <span className='text-xs'>({downloadsData.length})</span>
+            {t('header.4.name', { returnObjects: true })}
           </h2>
           {/* Boutons */}
           <div className='flex'>
+            {/* NOMBRE d'éléments */}
+            <span className='items-count'>
+              {downloadsData.length}
+            </span>
             {/* FILTRES */}
             <Filters onClick={handleFilterClick} 
                       textFilter={t('longTrainingText')} 

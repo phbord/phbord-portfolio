@@ -114,29 +114,32 @@ export default function Index() {
           <h2 className="h2 mr-3">
             {t('header.0.name', { returnObjects: true })}
           </h2>
-          {/* NOMBRE d'éléments */}
-          <span className='items-count'>
-            {knowledges.length}
-          </span>
-          {/* Bouton de CREATION */}
-          {
-            isSession && (
-              <Button className='relative btn-admin-form btn-admin-form--new mt-12'
-                      srOnlyText={`${t('buttonText')} ${t('buttonNewText')}`}
-                      onClick={onNewClick}
-                      onMouseOver={handleNewMouseOver}
-                      onMouseOut={handleNewMouseOut}>
-                <PlusIcon className='h-5' />
-                {/* TOOLTIPS */}
-                {
-                  isNewTooltipOpened && (
-                    <Tooltip name={t('buttonNewText')} 
-                              className='tooltips-footer' />
-                  )
-                }
-              </Button>
-            )
-          }
+          {/* Boutons */}
+          <div className='flex'>
+            {/* NOMBRE d'éléments */}
+            <span className='items-count mr-2'>
+              {knowledges.length}
+            </span>
+            {/* Bouton de CREATION */}
+            {
+              isSession && (
+                <Button className='relative btn-admin-form btn-admin-form--new mt-12'
+                        srOnlyText={`${t('buttonText')} ${t('buttonNewText')}`}
+                        onClick={onNewClick}
+                        onMouseOver={handleNewMouseOver}
+                        onMouseOut={handleNewMouseOut}>
+                  <PlusIcon className='h-5' />
+                  {/* TOOLTIPS */}
+                  {
+                    isNewTooltipOpened && (
+                      <Tooltip name={t('buttonNewText')} 
+                                className='tooltips-footer' />
+                    )
+                  }
+                </Button>
+              )
+            }
+          </div>
         </div>
 
         {/* L I S T E */}

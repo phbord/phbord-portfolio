@@ -22,28 +22,21 @@
 ### i18n
 - configuration
 - langues (`fr`, `en`)
-  - stockage : localstorage
 ### Zustand
 - gestion de l'affichage de la "sidebar"
 ### Tailwind
 - configuration
 - création de classes globales (utilities classes)
-### Développement
-- composants
-  - layout
-  - header
-  - sidebar
-  - footer
-- pages
-  - création de compte
-  - connexion
-  - 404
-  - accueil
-  - experiences
-  - training
-  - links
-  - downloads
-  - oblique-strategies
+### Pages
+- création de compte
+- connexion
+- 404
+- accueil
+- experiences
+- training
+- links
+- downloads
+- oblique-strategies
 ### Améliorations
 - validation W3C
 - SEO

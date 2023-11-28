@@ -23,10 +23,6 @@
 - Base de données
   - API basée sur Postgres
   - [Supabase](https://supabase.com/)
-- Tests unitaires
-  - [Jest](https://jestjs.io/)
-- Tests E2E
-  - [Cypress](https://www.cypress.io/)
 
 ## Développement
 

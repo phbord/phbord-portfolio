@@ -129,7 +129,15 @@ export default function App() {
           <head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="Portofolio de Pierre-Henri Bord, développeur front-end, intégrateur HTML, React, Nextjs, Remix, Vue, Javascript, Typescript" />
+            <meta name="robots" content="index, follow" />
+            <meta name="keywords" content="pierre-henri bord, développeur, front-end, intégrateur, web, javascript, react, testing, portfolio" />
+            <meta name="author" content="Pierre-Henri Bord" />
             <Meta />
+            <meta property="og:type" content="Portofolio" />
+            <meta property="og:description" content="Portofolio de Pierre-Henri Bord, développeur front-end, intégrateur HTML, React, Nextjs, Remix, Vue, Javascript, Typescript" />
+            <meta property="og:url" content="https://www.linkedin.com/in/phbord/" />
+            <meta property="og:image" content="/images/ph-profile.png" />
             <Links />
           </head>
           <body className="body">

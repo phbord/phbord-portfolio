@@ -13,15 +13,7 @@ import KnowledgesForm from '~/components/pages/KnowledgesForm';
 export const meta: MetaFunction = () => {
   return [
     { title: metaGlobal.titleKnowledgesNew },
-    { name: "description", content: metaGlobal.description },
-    { robots: metaGlobal.robots },
-    { keywords: metaGlobal.keywords },
-    { author: metaGlobal.author },
     { property:"og:title", content: metaGlobal.titleKnowledgesNew },
-    { property:"og:type", content: metaGlobal.ogType },
-    { property:"og:description", content: metaGlobal.description },
-    { property:"og:url", content: metaGlobal.ogUrl },
-    { property:"og:image", content: metaGlobal.ogImage },
   ];
 };
 

@@ -10,15 +10,7 @@ import AuthForm from "~/components/pages/AuthForm";
 export const meta: MetaFunction = () => {
   return [
     { title: metaGlobal.titleSignupIndex },
-    { name: "description", content: metaGlobal.description },
-    { name: "robots", content: metaGlobal.robots },
-    { name: "keywords", content: metaGlobal.keywords },
-    { name: "author", content: metaGlobal.author },
     { property:"og:title", content: metaGlobal.titleSignupIndex },
-    { property:"og:type", content: metaGlobal.ogType },
-    { property:"og:description", content: metaGlobal.description },
-    { property:"og:url", content: metaGlobal.ogUrl },
-    { property:"og:image", content: metaGlobal.ogImage },
   ];
 };
 

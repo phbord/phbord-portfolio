@@ -6,13 +6,12 @@ import Button from "~/components/core/buttons/Button";
 
 interface InputPasswordInterface {
   id: string;
-  autoComplete: string;
   inputRef: any;
   isPasswordErrorDisplayed: boolean;
   onChange?: () => void;
 }
 
-export default function InputPassword({id, isPasswordErrorDisplayed, autoComplete, inputRef, onChange}: InputPasswordInterface) {
+export default function InputPassword({id, isPasswordErrorDisplayed, inputRef, onChange}: InputPasswordInterface) {
   const [isShow, setIsShow] = useState(false);
 
   const handleClick = () => isShow === true ? setIsShow(false) : setIsShow(true);
@@ -24,7 +23,6 @@ export default function InputPassword({id, isPasswordErrorDisplayed, autoComplet
                 name={id}
                 type={isShow ? 'text' : 'password'}
                 ref={inputRef}
-                autoComplete={autoComplete}
                 required 
                 className={`pr-7 input ${isPasswordErrorDisplayed ? 'input--error' : ''}`}
                 onChange={onChange} />

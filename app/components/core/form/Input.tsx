@@ -6,7 +6,6 @@ interface InputPasswordInterface {
   max?: string | number;
   id: string;
   placeholder?: string;
-  autoComplete?: string;
   value?: string;
   inputRef?: LegacyRef<HTMLInputElement> | undefined;
   isInputErrorDisplayed?: boolean;
@@ -21,7 +20,6 @@ export default function Input({
   value, 
   isInputErrorDisplayed, 
   placeholder='', 
-  autoComplete, 
   inputRef, 
   onChange
 }: InputPasswordInterface) {
@@ -40,7 +38,6 @@ export default function Input({
                     value={value}
                     ref={inputRef}
                     placeholder={emailPlaceholder}
-                    autoComplete={autoComplete}
                     className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
                     onChange={onChange} />
           )
@@ -51,7 +48,6 @@ export default function Input({
                     value={value}
                     ref={inputRef}
                     placeholder={emailPlaceholder}
-                    autoComplete={autoComplete}
                     className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
                     onChange={onChange} />
           )

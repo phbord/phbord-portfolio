@@ -6,7 +6,6 @@ interface TextareaPasswordInterface {
   cols?: number | undefined;
   rows?: number | undefined;
   placeholder: string;
-  autoComplete?: string;
   inputRef: LegacyRef<HTMLTextAreaElement> | undefined;
   isInputErrorDisplayed?: boolean;
   onChange?: () => void;
@@ -19,7 +18,6 @@ export default function Textarea({
   rows=10, 
   isInputErrorDisplayed, 
   placeholder='', 
-  autoComplete, 
   inputRef, 
   onChange
 }: TextareaPasswordInterface) {
@@ -32,7 +30,6 @@ export default function Textarea({
                 cols={cols}
                 rows={rows}
                 placeholder={placeholder}
-                autoComplete={autoComplete}
                 className={`input ${isInputErrorDisplayed ? 'input--error' : ''}`}
                 onChange={onChange}></textarea>
     </>

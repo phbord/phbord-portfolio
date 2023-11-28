@@ -14,15 +14,7 @@ import DownloadsForm from '~/components/pages/DownloadsForm';
 export const meta: MetaFunction = () => {
   return [
     { title: metaGlobal.titleDownloadsEdit },
-    { name: "description", content: metaGlobal.description },
-    { robots: metaGlobal.robots },
-    { keywords: metaGlobal.keywords },
-    { author: metaGlobal.author },
     { property:"og:title", content: metaGlobal.titleDownloadsEdit },
-    { property:"og:type", content: metaGlobal.ogType },
-    { property:"og:description", content: metaGlobal.description },
-    { property:"og:url", content: metaGlobal.ogUrl },
-    { property:"og:image", content: metaGlobal.ogImage },
   ];
 };
 

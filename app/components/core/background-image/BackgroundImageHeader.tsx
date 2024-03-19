@@ -55,7 +55,7 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
               <figure className='bg-img-header-figure'>
                 {/* COLONNE GAUCHE */}
                 <span className='sr-only'>{t('logoProfileText')}</span>
-                <img src="/images/ph-profile.png" alt={t('logoProfileText')} className='w-[4rem] h-[4rem] mr-3' />
+                <img src="/images/ph-profile.webp" alt={t('logoProfileText')} className='w-[4rem] h-[4rem] mr-3' />
 
                 {/* COLONNE DROITE */}
                 <figcaption className='bg-img-header-figcaption'>

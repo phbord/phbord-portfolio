@@ -94,7 +94,7 @@ export default function Index() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.jpg' 
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.webp' 
                               titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
       

@@ -102,7 +102,7 @@ export default function Experiences() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-modern-town.jpeg' 
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-modern-town.webp' 
                               titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
 

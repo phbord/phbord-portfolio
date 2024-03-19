@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-import logo from 'public/images/icons/picto-phb.png';
+import logo from 'public/images/icons/picto-phb.webp';
 import ItemListLayout from '~/components/layout/ItemListLayout';
 import Tooltip from "~/components/core/Tooltip";
 

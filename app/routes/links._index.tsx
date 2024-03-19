@@ -106,7 +106,7 @@ export default function Links() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-rails.jpeg' 
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-rails.webp' 
                               titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
 

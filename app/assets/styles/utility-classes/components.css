@@ -27,28 +27,28 @@
     @apply min-h-screen flex flex-col justify-center bg-no-repeat bg-center bg-cover ;
   }
   .container-form--bg-knowledges {
-    @apply bg-[url('/images/backgrounds/bg-map.jpg')];
+    @apply bg-[url('/images/backgrounds/bg-map.webp')];
   }
   .container-form--bg-experiences {
-    @apply bg-[url('/images/backgrounds/bg-modern-town.jpeg')];
+    @apply bg-[url('/images/backgrounds/bg-modern-town.webp')];
   }
   .container-form--bg-trainings {
-    @apply bg-[url('/images/backgrounds/bg-old-city.jpeg')];
+    @apply bg-[url('/images/backgrounds/bg-old-city.webp')];
   }
   .container-form--bg-links {
-    @apply bg-[url('/images/backgrounds/bg-rails.jpeg')];
+    @apply bg-[url('/images/backgrounds/bg-rails.webp')];
   }
   .container-form--bg-downloads {
-    @apply bg-[url('/images/backgrounds/bg-astroman.jpeg')];
+    @apply bg-[url('/images/backgrounds/bg-astroman.webp')];
   }
   .container-form--bg-signup {
-    @apply bg-[url('/images/backgrounds/bg-cakes-sample.jpeg')];
+    @apply bg-[url('/images/backgrounds/bg-cakes-sample.webp')];
   }
   .container-form--bg-signin {
-    @apply bg-[url('/images/backgrounds/bg-drinks.jpeg')];
+    @apply bg-[url('/images/backgrounds/bg-drinks.webp')];
   }
   .container-not-found {
-    @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fly-tv.jpeg')] transition-all;
+    @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fly-tv.webp')] transition-all;
   }
   .content-form {
     @apply w-full max-w-[25rem] mx-auto my-24 px-5 pb-10 transition-all;
@@ -347,7 +347,7 @@
 
   /* STRATEGIES OBLIQUES */
   .container-oblique-strategies {
-    @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fuji.jpeg')] transition-all;
+    @apply w-full h-screen mx-auto px-5 pb-10 flex flex-col justify-center bg-no-repeat bg-center bg-cover bg-[url('/images/backgrounds/bg-fuji.webp')] transition-all;
   }
   .content-oblique-strategies {
     @apply w-full max-w-[40rem] mx-auto px-5 pb-10 transition-all;

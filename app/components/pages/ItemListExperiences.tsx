@@ -73,11 +73,11 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                 {/* Bloc  G A U C H E */}
                 <Button className='experiences-info' 
                         onClick={handleClick}>
-                  <div className='experiences-head-row-1'>
+                  <span className='experiences-head-row-1'>
                     {/* Dates */}
-                    <div className='experiences-date'>
+                    <span className='experiences-date'>
                       {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
-                    </div>
+                    </span>
                     {/* Entreprise */}
                     <strong className='experiences-firm'>
                       <span>
@@ -90,17 +90,16 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                                               className='icon-experiences-firm' />)
                         }
                       </span>
-                      
                     </strong>
-                  </div>
+                  </span>
                   {/* ESN et POSTE */}
                   {
                     (data?.esn_fr || data?.esn_en || data?.position_fr || data?.position_en) && (
-                      <div className='experiences-head-row-2'>
+                      <span className='experiences-head-row-2'>
                         <span>{lang === 'fr' ? `${data?.esn_fr} ` : `${data?.esn_en} `}</span>
                         <span>{data?.esn_fr && data?.esn_en && data?.position_fr && data?.position_en ? ', ' : ''}</span>
                         <span>{lang === 'fr' ? data?.position_fr : data?.position_en}</span>
-                      </div>
+                      </span>
                     )
                   }
                 </Button>

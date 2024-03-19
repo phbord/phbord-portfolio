@@ -137,7 +137,7 @@ export default function App() {
             <meta property="og:type" content="Portofolio" />
             <meta property="og:description" content="Portofolio de Pierre-Henri Bord, développeur front-end, intégrateur HTML, React, Nextjs, Remix, Vue, Javascript, Typescript" />
             <meta property="og:url" content="https://www.linkedin.com/in/phbord/" />
-            <meta property="og:image" content="/images/ph-profile.png" />
+            <meta property="og:image" content="/images/ph-profile.webp" />
             <Links />
           </head>
           <body className="body">

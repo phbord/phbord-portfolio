@@ -102,7 +102,7 @@ export default function Downloads() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-astroman.jpeg' 
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-astroman.webp' 
                               titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
 

@@ -103,7 +103,7 @@ export default function Training() {
   return (
     <>
       {/* IMAGE */}
-      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-old-city.jpeg' 
+      <BackgroundImageHeader imgUrl='/images/backgrounds/bg-old-city.webp' 
                               titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
 

@@ -138,7 +138,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
             {t('profileText')}
             {
               isSession && profileId 
-                ? (<img src='/images/icons/picto-phb.png' alt={t('logoProfileText')} className='sidebar-icon' />)
+                ? (<img src='/images/icons/picto-phb.webp' alt={t('logoProfileText')} className='sidebar-icon' />)
                 : (<UserCircleIcon className='sidebar-icon' />)
             }
           </h2>

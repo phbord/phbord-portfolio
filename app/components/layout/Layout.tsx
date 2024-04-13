@@ -16,7 +16,6 @@ export default function Layout({children}: {children: ReactNode}) {
   const { t } = useTranslation();
   const mainData = t('header', { returnObjects: true });
   const authData = t('authentification', { returnObjects: true });
-  
 
   return (
     <>

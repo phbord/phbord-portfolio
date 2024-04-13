@@ -52,7 +52,7 @@ export default async function getData({ table, columns='*', match=null, join=nul
 
         return joinedData
       }
-      
+
       return data
     }
   }

@@ -97,7 +97,7 @@ export default function Index() {
       <BackgroundImageHeader imgUrl='/images/backgrounds/bg-map.webp' 
                               titleClass='bg-img-header-h2' 
                               keywordsClass='mr-2' />
-      
+
       {/* BODY */}
       <section className="container-custom mt-[13rem] sm:mt-[18.5rem] bg-neutral-200">
         {/* H E A D E R */}

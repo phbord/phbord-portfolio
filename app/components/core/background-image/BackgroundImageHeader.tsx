@@ -75,7 +75,8 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
               </figure>
 
               {/* BAS : Réseaux sociaux */}
-              <ul className="mt-1 flex">
+              <h3 className="bg-img-header-h3">Contacts</h3>
+              <ul className="background-image">
                 {
                   socialNetworkData?.map((item: any, index: number) =>(
                     <li key={uuidv4()} className="relative">

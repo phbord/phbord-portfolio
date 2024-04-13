@@ -118,6 +118,9 @@
   .bg-img-header-h2 {
     @apply mb-1 text-[1.15rem] sm:text-[1.35rem] text-center sm:text-left text-yellow-200;
   }
+  .bg-img-header-h3 {
+    @apply mt-1 text-gray-200 text-base;
+  }
   .bg-img-header-body {
     @apply w-full max-w-[50rem] h-[10rem] mx-auto px-5 pb-4 bg-no-repeat bg-cover bg-center;
   }
@@ -145,6 +148,11 @@
   /* SPACES */
   .space-container {
     @apply px-3 sm:px-8;
+  }
+
+  /* BACKGROUND IMAGE */
+  .background-image {
+    @apply mt-[-1.7rem] p-1 flex bg-[rgb(255,255,255,.25)];
   }
 
   /* TOOLTIPS */

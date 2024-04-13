@@ -29,7 +29,7 @@ export const links: LinksFunction = () => [
 
 export async function loader() {
   const profilesData = await getData({ table: 'Profile' });
-  
+
   return json(await {
     profilesData
   });
@@ -94,12 +94,12 @@ export default function App() {
       useSuspense: true
     }
   });
-  
+
   i18n.use(initReactI18next).init();
 
   const handleScroll = () => useScrollYPositionStore.getState().setNewScrollYPosition();
-  
-  
+
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
@@ -112,8 +112,7 @@ export default function App() {
     setLangToStorage();
     setSidebarToStorage();
     useSession.getState().setSession();
-    //!isSession && localStorage.removeItem('sb_profile_id');
-    
+    /*!isSession && localStorage.removeItem('sb_profile_id');*/
   }, []);
 
   useEffect(() => {

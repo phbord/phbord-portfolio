@@ -104,7 +104,7 @@ export default function Sidebar({mainData, authData}: SidebarInterface) {
           <Button className='overlay' onClick={handleClickMenu}></Button>
         )
       }
-      
+
       <nav className={`sidebar ${toggleClass}`}>
         {/* Menu PRINCIPAL */}
         <ul className='flex flex-col'>

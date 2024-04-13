@@ -543,3 +543,8 @@
 .download-icon {
   @apply h-8 mt-1;
 }
+
+/* CONTACTS */
+.contacts-list li a {
+  @apply flex py-1 text-gray-600 transition-all;
+}

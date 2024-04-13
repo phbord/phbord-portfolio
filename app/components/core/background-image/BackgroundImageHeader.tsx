@@ -78,15 +78,15 @@ export default function BackgroundImageHeader({imgUrl, titleClass, keywordsClass
               <h3 className="bg-img-header-h3">Contacts</h3>
               <ul className="background-image">
                 {
-                  socialNetworkData?.map((item: any, index: number) =>(
+                  socialNetworkData?.map((item: any, index: number) => (
                     <li key={uuidv4()} className="relative">
                       <ul>
-                        <ItemListLayout data={item} 
-                                        imgClass={'w-5 mr-2'} 
-                                        textClass={'hidden'} 
+                        <ItemListLayout data={item}
+                                        imgClass={'w-5 mr-2'}
+                                        textClass={'hidden'}
                                         imgSrc={`/images/svg/${item.picto}`}
                                         isBlank={true}
-                                        onMouseOver={() => handleMouseOver(index, item.name)} 
+                                        onMouseOver={() => handleMouseOver(index, item.name)}
                                         onMouseOut={() => handleMouseOut(index)} />
                       </ul>
                       {/* TOOLTIPS */}

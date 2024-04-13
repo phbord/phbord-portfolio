@@ -13,6 +13,7 @@ const headerFr: headerInterface[] = [
     isDownload: true, 
     isBlank: true
   },
+  { name: 'Contacts', href: '/contacts' },
 ];
 
 export default headerFr;

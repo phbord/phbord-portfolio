@@ -44,7 +44,7 @@ export default function Header() {
         <nav className="header-nav" aria-label="Global">
           {/* LOGO */}
           {logoBlock}
-          
+
           {/* BOUTONS */}
           <div className="flex justify-end items-center">
             {/* Bouton LANGUE */}
@@ -54,8 +54,8 @@ export default function Header() {
               {newLang === 'en' ? 'FR' : 'EN'}
             </Button>
             {/* Bouton MENU */}
-            <Button 
-              className='btn-burger-menu ml-1' 
+            <Button
+              className='btn-burger-menu ml-1'
               srOnlyText={t('logoBurgerText')}
               onClick={handleClickMenu}>
               <EllipsisHorizontalCircleIcon className="icon-burger-menu" aria-hidden="true" />

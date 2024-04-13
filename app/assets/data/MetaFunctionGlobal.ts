@@ -15,6 +15,7 @@ export interface metaGlobalClass {
   titleDownloadsNew?: String,
   titleDownloadsEdit?: String,
   titleObliqueStrategiesIndex?: String,
+  titleContactsIndex?: String,
   titleSigninIndex?: string,
   titleSignupIndex?: string,
   description?: String,
@@ -45,6 +46,7 @@ const metaGlobal: metaGlobalClass = {
   titleDownloadsNew: `${titleBase} - Nouveau téléchargement`,
   titleDownloadsEdit: `${titleBase} - Edition d'un téléchargement`,
   titleObliqueStrategiesIndex: `${titleBase} - Stratégies obliques`,
+  titleContactsIndex: `${titleBase} - Contacts`,
   titleSigninIndex: `${titleBase} - Connexion`,
   titleSignupIndex: `${titleBase} - Inscription`,
 };

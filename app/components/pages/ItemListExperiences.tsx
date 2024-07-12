@@ -56,12 +56,6 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
   const monthYearUnion = data.year_end && '-';
   const isPicto: boolean = data?.picto ? true : false;
   const [isItemOpened, setIsItemOpened] = useState(false);
-  const experiencesDateStyle = {
-    display: '-webkit-box',
-    '-webkit-line-clamp': '2',
-    '-webkit-box-orient': 'vertical',
-    overflow: 'hidden'
-  };
 
   const handleClick = () => {
     isItemOpened ? setIsItemOpened(false) : setIsItemOpened(true);
@@ -81,8 +75,9 @@ export default function ItemListExperiences({data, noData, lang, idEdit, idDelet
                         onClick={handleClick}>
                   <span className='experiences-head-row-1'>
                     {/* Dates */}
-                    <span className='experiences-date' style={experiencesDateStyle}>
-                      {monthStart}{yearStart}{monthYearUnion}{monthEnd}{yearEnd}
+                    <span className='experiences-date'>
+                      <span>{monthStart}{yearStart}</span>
+                      <span>{monthYearUnion}{monthEnd}{yearEnd}</span>
                     </span>
                     {/* Entreprise */}
                     <strong className='experiences-firm'>

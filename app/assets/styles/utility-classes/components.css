@@ -435,7 +435,7 @@
   @apply flex justify-end;
 }
 .experiences-date {
-  @apply w-[4rem] min-w-[4rem] sm:w-[8rem] sm:min-w-[8rem] text-left;
+  @apply w-[4rem] min-w-[4rem] sm:w-[8rem] sm:min-w-[8rem] float-left text-left;
 }
 .experiences-firm {
   @apply mr-2 pl-2 flex justify-between text-left;
